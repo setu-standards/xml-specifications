@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2012-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" xmlns:ns1="http://ns.setu.nl/2012-01" targetNamespace="http://ns.setu.nl/2012-01" elementFormDefault="qualified" version="2012-01">
+    <xsd:annotation>
+		<xsd:documentation>	
+		Name: 		AssignmentAdditionalNL.xsd
+		Purpose: 	Defines the additional Assignment schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Assignment v1.2 - v1.3
+		Date: 		2012-12-13
+		Last edit: 	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+    <xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingWorkSite.xsd"/>
+	
+	<xsd:element name="AssignmentAdditionalNL" type="AssignmentAdditionalNLType"/>
+	<xsd:complexType name="CLAReferenceType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAId" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AssignmentAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="SETUVersionId" type="xsd:string"/>
+			<xsd:element name="JobTitle" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="JobId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="JobGroup" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StaffingWorkSite" type="hr:StaffingWorkSiteType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="ShiftType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAReference" type="CLAReferenceType" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="InclusiveRate" type="xsd:boolean" minOccurs="0"/>
+			<xsd:element name="HumanResourceInformation" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SalaryScale" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="InsuranceGroup" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="SingleCommuterTrafficDistance" type="xsd:decimal" minOccurs="0"/>
+						<xsd:element name="EmployeePhase" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="EmployeeContract" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="VacationWorker" type="xsd:boolean" minOccurs="0"/>
+						<xsd:element name="RecruitedBy" type="xsd:string" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

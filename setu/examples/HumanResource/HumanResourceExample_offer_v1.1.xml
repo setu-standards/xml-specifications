@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+		Name: 		HumanResourceExample_offer_v1.1.xml
+		Purpose: 	Defines an offer example for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering & Selection v1.1 
+		Last edit:	2020-11-25
+-->
+<HumanResource xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2008-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/HumanResource.xsd http://ns.setu.nl/2008-01 ../../schemas/2008-01/HumanResourceAdditionalNL.xsd">
+	<HumanResourceId idOwner="StaffingCompany">
+		<IdValue>12345</IdValue>
+		<IdValue name="version">1</IdValue>
+	</HumanResourceId>
+	<HumanResourceStatus status="new"/>
+	<ReferenceInformation>
+		<StaffingSupplierId idOwner="StaffingCompany">
+			<IdValue>79001895</IdValue>
+		</StaffingSupplierId>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>985PPE</IdValue>
+		</StaffingCustomerId>
+		<OrderId idOwner="StaffingCustomer">
+			<IdValue>121</IdValue>
+			<IdValue name="reactiontoversion">1</IdValue>
+		</OrderId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+	</ReferenceInformation>
+	<ResourceInformation>
+		<PersonName>
+			<FormattedName>Piet de Vries</FormattedName>
+			<LegalName>ir. P.J. de Vries</LegalName>
+			<GivenName>Piet</GivenName>
+			<GivenName>Jan</GivenName>
+			<PreferredGivenName>Piet</PreferredGivenName>
+			<MiddleName>P.J.</MiddleName>
+			<FamilyName primary="true" prefix="de">Vries</FamilyName>
+			<FamilyName primary="false">Janssen</FamilyName>
+			<Affix type="qualification">ir.</Affix>
+		</PersonName>
+		<EntityContactInfo>
+			<EntityName>Piet de Vries</EntityName>
+			<ContactMethod>
+				<Mobile>
+					<InternationalCountryCode>0031</InternationalCountryCode>
+					<AreaCityCode>06</AreaCityCode>
+					<SubscriberNumber>12345678</SubscriberNumber>			
+				</Mobile>
+				<InternetEmailAddress>piet.de.vries@athome.nl</InternetEmailAddress>
+				<InternetWebAddress>http://www.athome.nl</InternetWebAddress>
+			</ContactMethod>				
+		</EntityContactInfo>
+		<PostalAddress>
+			<CountryCode>NL</CountryCode>
+			<PostalCode>7521 JK</PostalCode>
+			<Municipality>Enschede</Municipality>
+			<DeliveryAddress>
+				<StreetName>Colosseum</StreetName>
+				<BuildingNumber>27</BuildingNumber>
+			</DeliveryAddress>
+		</PostalAddress>
+		<AvailabilityDate>
+			<AvailabilityStartDate>2008-03-01</AvailabilityStartDate>
+			<AvailabilityEndDate>2008-03-31</AvailabilityEndDate>
+		</AvailabilityDate>
+	</ResourceInformation>
+	<Rates rateType="bill" rateStatus="proposed">
+		<Amount rateAmountPeriod="x:hourlyconsolidated" currency="EUR">15.00</Amount>
+		<Class/>
+		<StartDate>2008-03-01</StartDate>
+	</Rates>
+	<Rates rateType="minPayRate" rateStatus="proposed">
+		<Amount rateAmountPeriod="x:hourlyconsolidated" currency="EUR">14.00</Amount>
+		<Class/>
+		<StartDate>2008-03-01</StartDate>
+		<EndDate>2008-07-01</EndDate>
+	</Rates>
+	<Rates rateType="maxPayRate" rateStatus="proposed">
+		<Amount rateAmountPeriod="x:hourlyconsolidated" currency="EUR">20.00</Amount>
+		<Class/>
+		<StartDate>2008-03-01</StartDate>
+		<EndDate>2008-07-01</EndDate>
+	</Rates>
+	<Profile>
+		<Resume>
+			<StructuredXMLResume>
+				<EmploymentHistory>
+					<EmployerOrg>
+						<EmployerOrgName>Company X</EmployerOrgName>
+						<EmployerContactInfo>
+							<PersonName>
+								<FormattedName>Jan Pietersen</FormattedName>
+							</PersonName>
+						</EmployerContactInfo>
+						<PositionHistory>
+							<OrgName>
+								<OrganizationName/>
+							</OrgName>
+							<Description>Engineer</Description>
+							<StartDate>
+								<AnyDate>1997-01-01</AnyDate>
+							</StartDate>
+							<EndDate>
+								<AnyDate>2003-09-01</AnyDate>
+							</EndDate>
+						</PositionHistory>
+					</EmployerOrg>
+				</EmploymentHistory>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="commercial economics">
+						<Degree degreeType="HEAO">
+							<DegreeName>Bc.</DegreeName>
+							<DatesOfAttendance>
+								<StartDate>
+									<AnyDate>1990-09-01</AnyDate>
+								</StartDate>
+								<EndDate>
+									<AnyDate>1996-11-01</AnyDate>
+								</EndDate>
+							</DatesOfAttendance>
+						</Degree>
+						<LocalInstitutionClassification>
+							<Id>
+								<IdValue>234</IdValue>
+							</Id>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>Rijbewijs B</Name>
+						<Id>B1973662</Id>
+						<IssuingAuthority>CBR</IssuingAuthority>
+						<Description>May only drive a car with an automatic gear</Description>
+						<EffectiveDate>
+							<ValidFrom>
+								<AnyDate>2000-10-03</AnyDate>
+							</ValidFrom>
+							<ValidTo>
+								<AnyDate>2010-10-03</AnyDate>
+							</ValidTo>
+							<FirstIssuedDate>
+								<AnyDate>1990-10-03</AnyDate>
+							</FirstIssuedDate>
+						</EffectiveDate>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="WO"/>
+					<Competency name="Project Management" description="Project management course"/>
+				</Qualifications>
+			</StructuredXMLResume>
+		</Resume>
+	</Profile>
+	<Preferences/>
+	<HumanResourceComments>This is the place to put free text comments.</HumanResourceComments>
+	<UserArea>
+		<nl:HumanResourceAdditionalNL>
+			<nl:OfferId>
+				<IdValue>7654323</IdValue>
+				<IdValue name="version">1</IdValue>
+			</nl:OfferId>
+			<nl:StaffingShift shiftPeriod="weekly">
+				<Id>
+					<IdValue/>
+				</Id>
+				<Hours>36</Hours>
+			</nl:StaffingShift>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:ReasonOfChange/>
+			<nl:BirthDate>1972-05-06</nl:BirthDate>
+			<nl:Sex>male</nl:Sex>
+			<nl:CustomerReportingRequirements>
+				<PurchaseOrderNumber>1223</PurchaseOrderNumber>
+			</nl:CustomerReportingRequirements>
+			<nl:IdentificationDocument>
+				<nl:Format>Passport</nl:Format>
+				<nl:Id>NL72431234</nl:Id>
+				<nl:EffectiveDate>
+					<nl:ValidFrom>2005-06-07</nl:ValidFrom>
+					<nl:ValidTo>2010-06-07</nl:ValidTo>
+				</nl:EffectiveDate>
+			</nl:IdentificationDocument>
+			<nl:SupplierContactInfo>
+				<EntityName>Intermediary 1</EntityName>
+				<ContactMethod>
+					<Mobile>
+						<InternationalCountryCode>0031</InternationalCountryCode>
+						<AreaCityCode>06</AreaCityCode>
+						<SubscriberNumber>12345678</SubscriberNumber>			
+					</Mobile>
+					<InternetEmailAddress>intermediary@staffingcompany.nl</InternetEmailAddress>
+					<InternetWebAddress>http://www.staffingcompany.nl</InternetWebAddress>
+				</ContactMethod>				
+			</nl:SupplierContactInfo>						
+		</nl:HumanResourceAdditionalNL>
+	</UserArea>
+</HumanResource>

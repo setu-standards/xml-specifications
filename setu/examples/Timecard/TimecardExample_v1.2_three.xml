@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimeCard xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/TimeCardAdditionalData.xsd">
+<!--		
+	Name: 		TimecardExample_v1.2_three.xml
+	Purpose: 	Specifies a correction timecard example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Reporting Time and Expenses v1.2
+	Last edit:	2020-11-25
+-->
+	<Id idOwner="StaffingCustomer">
+		<IdValue>41002276101135</IdValue>
+	</Id>
+	<ReportedResource>
+		<Person>
+			<Id idOwner="StaffingCompany">
+				<IdValue>OOS0001252</IdValue>
+			</Id>
+			<PersonName>
+				<FormattedName>P Pietersen</FormattedName>
+				<GivenName>P</GivenName>
+				<FamilyName>Pietersen</FamilyName>
+			</PersonName>
+		</Person>
+	</ReportedResource>
+	<ReportedTime>
+		<PeriodStartDate>2011-08-29</PeriodStartDate>
+		<PeriodEndDate>2011-09-04</PeriodEndDate>
+		<TimeInterval actionCode="Unchanged" billable="true" type="600889">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>41002276101135101</IdValue>
+			</Id>
+			<StartDateTime>2011-08-29T00:00:00Z</StartDateTime>
+			<EndDateTime>2011-08-29T23:59:59Z</EndDateTime>
+			<Duration>8.100</Duration>
+			<AdditionalData>
+				<StaffingAdditionalData>
+					<CustomerReportingRequirements>
+						<PurchaseOrderLineItem>00001</PurchaseOrderLineItem>
+					</CustomerReportingRequirements>
+				</StaffingAdditionalData>
+			</AdditionalData>
+		</TimeInterval>
+		<TimeInterval actionCode="Unchanged" billable="true" type="600889">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>41002276101135102</IdValue>
+			</Id>
+			<StartDateTime>2011-08-30T00:00:00Z</StartDateTime>
+			<EndDateTime>2011-08-30T23:59:59Z</EndDateTime>
+			<Duration>8.100</Duration>
+			<AdditionalData>
+				<StaffingAdditionalData>
+					<CustomerReportingRequirements>
+						<PurchaseOrderLineItem>00001</PurchaseOrderLineItem>
+					</CustomerReportingRequirements>
+				</StaffingAdditionalData>
+			</AdditionalData>
+		</TimeInterval>
+		<TimeInterval actionCode="Add" billable="true" type="600889">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>41002276101135103</IdValue>
+			</Id>
+			<StartDateTime>2011-08-31T00:00:00Z</StartDateTime>
+			<EndDateTime>2011-08-31T23:59:59Z</EndDateTime>
+			<Duration>6.200</Duration>
+			<AdditionalData>
+				<StaffingAdditionalData>
+					<CustomerReportingRequirements>
+						<PurchaseOrderLineItem>00001</PurchaseOrderLineItem>
+					</CustomerReportingRequirements>
+				</StaffingAdditionalData>
+			</AdditionalData>
+		</TimeInterval>
+		<TimeInterval actionCode="Add" billable="true" type="600932">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>41002276101135203</IdValue>
+			</Id>
+			<StartDateTime>2011-08-31T00:00:00Z</StartDateTime>
+			<EndDateTime>2011-08-31T23:59:59Z</EndDateTime>
+			<Duration>2.100</Duration>
+			<AdditionalData>
+				<StaffingAdditionalData>
+					<CustomerReportingRequirements>
+						<PurchaseOrderLineItem>00001</PurchaseOrderLineItem>
+					</CustomerReportingRequirements>
+				</StaffingAdditionalData>
+			</AdditionalData>
+		</TimeInterval>
+	</ReportedTime>
+	<SubmitterInfo>
+		<SubmittedDateTime>2011-09-26T14:20:49Z</SubmittedDateTime>
+	</SubmitterInfo>
+	<AdditionalData>
+		<StaffingAdditionalData>
+			<CustomerReportingRequirements>
+				<PurchaseOrderNumber>4100227610</PurchaseOrderNumber>
+				<CustomerReferenceNumber>1000543274</CustomerReferenceNumber>
+			</CustomerReportingRequirements>
+			<ReferenceInformation>
+				<OrderId idOwner="StaffingCustomer">
+					<IdValue>4100227610</IdValue>
+				</OrderId>
+				<StaffingSupplierId idOwner="StaffingCustomer">
+					<IdValue>51526</IdValue>
+				</StaffingSupplierId>
+				<StaffingCustomerId idOwner="StaffingCustomer">
+					<IdValue>PK42</IdValue>
+				</StaffingCustomerId>
+				<StaffingSupplierOrgUnitId idOwner="">
+					<IdValue/>
+				</StaffingSupplierOrgUnitId>
+				<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+					<IdValue>PK42</IdValue>
+				</StaffingCustomerOrgUnitId>
+			</ReferenceInformation>
+		</StaffingAdditionalData>
+	</AdditionalData>
+</TimeCard>

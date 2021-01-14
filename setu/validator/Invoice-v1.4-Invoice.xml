@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sch:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:sch="http://purl.oclc.org/dsdl/schematron" schemaVersion="nl.setu.2007.businessrules.invoice">
+    <sch:title>Business rules voor het controleren van een invoice bericht (SETU Standard for Invoicing versie 1.4).</sch:title>
+    <sch:ns prefix="setu" uri="http://www.openapplications.org/oagis"/>
+    <sch:ns prefix="nl" uri="http://ns.hr-xml.org/2007-04-15"/>
+    
+    <!-- Lijst met waarden voor rules:
+    nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierId.2
+    nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerId.2
+    nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierOrgUnitId.2
+    nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerOrgUnitId.2
+    -->
+    <sch:let name="IdOwner" value="',StaffingCustomer,StaffingCompany,KvK,OIN,BTW,Fi,'"/>
+        
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentIds.1" fpi="Controleren of het element DocumentIds exact 1x aanwezig is." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="count(setu:DocumentIds) = 1">
+                The header of the invoice must contain exactly one DocumentIds element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentIds.2" fpi="Controleren of er een factuurnummer opgegeven is." context="/setu:Invoice/setu:Header/setu:DocumentIds" flag="error">
+            <sch:assert test="count(setu:DocumentId) = 1">
+                The DocumentIds element must contain exactly one DocumentId element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentIds.3" fpi="Controleren of er een factuurnummer opgegeven is." context="/setu:Invoice/setu:Header/setu:DocumentIds/setu:DocumentId" flag="error">
+            <sch:assert test="(count(setu:Id) =  1) and (normalize-space(setu:Id) != '')">
+                An invoice must have an Id in the DocumentId element in the DocumentIds element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentDateTime.1" fpi="Controleren of de datum van de levering of dienst opgegeven is." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:DocumentDateTime)=1) and (normalize-space(setu:DocumentDateTime) != '')">
+                An invoice must have a DocumentDateTime.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Attachment.1" fpi="Controleren of niet meer dan 1 attachment meegegeven is." context="/setu:Invoice/setu:Header/setu:Attachments" flag="error">
+            <sch:assert test="count(setu:Attachment) &lt;= 1">
+                An invoice may contain at most one attachment.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Attachment.2" fpi="Controleren of de attachment geen subelementen bevat die niet zijn toegestaan." context="/setu:Invoice/setu:Header/setu:Attachments/setu:Attachment" flag="error">
+            <sch:assert test="(count(setu:URI)=0) and (count(setu:FileName)=0) and         (count(setu:ISBN)=0) and (count(setu:DocumentDate)=0) and         (count(setu:Description)=0) and (count(setu:FileSize)=0) and         (count(setu:Note)=0) and (count(setu:Title)=0) and (count(setu:UserArea)=0)">
+                The attachment contains subelements that are not allowed.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Attachment.3" fpi="Controleren of voor het encoding attribuut de correcte waarde meegegeven is." context="/setu:Invoice/setu:Header/setu:Attachments/setu:Attachment/setu:EmbeddedData" flag="error">
+            <sch:assert test="normalize-space(@encoding) = 'base64' ">
+                The encoding attribute of the element EmbeddedData must contain the value 'base64'.
+                Currently '<sch:value-of select="@encoding"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Attachment.4" fpi="Controleren of voor het FileType element de correcte waarde meegegeven is." context="/setu:Invoice/setu:Header/setu:Attachments/setu:Attachment" flag="error">
+            <sch:assert test="(count(setu:FileType)=1) and (normalize-space(setu:FileType) = 'application/pdf') ">
+                The FileType element of the element Attachment must be present and contain the value 'application/pdf'.
+                Currently '<sch:value-of select="."/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentReferences.1" fpi="Controleren of er exact 1 InvoiceDocumentReference aanwezig is." context="/setu:Invoice/setu:Header/setu:DocumentReferences" flag="error">
+            <sch:assert test="count(setu:InvoiceDocumentReference) = 1 ">
+                The element DocumentReferences must contain exactly one InvoiceDocumentReference element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.ReasonCode.1" fpi="Controleren of de reasoncode opgegeven is en een van de toegestane waardes bevat." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:ReasonCode)=1) and ((normalize-space(setu:ReasonCode) = 'services') or (normalize-space(setu:ReasonCode) = 'hours')      or (normalize-space(setu:ReasonCode) = 'combination'))">
+                An invoice must contain exactly one ReasonCode, which must have one of these values: services, hours, combination.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalAmount.1" fpi="Controleren of het element TotalAmount minimaal 1x en maximaal 2x is opgenomen." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:TotalAmount) &gt;= 1) and (count(setu:TotalAmount) &lt;= 2) and          (normalize-space(//setu:TotalAmount) != '')">
+                A TotalAmount must be present at least once and at most twice. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.PaymentTerms.1" fpi="Controleren of het attribuut uom de juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:PaymentTerms/setu:DiscountPercent" flag="error">
+            <sch:assert test="normalize-space(@uom) = 'percentage'">
+                A DiscountPercent must have the value "percentage" in the uom attribute. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Charges.1" fpi="Controleren of het element Charge maximaal 1x voorkomt." context="/setu:Invoice/setu:Header/setu:Charges" flag="error">
+            <sch:assert test="count(setu:Charge)= 1">
+                A Charges element must contain one Charge element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Charges.2" fpi="Controleren of het element Description van het element Charge maximaal 1x voorkomt." context="/setu:Invoice/setu:Header/setu:Charges/setu:Charge" flag="error">
+            <sch:assert test="count(setu:Description)&lt;= 1">
+                A Charge element may contain at most one Description element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Type.1" fpi="Controleren of het Type opgegeven is en een van de toegestane waardes bevat." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:Type)=1) and ((normalize-space(setu:Type) = 'Debit') or (normalize-space(setu:Type) = 'Credit')      or (normalize-space(setu:ReasonCode) = 'Both'))">
+                The header must contain exactly one Type element, which must have of the following values: Debit, Credit, Both.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalCharges.1" fpi="Controleren of het element TotalCharges exact 1x aanwezig is het Header-element." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:TotalCharges) = 1) and (normalize-space(setu:TotalCharges) != '')">
+                The header must contain exactly one TotalCharges element, which must not be empty.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalTax.1" fpi="Controleren of de Header exact 1 TotalTax element bevat." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="(count(setu:TotalTax) = 1) and (normalize-space(setu:TotalTax) != '')">
+                The Header element must contain exactly one TotalTax element.  
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalTax.2" fpi="Controleren of het bedrag van TotalTax gelijk is aan de som van de TotalTax op header niveau." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="((count(setu:Tax) &gt;= 1) and (sum(setu:Tax//setu:TaxAmount) = (setu:TotalTax))) or not(count(setu:Tax) &gt;= 1)">
+                The TotalTax is not equal to the sum of the individual TaxAmount elements on Header level.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalTax.3" fpi="Controleren of het bedrag van TotalTax gelijk is aan de som van de TaxAmount elementen op line niveau." context="/setu:Invoice" flag="error">
+            <sch:assert test="((count(//setu:Line/setu:Tax) &gt;= 1) and ((round(sum(//setu:Line/setu:Tax/setu:TaxAmount)*100) div 100) = number(//setu:Header/setu:TotalTax) )) or not(count(//setu:Line/setu:Tax) &gt;= 1)">
+                The TotalTax (<sch:value-of select="./setu:Header/setu:TotalTax"/>) is not equal to the sum of the TaxAmount elements of the Line elements (<sch:value-of select="sum(//setu:Line/setu:Tax/setu:TaxAmount)"/>).
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalTax.4" fpi="Controleren of de currency opgegeven is indien TotalTax is opgenomen." context="/setu:Invoice/setu:Header/setu:TotalTax" flag="error">
+            <sch:assert test="(count(@currency) = 1) and (normalize-space(@currency) = 'EUR')">
+                The currency attribute of the TotalTax element is either missing or its value is not equal to 'EUR'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Parties.1" fpi="Controleren of de Header exact 1 Parties element bevat." context="/setu:Invoice/setu:Header" flag="error">
+            <sch:assert test="count(setu:Parties) = 1">
+                The Header element must contain exactly one Parties element.  
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Addresses.1" fpi="Controleren of er 1 PrimaryAddress als PhysicalAddress is aangeduid." context="/setu:Invoice/setu:Header/setu:Parties/*/setu:Addresses" flag="error">
+            <sch:assert test="(count(./setu:PrimaryAddress[setu:Description='PhysicalAddress']) &lt;= 1)">
+                For every Party-element it must be clear which of its PrimaryAddress-elements specifies the PhysicalAddress. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Person.1" fpi="Controleren of de Person-elementen de verplichte elementen en subelementen bevat." context="/setu:Invoice/setu:Header/setu:Parties/*/setu:Contacts/setu:Contact/setu:Person" flag="error">
+            <sch:assert test="(count(./setu:PersonName) = 1) and (count(./setu:PersonName/setu:FormattedName) = 1)">
+                A Person-element must contain exactly one PersonName element and exactly one PersonName/FormattedName subelement.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BillToParty.1" fpi="Controleren of er een BillToParty element bestaat." context="/setu:Invoice/setu:Header/setu:Parties" flag="error">
+            <sch:assert test="count(setu:BillToParty) = 1">
+                A Parties element must contain exactly one BillToParty element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.CustomerParty.1" fpi="Controleren of er een CustomerParty element bestaat." context="/setu:Invoice/setu:Header/setu:Parties" flag="error">
+            <sch:assert test="(count(setu:CustomerParty) = 1)">
+                A Parties element must contain exactly one CustomerParty element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.RemitToParty.1" fpi="Controleren of er een RemitToParty element bestaat." context="/setu:Invoice/setu:Header/setu:Parties" flag="error">
+            <sch:assert test="count(setu:RemitToParty) = 1">
+                A Parties element must contain exactly one RemitToParty element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.SupplierParty.1" fpi="Controleren of er een SupplierParty element bestaat." context="/setu:Invoice/setu:Header/setu:Parties" flag="error">
+            <sch:assert test="count(setu:SupplierParty) = 1">
+                A Parties element must contain exactly one SupplierParty element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BillToParty.2" fpi="Controleren of het BillToParty element de verplichte subelementen bevat." context="/setu:Invoice/setu:Header/setu:Parties/setu:BillToParty" flag="error">
+            <sch:assert test="(count(setu:PartyId/setu:Id)=1) and (normalize-space(setu:PartyId/setu:Id) != '') and         (count(setu:Name)=1) and (normalize-space(setu:Name) != '') and         (count(setu:Addresses/setu:PrimaryAddress) &gt; 0)">
+                A BillToParty element must contain the following elements: PartyId/Id, Name and Addresses/PrimaryAddress.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.CustomerParty.2" fpi="Controleren of het CustomerParty element de verplichte subelementen bevat." context="/setu:Invoice/setu:Header/setu:Parties/setu:CustomerParty" flag="error">
+            <sch:assert test="(count(setu:PartyId/setu:Id)=1) and (normalize-space(setu:PartyId/setu:Id) != '') and         (count(setu:Name)=1) and (normalize-space(setu:Name) != '') and         (count(setu:Addresses/setu:PrimaryAddress) &gt; 0)">
+                A CustomerParty element must contain the following elements: PartyId/Id, Name and Addresses/PrimaryAddress.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.RemitToParty.2" fpi="Controleren of het RemitToParty element de verplichte subelementen bevat." context="/setu:Invoice/setu:Header/setu:Parties/setu:RemitToParty" flag="error">
+            <sch:assert test="(count(setu:PartyId/setu:Id)=1) and (normalize-space(setu:PartyId/setu:Id) != '') and         (count(setu:Name)=1) and (normalize-space(setu:Name) != '') and         (count(setu:Addresses/setu:PrimaryAddress) &gt; 0)">
+                A RemitToParty element must contain the following elements: PartyId/Id, Name and Addresses/PrimaryAddress.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.SupplierParty.2" fpi="Controleren of het SupplierParty element de verplichte subelementen bevat." context="/setu:Invoice/setu:Header/setu:Parties/setu:SupplierParty" flag="error">
+            <sch:assert test="(count(setu:PartyId/setu:Id)=1) and (normalize-space(setu:PartyId/setu:Id) != '') and         (count(setu:Name)=1) and (normalize-space(setu:Name) != '') and         (count(setu:Addresses/setu:PrimaryAddress) &gt; 0)">
+                A SupplierParty element must contain the following elements: PartyId/Id, Name and Addresses/PrimaryAddress.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.SupplierParty.3" fpi="Controleren of het SupplierParty element een TaxId bevat." context="/setu:Invoice/setu:Header/setu:Parties/setu:SupplierParty" flag="error">
+            <sch:assert test="(count(setu:TaxId)=1)">
+                A SupplierParty element must contain the TaxId element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TaxAmount.1" fpi="Controleren of TaxAmount opgegeven is indien Header/Tax is opgenomen." context="/setu:Invoice/setu:Header/setu:Tax" flag="error">
+            <sch:assert test="(count(setu:TaxAmount)=1) and (normalize-space(setu:TaxAmount) != '')">
+                The Tax element on Header level must contain exactly one TaxAmount element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.PercentQuantity.1" fpi="Controleren of het uom attribuut de waarde BTW bevat." context="/setu:Invoice/setu:Header/setu:Tax/setu:PercentQuantity" flag="error">
+            <sch:assert test="normalize-space(@uom) = 'BTW'">
+                A Header/Tax/PercentQuantity must contain 'BTW' in the uom attribute. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.PercentQuantity.3" fpi="Controleren of PercentQuantity opgegeven is indien Header/Tax is opgenomen." context="/setu:Invoice/setu:Header/setu:Tax" flag="error">
+            <sch:assert test="(count(setu:PercentQuantity)=1) and (normalize-space(setu:PercentQuantity) != '')">
+                The Tax element on Header level must contain exactly one PercentQuantity element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.AccountCode.1" fpi="Controleren of het element CustomerReportingRequirements niet het element AccountCode bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:CustomerReportingRequirements" flag="error">
+            <sch:assert test="count(nl:AccountCode) = 0">
+                The CustomerReportingRequirements element may not contain the AccountCode element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.AdditionalRequirement.1" fpi="Controleren of de requirementTitle van een AdditionalRequirement niet leeg is." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:CustomerReportingRequirements/nl:AdditionalRequirement" flag="error">
+            <sch:assert test="(count(@requirementTitle)=1) and (normalize-space(@requirementTitle) != '')">
+                The attribute requirementTitle of the element AdditionalRequirement must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.AdditionalRequirement.3" fpi="Controleren of er geen TimeCardID op header niveau wordt gespecificeerd als AdditionalRequirement." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:CustomerReportingRequirements/nl:AdditionalRequirement" flag="error">
+            <sch:assert test="(normalize-space(@requirementTitle) != 'TimeCardId')">
+                The attribute requirementTitle of the element AdditionalRequirement must not be TimeCardID.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierId.1" fpi="Controleren of voor elke idOwner het element StaffingSupplierId 1x gebruikt wordt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingSupplierId) = count(setu:StaffingSupplierId[not(@idOwner = preceding-sibling::setu:StaffingSupplierId/@idOwner)])">
+                The idOwner attributes of the StaffingSupplierId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierId.2" fpi="Controleren of het attribuut idOwner van het element StaffingSupplierId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingSupplierId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingSupplierId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierId.3" fpi="Controleren of het subelement IdValue van het element StaffingSupplierId exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingSupplierId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingSupplierId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerId.1" fpi="Controleren of voor elke idOwner het element StaffingCustomerId 1x gebruikt wordt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingCustomerId) = count(setu:StaffingCustomerId[not(@idOwner = preceding-sibling::setu:StaffingCustomerId/@idOwner)])">
+                The idOwner attributes of the StaffingCustomerId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerId.2" fpi="Controleren of het attribuut idOwner van het element StaffingCustomerId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingCustomerId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingCustomerId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerId.3" fpi="Controleren of het subelement IdValue van het element StaffingCustomerId exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingCustomerId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingCustomerId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierOrgUnitId.1" fpi="Controleren of voor elke idOwner het element StaffingSupplierOrgUnitId 1x gebruikt wordt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingSupplierOrgUnitId) = count(setu:StaffingSupplierOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingSupplierOrgUnitId/@idOwner)])">
+                 The idOwner attributes of the StaffingSupplierOrgUnitId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierOrgUnitId.2" fpi="Controleren of het attribuut idOwner van het element StaffingSupplierOrgUnitId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingSupplierOrgUnitId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingSupplierOrgUnitId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingSupplierOrgUnitId.3" fpi="Controleren of het subelement IdValue van het element StaffingSupplierOrgUnitId exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingSupplierOrgUnitId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingSupplierOrgUnitId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerOrgUnitId.1" fpi="Controleren of voor elke idOwner het element StaffingCustomerOrgUnitId 1x gebruikt wordt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation" flag="error">
+            <sch:assert test="count(setu:StaffingCustomerOrgUnitId) = count(setu:StaffingCustomerOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingCustomerOrgUnitId/@idOwner)])">
+                The idOwner attributes of the StaffingCustomerOrgUnitId elements are not unique. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerOrgUnitId.2" fpi="Controleren of het attribuut idOwner van het element StaffingCustomerOrgUnitId exact 1x aanwezig is en een juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingCustomerOrgUnitId" flag="error">
+            <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))">
+                The attribute idOwner of the element StaffingCustomerOrgUnitId must exist exactly once and should have a valid value: <sch:value-of select="$IdOwner"/>
+                Currently '<sch:value-of select="@idOwner"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerOrgUnitId.3" fpi="Controleren of het subelement IdValue van het element StaffingCustomerOrgUnitId exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingAdditionalData/nl:ReferenceInformation//setu:StaffingCustomerOrgUnitId" flag="error">
+            <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')">
+                The subelement IdValue of the element StaffingCustomerOrgUnitId must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.StaffingOrganization.1" fpi="Controleren of typeOfOrganization 'supplier' bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization" flag="error">
+            <sch:assert test="normalize-space(@typeOfOrganization) = 'Supplier'">
+                A StaffingOrganization must contain 'supplier' in the typeOfOrganization attribute. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Organization.1" fpi="Controleren of Organization aanwezig." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization" flag="error">
+            <sch:assert test="(count(nl:Organization) = 1)">
+                An StaffingOrganization element must contain an Organization element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Organization.2" fpi="Controleren of OrganizationName aanwezig en gevuld is." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:Organization" flag="error">
+            <sch:assert test="(count(nl:OrganizationName) = 1) and (normalize-space(nl:OrganizationName) != '')">
+                An Organization must contain an OrganizationName attribute. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.PaymentInfo.1" fpi="Controleren of het element PaymentInfo exact 1x aanwezig is in het StaffingOrganization element." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization" flag="error">
+            <sch:assert test="(count(nl:PaymentInfo) = 1)">
+                The StaffingOrganization element must contain exactly one PaymentInfo element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.FinancialGuarantee.1" fpi="Controleren of het Name element van het FinancialGuarantee element de juiste waarde heeft." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:FinancialGuarantee" flag="error">
+            <sch:assert test="normalize-space(nl:Name) = 'G-account'">
+                The value of the Name element in FinancialGuarantee must be 'G-account'.     
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.FinancialGuarantee.2" fpi="Controleren of het Name element van het FinancialGuarantee element 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:FinancialGuarantee" flag="error">
+            <sch:assert test="(count(nl:Name)=1) and (normalize-space(nl:Name) != '')">
+                The element FinancialGuarantee must contain the element Name once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.FinancialGuarantee.3" fpi="Controleren of het currencycode attribuut van het Amount element exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:FinancialGuarantee/nl:Amount" flag="error">
+            <sch:assert test="(count(@currencyCode)=1) and (normalize-space(@currencyCode) != '')">
+                The currencycode attribute of element Amount must specify 'EUR'
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BankAccountInfo.1" fpi="Controleren of het element BankAccountInfo exact 1x aanwezig is in het PaymentInfo element." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo" flag="error">
+            <sch:assert test="(count(nl:BankAccountInfo) = 1)">
+                The PaymentInfo element must contain exactly one BankAccountInfo element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BankInfoByJurisdiction.1" fpi="Controleren of het BankInfoByJurisdiction element van het BankAccountInfo element exact 1x voorkomt." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:BankAccountInfo" flag="error">
+            <sch:assert test="count(nl:BankInfoByJurisdiction) = 1">
+                The BankAccountInfo element must contain exactly one BankInfoByJurisdiction element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BankInfoByJurisdiction.2" fpi="Controleren of het bankJurisdiction attribuut van het BankInfoByJurisdiction element de juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:BankAccountInfo/nl:BankInfoByJurisdiction" flag="error">
+            <sch:assert test="normalize-space(@bankJurisdiction)='NL'">
+                The bankJurisdiction attribute of the BankInfoByJurisdiction element must contain the value 'NL'.
+                Currently '<sch:value-of select="@bankJurisdiction"/>' is used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.BankInfoByJurisdiction.3" fpi="Controleren of het BankAccountType element van het BankInfoByJurisdiction element de juiste waarde bevat." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganization/nl:PaymentInfo/nl:BankAccountInfo/nl:BankInfoByJurisdiction" flag="error">
+            <sch:assert test="normalize-space(nl:BankAccountType)='IBAN'">
+                The BankAccountType element of the BankInfoByJurisdiction element must contain the value 'IBAN'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.ChamberOfCommerceReference.1" fpi="Controleren of er een KVK-nummer opgegeven is." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganizationNL" flag="error">
+            <sch:assert test="(count(nl:ChamberofCommerceReference)=1) and (normalize-space(nl:ChamberofCommerceReference) != '')">
+                An invoice must have a ChamberofCommerceReference.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.ChamberOfCommerceReference.2" fpi="Controleren of de lengte van het KVK-nummer 8 of 12 karakters is." context="/setu:Invoice/setu:Header/setu:UserArea/nl:StaffingOrganizationNL" flag="error">
+            <sch:assert test="(string-length(normalize-space(nl:ChamberofCommerceReference)) =  8)       or (string-length(normalize-space(nl:ChamberofCommerceReference)) =  12)">
+                The length of the ChamberofCommerceReference must be 8 or 12.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Charge.1" fpi="Controleren of het element Charge maximaal 1x aanwezig is." context="//setu:Line/setu:Charges" flag="error">
+            <sch:assert test="count(setu:Charge) &lt;= 1 ">
+                The Charges element may contain at most one Charge element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Charge.2" fpi="Controleren of het element Description maximaal 1x aanwezig is in het Charge element." context="//setu:Line/setu:Charges/setu:Charge" flag="error">
+            <sch:assert test="count(setu:Description) &lt;= 1 ">
+                The Charge element may contain at most one Description element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalCharge.1" fpi="Controleren of het TotalCharge element exact 1x voorkomt." context="//setu:Line/setu:Charges" flag="error">
+            <sch:assert test="count(setu:TotalCharge) = 1">
+                The Charges element must contain exactly one TotalCharge element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalCharge.2" fpi="Controleren of het element Description exact 1x aanwezig is in het TotalCharge element." context="//setu:Line/setu:Charges/setu:TotalCharge" flag="error">
+            <sch:assert test="count(setu:Total) = 1 and normalize-space(setu:Total) != ''">
+                The TotalCharge element must contain exactly one Total element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TotalCharge.3" fpi="Controleren of het element Description maximaal 1x aanwezig is in het TotalCharge element." context="//setu:Line/setu:Charges/setu:TotalCharge" flag="error">
+            <sch:assert test="count(setu:Description) &lt;= 1 ">
+                The TotalCharge element may contain at most one Description element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentReferences.2" fpi="Controleren of het InvoiceDocumentReference element exact 1x voorkomt." context="//setu:Line/setu:DocumentReferences" flag="error">
+            <sch:assert test="count(setu:InvoiceDocumentReference) = 1">
+                The InvoiceDocumentReference element must exist exactly once in the DocumentReferences element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.TaxAmount.2" fpi="Controleren of TaxAmount opgegeven is op Line niveau." context="//setu:Line//setu:Tax" flag="error">
+            <sch:assert test="(count(setu:TaxAmount)=1) and (normalize-space(setu:TaxAmount) != '')">
+                The Tax element on Line level must contain exactly one TaxAmount element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.PercentQuantity.2" fpi="Controleren of de uom de waarde BTW bevat indien PercentQuantity is opgenomen." context="//setu:Line//setu:Tax/setu:PercentQuantity" flag="error">
+            <sch:assert test="(count(@uom) = 1) and (normalize-space(@uom) = 'BTW')">
+                A PercentQuantity on Line level must contain 'BTW' in the uom attribute. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.AccountCode.2" fpi="Controleren of het element CustomerReportingRequirements niet het element AccountCode bevat." context="//setu:Line/setu:UserArea/nl:StaffingAdditionalData/nl:CustomerReportingRequirements" flag="error">
+            <sch:assert test="count(nl:AccountCode) = 0">
+                The CustomerReportingRequirements element may not contain the AccountCode element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.AdditionalRequirement.2" fpi="Controleren of de requirementTitle van een AdditionalRequirement niet leeg is." context="//setu:Line/setu:UserArea/nl:StaffingAdditionalData/nl:CustomerReportingRequirements/nl:AdditionalRequirement" flag="error">
+            <sch:assert test="(count(@requirementTitle)=1) and (normalize-space(@requirementTitle) != '')">
+                The attribute requirementTitle of the element AdditionalRequirement must exist exactly once.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Line.1" fpi="Controleren of het element Line/Line niet het element Line bevat." context="/setu:Invoice/setu:Line/setu:Line" flag="error">
+            <sch:assert test="count(setu:Line) = 0">
+                The Line/Line element may not contain the Line element. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.ItemQuantity.1" fpi="Controleren of de hoeveelheid/omvang  de levering of dienst opgegeven is." context="//setu:Line" flag="error">
+            <sch:assert test="((count(setu:Line) = 0) and (count(setu:ItemQuantity)=1) and (normalize-space(setu:ItemQuantity) != '')) or not(count(setu:Line) = 0)">
+                The amount and the kind of service must be supplied at the lowest Line level.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Currency.1" fpi="Controleren of de opgegeven currency- en currencyCode attributen de waarde 'EUR' hebben." context="//*[@currency or @currencyCode]" flag="error">
+            <sch:assert test="(normalize-space(@currency) = 'EUR') or (normalize-space(@currencyCode) = 'EUR') ">
+                The value of the @currency and @currencyCode attributes must be equal to 'EUR'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+</sch:schema>

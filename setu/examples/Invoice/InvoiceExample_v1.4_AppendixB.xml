@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		InvoiceExample_v1.4_AppendixB.xml
+	Purpose: 	Specifies an example of an correction invoice (credit invoice)
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Invoicing v1.4
+	Last edit:	2020-11-25
+-->
+<Invoice xmlns="http://www.openapplications.org/oagis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.hr-xml.org/2007-04-15" xsi:schemaLocation="http://www.openapplications.org/oagis ../../../hr-xml/SIDES/Invoice.xsd http://ns.hr-xml.org/2007-04-15 ../../schemas/InvoiceAdditionalNL.xsd">
+	<Header>
+		<DocumentIds>
+			<DocumentId>
+				<Id>1234567-B</Id>
+			</DocumentId>
+		</DocumentIds>
+		<DocumentDateTime>2013-11-09T00:00:00Z</DocumentDateTime>
+		<Description>This specification is not a payment document</Description>
+		<Note>Please mention the invoice numbers on payment</Note>
+		<Note>Our general agreement conditions regarding the hiring of temporary workers of the ABU are applicable on all our agreements.</Note>
+		<DocumentReferences>
+			<InvoiceDocumentReference>
+				<DocumentIds>
+					<DocumentId>
+						<Id>1234567-A</Id>
+					</DocumentId>
+				</DocumentIds>
+			</InvoiceDocumentReference>
+		</DocumentReferences>		
+		<ReasonCode>combination</ReasonCode>
+		<TotalAmount currency="EUR">386.10</TotalAmount>
+		<Parties>
+			<BillToParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Description of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</BillToParty>
+			<CustomerParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Descirption of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</CustomerParty>
+			<RemitToParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</RemitToParty>
+			<SupplierParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</SupplierParty>	
+		</Parties>
+		<Type>Credit</Type>
+		<TotalCharges currency="EUR">330.00</TotalCharges>
+		<TotalTax currency="EUR">56.10</TotalTax>
+		<Tax>
+			<TaxAmount currency="EUR">44.10</TaxAmount>
+			<TaxBaseAmount currency="EUR">210.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Tax>
+			<TaxAmount currency="EUR">12.00</TaxAmount>
+			<TaxBaseAmount currency="EUR">120.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">10</PercentQuantity>
+		</Tax>
+		<UserArea>
+			<nl:StaffingOrganizationNL>
+				<nl:ChamberofCommerceReference>77665544</nl:ChamberofCommerceReference>
+			</nl:StaffingOrganizationNL>
+		</UserArea>
+	</Header>
+	<Line>
+		<LineNumber>1</LineNumber>
+		<Description>Deployment Jan Janssen okt 2013</Description>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">210.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Price>
+			<Amount currency="EUR">30</Amount>
+			<PerQuantity uom="Regular">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Regular">7</ItemQuantity>
+	</Line>
+	<Line>
+		<LineNumber>2</LineNumber>
+		<Description>Deployment Piet Pietersen okt 2013</Description>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">120.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Price>
+			<Amount currency="EUR">30</Amount>
+			<PerQuantity uom="Regular">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Regular">4</ItemQuantity>
+	</Line>
+</Invoice>

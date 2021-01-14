@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		StatusStaffingOrderExample_v1.1.xml
+	Purpose: 	Defines an position status example for the Netherlands.
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Ordering & Selection v1.1
+	Last edit:	2020-11-25
+-->		
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2008-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2008-01 ../../schemas/2008-01/StaffingOrderAdditionalNL.xsd">
+	<OrderId validFrom="2008-01-01" validTo="2008-01-31" idOwner="StaffingCustomer">
+		<IdValue>PO123789</IdValue>
+		<IdValue name="version">1</IdValue>
+	</OrderId>
+	<ReferenceInformation/>
+	<CustomerReportingRequirements/>
+	<OrderClassification orderType="RFQ" orderStatus="closed"/>
+	<PositionQuantity>0</PositionQuantity>
+	<MultiVendorDistribution/>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionReason>Position</PositionReason>
+		<PositionDateRange>
+			<StartDate>1111-11-11</StartDate>			
+		</PositionDateRange>
+		<WorkSite>
+			<WorkSiteName/>
+		</WorkSite>
+		<StaffingShift>
+			<Id>
+				<IdValue/>
+			</Id>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:ReasonOfChange>Position closed</nl:ReasonOfChange>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

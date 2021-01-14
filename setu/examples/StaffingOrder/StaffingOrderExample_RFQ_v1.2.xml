@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/StaffingOrderAdditionalNL.xsd">
+<!--
+	Name: 		StaffingOrderExample_RFQ_v1.2.xml
+	Purpose: 	Example of StaffingOrder message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Ordering & Selection v1.2
+	Date: 		2012-12-13
+	Last edit:	2020-11-25
+-->
+	<OrderId validFrom="2012-08-01" validTo="2013-01-31" idOwner="StaffingCustomer">
+		<IdValue>RFQ123789</IdValue>
+	</OrderId>
+	<ReferenceInformation>
+		<MasterOrderId idOwner="StaffingCompany">
+			<IdValue>FA5623467</IdValue>
+		</MasterOrderId>
+		<StaffingCustomerId idOwner="StaffingCustomer">
+			<IdValue>445123</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>676773</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<DepartmentCode>12</DepartmentCode>
+		<DepartmentName>Productie</DepartmentName>
+		<CostCenterCode>173</CostCenterCode>
+		<CostCenterName>staalproductie</CostCenterName>
+		<ProjectCode>055.12345</ProjectCode>
+		<CustomerReferenceNumber>RFQ123789</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<OrderClassification orderType="RFQ" orderStatus="new"/>
+	<OrderContact contactType="placed by">
+		<ContactInfo>
+			<PersonName>
+				<FormattedName>Henk de Vries</FormattedName>
+			</PersonName>
+			<ContactMethod>
+				<Mobile>
+					<FormattedNumber>06-12345678</FormattedNumber>
+				</Mobile>
+				<InternetEmailAddress>henk.devries@staffingcompany.nl</InternetEmailAddress>
+				<InternetWebAddress>http://www.staffingcompany.nl</InternetWebAddress>
+			</ContactMethod>
+		</ContactInfo>
+	</OrderContact>
+	<RequiredResponseDate>2012-10-14T23:59:59</RequiredResponseDate>
+	<OrderComments>This is a free text field for comments</OrderComments>
+	<PositionQuantity>1</PositionQuantity>
+	<MultiVendorDistribution>true</MultiVendorDistribution>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+			<JobId>
+				<Id>45</Id>
+			</JobId>
+			<PositionTitle>Welder</PositionTitle>
+			<PositionType>secondment</PositionType>
+			<PositionDescription>Welder who can weld aluminium 				
+			</PositionDescription>
+			<RequestedPerson>
+				<PersonName>
+					<FormattedName>Jan Klaassen</FormattedName>
+				</PersonName>
+				<PersonId idOwner="StaffingCompany">
+					<IdValue>351</IdValue>
+				</PersonId>
+			</RequestedPerson>
+			<ShiftWork haveShiftWork="true">
+				<Description>4-shift</Description>
+			</ShiftWork>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionReason>Position</PositionReason>
+		<PositionDateRange>
+			<StartDate>2012-12-01</StartDate>
+			<ExpectedEndDate>2013-02-01</ExpectedEndDate>
+		</PositionDateRange>
+		<Rates rateType="bill" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">22.00</Amount>
+			<Class/>
+			<StartDate>2012-12-01</StartDate>
+		</Rates>
+		<Rates rateType="minPayRate" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">14.00</Amount>
+			<Class/>
+			<StartDate>2012-12-01</StartDate>
+			<EndDate>2013-02-01</EndDate>
+		</Rates>
+		<Rates rateType="maxPayRate" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">20.00</Amount>
+			<Class/>
+			<StartDate>2012-12-01</StartDate>
+			<EndDate>2013-02-01</EndDate>
+		</Rates>
+		<WorkSite>
+			<WorkSiteName>Building A</WorkSiteName>
+			<PostalAddress>
+				<CountryCode>NL</CountryCode>
+				<PostalCode>7521 JK</PostalCode>
+				<Municipality>Enschede</Municipality>
+				<DeliveryAddress>
+					<StreetName>Colosseum</StreetName>
+					<BuildingNumber>27</BuildingNumber>
+				</DeliveryAddress>
+			</PostalAddress>
+		</WorkSite>
+		<StaffingShift shiftPeriod="weekly">
+			<Id>
+				<IdValue/>
+			</Id>
+			<Hours>36</Hours>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:SETUVersionId>1.2</nl:SETUVersionId>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:StructuredXMLResume>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="commercial economics">
+						<Degree degreeType="5"/>
+						<LocalInstitutionClassification>
+							<Id idOwner="SOI2006">
+								<IdValue>32</IdValue>
+							</Id>
+							<Description>HEAO is vereist</Description>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>drivingLicense</Name>
+						<Id>B</Id>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="5"/>
+					<Competency name="Project Management" description="IPMA D qualification required"/>
+				</Qualifications>
+			</nl:StructuredXMLResume>
+			<nl:ReasonOfChange>New</nl:ReasonOfChange>
+			<nl:CLAReference>
+				<nl:Description>CAO MT METAALBEWERKINGSBEDRIJF</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+			<nl:OfferRequirements>
+					<nl:MinimalRequiredValidityEndDate>2012-10-30</nl:MinimalRequiredValidityEndDate>
+					<nl:SubmittancePeriod>
+						<nl:StartDate>2012-10-01</nl:StartDate>
+						<nl:EndDate>2012-10-14</nl:EndDate>
+					</nl:SubmittancePeriod>
+					<nl:AwardDate>2012-10-15</nl:AwardDate>
+			</nl:OfferRequirements>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

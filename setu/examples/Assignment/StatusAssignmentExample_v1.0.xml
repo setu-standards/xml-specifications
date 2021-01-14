@@ -1,0 +1,36 @@
+<!--		
+	Name: 		StatusAssignmentExample_v1.0.xml
+	Purpose: 	Defines an assignment confirmation example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Assignment v1.0
+	Last edit: 	2020-11-25
+-->
+<Assignment xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2007-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/Assignment.xsd http://ns.setu.nl/2007-01 ../../schemas/2007-01/AssignmentAdditionalNL.xsd" assignmentStatus="active" xml:lang="en-gb">
+	<AssignmentId>
+		<IdValue>190/0057/016030</IdValue>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId>
+			<IdValue/>
+		</StaffingCustomerId>
+		<HumanResourceId>
+			<IdValue/>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+			</ReferenceInformation>
+	<CustomerReportingRequirements/>
+	<Rates rateStatus="agreed" rateType="">
+		<Class/>
+		<StartDate>1111-11-11</StartDate>
+	</Rates>
+	<StaffingShift>
+		<Id>
+			<IdValue/>
+		</Id>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>1111-11-11</StartDate>
+	</AssignmentDateRange>
+</Assignment>

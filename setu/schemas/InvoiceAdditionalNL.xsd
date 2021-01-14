@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.hr-xml.org/2007-04-15" elementFormDefault="qualified" version="2007-04-15">
+	<xsd:annotation>
+		<xsd:documentation>
+		Name: 		InvoiceAdditionalNL.xsd
+		Purpose: 	Defines the additional invoice schema elements for the Netherlands.
+		Author(s): 	SETU
+		Standard:	SETU Standard for Invoicing v1.0 - v1.4
+		Last edit:	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:include schemaLocation="../../hr-xml/SIDES/StaffingOrganization.xsd"/>
+	<xsd:include schemaLocation="../../hr-xml/SIDES/TimeCardAdditionalData.xsd"/>
+    <xsd:import namespace="http://www.openapplications.org/oagis" schemaLocation="../../hr-xml/SIDES/Invoice.xsd"/>
+	<xsd:complexType name="StaffingOrganizationTypeNL">
+		<xsd:sequence>
+			<xsd:element name="ChamberofCommerceReference" type="xsd:string" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Chamber of Commerce number</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="StaffingOrganizationNL" type="StaffingOrganizationTypeNL"/>
+</xsd:schema>

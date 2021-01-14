@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HumanResource xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/HumanResource.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/HumanResourceAdditionalNL.xsd">
+<!--
+	Name: 		HumanResourceExample_offer_v1.2.xml
+	Purpose: 	Example of HumanResource message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Ordering & Selection v1.2
+	Date: 		2012-12-13
+	Last edit:	2020-11-25
+-->
+	<HumanResourceId idOwner="StaffingCompany">
+		<IdValue>12345</IdValue>
+	</HumanResourceId>
+	<HumanResourceStatus status="new"/>
+	<ReferenceInformation>
+		<StaffingSupplierId idOwner="StaffingCompany">
+			<IdValue>79001895</IdValue>
+		</StaffingSupplierId>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>985PPE</IdValue>
+		</StaffingCustomerId>
+		<OrderId idOwner="StaffingCustomer">
+			<IdValue>RFQ123789</IdValue>
+		</OrderId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+	</ReferenceInformation>
+	<ResourceInformation>
+		<PersonName>
+			<FamilyName primary="true" prefix="de">Vries</FamilyName>
+		</PersonName>
+		<EntityContactInfo>
+			<EntityName/>
+			<ContactMethod/>
+		</EntityContactInfo>
+		<PostalAddress>
+			<CountryCode>NL</CountryCode>
+			<Municipality>Enschede</Municipality>
+		</PostalAddress>
+		<AvailabilityDate>
+			<AvailabilityStartDate>2012-12-01</AvailabilityStartDate>
+			<AvailabilityEndDate>2013-02-01</AvailabilityEndDate>
+		</AvailabilityDate>
+	</ResourceInformation>
+	<Rates rateType="bill" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">22.00</Amount>
+			<Class/>
+			<StartDate>2012-12-01</StartDate>
+		</Rates>
+	<Rates rateType="pay" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">14.00</Amount>
+			<Class/>
+			<StartDate>2012-12-01</StartDate>
+			<EndDate>2013-02-01</EndDate>
+	</Rates>	
+	<Profile>
+		<Resume>
+			<StructuredXMLResume>
+				<EmploymentHistory>
+					<EmployerOrg>
+						<EmployerOrgName>Company X</EmployerOrgName>
+						<EmployerContactInfo>
+							<PersonName>
+								<FormattedName>Jan Pietersen</FormattedName>
+							</PersonName>
+						</EmployerContactInfo>
+						<PositionHistory>
+							<OrgName>
+								<OrganizationName>Company X</OrganizationName>
+							</OrgName>
+							<Description>Engineer</Description>
+							<StartDate>
+								<AnyDate>1997-01-01</AnyDate>
+							</StartDate>
+							<EndDate>
+								<AnyDate>2003-09-01</AnyDate>
+							</EndDate>
+						</PositionHistory>
+					</EmployerOrg>
+				</EmploymentHistory>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="commercial economics">
+						<Degree degreeType="5">
+							<DegreeName>Bc.</DegreeName>
+						</Degree>
+						<DatesOfAttendance>
+								<StartDate>
+									<AnyDate>1990-09-01</AnyDate>
+								</StartDate>
+								<EndDate>
+									<AnyDate>1996-11-01</AnyDate>
+								</EndDate>
+						</DatesOfAttendance>
+						<LocalInstitutionClassification>
+							<Id idOwner="SOI2006">
+								<IdValue>32</IdValue>
+							</Id>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>drivingLicense</Name>
+						<Id>B</Id>
+						<IssuingAuthority>CBR</IssuingAuthority>
+						<Description>May only drive a car with an automatic gear</Description>
+						<EffectiveDate>
+							<ValidFrom>
+								<AnyDate>2010-10-03</AnyDate>
+							</ValidFrom>
+							<ValidTo>
+								<AnyDate>2020-10-03</AnyDate>
+							</ValidTo>
+							<FirstIssuedDate>
+								<AnyDate>1990-10-03</AnyDate>
+							</FirstIssuedDate>
+						</EffectiveDate>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="6"/>
+					<Competency name="Project Management" description="IPMA C"/>
+				</Qualifications>
+			</StructuredXMLResume>
+		</Resume>
+	</Profile>
+	<Preferences/>
+	<HumanResourceComments>This is the place to put free text comments.</HumanResourceComments>
+	<UserArea>
+		<nl:HumanResourceAdditionalNL>
+			<nl:SETUVersionId>1.2</nl:SETUVersionId>
+			<nl:OfferId>
+				<IdValue>7654323</IdValue>
+			</nl:OfferId>
+			<nl:StaffingShift shiftPeriod="weekly">
+				<Id>
+					<IdValue/>
+				</Id>
+				<Hours>36</Hours>
+			</nl:StaffingShift>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:ReasonOfChange/>
+			<nl:BirthDate>1972-05-06</nl:BirthDate>
+			<nl:Sex>male</nl:Sex>
+			<nl:SupplierContactInfo>
+				<EntityName>Intermediary 1</EntityName>
+				<ContactMethod>
+					<Mobile>
+						<FormattedNumber>06-12345678</FormattedNumber>
+					</Mobile>
+					<InternetEmailAddress>intermediary@staffingcompany.nl</InternetEmailAddress>
+					<InternetWebAddress>http://www.staffingcompany.nl</InternetWebAddress>
+				</ContactMethod>				
+			</nl:SupplierContactInfo>
+			<nl:InclusiveRate>true</nl:InclusiveRate>						
+		</nl:HumanResourceAdditionalNL>
+	</UserArea>
+</HumanResource>

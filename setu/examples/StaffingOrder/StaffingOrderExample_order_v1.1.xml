@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+		Name: 		StaffingOrderExample_order_v1.1.xml
+		Purpose: 	Defines an position example for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering & Selection v1.1
+		Last edit:	2020-11-25
+-->
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2008-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2008-01 ../../schemas/2008-01/StaffingOrderAdditionalNL.xsd">
+	<OrderId validFrom="2008-01-01" validTo="2008-01-31" idOwner="StaffingCustomer">
+		<IdValue>PO123789</IdValue>
+		<IdValue name="version">1</IdValue>
+	</OrderId>
+	<ReferenceInformation>
+		<MasterOrderId>
+			<IdValue>FA5623467</IdValue>
+		</MasterOrderId>
+		<StaffingCustomerId idOwner="StaffingCustomer">
+			<IdValue>445123</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>676773</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<PurchaseOrderNumber>P98765</PurchaseOrderNumber>
+		<DepartmentCode>12</DepartmentCode>
+		<CostCenterCode>173</CostCenterCode>
+		<ProjectCode>G12345</ProjectCode>
+		<CustomerReferenceNumber>PO123789</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<OrderClassification orderType="order" orderStatus="new"/>
+	<OrderContact contactType="placed by">
+		<ContactInfo>
+			<PersonName>
+				<LegalName>Henk de Vries</LegalName>
+			</PersonName>
+			<ContactMethod>
+				<Mobile>
+					<InternationalCountryCode>0031</InternationalCountryCode>
+					<AreaCityCode>06</AreaCityCode>
+					<SubscriberNumber>12345678</SubscriberNumber>			
+				</Mobile>
+				<InternetEmailAddress>henk.devries@staffingcompany.nl</InternetEmailAddress>
+				<InternetWebAddress>http://www.staffingcompany.nl</InternetWebAddress>
+			</ContactMethod>
+		</ContactInfo>
+	</OrderContact>
+	<RequiredResponseDate>2008-01-12T16:00:00</RequiredResponseDate>
+	<OrderComments>This is a free text field for comments</OrderComments>
+	<PositionQuantity>1</PositionQuantity>
+	<MultiVendorDistribution>true</MultiVendorDistribution>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+			<JobId>
+				<Id>45</Id>
+			</JobId>
+			<PositionTitle>Welder</PositionTitle>
+			<PositionType>secondment</PositionType>
+			<PositionDescription>Welder who can weld aluminium 				
+			</PositionDescription>
+			<RequestedPerson>
+				<PersonName>
+					<FormattedName>Jan Klaassen</FormattedName>
+				</PersonName>
+			</RequestedPerson>
+			<ShiftWork haveShiftWork="true">
+				<Description>4-shift</Description>
+			</ShiftWork>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionReason>Position</PositionReason>
+		<PositionDateRange>
+			<StartDate>2008-02-01</StartDate>
+			<ExpectedEndDate>2009-02-01</ExpectedEndDate>
+		</PositionDateRange>
+		<Rates rateType="bill" rateStatus="proposed">
+			<ExternalRateSetId>
+				<IdValue>5</IdValue>
+			</ExternalRateSetId>
+			<Amount rateAmountPeriod="hourly" currency="EUR">15.00</Amount>
+			<Class/>
+			<Multiplier>100</Multiplier>
+			<StartDate>2008-02-01</StartDate>
+		</Rates>
+		<WorkSite>
+			<WorkSiteName>Building A</WorkSiteName>
+			<PostalAddress>
+				<CountryCode>NL</CountryCode>
+				<PostalCode>7521 JK</PostalCode>
+				<Municipality>Enschede</Municipality>
+				<DeliveryAddress>
+					<StreetName>Colosseum</StreetName>
+					<BuildingNumber>27</BuildingNumber>
+				</DeliveryAddress>
+			</PostalAddress>
+		</WorkSite>
+		<StaffingShift shiftPeriod="weekly">
+			<Id>
+				<IdValue/>
+			</Id>
+			<Hours>36</Hours>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:OfferId>
+				<IdValue>747827</IdValue>
+			</nl:OfferId>
+			<nl:PreviousOrderId>
+				<IdValue>2165728</IdValue>
+			</nl:PreviousOrderId>
+			<nl:RFQOrderId>
+				<IdValue>23489712</IdValue>
+			</nl:RFQOrderId>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:ReasonOfChange>New</nl:ReasonOfChange>
+			<nl:CLAReference>
+				<nl:Description>CAO Metaalbewerkingsbedrijven</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

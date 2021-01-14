@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		InvoiceExample_v1.0_two.xml
+	Purpose: 	Defines an invoice example for the Netherlands.
+	Author(s):	SETU
+	Standard: 	SETU Standard for Invoicing v1.0
+	Last edit:	2020-11-25
+-->
+<Invoice xmlns="http://www.openapplications.org/oagis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.hr-xml.org/2007-04-15" xsi:schemaLocation="http://www.openapplications.org/oagis ../../../hr-xml/SIDES/Invoice.xsd http://ns.hr-xml.org/2007-04-15 ../../schemas/InvoiceAdditionalNL.xsd">
+	<!--This xml file is an example of an electronic invoice -->
+	<Header>
+		<DocumentIds>
+			<DocumentId>
+				<!-- The DocumentId can contain letter/digits and other characters -->
+				<Id>1234567F%</Id>
+			</DocumentId>
+		</DocumentIds>
+		<DocumentDateTime>2004-11-11T00:00:00Z</DocumentDateTime>
+		<Description>This specification is not an payment document</Description>
+		<Note>Please mention the invoicenumbers on payment</Note>
+		<Note>Our general agreement conditions regarding the hiring of temporary workers of the ABU are applicable on all our agreements.</Note>
+		<!-- In case this invoice is an addition to another invoice document, the reference to this document can be placed in the following fields. -->
+		<DocumentReferences>
+			<InvoiceDocumentReference>
+				<DocumentIds>
+					<DocumentId>
+						<Id>1234566F</Id>
+					</DocumentId>
+				</DocumentIds>
+			</InvoiceDocumentReference>
+		</DocumentReferences>
+		<!-- To indicate what is billed on the invoice, the field reasoncode is used. Possible values are: services, hours and combination -->
+		<ReasonCode>hours</ReasonCode>
+		<TotalAmount currency="EUR">381.80</TotalAmount>
+		<!-- Payment conditions can be mentioned in terms of a due date -->
+		<PaymentTerms>
+			<Description>Due date</Description>
+			<DueDate>2004-11-25</DueDate>
+			<!-- The discount can be displayed as an percentage or an amount. The uom (unit of measure) parameter is obligatory -->
+			<DiscountPercent uom="percentage">5</DiscountPercent>
+		</PaymentTerms>
+		<!-- Another example of payment conditions is specified as a number of day with a starting date -->
+		<PaymentTerms>
+			<PaymentTermsDate>2004-09-07</PaymentTermsDate>
+			<NumberOfDays>14</NumberOfDays>
+		</PaymentTerms>
+		<Parties>
+			<!-- The details of the Customer are contained in the CustomerParty field. -->
+			<CustomerParty>
+				<Name>Bedrijf A</Name>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<Salutation>Mevr.</Salutation>
+								<GivenName>J.</GivenName>
+								<FamilyName>Janssen</FamilyName>
+							</PersonName>
+						</Person>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</CustomerParty>
+			<!-- The details of the Staffing Company are contained in the RemitTorParty field -->
+			<RemitToParty>
+				<Name>Staffing Company U</Name>
+				<TaxId>(Tax number)</TaxId>
+				<Contacts>
+					<Contact>
+						<Telephone>0123-456789</Telephone>
+						<Description>Main Office</Description>
+						<Addresses>
+							<PrimaryAddress>
+								<AddressLine>Dorpsstraat 33</AddressLine>
+								<City>Aadorp</City>
+								<PostalCode>1234 AB</PostalCode>
+							</PrimaryAddress>
+						</Addresses>
+					</Contact>
+				</Contacts>
+			</RemitToParty>
+		</Parties>
+		<!-- The type element is used to indicate the type of the invoice (debit, credit or combination) -->
+		<Type>Debit</Type>
+		<!-- The reason element is used to indicate the process type of the invoice (regular, pro forma or self-billing) -->
+		<Reason>regular</Reason>
+		<TotalCharges currency="EUR">330.00</TotalCharges>
+		<TotalTax currency="EUR">51.80</TotalTax>
+		<!-- The tax percentage can be indicated on header level, then is is regarded as a uniform percentage for all invoice lines, or they can be splitted to multiple <Tax> percentages -->
+		<Tax>
+			<TaxAmount currency="EUR">39.90</TaxAmount>
+			<TaxBaseAmount currency="EUR">210.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">19</PercentQuantity>
+		</Tax>
+		<Tax>
+			<TaxAmount currency="EUR">12.00</TaxAmount>
+			<TaxBaseAmount currency="EUR">120.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">10</PercentQuantity>
+		</Tax>
+		<UserArea>
+			<!-- Information that is taken from the header level of the TimeCard, for intance for Reporting (CustomerReportingRequirements) can be containd in the UserArea with the help of the TimeCard field -->
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<!-- An example of a Reporting element on the header level is a project code that is applicable for the entire invoice -->
+					<nl:ProjectCode>Project X</nl:ProjectCode>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+			<!-- The bank accoutn number of the staffing company can be contained in the field StaffingOrganization -->
+			<nl:StaffingOrganization typeOfOrganization="Supplier">
+				<!-- The Organization field is obligatory -->
+				<nl:Organization>
+					<nl:OrganizationName>Staffing company U</nl:OrganizationName>
+				</nl:Organization>
+				<nl:PaymentInfo>
+					<nl:BankAccountInfo>
+						<nl:BankInfoByJurisdiction bankJurisdiction="NL">
+							<nl:BankCode>1234</nl:BankCode>
+							<!-- The BankWindow field is obligatory, but is not used meaningful in the Netherlands -->
+							<nl:BankWindow/>
+							<nl:BankAccountNumber>12.34.56.789</nl:BankAccountNumber>
+							<!-- The BankAccountKey field is obligatory, but is not used meaningful in the Netherlands -->
+							<nl:BankAccountKey/>
+						</nl:BankInfoByJurisdiction>
+					</nl:BankAccountInfo>
+				</nl:PaymentInfo>
+			</nl:StaffingOrganization>
+			<!-- With the help of a specific SIDES NL Schema, StaffingOrganizationNL, is it possible to place the KVK number in the UserArea -->
+			<nl:StaffingOrganizationNL>
+				<nl:ChamberofCommerceReference>KVK 77665544NL</nl:ChamberofCommerceReference>
+			</nl:StaffingOrganizationNL>
+		</UserArea>
+	</Header>
+	<Line>
+		<LineNumber>1</LineNumber>
+		<Description>This place can be used to give a description for the InvoiceLine</Description>
+		<!-- The reasoncode element is used to indicate the type of services billed -->
+		<ReasonCode>Opleidingskosten</ReasonCode>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">330.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Tax>
+			<PercentQuantity uom="BTW">19</PercentQuantity>
+		</Tax>
+		<Line>
+			<!-- A line item with regular hours -->
+			<LineNumber>1A</LineNumber>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">160.00</Total>
+				</TotalCharge>
+			</Charges>
+			<!-- Specification of the Tax at line level -->
+			<Tax>
+				<TaxAmount currency="EUR">30.40</TaxAmount>
+				<TaxBaseAmount currency="EUR">160.00</TaxBaseAmount>
+				<PercentQuantity uom="BTW">19</PercentQuantity>
+			</Tax>
+			<Price>
+				<Amount currency="EUR">20.00</Amount>
+				<PerQuantity uom="regular">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="regular">8.00</ItemQuantity>
+		</Line>
+		<Line>
+			<!-- A line item with ours with a shift surcharge, the surchage percentage is 50% -->
+			<LineNumber>1B</LineNumber>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">120.00</Total>
+				</TotalCharge>
+			</Charges>
+			<Tax>
+				<TaxAmount currency="EUR">12.00</TaxAmount>
+				<TaxBaseAmount currency="EUR">120.00</TaxBaseAmount>
+				<PercentQuantity uom="BTW">10</PercentQuantity>
+			</Tax>
+			<Price>
+				<Amount currency="EUR">30.00</Amount>
+				<PerQuantity uom="regular">1</PerQuantity>
+			</Price>			
+			<ItemQuantity uom="shift">4.00</ItemQuantity>
+		</Line>
+		<Line>
+			<!-- A line item with additional expenses (for example travel expenses) -->
+			<LineNumber>1C</LineNumber>
+			<Charges>
+				<Charge>
+					<Total currency="EUR">50.00</Total>
+					<Description>Travel Expenses</Description>
+				</Charge>
+			</Charges>
+			<Price>
+				<Amount currency="EUR">50.00</Amount>
+				<PerQuantity uom="regular">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="regular">1.00</ItemQuantity>			
+		</Line>
+		<UserArea>
+			<!-- TimeCard at the first level Line -->
+			<nl:TimeCard>
+					<nl:ReportedResource>
+						<nl:Person>
+							<nl:Id>
+								<nl:IdValue>123456</nl:IdValue>
+							</nl:Id>
+							<nl:PersonName>
+								<nl:LegalName>J. Jansen</nl:LegalName>
+							</nl:PersonName>
+						</nl:Person>
+					</nl:ReportedResource>
+					<nl:ReportedTime>
+						<nl:PeriodStartDate>2006-02-06</nl:PeriodStartDate>
+						<nl:PeriodEndDate>2006-02-06</nl:PeriodEndDate>
+						<nl:TimeInterval type="regular">
+							<nl:StartDateTime>2006-02-06</nl:StartDateTime>
+							<nl:EndDateTime>2006-02-06</nl:EndDateTime>
+							<nl:Duration>8.00</nl:Duration>
+							<nl:RateOrAmount currency="EUR" type="hourly" multiplier="100">20.00</nl:RateOrAmount>
+							<!-- Comment to be able to indicate the tax percentage. -->
+							<nl:Comment>Tax percentage: 19%</nl:Comment>
+						</nl:TimeInterval>
+					</nl:ReportedTime>
+					<nl:ReportedTime>
+						<nl:PeriodStartDate>2006-02-07</nl:PeriodStartDate>
+						<nl:PeriodEndDate>2006-02-07</nl:PeriodEndDate>
+						<nl:TimeInterval type="shift">
+							<nl:StartDateTime>2006-02-07</nl:StartDateTime>
+							<nl:EndDateTime>2006-02-07</nl:EndDateTime>
+							<nl:Duration>4.00</nl:Duration>
+							<nl:RateOrAmount currency="EUR" type="hourly" multiplier="150">20.00</nl:RateOrAmount>
+							<nl:Comment>Tax percentage: 10%</nl:Comment>
+						</nl:TimeInterval>
+					</nl:ReportedTime>
+				</nl:TimeCard>			
+			<nl:StaffingOrganization typeOfOrganization="Customer">
+				<nl:Organization>
+					<!-- The IndustryCode field can be used to indicate the type of business the temporary workers work in at the customer. -->
+					<nl:IndustryCode>23</nl:IndustryCode>
+				</nl:Organization>
+			</nl:StaffingOrganization>
+			<!-- Placement of references on the invoice lines for reporting at the customer -->
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<!-- Multiple numbers can be contained in this element that can be used at the customer for processing the invoice -->
+					<!-- Order number -->
+					<nl:PurchaseOrderNumber>O-3344</nl:PurchaseOrderNumber>
+					<!-- Department code and name -->
+					<nl:DepartmentCode>4321</nl:DepartmentCode>
+					<nl:DepartmentName>Department B</nl:DepartmentName>
+					<!--Cost centert: code and/or name -->
+					<nl:CostCenterCode>BB-456</nl:CostCenterCode>
+					<nl:CostCenterName>Cost center name</nl:CostCenterName>
+					<!--Project code -->
+					<nl:ProjectCode>P-Project 01.26</nl:ProjectCode>
+					<!-- Budget number -->
+					<nl:CustomerReferenceNumber>5678</nl:CustomerReferenceNumber>
+					<!-- Additional requirements and/or references that cannot be contained in another field can be contained in a unlimited number of AdditionalRequirement fields -->
+					<nl:AdditionalRequirement requirementTitle="optional name for the reference">Free text</nl:AdditionalRequirement>
+					<nl:AdditionalRequirement>More free text</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+		</UserArea>
+	</Line>
+</Invoice>

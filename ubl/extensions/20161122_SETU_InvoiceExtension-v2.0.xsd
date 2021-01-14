@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2006 sp2 U (http://www.altova.com) by Michiel Stornebrink (TNO ICT) -->
+<xsd:schema xmlns="urn:ns.setu.nl:setu:invoice:extension:v2.0" xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ccts="urn:un:unece:uncefact:documentation:2" targetNamespace="urn:ns.setu.nl:setu:invoice:extension:v2.0" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.0">
+	<!-- ===== Imports ===== -->
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" schemaLocation="../common/UBL-CommonAggregateComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" schemaLocation="../common/UBL-CommonBasicComponents-2.1.xsd"/>
+	<xsd:import namespace="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2" schemaLocation="../common/UBL-CommonExtensionComponents-2.1.xsd"/>
+	<!-- ===== Element Declarations ===== -->
+	<xsd:element name="InvoiceExtension" type="InvoiceExtensionType"/>
+	<!-- ===== Type Declarations ===== -->
+	<xsd:complexType name="InvoiceExtensionType">
+		<xsd:sequence>
+			<xsd:element name="OrganizationDepartment" type="cbc:OrganizationDepartmentType" minOccurs="0"/>
+			<xsd:element name="AdditionalItemProperty" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:restriction base="cac:ItemPropertyType">
+							<xsd:sequence>
+								<xsd:element ref="cbc:Name">
+									<xsd:annotation>
+										<xsd:documentation>
+											<ccts:Component>
+												<ccts:ComponentType>BBIE</ccts:ComponentType>
+												<ccts:DictionaryEntryName>Item Property. Name</ccts:DictionaryEntryName>
+												<ccts:Definition>The name of this item property.</ccts:Definition>
+												<ccts:Cardinality>1</ccts:Cardinality>
+												<ccts:ObjectClass>Item Property</ccts:ObjectClass>
+												<ccts:PropertyTerm>Name</ccts:PropertyTerm>
+												<ccts:RepresentationTerm>Name</ccts:RepresentationTerm>
+												<ccts:DataType>Name. Type</ccts:DataType>
+												<ccts:Examples>Energy Rating , Collar Size , Fat Content </ccts:Examples>
+											</ccts:Component>
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+								<xsd:element ref="cbc:Value">
+									<xsd:annotation>
+										<xsd:documentation>
+											<ccts:Component>
+												<ccts:ComponentType>BBIE</ccts:ComponentType>
+												<ccts:DictionaryEntryName>Item Property. Value. Text</ccts:DictionaryEntryName>
+												<ccts:Definition>The value of this item property, expressed as text.</ccts:Definition>
+												<ccts:Cardinality>0..1</ccts:Cardinality>
+												<ccts:ObjectClass>Item Property</ccts:ObjectClass>
+												<ccts:PropertyTerm>Value</ccts:PropertyTerm>
+												<ccts:RepresentationTerm>Text</ccts:RepresentationTerm>
+												<ccts:DataType>Text. Type</ccts:DataType>
+												<ccts:Examples>100 watts , 15 European , 20% +/- 5% </ccts:Examples>
+											</ccts:Component>
+										</xsd:documentation>
+									</xsd:annotation>
+								</xsd:element>
+							</xsd:sequence>
+						</xsd:restriction>
+					</xsd:complexContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="StaffingSupplierOrgUnitId" type="cbc:IDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="StaffingCustomerOrgUnitId" type="cbc:IDType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="TotalOnChargeVAT" type="cbc:TaxAmountType" minOccurs="0"/>
+			<xsd:element name="InvoiceLineExtension" type="InvoiceLineExtensionType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="InvoiceLineExtensionType">
+		<xsd:sequence>
+			<xsd:element name="ID" type="cbc:IDType"/>
+			<xsd:element name="ProjectReference" type="cac:ProjectReferenceType" minOccurs="0"/>
+			<xsd:element name="BuyerReference" type="cbc:BuyerReferenceType" minOccurs="0"/>
+			<xsd:element name="OrganizationDepartment" type="cbc:OrganizationDepartmentType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

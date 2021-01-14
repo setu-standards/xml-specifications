@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimeCard xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/TimeCardAdditionalData.xsd">
+<!--		
+	Name: 		TimecardExample_v1.2_two.xml
+	Purpose: 	Specifies a timecard example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Reporting Time and Expenses v1.2
+	Last edit:	2020-11-25
+-->
+
+	<Id>
+		<IdValue>12345678</IdValue>
+	</Id>
+	<ReportedResource>
+		<Person>
+			<!-- The IdValue of the ReportedResource may specify the identifier of a person within an organization. Via the idOwner attribute we can specify whether this id is valid wih the Staffing company or the Staffing customer -->
+			<Id idOwner="StaffingCustomer">
+				<IdValue>23456</IdValue>
+			</Id>
+			<PersonName>
+				<FormattedName>Piet Jansen</FormattedName>
+			</PersonName>
+		</Person>
+	</ReportedResource>
+	<ReportedTime>
+		<PeriodStartDate>2011-08-09</PeriodStartDate>
+		<PeriodEndDate>2011-08-10</PeriodEndDate>
+		<!-- The TimeInterval types have been standardized: Regular, Overtime, Shift, Travel, Additional, Special leave, Short leave, Holiday, Unpayed leave, Training, Vacation, Sick time, Work underload -->
+		<TimeInterval type="regular" billable="true">
+			<StartDateTime>2011-08-09T09:00:00</StartDateTime>
+			<EndDateTime>2011-08-09T17:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly">30 </RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="overtime" billable="true">
+			<StartDateTime>2011-08-09T19:00:00</StartDateTime>
+			<EndDateTime>2011-08-09T21:00:00</EndDateTime>
+			<Duration>2.00</Duration>
+			<!-- The mark-up for the hourly rate is specified by means of the 'multiplier' attribute in <RateOrAmount>. A rate of 150% includes a mark-up of 50%. A rate of 100% means that there is no mark-up. -->
+			<RateOrAmount currency="EUR" type="hourly" multiplier="150">30</RateOrAmount>
+		</TimeInterval>
+		<!-- Costs are specified in an <Allowance> element. A list of suggested types of costs/expenses is provided in Appendix D -->
+		<Allowance type="102B" billable="true">
+			<Id>
+				<!--  The attribute 'name' specifies whether it should be interpreted as  an allowance or an expense.-->
+				<IdValue name="allowance"/>
+			</Id>
+			<Amount currency="EUR">14.00</Amount>
+		</Allowance>
+		<!-- Allowances that are not billable should specify the attribute 'billable=false'.-->
+	</ReportedTime>
+	<AdditionalData>
+		<StaffingAdditionalData>
+			<ReferenceInformation>
+				<!-- A reference on the time card to a Staffing Supplier and a Staffing Customer. -->	
+				<StaffingSupplierId idOwner="StaffingCustomer">
+					<IdValue>223445</IdValue>
+				</StaffingSupplierId>
+				<StaffingCustomerId idOwner="StaffingCompany">
+					<IdValue>223445</IdValue>
+				</StaffingCustomerId>
+			</ReferenceInformation>
+		</StaffingAdditionalData>
+	</AdditionalData>
+</TimeCard>

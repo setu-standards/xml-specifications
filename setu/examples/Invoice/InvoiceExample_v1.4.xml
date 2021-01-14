@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		InvoiceExample_v1.4.xml
+	Purpose: 	Specifies an invoice example.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Invoicing v1.4
+	Date: 		2018-06-22
+	Last edit:	2020-11-25
+-->
+<Invoice xmlns="http://www.openapplications.org/oagis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.hr-xml.org/2007-04-15" xsi:schemaLocation="http://www.openapplications.org/oagis ../../../hr-xml/SIDES/Invoice.xsd http://ns.hr-xml.org/2007-04-15 ../../schemas/InvoiceAdditionalNL.xsd">
+	<Header>
+		<DocumentIds>
+			<DocumentId>
+				<Id>28425365</Id>
+			</DocumentId>
+		</DocumentIds>
+		<DocumentDateTime>2017-08-14T00:00:00Z</DocumentDateTime>
+		<Note>Voor al onze facturen geldt een standaard betalingstermijn van 14 dagen na factuurdatum.</Note>
+		<Note>Uitzendbureau X is een handelsnaam van Uitzendbureau Industry bv.</Note>
+		<Attachments>
+			<Attachment>
+				<EmbeddedData encoding="base64">
+					<Data>JVBERi0xLjQKMSAwIG9iago8PAovQ3JlYXRvciAoT3JhY2xlMTBnUjIgQVMgUmVwb3J0cyBTZXJ2aWNlcykKL0NyZWF0aW9uRGF0ZSAoRDoyMDEyMDcxODAwMjY1MCkKL01vZERhdGUgKEQ6MjAxMjA3MiAwIFIKL0luZm8gMSAwIFIKPj4Kc3RhcnR4cmVmCjQ5MTc0CiUlRU9G</Data>
+				</EmbeddedData>
+				<FileType>application/pdf</FileType>
+			</Attachment>
+		</Attachments>		
+		<ReasonCode>combination</ReasonCode>
+		<TotalAmount currency="EUR">771.98</TotalAmount>
+		<Parties>
+			<BillToParty>
+				<PartyId>
+					<Id>223445</Id>
+				</PartyId>
+				<Name>Van Klanteren B.V.</Name>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Diemerkade 11</AddressLine>
+						<City>Diemen</City>
+						<PostalCode>1111AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>011-1111111</Telephone>
+						<Description>Afdeling Crediteuren</Description>
+					</Contact>
+				</Contacts>
+			</BillToParty>
+			<CustomerParty>
+				<PartyId>
+					<Id>223445</Id>
+				</PartyId>
+				<Name>Van Klanteren B.V.</Name>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Diemerkade 11</AddressLine>
+						<City>Diemen</City>
+						<PostalCode>1111AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>011-1111111</Telephone>
+						<Description>Afdeling Crediteuren</Description>
+					</Contact>
+				</Contacts>
+			</CustomerParty>
+			<RemitToParty>
+				<PartyId>
+					<Id>39876</Id>
+				</PartyId>
+				<Name>Uitzendbureau X</Name>
+				<TaxId>NL854576885B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Zeilmakerstraat 1</AddressLine>
+						<City>Katwijk</City>
+						<PostalCode>2222AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>022-2222222</Telephone>
+						<Description>Uitzendbureau X</Description>
+					</Contact>
+				</Contacts>
+			</RemitToParty>
+			<SupplierParty>
+				<PartyId>
+					<Id>39876</Id>
+				</PartyId>
+				<Name>Uitzendbureau X</Name>
+				<TaxId>NL854576885B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Zeilmakerstraat 1</AddressLine>
+						<City>Katwijk</City>
+						<PostalCode>2222AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>022-2222222</Telephone>
+						<Description>Uitzendbureau X</Description>
+					</Contact>
+				</Contacts>
+			</SupplierParty>	
+		</Parties>
+		<Type>Debit</Type>
+		<TotalCharges currency="EUR">638.00</TotalCharges>
+		<TotalTax currency="EUR">133.98</TotalTax>
+		<Tax>
+			<TaxAmount currency="EUR">133.98</TaxAmount>
+			<TaxBaseAmount currency="EUR">638.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:ManagerName>M.A. Nager</nl:ManagerName>	
+					<nl:ContactName>I.N. ter Cedent</nl:ContactName>
+					<nl:PurchaseOrderNumber>PO123789</nl:PurchaseOrderNumber>
+					<nl:DepartmentCode>12</nl:DepartmentCode>
+					<nl:DepartmentName>Productie</nl:DepartmentName>
+					<nl:CostCenterCode>173</nl:CostCenterCode>
+					<nl:CostCenterName>Staalproductie</nl:CostCenterName>
+					<nl:ProjectCode>012.30303</nl:ProjectCode>
+					<nl:AdditionalRequirement requirementTitle="geboortedatum">1991-03-18</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+				<nl:ReferenceInformation>
+					<nl:StaffingSupplierId idOwner="StaffingCustomer">
+						<nl:IdValue>39876</nl:IdValue>
+					</nl:StaffingSupplierId>
+					<nl:StaffingCustomerId idOwner="StaffingCompany">
+						<nl:IdValue>223445</nl:IdValue>
+					</nl:StaffingCustomerId>
+					<nl:AssignmentId idOwner="StaffingCompany">
+						<nl:IdValue>1234/1234561</nl:IdValue>
+					</nl:AssignmentId>
+					<nl:StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+						<nl:IdValue>53954</nl:IdValue>					
+					</nl:StaffingSupplierOrgUnitId>
+					<nl:StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+						<nl:IdValue>1234</nl:IdValue>
+					</nl:StaffingCustomerOrgUnitId>	
+				</nl:ReferenceInformation>
+			</nl:StaffingAdditionalData>
+			<nl:StaffingOrganization typeOfOrganization="Supplier">
+				<nl:Organization>
+					<nl:OrganizationName>Uitzendbureau X</nl:OrganizationName>
+				</nl:Organization>
+				<nl:PaymentInfo>
+					<nl:BankAccountInfo>
+						<nl:BankInfoByJurisdiction bankJurisdiction="NL">
+							<nl:BankCode>ABNANL2A</nl:BankCode>
+							<nl:BankWindow/>
+							<nl:BankAccountNumber>NL11ABNA0123456789</nl:BankAccountNumber>
+							<nl:BankAccountKey/>
+							<nl:BankAccountType>IBAN</nl:BankAccountType>
+							<nl:BankAccountHolder>Uitzendbureau X B.V.</nl:BankAccountHolder>
+						</nl:BankInfoByJurisdiction>
+					</nl:BankAccountInfo>
+				</nl:PaymentInfo>
+			</nl:StaffingOrganization>
+			<nl:StaffingOrganizationNL>
+				<nl:ChamberofCommerceReference>61979007</nl:ChamberofCommerceReference>
+			</nl:StaffingOrganizationNL>
+		</UserArea>
+	</Header>
+	<Line>
+		<LineNumber>1</LineNumber>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">256.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Tax>
+			<TaxAmount currency="EUR">53.76</TaxAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Price>
+			<Amount currency="EUR">16.00</Amount>
+			<PerQuantity uom="Regular">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Regular">16</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:AdditionalRequirement requirementTitle="TimeCardId">TC00123456-1</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+		</UserArea>
+	</Line>
+	<Line>
+		<LineNumber>2</LineNumber>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">48.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Tax>
+			<TaxAmount currency="EUR">10.08</TaxAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Price>
+			<Amount currency="EUR">24.00</Amount>
+			<PerQuantity uom="Overtime">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Overtime">2</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:AdditionalRequirement requirementTitle="TimeCardId">TC00123456-2</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+		</UserArea>
+	</Line>
+	<Line>
+		<LineNumber>3</LineNumber>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">320.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Tax>
+			<TaxAmount currency="EUR">67.20</TaxAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Price>
+			<Amount currency="EUR">20.00</Amount>
+			<PerQuantity uom="Shift">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Shift">16</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:AdditionalRequirement requirementTitle="TimeCardId">TC00123456-3</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+		</UserArea>
+	</Line>
+	<Line>
+		<LineNumber>4</LineNumber>
+		<ReasonCode>Transportation costs</ReasonCode>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">14.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Tax>
+			<TaxAmount currency="EUR">2.94</TaxAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Price>
+			<Amount currency="EUR">3.50</Amount>
+			<PerQuantity uom="C62">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="C62">4</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:AdditionalRequirement requirementTitle="TimeCardId">TC00123456-4</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+		</UserArea>
+	</Line>
+</Invoice>

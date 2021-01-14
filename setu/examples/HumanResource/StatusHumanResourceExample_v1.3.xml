@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HumanResource xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/HumanResource.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/HumanResourceAdditionalNL.xsd">
+<!--
+	Name: 		StatusHumanResourceExample_v1.3.xml
+	Purpose: 	Example of HumanResource message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Ordering & Selection v1.3
+	Date: 		2015-06-16
+	Last edit:	2020-11-25
+-->
+	<HumanResourceId>
+		<IdValue/>
+	</HumanResourceId>
+	<HumanResourceStatus status="accepted"/>
+	<ReferenceInformation>
+		<StaffingSupplierId>
+			<IdValue/>
+		</StaffingSupplierId>
+		<StaffingCustomerId>
+			<IdValue/>
+		</StaffingCustomerId>
+		<OrderId idOwner="StaffingCustomer">
+			<IdValue>RFQ123789</IdValue>
+		</OrderId>			
+	</ReferenceInformation>
+	<ResourceInformation>
+		<PersonName/>
+		<EntityContactInfo>
+			<EntityName/>
+			<ContactMethod/>
+		</EntityContactInfo>
+	</ResourceInformation>
+	<Profile/>
+	<Preferences/>
+	<UserArea>
+		<nl:HumanResourceAdditionalNL>
+			<nl:SETUVersionId>1.3</nl:SETUVersionId>
+			<nl:OfferId>
+				<IdValue>7654323</IdValue>
+			</nl:OfferId>
+			<nl:ReasonOfChange>Accepted</nl:ReasonOfChange>
+		</nl:HumanResourceAdditionalNL>	
+	</UserArea>
+</HumanResource>

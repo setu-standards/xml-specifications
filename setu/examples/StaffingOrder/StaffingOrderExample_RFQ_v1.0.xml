@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		StaffingOrderExample_RFQ_v1.0.xml
+	Purpose: 	Defines an position example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Ordering & Selection v1.0
+	Last edit:	2020-11-25
+-->
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2007-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2007-01 ../../schemas/2007-01/StaffingOrderAdditionalNL.xsd">
+	<OrderId validFrom="2008-01-01" validTo="2008-01-31" idOwner="StaffingCustomer">
+		<IdValue>PO123789</IdValue>
+	</OrderId>
+	<ReferenceInformation>
+		<StaffingCustomerId idOwner="StaffingCustomer">
+			<IdValue>445123</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>676773</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<PurchaseOrderNumber>P98765</PurchaseOrderNumber>
+		<DepartmentCode>12</DepartmentCode>
+		<CostCenterCode>173</CostCenterCode>
+		<ProjectCode>G12345</ProjectCode>
+		<CustomerReferenceNumber>PO123789</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<OrderClassification orderType="RFQ" orderStatus="new"/>
+	<OrderContact contactType="placed by">
+		<ContactInfo>
+			<PersonName>
+				<LegalName>Henk de Vries</LegalName>
+			</PersonName>
+			<ContactMethod>
+				<Telephone>
+					<FormattedNumber>+31631844722</FormattedNumber>
+				</Telephone>
+				<InternetEmailAddress>henk.devries@staffingcompany.nl</InternetEmailAddress>
+			</ContactMethod>
+		</ContactInfo>
+	</OrderContact>
+	<RequiredResponseDate>2008-01-12T16:00:00</RequiredResponseDate>
+	<OrderComments>This is a free text field for comments</OrderComments>
+	<PositionQuantity>1</PositionQuantity>
+	<MultiVendorDistribution/>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+			<JobId>
+				<Id>45</Id>
+			</JobId>
+			<PositionTitle>Welder</PositionTitle>
+			<PositionType>secondment</PositionType>
+			<PositionDescription>Welder who can weld aluminium 				
+			</PositionDescription>
+			<RequestedPerson>
+				<PersonName>
+					<FormattedName>Jan Klaassen</FormattedName>
+				</PersonName>
+			</RequestedPerson>
+			<ShiftWork haveShiftWork="true">
+				<Description>4-shift</Description>
+			</ShiftWork>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionReason>Position</PositionReason>
+		<PositionDateRange>
+			<StartDate>2008-02-01</StartDate>
+			<ExpectedEndDate>2009-02-01</ExpectedEndDate>
+		</PositionDateRange>
+		<Rates rateType="bill" rateStatus="proposed">
+			<ExternalRateSetId>
+				<IdValue>9</IdValue>
+			</ExternalRateSetId>
+			<Amount rateAmountPeriod="hourly" currency="EUR">15.00</Amount>
+			<Class/>
+			<StartDate>2008-02-01</StartDate>
+		</Rates>
+		<Rates rateType="minPayRate" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">14.00</Amount>
+			<Class/>
+			<StartDate>2008-02-01</StartDate>
+			<EndDate>2009-02-01</EndDate>
+		</Rates>
+		<Rates rateType="maxPayRate" rateStatus="proposed">			
+			<Amount rateAmountPeriod="hourly" currency="EUR">20.00</Amount>
+			<Class/>
+			<StartDate>2008-02-01</StartDate>
+			<EndDate>2009-02-01</EndDate>
+		</Rates>
+		<WorkSite>
+			<WorkSiteName>Building A</WorkSiteName>
+			<PostalAddress>
+				<CountryCode>NL</CountryCode>
+				<PostalCode>7521 JK</PostalCode>
+				<Municipality>Enschede</Municipality>
+				<DeliveryAddress>
+					<AddressLine>Colosseum 27</AddressLine>
+				</DeliveryAddress>
+			</PostalAddress>
+		</WorkSite>
+		<StaffingShift shiftPeriod="weekly">
+			<Id>
+				<IdValue>weekly</IdValue>
+			</Id>
+			<Hours>36</Hours>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:StructuredXMLResume>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="commercial economics">
+						<Degree degreeType="HEAO"/>
+						<LocalInstitutionClassification>
+							<Id>
+								<IdValue>234</IdValue>
+							</Id>
+							<Description>HBO</Description>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>Rijbewijs B</Name>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="HBO"/>
+					<Competency name="Project Management" description="Project management course"/>
+				</Qualifications>
+			</nl:StructuredXMLResume>
+			<nl:ReasonOfChange>New</nl:ReasonOfChange>
+			<nl:CLAReference>9</nl:CLAReference>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

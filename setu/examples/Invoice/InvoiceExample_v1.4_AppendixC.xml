@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		InvoiceExample_v1.4_AppendixC.xml
+	Purpose: 	Specifies an invoice example with OnChargedVAT
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard:	SETU Standard for Invoicing v1.4
+	Last edit: 	2020-11-25
+-->
+<Invoice xmlns="http://www.openapplications.org/oagis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.hr-xml.org/2007-04-15" xsi:schemaLocation="http://www.openapplications.org/oagis ../../../hr-xml/SIDES/Invoice.xsd http://ns.hr-xml.org/2007-04-15 ../../schemas/InvoiceAdditionalNL.xsd">
+	<Header>
+		<DocumentIds>
+			<DocumentId>
+				<Id>123456789</Id>
+			</DocumentId>
+		</DocumentIds>
+		<DocumentDateTime>2013-11-01T00:00:00Z</DocumentDateTime>
+		<Description>This specification is not a payment document</Description>
+		<Note>Please mention the invoice numbers on payment</Note>
+		<Note>Our general agreement conditions regarding the hiring of temporary workers of the ABU are applicable on all our agreements.</Note>
+		<ReasonCode>hours</ReasonCode>
+		<TotalAmount currency="EUR">+4387.46</TotalAmount>
+		<Charges>
+			<Charge> 
+				<Total currency="EUR">+738.15</Total> 
+				<Description>TotalOnChargedVAT</Description> 
+			</Charge>
+		</Charges>
+		<Parties>
+			<BillToParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Description of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</BillToParty>
+			<CustomerParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Descirption of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</CustomerParty>
+			<RemitToParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</RemitToParty>
+			<SupplierParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</SupplierParty>	
+		</Parties>
+		<Type>Debit</Type>
+		<TotalCharges currency="EUR">+4364.15</TotalCharges>
+		<TotalTax currency="EUR">+23.31</TotalTax>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:ManagerName>M.A. Nager</nl:ManagerName>	
+  					<nl:ContactName>I.N. ter Cedent</nl:ContactName>
+					<nl:PurchaseOrderNumber>O-3344</nl:PurchaseOrderNumber>
+					<nl:DepartmentCode>4321</nl:DepartmentCode>
+					<nl:DepartmentName>Department B</nl:DepartmentName>
+					<nl:CostCenterCode>BB-456</nl:CostCenterCode>
+					<nl:CostCenterName>Cost center name</nl:CostCenterName>
+					<nl:ProjectCode>P-Project 01.26</nl:ProjectCode>
+					<nl:CustomerReferenceNumber>5678</nl:CustomerReferenceNumber>
+					<nl:AdditionalRequirement requirementTitle="geboortedatum">01-01-1990</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+				<nl:ReferenceInformation>
+					<nl:StaffingSupplierId idOwner="StaffingCustomer">
+						<nl:IdValue>39876</nl:IdValue>
+					</nl:StaffingSupplierId>
+					<nl:StaffingCustomerId idOwner="StaffingCompany">
+						<nl:IdValue>223445</nl:IdValue>
+					</nl:StaffingCustomerId>
+					<nl:AssignmentId idOwner="StaffingCompany">
+						<nl:IdValue>1234/1234561</nl:IdValue>
+					</nl:AssignmentId>
+					<nl:StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+						<nl:IdValue>53954</nl:IdValue>					
+					</nl:StaffingSupplierOrgUnitId>
+					<nl:StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+						<nl:IdValue>1234</nl:IdValue>
+					</nl:StaffingCustomerOrgUnitId>	
+				</nl:ReferenceInformation>
+			</nl:StaffingAdditionalData>
+			<nl:StaffingOrganization typeOfOrganization="Supplier">
+				<nl:Organization>
+					<nl:OrganizationName>Staffing company U</nl:OrganizationName>
+				</nl:Organization>
+				<nl:PaymentInfo>
+					<nl:BankAccountInfo>
+						<nl:BankInfoByJurisdiction bankJurisdiction="NL">
+							<nl:BankCode>NL69INGB</nl:BankCode>
+							<nl:BankWindow/>
+							<nl:BankAccountNumber>NL69INGB0001234567</nl:BankAccountNumber>
+							<nl:BankAccountKey/>
+							<nl:BankAccountType>IBAN</nl:BankAccountType>
+							<nl:BankAccountHolder>Staffing Company U</nl:BankAccountHolder>
+						</nl:BankInfoByJurisdiction>
+					</nl:BankAccountInfo>
+				</nl:PaymentInfo>
+			</nl:StaffingOrganization>
+			<nl:StaffingOrganizationNL>
+				<nl:ChamberofCommerceReference>77665544</nl:ChamberofCommerceReference>
+			</nl:StaffingOrganizationNL>
+		</UserArea>
+	</Header>
+	<Line>
+		<LineNumber>1</LineNumber>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">+2241.05</Total>
+			</TotalCharge>
+		</Charges>
+		<Line>
+			<LineNumber>1A</LineNumber>
+			<Description>Regular</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+1805.00</Total>
+				</TotalCharge>
+			</Charges>
+			<Price>
+				<Amount currency="EUR">+95.00</Amount>
+				<PerQuantity uom="Regular">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="Regular">+19.00</ItemQuantity>
+		</Line>
+		<Line>
+			<LineNumber>1B</LineNumber>
+			<Description>Bemiddelingsfee ZZP-er</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+57.00</Total>
+				</TotalCharge>
+			</Charges>
+			<Tax>
+				<TaxAmount currency="EUR">+11.97</TaxAmount>
+				<TaxBaseAmount currency="EUR">+57.00</TaxBaseAmount>
+				<PercentQuantity uom="BTW">+21.00</PercentQuantity>
+			</Tax>
+			<Price>
+				<Amount currency="EUR">+3.00</Amount>
+				<PerQuantity uom="BemiddelingsfeeZZP-er">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="BemiddelingsfeeZZP-er">+19.00</ItemQuantity>
+		</Line>
+		<Line>
+			<LineNumber>1C</LineNumber>
+			<Description>OnChargedVAT</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+379.05</Total>
+				</TotalCharge>
+			</Charges> 
+			<Price>
+				<Amount currency="EUR">+379.05</Amount>
+				<PerQuantity uom="OnChargedVAT">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="OnChargedVAT">+1.00</ItemQuantity>
+		</Line>
+	</Line>
+	<Line>
+		<LineNumber>2</LineNumber>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">+2123.10</Total>
+			</TotalCharge>
+		</Charges>
+		<Line>
+			<LineNumber>2A</LineNumber>
+			<Description>Regular</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+1710.00</Total>
+				</TotalCharge>
+			</Charges>      
+			<Price>
+				<Amount currency="EUR">+95.00</Amount>
+				<PerQuantity uom="Regular">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="Regular">+18.00</ItemQuantity>
+		</Line>
+		<Line>
+			<LineNumber>2B</LineNumber>
+			<Description>Bemiddelingsfee ZZP-er</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+54.00</Total>
+				</TotalCharge>
+			</Charges>
+			<Tax>
+				<TaxAmount currency="EUR">+11.34</TaxAmount>
+				<TaxBaseAmount currency="EUR">+54.00</TaxBaseAmount>
+				<PercentQuantity uom="BTW">+21.00</PercentQuantity>
+			</Tax>
+			<Price>
+				<Amount currency="EUR">+3.00</Amount>
+				<PerQuantity uom="BemiddelingsfeeZZP-er">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="BemiddelingsfeeZZP-er">+18.00</ItemQuantity>
+		</Line>
+		<Line>
+			<LineNumber>2C</LineNumber>
+			<Description>OnChargedVAT</Description>
+			<Charges>
+				<TotalCharge>
+					<Total currency="EUR">+359.10</Total>
+				</TotalCharge>
+			</Charges>      
+			<Price>
+				<Amount currency="EUR">+359.10</Amount>
+				<PerQuantity uom="OnChargedVAT">1</PerQuantity>
+			</Price>
+			<ItemQuantity uom="OnChargedVAT">+1.00</ItemQuantity>
+		</Line>
+	</Line>
+</Invoice>

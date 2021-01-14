@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		InvoiceExample_v1.4_AppendixA.xml
+	Purpose: 	Specifies an invoice example
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Invoicing v1.4
+	Last edit: 	2020-11-25
+-->
+<Invoice xmlns="http://www.openapplications.org/oagis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.hr-xml.org/2007-04-15" xsi:schemaLocation="http://www.openapplications.org/oagis ../../../hr-xml/SIDES/Invoice.xsd http://ns.hr-xml.org/2007-04-15 ../../schemas/InvoiceAdditionalNL.xsd">
+	<Header>
+		<DocumentIds>
+			<DocumentId>
+				<Id>1234567-A</Id>
+			</DocumentId>
+		</DocumentIds>
+		<DocumentDateTime>2013-11-01T00:00:00Z</DocumentDateTime>
+		<Description>This specification is not a payment document</Description>
+		<Note>Please mention the invoice numbers on payment</Note>
+		<Note>Our general agreement conditions regarding the hiring of temporary workers of the ABU are applicable on all our agreements.</Note>
+		<Attachments>
+			<Attachment>
+				<EmbeddedData encoding="base64">
+					<Data>
+					JVBERi0xLjQKMSAwIG9iago8PAovQ3JlYXRvciAoT3JhY2xlMTBnUjIgQVMgUmVwb3J0cyBTZXJ2aWNlcykKL0NyZWF0aW9uRGF0ZSAoRDoyMDEyMDcxODAwMjY1MCkKL01vZERhdGUgKEQ6MjAxMjA3MiAwIFIKL0luZm8gMSAwIFIKPj4Kc3RhcnR4cmVmCjQ5MTc0CiUlRU9G
+					</Data>
+				</EmbeddedData>
+				<FileType>application/pdf</FileType>
+			</Attachment>
+		</Attachments>		
+		<ReasonCode>combination</ReasonCode>
+		<TotalAmount currency="EUR">386.10</TotalAmount>
+		<PaymentTerms>
+			<Description>Discount rate when paying before a due date</Description>
+			<DueDate>2013-11-15</DueDate>
+			<DiscountPercent uom="percentage">5</DiscountPercent>
+		</PaymentTerms>
+		<PaymentTerms>
+<Description>Discount specified as amount and payment period</Description>
+			<PaymentTermsDate>2013-11-01</PaymentTermsDate>
+			<NumberOfDays>14</NumberOfDays>
+			<DiscountAmount currency="EUR">19.09</DiscountAmount>
+		</PaymentTerms>
+		<Parties>
+			<BillToParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Description of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</BillToParty>
+			<CustomerParty>
+				<PartyId>
+					<Id>97654</Id>
+				</PartyId>
+				<Name>Bedrijf A</Name>
+				<Description>Descirption of BillToParty</Description>
+				<TaxId>NL804321234B01</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Stationsweg 13a</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 AA</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+					<PrimaryAddress>
+						<AddressLine>Postbus 9876</AddressLine>
+						<City>Ter Zand</City>
+						<PostalCode>5678 ZZ</PostalCode>
+						<Description>PostalAddress</Description>
+					</PrimaryAddress>
+</Addresses>
+				<Contacts>
+					<Contact>
+						<Person>
+							<PersonName>
+								<FormattedName>Mevr. Jet Josephine (Jet) Janssen MSc</FormattedName>
+							</PersonName>
+						</Person>
+						<Telephone>+31101234567</Telephone>
+						<EMailAddress>administratie@bedrijfa.nl</EMailAddress>
+						<URI>http://www.bedrijfa.nl</URI>
+						<Description>Financial administration</Description>
+					</Contact>
+				</Contacts>
+			</CustomerParty>
+			<RemitToParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</RemitToParty>
+			<SupplierParty>
+				<PartyId>
+					<Id>353742</Id>
+				</PartyId>
+				<Name>Staffing Company U</Name>
+				<TaxId>NL901234233A02</TaxId>
+				<Addresses>
+					<PrimaryAddress>
+						<AddressLine>Dorpsstraat 33</AddressLine>
+						<City>Aadorp</City>
+						<PostalCode>1234 AB</PostalCode>
+						<Description>PhysicalAddress</Description>
+					</PrimaryAddress>
+				</Addresses>
+				<Contacts>
+					<Contact>
+						<Telephone>+31201234567</Telephone>
+						<Description>Main Office</Description>
+					</Contact>
+				</Contacts>
+			</SupplierParty>	
+		</Parties>
+		<Type>Debit</Type>
+		<TotalCharges currency="EUR">330.00</TotalCharges>
+		<TotalTax currency="EUR">56.10</TotalTax>
+		<Tax>
+			<TaxAmount currency="EUR">44.10</TaxAmount>
+			<TaxBaseAmount currency="EUR">210.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">21</PercentQuantity>
+		</Tax>
+		<Tax>
+			<TaxAmount currency="EUR">12.00</TaxAmount>
+			<TaxBaseAmount currency="EUR">120.00</TaxBaseAmount>
+			<PercentQuantity uom="BTW">10</PercentQuantity>
+		</Tax>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:ManagerName>M.A. Nager</nl:ManagerName>	
+					<nl:ContactName>I.N. ter Cedent</nl:ContactName>
+					<nl:PurchaseOrderNumber>O-3344</nl:PurchaseOrderNumber>
+					<nl:DepartmentCode>4321</nl:DepartmentCode>
+					<nl:DepartmentName>Department B</nl:DepartmentName>
+					<nl:CostCenterCode>BB-456</nl:CostCenterCode>
+					<nl:CostCenterName>Cost center name</nl:CostCenterName>
+					<nl:ProjectCode>P-Project 01.26</nl:ProjectCode>
+					<nl:CustomerReferenceNumber>5678</nl:CustomerReferenceNumber>
+					<nl:AdditionalRequirement requirementTitle="geboortedatum">01-01-1990</nl:AdditionalRequirement>
+				</nl:CustomerReportingRequirements>
+				<nl:ReferenceInformation>
+					<nl:StaffingSupplierId idOwner="StaffingCustomer">
+						<nl:IdValue>39876</nl:IdValue>
+					</nl:StaffingSupplierId>
+					<nl:StaffingCustomerId idOwner="StaffingCompany">
+						<nl:IdValue>223445</nl:IdValue>
+					</nl:StaffingCustomerId>
+					<nl:AssignmentId idOwner="StaffingCompany">
+						<nl:IdValue>1234/1234561</nl:IdValue>
+					</nl:AssignmentId>
+					<nl:StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+						<nl:IdValue>53954</nl:IdValue>					
+					</nl:StaffingSupplierOrgUnitId>
+					<nl:StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+						<nl:IdValue>1234</nl:IdValue>
+					</nl:StaffingCustomerOrgUnitId>	
+				</nl:ReferenceInformation>
+			</nl:StaffingAdditionalData>
+			<nl:StaffingOrganization typeOfOrganization="Supplier">
+				<nl:Organization>
+					<nl:OrganizationName>Staffing company U</nl:OrganizationName>
+				</nl:Organization>
+				<nl:PaymentInfo>
+					<nl:BankAccountInfo>
+						<nl:BankInfoByJurisdiction bankJurisdiction="NL">
+							<nl:BankCode>NL69INGB</nl:BankCode>
+							<nl:BankWindow/>
+							<nl:BankAccountNumber>NL69INGB0001234567</nl:BankAccountNumber>
+							<nl:BankAccountKey/>
+							<nl:BankAccountType>IBAN</nl:BankAccountType>
+							<nl:BankAccountHolder>Staffing Company U</nl:BankAccountHolder>
+						</nl:BankInfoByJurisdiction>
+					</nl:BankAccountInfo>
+				</nl:PaymentInfo>
+			</nl:StaffingOrganization>
+			<nl:StaffingOrganizationNL>
+				<nl:ChamberofCommerceReference>77665544</nl:ChamberofCommerceReference>
+			</nl:StaffingOrganizationNL>
+		</UserArea>
+	</Header>
+	<Line>
+		<LineNumber>1</LineNumber>
+		<Description>Deployment Jan Janssen okt 2013</Description>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">210.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Price>
+			<Amount currency="EUR">30</Amount>
+			<PerQuantity uom="Regular">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Regular">7</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:PurchaseOrderLineItem>9874</nl:PurchaseOrderLineItem>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+			<nl:TimeCard>
+				<nl:Id>
+					<nl:IdValue>4321</nl:IdValue>
+				</nl:Id>
+				<nl:ReportedResource>
+					<nl:Person>
+						<nl:Id>
+							<nl:IdValue>654321</nl:IdValue>
+						</nl:Id>
+						<nl:PersonName>
+							<nl:FormattedName>Piet van der Berg</nl:FormattedName>
+							<nl:LegalName>Pieter Arend van der Berg MSc</nl:LegalName>
+							<nl:GivenName>Pieter</nl:GivenName>
+							<nl:GivenName>Arend</nl:GivenName>
+							<nl:PreferredGivenName>Piet</nl:PreferredGivenName>
+							<nl:FamilyName primary="true" prefix="van der">Berg</nl:FamilyName>
+							<nl:Affix type="qualification">MSc</nl:Affix>
+						</nl:PersonName>
+					</nl:Person>
+				</nl:ReportedResource>
+				<nl:ReportedTime>
+					<nl:PeriodStartDate>2013-10-24</nl:PeriodStartDate>
+					<nl:PeriodEndDate>2013-10-31</nl:PeriodEndDate>
+					<nl:TimeInterval type="shift">
+						<nl:StartDateTime>2011-10-26</nl:StartDateTime>
+						<nl:EndDateTime>2011-10-26</nl:EndDateTime>
+						<nl:Duration>7.00</nl:Duration>
+						<nl:RateOrAmount currency="EUR" type="hourly" multiplier="100">30.00</nl:RateOrAmount>
+						<nl:Comment>Tax percentage: 21%</nl:Comment>
+					</nl:TimeInterval>
+				</nl:ReportedTime>
+			</nl:TimeCard>
+		</UserArea>
+	</Line>
+	<Line>
+		<LineNumber>2</LineNumber>
+		<Description>Deployment Piet Pietersen okt 2013</Description>
+		<Charges>
+			<TotalCharge>
+				<Total currency="EUR">120.00</Total>
+			</TotalCharge>
+		</Charges>
+		<Price>
+			<Amount currency="EUR">30</Amount>
+			<PerQuantity uom="Regular">1</PerQuantity> 
+		</Price>
+		<ItemQuantity uom="Regular">4</ItemQuantity>
+		<UserArea>
+			<nl:StaffingAdditionalData>
+				<nl:CustomerReportingRequirements>
+					<nl:PurchaseOrderLineItem>9875</nl:PurchaseOrderLineItem>
+				</nl:CustomerReportingRequirements>
+			</nl:StaffingAdditionalData>
+			<nl:TimeCard>
+				<nl:Id>
+					<nl:IdValue>1234</nl:IdValue>
+				</nl:Id>
+				<nl:ReportedResource>
+					<nl:Person>
+						<nl:Id>
+							<nl:IdValue>123456</nl:IdValue>
+						</nl:Id>
+						<nl:PersonName>
+							<nl:FormattedName>Piet van der Berg</nl:FormattedName>
+							<nl:LegalName>Pieter Arend van der Berg MSc</nl:LegalName>
+							<nl:GivenName>Pieter</nl:GivenName>
+							<nl:GivenName>Arend</nl:GivenName>
+							<nl:PreferredGivenName>Piet</nl:PreferredGivenName>
+							<nl:FamilyName primary="true" prefix="van der">Berg</nl:FamilyName>
+							<nl:Affix type="qualification">MSc</nl:Affix>
+						</nl:PersonName>
+					</nl:Person>
+				</nl:ReportedResource>
+				<nl:ReportedTime>
+					<nl:PeriodStartDate>2011-10-24</nl:PeriodStartDate>
+					<nl:PeriodEndDate>2011-10-31</nl:PeriodEndDate>
+					<nl:TimeInterval type="shift">
+						<nl:StartDateTime>2011-10-26</nl:StartDateTime>
+						<nl:EndDateTime>2011-10-26</nl:EndDateTime>
+						<nl:Duration>4.00</nl:Duration>
+						<nl:RateOrAmount currency="EUR" type="hourly" multiplier="150">20.00
+	</nl:RateOrAmount>
+						<nl:Comment>Tax percentage: 10%</nl:Comment>
+					</nl:TimeInterval>
+				</nl:ReportedTime>
+			</nl:TimeCard>
+		</UserArea>
+	</Line>
+</Invoice>

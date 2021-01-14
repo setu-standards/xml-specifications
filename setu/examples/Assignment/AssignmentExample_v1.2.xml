@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assignment xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/Assignment.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/AssignmentAdditionalNL.xsd" assignmentStatus="active" xml:lang="en-gb">
+<!--
+	Name: 		AssignmentExample_v1.2.xml
+	Purpose: 	Example of Assignment message
+	Author(s): 	SETU (helpdesk@setu.nl)
+	Standard: 	SETU Standard for Assignment v1.2
+	Date: 		2012-12-13
+	Last edit:	2020-11-25
+-->
+	<AssignmentId idOwner="StaffingCompany">
+		<IdValue>190/0057/016030</IdValue>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>4190481</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>12</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<OrderId>
+			<IdValue>RFQ123789</IdValue>
+		</OrderId>
+		<HumanResourceId idOwner="StaffingCompany">
+			<IdValue>179943169</IdValue>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>2424</IdValue>
+		</StaffingSupplierId>
+		<StaffingSupplierId idOwner="StaffingCompany">
+			<IdValue>123456789</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<ContactName>I.N. ter Cedent</ContactName>
+		<PurchaseOrderNumber>P98765</PurchaseOrderNumber>
+		<DepartmentCode>12</DepartmentCode>
+		<DepartmentName>Productie</DepartmentName>
+		<CostCenterCode>173</CostCenterCode>
+		<CostCenterName>staalproductie</CostCenterName>
+		<ProjectCode>054.30303</ProjectCode>
+		<CustomerReferenceNumber>RFQ123789</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<Rates rateStatus="agreed" rateType="bill">
+		<ExternalRateSetId>
+			<IdValue>1</IdValue>
+		</ExternalRateSetId>
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">22</Amount>
+		<Class>TimeInterval</Class>
+		<StaffingShiftId>
+			<IdValue>shift</IdValue>
+		</StaffingShiftId>
+		<Multiplier>100</Multiplier>
+		<StartDate>2012-01-01</StartDate>
+		<RatesId>
+			<IdValue>1</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<ExternalRateSetId>
+			<IdValue>1</IdValue>
+		</ExternalRateSetId>
+		<Amount currency="EUR" rateAmountPeriod="x:hourlyconsolidated">14</Amount>
+		<Class>TimeInterval</Class>
+		<StaffingShiftId>
+			<IdValue>shift</IdValue>
+		</StaffingShiftId>
+		<Multiplier>100</Multiplier>
+		<StartDate>2012-01-01</StartDate>
+		<RatesId>
+			<IdValue>1</IdValue>
+		</RatesId>
+		<CustomerRateClassification>
+			<IdValue>regular</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="perunit">0.35</Amount>
+		<Class>Expense</Class>
+		<StartDate>2012-01-01</StartDate>
+		<Description>Vervoerskosten</Description>
+		<CustomerRateClassification>
+			<IdValue name="Transportation">101B</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="daily">5</Amount>
+		<Class>Expense</Class>
+		<StartDate>2012-01-01</StartDate>
+		<Description>Maaltijd</Description>
+		<CustomerRateClassification>
+			<IdValue name="Meal">202O</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="daily">4</Amount>
+		<Class>Expense</Class>
+		<StartDate>2012-11-02</StartDate>
+		<Description>Maaltijd</Description>
+		<CustomerRateClassification>
+			<IdValue name="Meal">202O</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<StaffingShift shiftPeriod="weekly">
+		<Id>
+			<IdValue/>
+		</Id>
+		<Hours>36</Hours>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>2012-12-01</StartDate>
+		<ExpectedEndDate>2013-02-01</ExpectedEndDate>
+	</AssignmentDateRange>
+	<UserArea>
+		<nl:AssignmentAdditionalNL>
+			<nl:SETUVersionId>1.2</nl:SETUVersionId>
+			<nl:JobTitle>lasser</nl:JobTitle>
+			<nl:JobId>10</nl:JobId>
+			<nl:JobGroup>6</nl:JobGroup>
+			<nl:StaffingWorkSite>
+				<WorkSiteName>Gebouw A</WorkSiteName>
+				<PostalAddress>
+					<CountryCode>NL</CountryCode>
+					<PostalCode>7521 PV</PostalCode>
+					<Municipality>Enschede</Municipality>
+					<DeliveryAddress>
+						<StreetName>Colosseum</StreetName>
+						<BuildingNumber>27</BuildingNumber>
+					</DeliveryAddress>
+				</PostalAddress>
+			</nl:StaffingWorkSite>
+			<nl:ShiftType>4-shift work</nl:ShiftType>
+			<nl:CLAReference>
+				<nl:Description>CAO MT METAALBEWERKINGSBEDRIJF</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+			<nl:HumanResourceInformation>
+				<nl:SalaryScale>5;4</nl:SalaryScale>
+				<nl:InsuranceGroup>B</nl:InsuranceGroup>
+				<nl:SingleCommuterTrafficDistance>5.1</nl:SingleCommuterTrafficDistance>
+				<nl:EmployeePhase>A</nl:EmployeePhase>
+				<nl:EmployeeContract>false</nl:EmployeeContract>
+				<nl:VacationWorker>false</nl:VacationWorker>
+				<nl:RecruitedBy>StaffingCompany</nl:RecruitedBy>
+			</nl:HumanResourceInformation>
+		</nl:AssignmentAdditionalNL>
+	</UserArea>
+</Assignment>

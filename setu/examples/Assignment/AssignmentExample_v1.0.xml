@@ -1,0 +1,129 @@
+<!--		
+	Name: 		AssignmentExample_v1.0.xml
+	Purpose: 	Defines an assignment example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Assignment v1.0
+	Last edit: 	2020-11-25
+-->
+<Assignment xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2007-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/Assignment.xsd http://ns.setu.nl/2007-01 ../../schemas/2007-01/AssignmentAdditionalNL.xsd" assignmentStatus="pending" xml:lang="en-gb">
+	<AssignmentId>
+		<IdValue>190/0057/016030</IdValue>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>4190481</IdValue>
+		</StaffingCustomerId>
+		<OrderId>
+			<IdValue>A2297</IdValue>
+		</OrderId>
+		<HumanResourceId idOwner="StaffingCompany">
+			<IdValue>179943169</IdValue>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>2424</IdValue>
+		</StaffingSupplierId>
+		<StaffingSupplierId idOwner="StaffingCompany">
+			<IdValue>123456789</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<ContactName>I.N. ter Cedent</ContactName>
+		<PurchaseOrderNumber>XYZ071304</PurchaseOrderNumber>
+		<DepartmentName>Transport</DepartmentName>
+		<CostCenterCode>SR1123</CostCenterCode>
+		<ProjectCode>035.30303</ProjectCode>
+		<CustomerReferenceNumber>313223192</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="hourly">22</Amount>
+		<Class>regular</Class>
+		<StaffingShiftId>
+			<IdValue>shift</IdValue>
+		</StaffingShiftId>
+		<StartDate>2008-01-01</StartDate>
+		<RatesId>
+			<IdValue>1</IdValue>
+		</RatesId>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="perunit">0.35</Amount>
+		<Class>transportation</Class>
+		<StartDate>2008-01-01</StartDate>
+		<Description>Vervoerskosten</Description>			
+		<CustomerRateClassification>
+			<IdValue>101B</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="bill">
+		<Amount currency="EUR" rateAmountPeriod="daily">5</Amount>
+		<Class>meal</Class>
+		<StartDate>2008-01-01</StartDate>
+		<Description>Maaltijd</Description>	
+		<CustomerRateClassification>
+			<IdValue>202O</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<Rates rateStatus="agreed" rateType="pay">
+		<Amount currency="EUR" rateAmountPeriod="daily">4</Amount>
+		<Class>meal</Class>
+		<StartDate>2007-11-02</StartDate>
+		<Description>Maaltijd</Description>
+		<CustomerRateClassification>
+			<IdValue>202O</IdValue>
+		</CustomerRateClassification>
+	</Rates>
+	<StaffingShift shiftPeriod="weekly">
+		<Id>
+			<IdValue>weekly</IdValue>
+		</Id>
+		<Hours>36</Hours>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>2008-01-01</StartDate>
+		<ExpectedEndDate>2008-11-30</ExpectedEndDate>
+	</AssignmentDateRange>
+	<ContractInformation contractStatus="signed" contractType="staffing customer">
+		<ContractId>
+			<IdValue/>
+		</ContractId>
+		<LegalInformation/>
+		<ContractVersion/>
+		<ContractVersionDate>2007-11-21</ContractVersionDate>
+		<StaffType/>
+		<FrameAgreementInfo>
+			<DocumentId>
+				<IdValue>algvoorwaarden2007</IdValue>
+			</DocumentId>
+			<DocumentVersion>1.0</DocumentVersion>
+			<ValidityDateRange>
+				<StartDate>2007-01-01</StartDate>
+				<EndDate>2009-12-31</EndDate>
+			</ValidityDateRange>
+			<DocumentName>Algemene voorwaarden XML Staffing Company 2007</DocumentName>
+		</FrameAgreementInfo>
+	</ContractInformation>
+	<UserArea>
+		<nl:AssignmentAdditionalNL>
+			<nl:JobTitle>lasser</nl:JobTitle>
+			<nl:JobId>10</nl:JobId>
+			<nl:JobGroup>6</nl:JobGroup>
+			<nl:StaffingWorkSite>
+				<WorkSiteName>Gebouw A</WorkSiteName>
+				<PostalAddress>
+					<CountryCode>NL</CountryCode>
+					<PostalCode>7521 PV</PostalCode>
+					<Municipality>Enschede</Municipality>
+					<DeliveryAddress>
+						<AddressLine>Colosseum 27</AddressLine>
+					</DeliveryAddress>		
+				</PostalAddress>
+			</nl:StaffingWorkSite>
+			<nl:ShiftType>4-shift work</nl:ShiftType>		
+			<nl:CLAReference>8</nl:CLAReference>
+			<nl:ReasonOfChange>new tariff</nl:ReasonOfChange>
+		</nl:AssignmentAdditionalNL>	
+	</UserArea>
+</Assignment>

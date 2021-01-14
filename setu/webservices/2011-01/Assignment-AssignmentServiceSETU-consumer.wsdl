@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:hr="http://ns.hr-xml.org/2007-04-15" 
+	xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" 
+	xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:tns="http://ns.setu.nl/SETUWebServices/2011-01" 
+	xmlns:setu="http://ns.setu.nl/2008-01" 
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.setu.nl/SETUWebServices/2011-01">
+	<wsdl:documentation>
+		Name: 		Assignment-AssignmentServiceSETU-customer.wsdl
+		Purpose: 	specifies the webservices for receiving Assignment messages at the customer interface in an Assignment process.  
+		Author(s): 	SETU
+		Release: 	SETU Standard for Assignment v1.1 
+		Last edit:	2020-11-24
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://ns.setu.nl/SETUWebServices/2011-01" elementFormDefault="qualified">
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment.xsd"/>
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/HumanResource.xsd"/>
+			<xsd:import namespace="http://ns.setu.nl/2008-01" schemaLocation="../../schemas/2008-01/AssignmentAdditionalNL.xsd"/>
+			<xsd:import namespace="http://ns.setu.nl/2008-01" schemaLocation="../../schemas/2008-01/HumanResourceAdditionalNL.xsd"/>
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/Acknowledgement.xsd"/>
+			<xsd:element name="AssignmentRequestElement">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element ref="hr:Assignment"/>
+						<xsd:element ref="hr:HumanResource" minOccurs="0"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="AssignmentRequest">
+		<wsdl:documentation>A generic request of type Assignment (A) or Assignment+HumanResource (A+HR).</wsdl:documentation>
+		<wsdl:part name="input" element="tns:AssignmentRequestElement"/>
+	</wsdl:message>
+	<wsdl:message name="StatusAssignmentRequest">
+		<wsdl:documentation>A generic request of type StatusAssignment (sA).</wsdl:documentation>
+		<wsdl:part name="input" element="hr:Assignment"/>
+	</wsdl:message>
+	<wsdl:message name="Response">
+		<wsdl:documentation>A generic response of type Acknowledgement.</wsdl:documentation>
+		<wsdl:part name="output" element="hr:Acknowledgement"/>
+	</wsdl:message>
+	<wsdl:portType name="AssignmentService">
+		<wsdl:operation name="CreateAssignment">
+			<wsdl:documentation>CreateAssignment is used in the Assignment process, scenario A (step 1), B (step 1). The request message is an Assignment (A) or an Assignment+HumanResource (A+HR) message.</wsdl:documentation>
+			<wsdl:input message="tns:AssignmentRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAssignment">
+			<wsdl:documentation>UpdateAssignment is used in the Assignment process. The request message is an Assignment (A) or an Assignment+HumanResource (A+HR) message.</wsdl:documentation>
+			<wsdl:input message="tns:AssignmentRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="CancelAssignment">
+			<wsdl:documentation>CancelAssignment is used in the Assignment process. The request message is an AssignmentStatus (sA) message.</wsdl:documentation>
+			<wsdl:input message="tns:StatusAssignmentRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SoapServiceHttpBinding" type="tns:AssignmentService">
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:documentation>The soapAction value for each operation can be used to indicate the intent of the SOAP request. It enables the receiver to appropriately identify the operation requested.</wsdl:documentation>
+		<wsdl:operation name="CreateAssignment">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/CreateAssignment" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdateAssignment">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/UpdateAssignment" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CancelAssignment">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/CancelAssignment" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="AssignmentSoapService">
+		<wsdl:port name="SETUServicesEndpoint" binding="tns:SoapServiceHttpBinding">
+			<wsdlsoap:address location="https://www.organisatie.nl/SETUServicesEndpoint"/>
+			<wsdl:documentation>The address location (URL) for the services endpoint of the HumanResource operations can be selected freely.</wsdl:documentation>
+		</wsdl:port>
+	</wsdl:service>
+	<wsdl:documentation>
+	
+		Name: Assignment-AssignmentServiceSETU-consumer.wsdl
+		Purpose: specifies the webservices for receiving Assignment messages at the consumer interface in an Assignment process.  
+		Author(s): SETU
+		Release: v1.0 
+		Date: 29-07-2011
+		
+	</wsdl:documentation>
+</wsdl:definitions>

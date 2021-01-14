@@ -1,0 +1,62 @@
+<codelist id="SETU_CL_InvReasons">
+    <item>
+        <code>On-Charged-VAT</code>
+        <description>Doorberekende BTW</description>
+    </item>
+    <item>
+        <code>Education</code>
+        <description>Opleiding</description>
+    </item>
+    <item>
+        <code>Project invoicing</code>
+        <description>Projectfacturatie</description>
+    </item>
+    <item>
+        <code>Training costs</code>
+        <description>Cursuskosten</description>
+    </item>
+    <item>
+        <code>Take-over fee</code>
+        <description>Overname Fee</description>
+    </item>
+    <item>
+        <code>Secundary staffing</code>
+        <description>Interplaatsing</description>
+    </item>
+    <item>
+        <code>Reimbursement of expenses</code>
+        <description>Onkostenvergoeding</description>
+    </item>
+    <item>
+        <code>For forms sake invoice</code>
+        <description>Proforma factuur</description>
+    </item>
+    <item>
+        <code>Merging invoices</code>
+        <description>Samenvoegen facturen</description>
+    </item>
+    <item>
+        <code>Compensation</code>
+        <description>Schadeloosstelling</description>
+    </item>
+    <item>
+        <code>Calculated discount</code>
+        <description>Staffelkorting</description>
+    </item>
+    <item>
+        <code>Accomodation expenses</code>
+        <description>Verblijfskostenvergoeding</description>
+    </item>
+    <item>
+        <code>Transportation costs</code>
+        <description>Vervoerskosten</description>
+    </item>
+    <item>
+        <code>Other deviant invoicing</code>
+        <description>Overige afwijkende facturatie</description>
+    </item>
+    <item>
+        <code>Recruitment</code>
+        <description>Werving & Selectie</description>
+    </item>
+</codelist>

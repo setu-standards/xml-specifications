@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+  xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+  xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" 
+  xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
+    <title>SETU Invoice v2.2 validation rules</title>
+    <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+    <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+    <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>
+    <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+
+    <!-- Business rules that cannot be expressed in schematron; and therefore cannot be checked automatically -->
+    <!-- SETU BR12  regarding AdditionalDocumentReference) -->
+    <!-- SETU BR268 regarding OrderReference -->
+    <!-- SETU BR270 regarding BuyerReference -->
+
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Invoice.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice" flag="error">
+            <assert test="not(cbc:UBLVersionID)">The SETU Invoice should not contain UBLVersionID.</assert>
+            <assert test="not(cbc:TaxPointDate)">The SETU Invoice should not contain TaxPointDate.</assert>
+            <assert test="not(cbc:TaxCurrencyCode)">The SETU Invoice should not contain TaxCurrencyCode.</assert>
+            <assert test="not(cac:InvoicePeriod)">The SETU Invoice should not contain InvoicePeriod.</assert>
+            <assert test="not(cac:DespatchDocumentReference)">The SETU Invoice should not contain DespatchDocumentReference.</assert>
+            <assert test="not(cac:ReceiptDocumentReference)">The SETU Invoice should not contain ReceiptDocumentReference.</assert>
+            <assert test="not(cac:OriginatorDocumentReference)">The SETU Invoice should not contain OriginatorDocumentReference.</assert>
+            <assert test="not(cac:ContractDocumentReference)">The SETU Invoice should not contain ContractDocumentReference.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Invoice.2" fpi="This element is only allowed once in the SETU Invoice" context="ubl:Invoice" flag="error">
+            <assert test="not(cac:BillingReference[2])">BillingReference is only allowed once.</assert>
+            <assert test="not(cac:TaxTotal[2])">TaxTotal is only allowed once.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Invoice.3" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice" flag="error">
+            <assert test="cac:PaymentMeans">PaymentMeans is mandatory.</assert>
+            <assert test="cac:TaxTotal">TaxTotal is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Invoice.4" context="ubl:Invoice/cbc:CustomizationID" flag="warning">
+            <assert test="contains(., 'urn:fdc:setu.nl:invoice:v2.2')">CustomizationID SHOULD contain part that specifies this is a SETU Invoice v2.2 message</assert>
+        </rule>
+    </pattern>    
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.DocumentCurrencyCode.1" fpi="This value is not allowed in the SETU Invoice" context="ubl:Invoice/cbc:DocumentCurrencyCode" flag="error">
+            <assert test="(. = 'EUR')">DocumentCurrencyCode must contain value 'EUR'.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.OrderReference.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:OrderReference" flag="error">
+            <assert test="not(cbc:SalesOrderID)">OrderReference should not contain SalesOrderID.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.BillingReference.1" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:BillingReference" flag="error">
+            <assert test="cac:InvoiceDocumentReference">InvoiceDocumentReference is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.InvoiceDocumentReference.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:BillingReference/cac:InvoiceDocumentReference" flag="error">
+            <assert test="not(cbc:IssueDate)">InvoiceDocumentReference should not contain IssueDate.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AdditionalDocumentReference.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:AdditionalDocumentReference" flag="error">
+            <assert test="not(cbc:ID/@schemeID)">ID should not contain a schemeID attribute.</assert>
+            <assert test="not(cbc:DocumentTypeCode)">AdditionalDocumentReference should not contain DocumentTypeCode.</assert>
+            <assert test="not(cac:Attachment/cac:ExternalReference)">Attachment should not contain ExternalReference.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Attachment.1" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:AdditionalDocumentReference/cac:Attachment" flag="error">
+            <assert test="cbc:EmbeddedDocumentBinaryObject">EmbeddedDocumentBinaryObject is mandatory.</assert>
+            <assert test="cbc:EmbeddedDocumentBinaryObject/@mimeCode">Attribute mimeCode is mandatory.</assert>
+            <assert test="cbc:EmbeddedDocumentBinaryObject/@filename">Attribute filename is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Party.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:Party" flag="error">
+            <assert test="not(cbc:EndpointID)">Party should not contain EndpointID.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AccountingSupplierParty.1" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:AccountingSupplierParty/cac:Party" flag="error">
+            <assert test="cac:PartyIdentification">PartyIdentification shall occur minimum once.</assert>
+            <assert test="cac:PartyTaxScheme">PartyTaxScheme is mandatory.</assert>
+            <assert test="cac:PartyLegalEntity/cbc:CompanyID">CompanyID is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.PostalAddress.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:PostalAddress" flag="error">
+            <assert test="not(cbc:AdditionalStreetName)">PostalAddress should not contain AdditionalStreetName.</assert>
+            <assert test="not(cbc:CountrySubentity)">PostalAddress should not contain CountrySubentity.</assert>
+            <assert test="not(cac:AddressLine)">PostalAddress should not contain AddressLine.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.PostalAddress.2" fpi="This element is mandatory in the SETU Invoice" context="//cac:PostalAddress" flag="error">
+            <assert test="cbc:StreetName">StreetName is mandatory.</assert>
+            <assert test="cbc:CityName">CityName is mandatory.</assert>
+            <assert test="cbc:PostalZone">PostalZone is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.PartyTaxScheme.1" fpi="This element is mandatory in the SETU Invoice" context="//cac:PartyTaxScheme" flag="error">
+            <assert test="cbc:CompanyID">CompanyID is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.CompanyID.1" fpi="This element is mandatory in the SETU Invoice" context="//cbc:CompanyID" flag="error">
+            <assert test="@schemeID">Attribute schemeID is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Contact.1" fpi="This element is mandatory in the SETU Invoice" context="//cac:Contact" flag="error">
+            <assert test="cbc:Name">Name is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AccountingCustomerParty.1" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:AccountingCustomerParty/cac:Party" flag="error">
+            <assert test="cac:PartyIdentification">PartyIdentification shall occur minimum once.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.PaymentMeans.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:PaymentMeans" flag="error">
+            <assert test="not(cbc:PaymentMeansCode/@name)">PaymentMeansCode should not contain a name attribute.</assert>
+            <assert test="not(cac:CardAccount)">PaymentMeans should not contain CardAccount.</assert>
+            <assert test="not(cac:PayeeFinancialAccount/cbc:Name)">PayeeFinancialAccount should not contain Name.</assert>
+            <assert test="not(cac:PaymentMandate)">PaymentMeans should not contain PaymentMandate.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.FinancialInstitutionBranch.1" fpi="This element is mandatory in the SETU Invoice" context="//cac:FinancialInstitutionBranch" flag="error">
+            <assert test="cbc:ID">ID is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AllowanceCharge.1" fpi="This element is only allowed once in the SETU Invoice" context="ubl:Invoice" flag="error">
+            <assert test="not(cac:AllowanceCharge[2])">AllowanceCharge is only allowed once.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AllowanceCharge.2" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:AllowanceCharge" flag="error">
+            <assert test="not(cbc:AllowanceChargeReasonCode)">AllowanceCharge should not contain AllowanceChargeReasonCode.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.AllowanceCharge.3" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:AllowanceCharge" flag="error">
+            <assert test="cbc:AllowanceChargeReason">AllowanceChargeReason is mandatory.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.ChargeIndicator.1" fpi="This value is not allowed in the SETU Invoice" context="ubl:Invoice/cac:AllowanceCharge/cbc:ChargeIndicator" flag="error">
+            <assert test="(. = 'false')">ChargeIndicator must contain value 'false'.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.CurrencyID.1" fpi="This value is not allowed in the SETU Invoice" context="//*[@currencyID]" flag="error">
+            <assert test="@currencyID = 'EUR'">The attribute currencyID must contain value 'EUR'.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.TaxCategory.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:TaxCategory" flag="error">
+            <assert test="not(cbc:TaxExemptionReasonCode)">TaxCategory should not contain TaxExemptionReasonCode.</assert>
+            <assert test="not(cbc:TaxExemptionReason)">TaxCategory should not contain TaxExemptionReason.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.LegalMonetaryTotal.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:LegalMonetaryTotal" flag="error">
+            <assert test="not(cbc:PrepaidAmount)">LegalMonetaryTotal should not contain PrepaidAmount.</assert>
+            <assert test="not(cbc:PayableRoundingAmount)">LegalMonetaryTotal should not contain PayableRoundingAmount.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.InvoiceLine.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice/cac:InvoiceLine" flag="error">
+            <assert test="not(cac:InvoicePeriod)">InvoiceLine should not contain InvoicePeriod.</assert>
+            <assert test="not(cac:DocumentReference/cbc:ID/@schemeID)">DocumentReference/ID should not contain the attribute schemeID.</assert>
+            <assert test="not(cac:AllowanceCharge)">InvoiceLine should not contain AllowanceCharge.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Item.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:Item" flag="error">
+            <assert test="not(cac:BuyersItemIdentification)">Item should not contain BuyersItemIdentification.</assert>
+            <assert test="not(cac:SellersItemIdentification)">Item should not contain SellersItemIdentification.</assert>
+            <assert test="not(cac:StandardItemIdentification)">Item should not contain StandardItemIdentification.</assert>
+            <assert test="not(cac:OriginCountry)">Item should not contain OriginCountry.</assert>
+            <assert test="not(cac:CommodityClassification)">Item should not contain CommodityClassification.</assert>
+        </rule>
+    </pattern>
+    <pattern>
+        <rule id="nl.setu.invoice.businessrule.Price.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:Price" flag="error">
+            <assert test="not(cac:AllowanceCharge)">Price should not contain AllowanceCharge.</assert>
+        </rule>
+    </pattern>
+
+    <!-- <pattern>
+        <rule id="BusinessRule_1468395086_686263" fpi="BR16 Value must exists in specified codelists Invoice Reasons or Hour Types." 
+            context="ubl:Invoice/cac:InvoiceLine/cac:Item/cbc:Name" flag="error">
+            <assert test="count(document('codelists/SETU-HourTypes.xml')/codelist[@id = 'SETU_CL_HourTypes']/item/code[text() = .]) > 0
+                           or count(document('codelists/SETU-InvoiceLineReasons.xml')/codelist[@id = 'SETU_CL_InvReasons']/item/code[text() = .]) > 0">
+                Value '<value-of select="."/>' does not exists in codelists Invoice Reasons and/or Hour Types
+            </assert>
+        </rule>
+    </pattern> -->
+</schema>

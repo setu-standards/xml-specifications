@@ -1,0 +1,43 @@
+<!--		
+	Name:       StatusAssignmentExample_v1.3.xml
+	Purpose:    Example of Assignment message
+	Author(s):  SETU (helpdesk@setu.nl)
+	Standard:   SETU Standard for Assignment v1.3
+	Date:       2015-16-06
+    Last edit:  2020-11-25
+-->
+<Assignment xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/Assignment.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/AssignmentAdditionalNL.xsd" assignmentStatus="active" xml:lang="en-gb">
+	<AssignmentId idOwner="StaffingCompany">
+		<IdValue>190/0057/016030</IdValue>
+	</AssignmentId>
+	<ReferenceInformation>
+		<StaffingCustomerId>
+			<IdValue/>
+		</StaffingCustomerId>
+		<HumanResourceId>
+			<IdValue/>
+		</HumanResourceId>
+		<PositionId>
+			<IdValue/>
+		</PositionId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements/>
+	<Rates rateStatus="agreed" rateType="">
+		<Class/>
+		<StartDate>1111-11-11</StartDate>
+	</Rates>
+	<StaffingShift>
+		<Id>
+			<IdValue/>
+		</Id>
+	</StaffingShift>
+	<AssignmentDateRange>
+		<StartDate>1111-11-11</StartDate>
+	</AssignmentDateRange>
+	<UserArea>
+		<nl:AssignmentAdditionalNL>
+			<nl:SETUVersionId>1.3</nl:SETUVersionId>
+			<nl:ReasonOfChange>Confirmation</nl:ReasonOfChange>
+		</nl:AssignmentAdditionalNL>	
+	</UserArea>
+</Assignment>

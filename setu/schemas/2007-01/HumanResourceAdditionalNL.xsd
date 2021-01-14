@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2007-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.setu.nl/2007-01" elementFormDefault="qualified" version="2007-01">
+	<xsd:annotation>
+		<xsd:documentation>
+		Name: 		HumanResourceAdditionalNL.xsd
+		Purpose: 	Defines the additional humanresource schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering and Selection v1.0
+		Last edit:	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingShift.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/CustomerReportingRequirements.xsd"/>
+	
+	<xsd:element name="HumanResourceAdditionalNL" type="HumanResourceAdditionalNLType"/>
+	<xsd:simpleType name="SexType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="male"/>
+			<xsd:enumeration value="female"/>
+			<xsd:enumeration value="unknown"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="HumanResourceAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="OfferId" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="StaffingShift" type="hr:StaffingShiftType" minOccurs="0"/>
+			<xsd:element name="DaysPerWeek" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="BirthDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Sex" type="SexType" minOccurs="0"/>
+			<xsd:element name="CustomerReportingRequirements" type="hr:CustomerReportingRequirementsType" minOccurs="0"/>
+			<xsd:element name="IdentificationDocumentType" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="IdentificationDocumentId" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

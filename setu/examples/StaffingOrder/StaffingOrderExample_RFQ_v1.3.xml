@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StaffingOrder xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:nl="http://ns.setu.nl/2012-01" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/StaffingOrder.xsd http://ns.setu.nl/2012-01 ../../schemas/2012-01/StaffingOrderAdditionalNL.xsd">
+<!--
+	Name: 		StaffingOrderExample_RFQ_v1.3.xml
+	Purpose: 	Example of StaffingOrder message.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Ordering & Selection v1.3
+	Date: 		2018-06-22
+	Last edit:	2020-11-25
+-->
+	<OrderId idOwner="StaffingCustomer" validFrom="2017-06-01" validTo="2017-07-15">
+		<IdValue>RFQ123789</IdValue>
+	</OrderId>
+	<ReferenceInformation>
+		<MasterOrderId idOwner="StaffingCompany">
+			<IdValue>FA5623467</IdValue>
+		</MasterOrderId>
+		<StaffingCustomerId idOwner="StaffingCustomer">
+			<IdValue>445123</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerId idOwner="StaffingCompany">
+			<IdValue>223445</IdValue>
+		</StaffingCustomerId>
+		<StaffingCustomerOrgUnitId idOwner="StaffingCustomer">
+			<IdValue>9876</IdValue>
+		</StaffingCustomerOrgUnitId>
+		<StaffingSupplierId idOwner="StaffingCustomer">
+			<IdValue>39876</IdValue>
+		</StaffingSupplierId>
+	</ReferenceInformation>
+	<CustomerReportingRequirements>
+		<ManagerName>M.A. Nager</ManagerName>	
+		<ContactName>I.N. ter Cedent</ContactName>
+		<DepartmentCode>12</DepartmentCode>
+		<DepartmentName>Productie</DepartmentName>
+		<CostCenterCode>173</CostCenterCode>
+		<CostCenterName>Staalproductie</CostCenterName>
+		<ProjectCode>012.30303</ProjectCode>
+		<CustomerReferenceNumber>20171023</CustomerReferenceNumber>
+	</CustomerReportingRequirements>
+	<OrderClassification orderStatus="new" orderType="RFQ"/>
+	<OrderContact contactType="placed by">
+		<ContactInfo>
+			<PersonName>
+				<FormattedName>Henk de Vries</FormattedName>
+			</PersonName>
+			<ContactMethod>
+				<Mobile>
+					<FormattedNumber>06-11223344</FormattedNumber>
+				</Mobile>
+				<InternetEmailAddress>henk.devries@vanklanterenbv.nl</InternetEmailAddress>
+				<InternetWebAddress>http://www.vanklanterenbv.nl</InternetWebAddress>
+			</ContactMethod>
+		</ContactInfo>
+	</OrderContact>
+	<RequiredResponseDate>2017-07-22T23:59:59</RequiredResponseDate>
+	<OrderComments>Plaats hier een opmerking over de order.</OrderComments>
+	<PositionQuantity>1</PositionQuantity>
+	<MultiVendorDistribution>true</MultiVendorDistribution>
+	<StaffingPosition>
+		<PositionHeader>
+			<PositionId>
+				<Id/>
+			</PositionId>
+			<JobId>
+				<Id>9</Id>
+			</JobId>
+			<PositionTitle>Lasser</PositionTitle>
+			<PositionType>secondment</PositionType>
+			<PositionDescription>Lasser voor de montage van aluminium hekwerken, productiewerk in de werkplaats en het lassen van staal en/of aluminium.</PositionDescription>
+			<ShiftWork haveShiftWork="true">
+				<Description>4-shift work</Description>
+			</ShiftWork>
+		</PositionHeader>
+		<CustomerReportingRequirements/>
+		<PositionReason>Position</PositionReason>
+		<PositionDateRange>
+			<StartDate>2017-08-01</StartDate>
+			<ExpectedEndDate>2018-02-01</ExpectedEndDate>
+		</PositionDateRange>
+		<Rates rateType="bill" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">16.00</Amount>
+			<Class>TimeInterval</Class>
+			<StartDate>2017-08-01</StartDate>
+			<EndDate>2018-02-01</EndDate>
+			<CustomerRateClassification>
+				<IdValue>Regular</IdValue>
+			</CustomerRateClassification>
+		</Rates>
+		<Rates rateType="minPayRate" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">12.00</Amount>
+			<Class>TimeInterval</Class>
+			<StartDate>2017-08-01</StartDate>
+			<EndDate>2018-02-01</EndDate>
+			<CustomerRateClassification>
+				<IdValue>Regular</IdValue>
+			</CustomerRateClassification>
+		</Rates>
+		<Rates rateType="maxPayRate" rateStatus="proposed">
+			<Amount rateAmountPeriod="hourly" currency="EUR">15.00</Amount>
+			<Class>TimeInterval</Class>
+			<StartDate>2017-08-01</StartDate>
+			<EndDate>2018-02-01</EndDate>
+			<CustomerRateClassification>
+				<IdValue>Regular</IdValue>
+			</CustomerRateClassification>
+		</Rates>
+		<WorkSite>
+			<WorkSiteName>Werkplaats</WorkSiteName>
+			<PostalAddress>
+				<CountryCode>NL</CountryCode>
+				<PostalCode>1112 XK</PostalCode>
+				<Municipality>Diemen</Municipality>
+				<DeliveryAddress>
+					<StreetName>Wisselwerking</StreetName>
+					<BuildingNumber>2</BuildingNumber>
+				</DeliveryAddress>
+			</PostalAddress>
+		</WorkSite>
+		<StaffingShift shiftPeriod="weekly">
+			<Id>
+				<IdValue/>
+			</Id>
+			<Hours>32</Hours>
+		</StaffingShift>
+	</StaffingPosition>
+	<UserArea>
+		<nl:StaffingOrderAdditionalNL>
+			<nl:SETUVersionId>1.3</nl:SETUVersionId>
+			<nl:DaysPerWeek>4</nl:DaysPerWeek>
+			<nl:StructuredXMLResume>
+				<EducationHistory>
+					<SchoolOrInstitution schoolType="secundair onderwijs, tweede fase">
+						<Degree degreeType="4"/>
+						<LocalInstitutionClassification>
+							<Id idOwner="SOI2006">
+								<IdValue>64</IdValue>
+							</Id>
+							<Description>Kennis van veiligheid is vereist</Description>
+						</LocalInstitutionClassification>
+					</SchoolOrInstitution>
+				</EducationHistory>
+				<LicensesAndCertifications>
+					<LicenseOrCertification>
+						<Name>Rijbewijs</Name>
+						<Id>B</Id>
+					</LicenseOrCertification>
+				</LicensesAndCertifications>
+				<Qualifications>
+					<Competency name="WorkingAndThinkingLevel" description="4"/>
+					<Competency name="Kwaliteit Lasser" description="Certificaat van Vakbekwaamheid - Lasser kwalificatiecertificaat - AWS D1.1"/>
+				</Qualifications>
+			</nl:StructuredXMLResume>
+			<nl:ReasonOfChange>New</nl:ReasonOfChange>
+			<nl:CLAReference>
+				<nl:Description>CAO MT METAALBEWERKINGSBEDRIJF</nl:Description>
+				<nl:CLAId>824</nl:CLAId>
+			</nl:CLAReference>
+			<nl:InclusiveRate>true</nl:InclusiveRate>
+			<nl:OfferRequirements>
+				<nl:MinimalRequiredValidityEndDate>2017-07-30</nl:MinimalRequiredValidityEndDate>
+				<nl:SubmittancePeriod>
+					<nl:StartDate>2017-07-15</nl:StartDate>
+					<nl:EndDate>2017-07-22</nl:EndDate>
+				</nl:SubmittancePeriod>
+				<nl:AwardDate>2017-07-26</nl:AwardDate>
+			</nl:OfferRequirements>
+		</nl:StaffingOrderAdditionalNL>
+	</UserArea>
+</StaffingOrder>

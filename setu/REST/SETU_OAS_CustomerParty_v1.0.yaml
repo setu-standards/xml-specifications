@@ -1,0 +1,424 @@
+openapi: 3.0.0
+info:
+  title: SETU REST API - CUSTOMER PARTY
+  description: >-
+    This specification provides standardized APIs that customers of temporary staffing (in dutch Inleners) can 
+    provide to their suppliers to support the SETU processes of elektronic data exchange.
+    The API is documented from the viewpoint of the consumer of the API (in this case the staffing supplier)
+  version: 1.0.0
+
+servers:
+  - url: "https://api.yourorganization.nl/setu"
+    description: "Replace the host url and this description to your own organization API endpoint"
+
+tags:
+  - name: Ordering and selection
+    description: API regarding ordering and selection of temporary staffing personnel
+    externalDocs:
+      description: Find out more
+      url: 'http://standaard.setu.nl'
+  - name: Assignment
+    description: API regarding assignments of temporary staffing personnel
+    externalDocs:
+      description: Find out more
+      url: 'http://standaard.setu.nl'
+  - name: Invoicing
+    description: API regarding invoicing of temporary staffing personnel
+    externalDocs:
+      description: Find out more
+      url: 'http://standaard.setu.nl'
+
+paths:
+  '/offer':
+    post:
+      tags:
+        - Ordering and selection
+      summary: Offer a quote to the staffing customer.
+      parameters:
+        - $ref: '#/components/parameters/messageVersionHumanResource'
+      requestBody:
+        $ref: '#/components/requestBodies/offer'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/offer/{offerId}':
+    put:
+      tags:
+        - Ordering and selection
+      summary: Revise previously sent offer when information regarding an offer changes.
+      parameters:
+        - name: offerId
+          in: path
+          description: Identifies the offer that must be updated
+          required: true
+          schema: 
+            type: string
+        - $ref: '#/components/parameters/messageVersionHumanResource'
+      requestBody:
+        $ref: '#/components/requestBodies/offer'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+    delete:
+      tags:
+        - Ordering and selection
+      summary: Withdraw previously sent offer (e.g. the human resource is not available anymore).
+      parameters:
+        - name: offerId
+          in: path
+          description: Identifies the offer that must be updated
+          required: true
+          schema: 
+            type: string
+      responses:
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/humanresource':
+    post:
+      tags:
+        - Ordering and selection
+      summary: Sent (additional) information about the human resource.
+      description: >-
+        In the case the staffing customer has ordered or accepted an offer of a
+        human resource, the staffing supplier assigns the human resource. It is
+        common that this messages comes together with an assignment (POST /assignment).
+      parameters:
+        - $ref: '#/components/parameters/messageVersionHumanResource'
+      requestBody:
+        $ref: '#/components/requestBodies/humanResource'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/humanresource/{humanResourceId}':
+    put:
+      tags:
+        - Ordering and selection
+      summary: Revise/add information about an assigned human resource.
+      parameters:
+        - name: humanResourceId
+          in: path
+          description: Identifies the human resource that must be updated
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/messageVersionHumanResource'
+      requestBody:
+        $ref: '#/components/requestBodies/humanResource'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/assignment':
+    post:
+      tags:
+        - Assignment
+      summary: Place an assignment.
+      parameters:
+        - $ref: '#/components/parameters/messageVersionAssignment'
+      requestBody:
+        $ref: '#/components/requestBodies/assignment'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/assignment/{assignmentId}':
+    put:
+      tags:
+        - Assignment
+      summary: Revise/cancel an assignment. 
+      description: >-
+        Canceling an assignment is also done with this operation, by revising the ActualEndDate 
+        in the AssignmentDateRange to the current date.
+      parameters:
+        - name: assignmentId
+          in: path
+          description: Identifies the assignment that must be updated
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/messageVersionAssignment'
+      requestBody:
+        $ref: '#/components/requestBodies/assignment'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/invoice':
+    post:
+      tags:
+        - Invoicing
+      summary: Sent a regular, credit or correction invoice message.
+      description: >-
+        There is no API endpoint for changing/updating a previously sent invoice. This is legally not allowed.
+        Changes must be done either by sending a full credit and a new invoice message or sending a so called
+        correction invoice which invoices the differences compaired to the original invoice. Regular, credit and
+        correction invoices always get a new unique invoice number.
+      parameters:
+        - $ref: '#/components/parameters/messageVersionInvoice'
+      requestBody:
+        $ref: '#/components/requestBodies/invoice'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+components:
+  parameters:
+    messageVersionStaffingOrder:
+      name: messageVersion
+      in: header
+      description: Specification of the SETU standard version that is used as body message
+      required: true
+      example: 'application/x.setu.staffing-order-v1.3+xml'
+      schema:
+        type: string
+        enum:
+          - 'application/x.setu.staffing-order-v1.0+xml'
+          - 'application/x.setu.staffing-order-v1.1+xml'
+          - 'application/x.setu.staffing-order-v1.2+xml'
+          - 'application/x.setu.staffing-order-v1.3+xml'
+    messageVersionHumanResource:
+      name: messageVersion
+      in: header
+      description: Specification of the SETU standard version that is used as body message
+      required: true
+      example: 'application/x.setu.human-resource-v1.3+xml'
+      schema:
+        type: string
+        enum:
+          - 'application/x.setu.human-resource-v1.0+xml'
+          - 'application/x.setu.human-resource-v1.1+xml'
+          - 'application/x.setu.human-resource-v1.2+xml'
+          - 'application/x.setu.human-resource-v1.3+xml'
+    messageVersionAssignment:
+      name: messageVersion
+      in: header
+      description: Specification of the SETU standard version that is used as body message
+      required: true
+      example: 'application/x.setu.assignment-v1.3+xml'
+      schema:
+        type: string
+        enum:
+          - 'application/x.setu.assignment-v1.0+xml'
+          - 'application/x.setu.assignment-v1.1+xml'
+          - 'application/x.setu.assignment-v1.2+xml'
+          - 'application/x.setu.assignment-v1.3+xml'
+    messageVersionTimecard:
+      name: messageVersion
+      in: header
+      description: Specification of the SETU standard version that is used as body message
+      required: true
+      example: 'application/x.setu.timecard-v1.4+xml'
+      schema:
+        type: string
+        enum:
+          - 'application/x.setu.timecard-v1.0+xml'
+          - 'application/x.setu.timecard-v1.1+xml'
+          - 'application/x.setu.timecard-v1.2+xml'
+          - 'application/x.setu.timecard-v1.3+xml'
+          - 'application/x.setu.timecard-v1.4+xml'
+    messageVersionInvoice:
+      name: messageVersion
+      in: header
+      description: Specification of the SETU standard version that is used as body message
+      required: true
+      example: 'application/x.setu.invoice-v1.4+xml'
+      schema:
+        type: string
+        enum:
+          - 'application/x.setu.invoice-v1.0+xml'
+          - 'application/x.setu.invoice-v1.1+xml'
+          - 'application/x.setu.invoice-v1.2+xml'
+          - 'application/x.setu.invoice-v1.3+xml'
+          - 'application/x.setu.invoice-v1.4+xml'
+          - 'application/x.setu.invoice-v2.0+xml'
+  responses:
+    '200':
+      description: OK. Standard response for successful request
+    '201':
+      description: Created. Successful request, resource is created (synchronous)
+    '202':
+      description: Accepted. Successful request, resource is not (yet) created (asynchronous)
+    '204':
+      description: No Content. Response for a successful DELETE operation
+    '400':
+      description: >-
+        Bad request. E.g. malformed XML syntax; missing mandatory parameter;
+        invalid request body; unsupported version of request body.
+    '401':
+      description: Unauthorized. The request lacks valid authentication credentials for the resource
+    '403':
+      description: >-
+        Forbidden. The request was valid, but the server is refusing action. 
+        The user might not be authorized for the resource
+    '404':
+      description: Not Found.
+    '500':
+      description: Internal Server Error
+    '503':
+      description: Service Unavailable
+  requestBodies:
+    offer:
+      description: 'A HumanResource (offer) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+      content:
+        'application/xml':
+          schema:
+            type: object
+            xml:
+              name: HumanResource
+              namespace: http://ns.hr-xml.org/2007-04-15
+              prefix: hr-xml
+          examples:
+            orderrfq:
+              summary: A HumanResource (offer) example in XML'
+              value: "<HumanResource>...</HumanResource>"
+      required: true
+    humanResource:
+      description: 'A HumanResource message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+      content:
+        'application/xml':
+          schema:
+            type: object
+            xml:
+              name: HumanResource
+              namespace: http://ns.hr-xml.org/2007-04-15
+              prefix: hr-xml
+          examples:
+            orderrfq:
+              summary: A HumanResource example in XML'
+              value: "<HumanResource>...</HumanResource>"
+      required: true
+    assignment:
+      description: 'An Assignment message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00003' 
+      content:
+        'application/xml':
+          schema:
+            type: object
+            xml:
+              name: HumanResource
+              namespace: http://ns.hr-xml.org/2007-04-15
+              prefix: hr-xml
+          examples:
+            orderrfq:
+              summary: An Assignment example in XML'
+              value: "<Assignment>...</Assignment>"
+      required: true
+    invoice:
+      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00001'
+      content:
+        'application/xml':
+          schema:
+            type: object
+            xml:
+              name: Invoice
+      required: true
+externalDocs:
+  description: Find out more about the SETU standards
+  url: 'http://standaard.setu.nl'

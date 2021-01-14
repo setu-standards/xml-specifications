@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sch:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:fn="http://www.w3.org/2005/xpath-functions" xmlns:sch="http://purl.oclc.org/dsdl/schematron" schemaVersion="nl.setu.2007.businessrules.positionopeningnl">
+    <sch:title>Business rules voor het controleren van een timecard bericht (SETU Standard for Vacancies versie 1.0).</sch:title>
+    <sch:ns prefix="setu" uri="http://ns.hr-xml.org/2007-04-15"/>
+    <sch:ns prefix="xsd" uri="http://www.w3.org/2001/XMLSchema"/>
+    
+    <sch:let name="PositionRecordInfo.2" value="',owner,recruiter,distributor,publicist,'"/>
+    <sch:let name="PositionRecordInfo.3" value="',x:put,x:edit,x:delete,x:duplicate,x:activate,x:deactivate,x:prolong,'"/>
+    <sch:let name="SupplierId.1" value="',owner,recruiter,distributor,publicist,KVK,OIN,BTW,Fi,'"/>
+    <sch:let name="SocialMedia.1" value="',facebook,twitter,linkedin,hyves,google+,'"/>
+    <sch:let name="RecruiterType.1" value="',direct,intermediary,media-agency,rpo,'"/>
+    <sch:let name="PhysicalLocation.2" value="',municipality,region,province,country,'"/>
+    <sch:let name="JobCategory.1" value="',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,'"/>
+    <sch:let name="SalaryPeriod" value="',Hourly,Daily,Weekly,x:FourWeekly,Monthly,Annually,'"/> <!-- a.k.a. 'BasePay.2' -->
+    <sch:let name="ContractDetails.1" value="',permanent,predetermined,predeterminedprospectpermanent,'"/>
+    <sch:let name="ContractDetails.2" value="',direct,temporaryandsecondment,intern,freelance,franchise,trainee,'"/>
+    <sch:let name="ContractDetails.3" value="',1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,'"/>
+    <sch:let name="Requirements.1" value="',1,2,3,4,5,6,'"/>
+    <sch:let name="Requirements.3" value="',ManagingDirector,Manager,Professional-Experienced,Starter,Student,'"/>
+    <sch:let name="ApplicationMethod.1" value="',Post,Email,Telephone,SocialMedia,ApplicationFormURL,VacancyURL,JobboardURL,InPerson,'"/>
+    
+    <!-- onderstaande 'codelijsten' dienen ter vervanging van de lower-case() functie -->
+    <sch:let name="lowercase" value="'abcdefghijklmnopqrstuvwxyz'" />
+    <sch:let name="uppercase" value="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'" />
+    
+    <!-- contains($SocialMedia.1, concat(',', translate(./setu:SocialMedium/setu:SocialMediumParty, $uppercase, $lowercase), ','))-->
+
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PositionOpeningNL.1" fpi="Controleren of het xml:lang attribuut aanwezig is en gevuld is." context="/setu:PositionOpeningNL" flag="error">
+            <sch:assert test="(count(@xml:lang) = 1) and (normalize-space(@xml:lang) != '')">
+                The languague of the vacancy must be specified in the xml:lang attribute of the PositionOpeningNL element.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.NumberToFill.1" fpi="Controleren of het element NumberToFill aanwezig is en zo ja, of de waarde groter of gelijk aan 1 is." context="/setu:PositionOpeningNL" flag="error">
+            <sch:assert test="((count(setu:NumberToFill)=1) and (setu:NumberToFill &gt;=1)) or not(count(setu:NumberToFill)=1)">
+                The element NumberToFill must be an integer with a value equal or higher than 1.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PositionRecordInfo.1" fpi="Controleren of het Id element minimaal 1x en maximaal 4x voorkomt." context="/setu:PositionOpeningNL/setu:PositionRecordInfo" flag="error">
+            <sch:assert test="(count(setu:Id) &gt;= 1) and (count(setu:Id) &lt; 5)">
+                The element Id in the element PositionRecordInfo must be present at least once and at most 4 times. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PositionRecordInfo.2" fpi="Controleren of het idOwner attribuut onder het Id element aanwezig is en een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:PositionRecordInfo/setu:Id" flag="error">
+            <sch:assert test=" (count(@idOwner) = 1) and (contains($PositionRecordInfo.2, concat(',', @idOwner, ',')))">
+                The attribute idOwner of the element Id in the element PositionRecordInfo must be present and contain a value from the code list vacancyRoles. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PositionRecordInfo.3" fpi="Controleren of het Status element onder het PositionRecordInfo element aanwezig is en een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:PositionRecordInfo" flag="error">
+            <sch:assert test=" (count(setu:Status) = 1) and (contains($PositionRecordInfo.3, concat(',', setu:Status, ',')))">
+                The element Status in the element PositionRecordInfo must be present and contain a value from the code list vacancyStatus.  
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.SupplierId.1" fpi="Controleren of het idOwner attribuut onder het SupplierId element aanwezig is en een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:PositionSupplierNL/setu:SupplierIds/setu:SupplierId" flag="error">
+            <sch:assert test=" (count(@idOwner) = 1) and (contains($SupplierId.1, concat(',', @idOwner, ',')))">
+                The attribute idOwner of the element SupplierId must be present and contain a value from the code list vacancyIdOwner. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.SocialMedia.1" fpi="Controleren of het element SocialMediumParty een van de toegestane waardes bevat. " context="//setu:SocialMedia" flag="error">
+            <sch:assert test="contains($SocialMedia.1, concat(',', translate(./setu:SocialMedium/setu:SocialMediumParty, $uppercase, $lowercase), ','))">
+                The element SocialMediumParty of the element SocialMedia must contain a value from the code list socialMedia. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.Role.1" fpi="Controleren of het element Role een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:PositionSupplierNL/setu:Role" flag="error">
+            <sch:assert test="contains($PositionRecordInfo.2, concat(',', ., ','))">
+                The element Role of the element PositionSupplierNL must contain a value from the code list vacancyRoles. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.RecruiterType.1" fpi="Controleren of het element RecruiterType aanwezig is en zo ja, een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:PositionSupplierNL" flag="error">
+            <sch:assert test="(count(setu:RecruiterType)=1) and (normalize-space(setu:Role) = 'recruiter') and (contains($RecruiterType.1, concat(',', translate(./setu:RecruiterType, $uppercase, $lowercase), ','))) or not(count(setu:RecruiterType)=1)">
+                The element RecruiterType may only be filled when the element Role contains the value 'recruiter' and then should contain a value from the code list recruiterType. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContactInfo.1" fpi="Controleren of het attribuut purpose aanwezig is en de waarde 'x:moreinfo' bevat." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:Organization/setu:ContactInfo" flag="error">
+            <sch:assert test="(count(@purpose) = 1) and (normalize-space(@purpose) = 'x:moreinfo')">
+                The attribute purpose of the element ContactInfo must be present and must contain the value 'x:moreinfo'. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContactInfo.2" fpi="Controleren of het element ContactName/FormattedName aanwezig is en gevuld is." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:Organization/setu:ContactInfo" flag="error">
+            <sch:assert test="(count(setu:ContactName/setu:FormattedName) = 1) and (normalize-space(setu:ContactName/setu:FormattedName) != '')">
+                The element ContactName/FormattedName of the element ContactInfo must be present and must contain a value. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContactInfo.3" fpi="Controleren of het element ContactMethod aanwezig is." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:Organization/setu:ContactInfo" flag="error">
+            <sch:assert test="count(setu:ContactMethod) = 1">
+                The element ContactMethod of the element ContactInfo must be present. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PositionDetail.1" fpi="Controleren of het element PositionDetail aanwezig is." context="/setu:PositionOpeningNL/setu:PositionProfileNL" flag="error">
+            <sch:assert test="count(setu:PositionDetail) = 1">
+                The element PositionDetail of the element PositionProfileNL must be present. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PhysicalLocation.1" fpi="Controleren of het element Area/Value aanwezig is en gevuld is." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:PhysicalLocation" flag="error">
+            <sch:assert test="(count(setu:Area/setu:Value) = 1) and (normalize-space(setu:Area/setu:Value) != '')">
+                The element Area/Value of the element PhysicalLocation must be present and must contain a value. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PhysicalLocation.2" fpi="Controleren of het attribuut type van het element Area aanwezig is en een van de toegestane waardes bevat." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:PhysicalLocation/setu:Area" flag="error">
+            <sch:assert test="(count(@type)=1 and contains($PhysicalLocation.2, concat(',', @type, ','))) or not(count(@type)=1)">
+                The attribute type of the element Area should contain one of the following values: 'municipality', 'region', 'province' or 'country'.  
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.JobCategory.1" fpi="Controleren of het element JobCategory/CategoryCode aanwezig is en een waarde uit de codelijst jobCategory bevat " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail" flag="error">
+            <sch:assert test="(count(setu:JobCategory/setu:CategoryCode) = 1) and (contains($JobCategory.1, concat(',', ./setu:JobCategory/setu:CategoryCode, ',')))">
+                The element JobCategory/CategoryCode must contain a value from the code list jobCategory. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.BasePay.1" fpi="Controleren of het element BasePay aanwezig is en zo ja, of de attributen currencyCode en baseInterval en de elementen BasePayAmountMin en BasePayAmountMax aanwezig zijn en gevuld zijn. " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:RenumerationPackage" flag="error">
+            <sch:assert test="((count(setu:BasePay)=1) and (count(setu:BasePay/@currencyCode) = 1) and (normalize-space(setu:BasePay/@currencyCode) != '') and (count(setu:BasePay/@baseInterval) = 1) and (normalize-space(setu:BasePay/@baseInterval) != '') and (count(setu:BasePay/setu:BasePayAmountMin) = 1) and (normalize-space(setu:BasePay/setu:BasePayAmountMin) != '') and (count(setu:BasePay/setu:BasePayAmountMax) = 1) and (normalize-space(setu:BasePay/setu:BasePayAmountMax) != '')) or not(count(setu:BasePay)=1)">
+                The element BasePay must contain the attributes currencyCode and baseInterval and must contain the elements BasePayAmountMin and BasePayAmountMax.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.BasePay.2" fpi="Controleren of de waarde van het attribuut baseInterval uit de codelijst salaryPeriod komt." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:RenumerationPackage/setu:BasePay" flag="error">
+            <sch:assert test="contains($SalaryPeriod, concat(',', @baseInterval, ','))">
+                The attribute baseInterval of the element BasePay must contain a value from the code list salaryPeriod. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContractDetails.1" fpi="Controleren of de waarde van het element ContractDuration uit de codelijst durationContract komt." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:ContractDetails" flag="error">
+            <sch:assert test="contains($ContractDetails.1, concat(',', translate(./setu:ContractDuration, $uppercase, $lowercase), ','))">
+                The element ContractDuration of the element ContractDetails must contain a value from the code list durationContract. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContractDetails.2" fpi="Controleren of de waarde van het element TypeOfContract uit de codelijst typeOfContract komt." context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:ContractDetails" flag="error">
+            <sch:assert test="contains($ContractDetails.2, concat(',', translate(./setu:TypeOfContract, $uppercase, $lowercase), ','))">
+                The element TypeOfContract of the element ContractDetails must contain a value from the code list typeOfContract. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContractDetails.3" fpi="Controleren of de waarde in het element ContractFeature uit de codelijst contractFeatures komt. " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:ContractDetails/setu:ContractFeatures" flag="error">
+            <sch:assert test="contains($ContractDetails.3, concat(',', ./setu:ContractFeature, ','))">
+                The element ContractFeature must contain a value from the code list contractFeatures. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.Requirements.1" fpi="Controleren of het element EducationDegree aanwezig is en zo ja, of de waarde uit de codelijst educationDegree komt. " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:Requirements" flag="error">
+            <sch:assert test="(count(setu:EducationDegree)=1 and contains($Requirements.1, concat(',', ./setu:EducationDegree, ','))) or not(count(setu:EducationDegree)=1)">
+                The element EducationDegree must contain a value from the code list educationDegree. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.Requirements.2" fpi="Controleren of het element WorkingAndThinkingLevel aanwezig is en zo ja, of de waarde uit de codelijst educationDegree komt. " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:Requirements" flag="error">
+            <sch:assert test="(count(setu:WorkingAndThinkingLevel)=1 and contains($Requirements.1, concat(',', ./setu:WorkingAndThinkingLevel, ','))) or not(count(setu:WorkingAndThinkingLevel)=1)">
+                The element WorkingAndThinkingLevel must contain a value from the code list educationDegree. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.Requirements.3" fpi="Controleren of het element CareerLevel aanwezig is en zo ja, of de waarde uit de codelijst careerLevel. " context="/setu:PositionOpeningNL/setu:PositionProfileNL/setu:PositionDetail/setu:Requirements" flag="error">
+        <sch:assert test="(count(setu:CareerLevel)=1 and contains($Requirements.3, concat(',', ./setu:CareerLevel, ','))) or not(count(setu:CareerLevel)=1)">
+                The element CareerLevel must contain a value from the code list careerLevel. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ApplicationMethod.1" fpi="Controleren of het element MethodType aanwezig is en zo ja, of de waarde uit de codelijst applicationMethodType. " context="/setu:PositionOpeningNL/setu:ApplicationInformationNL/setu:HowToApply/setu:ApplicationMethod" flag="error">
+            <sch:assert test="(count(setu:MethodType)=1 and contains($ApplicationMethod.1, concat(',', ./setu:MethodType, ','))) or not(count(setu:MethodType)=1)">
+                The element MethodType must contain a value from the code list applicationMethodType. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.InPerson.1" fpi="Controleren of het element InPerson aanwezig is en zo ja, of het element TravelDirections aanwezig is en gevuld is." context="/setu:PositionOpeningNL/setu:ApplicationInformationNL/setu:HowToApply/setu:ApplicationMethod/setu:ContactMethodApplication" flag="error">
+            <sch:assert test="count(setu:InPerson)=1 and count(setu:InPerson/setu:TravelDirections)=1 and normalize-space(setu:InPerson/setu:TravelDirections)!='' or not(count(setu:InPerson) = 1)">
+                The element TravelDirections must be present and contain a value because the InPerson element is present. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.ContactInformation.1" fpi="Controleren of het element ApplicationMethod aanwezig is en zo ja, of het element ContactInformation en het element ContactPersons aanwezig zijn." context="/setu:PositionOpeningNL/setu:ApplicationInformationNL/setu:HowToApply" flag="error">
+            <sch:assert test="((count(setu:ApplicationMethod) &gt; 0) and (count(setu:ApplicationMethod/setu:ContactInformation) &gt;= 0) and (count(setu:ApplicationMethod/setu:ContactInformation/setu:ContactPersons) &gt;= 0)) or not(count(setu:ApplicationMethod) &gt; 0)">
+                In case a ApplicationMethod is specified, the container ContactInformation and the container ContactPersons must be present and filled. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.DistributeTo.1" fpi="Controleren of het element DistributeTo aanwezig is en zo ja, of het element Id/IdValue aanwezig is en gevuld is." context="/setu:PositionOpeningNL/setu:DistributionGuidelines" flag="error">
+            <sch:assert test="((count(setu:DistributeTo) &gt; 0) and (count(setu:DistributeTo/setu:Id/setu:IdValue) = 1) and (normalize-space(setu:DistributeTo/setu:Id/setu:IdValue) != '')) or not(count(setu:DistributeTo) &gt; 0)">
+                In case the DistributeTo container is used, the Id of the party must be specified in the element Id/IdValue. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.DistributeTo.2" fpi="Controleren of het element DistributeTo aanwezig is en zo ja, of het idOwner attribuut onder het Id element aanwezig is en een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:DistributionGuidelines" flag="error">
+            <sch:assert test="((count(setu:DistributeTo) &gt; 0) and (count(setu:DistributeTo/setu:Id/@idOwner) = 1) and contains($SupplierId.1, concat(',', ./setu:DistributeTo/setu:Id/@idOwner, ','))) or not(count(setu:DistributeTo) &gt; 0)">
+                The attribute idOwner of the element DistributeTo/Id must be present and contain a value from the code list vacancyIdOwner. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2007.businessrules.positionopeningnl.businessrule.PublisherId.1" fpi="Controleren of het element PublisherPublication aanwezig is en zo ja, of het idOwner attribuut onder het PublisherId element aanwezig is en een van de toegestane waardes bevat. " context="/setu:PositionOpeningNL/setu:AdvertisementInfo/setu:PublicationDate/setu:PublicationDatesPublisher" flag="error">
+            <sch:assert test="((count(setu:PublisherPublication) &gt; 0) and (count(setu:PublisherPublication/@idOwner) = 1) and contains($SupplierId.1, concat(',', ./setu:PublisherPublication/@idOwner, ','))) or not(count(setu:PublisherPublication) &gt; 0)">
+                The attribute idOwner of the element PublisherId must be present and contain a value from the code list vacancyIdOwner. 
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+</sch:schema>

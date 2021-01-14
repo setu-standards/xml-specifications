@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" 
+xmlns:hr="http://ns.hr-xml.org/2007-04-15" 
+xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/" 
+xmlns:tns="http://www.setu.nl/SETUWebServices/2011-01" 
+xmlns:setu="http://ns.setu.nl/2008-01" 
+xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.setu.nl/SETUWebServices/2011-01">
+	<wsdl:documentation>
+		Name: 		OrderingSelection-StaffingOrderServiceSETU-supplier.wsdl
+		Purpose: 	specifies the webservices for receiving StaffingOrder messages at the supplier interface in an Ordering and Selection process.
+		Author(s): 	SETU
+		Release: 	SETU Standard for Ordering and Selection v1.1
+		Last edit:	2020-11-24
+	</wsdl:documentation>
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.setu.nl/SETUWebServices/2011-01" elementFormDefault="qualified">
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/Acknowledgement.xsd"/>
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingOrder.xsd"/>
+			<xsd:import namespace="http://ns.setu.nl/2008-01" schemaLocation="../../schemas/2008-01/StaffingOrderAdditionalNL.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	<wsdl:message name="StaffingOrderRequest">
+		<wsdl:documentation>A generic request of type Position (SO).</wsdl:documentation>
+		<wsdl:part name="input" element="hr:StaffingOrder"/>
+	</wsdl:message>
+	<wsdl:message name="StatusStaffingOrderRequest">
+		<wsdl:documentation>A generic request of type PositionStatus (sSO).</wsdl:documentation>
+		<wsdl:part name="input" element="hr:StaffingOrder"/>
+	</wsdl:message>
+	<wsdl:message name="Response">
+		<wsdl:documentation>A generic response of type Acknowledgement.</wsdl:documentation>
+		<wsdl:part name="output" element="hr:Acknowledgement"/>
+	</wsdl:message>
+	<wsdl:portType name="StaffingOrderService">
+		<wsdl:operation name="CreatePosition">
+			<wsdl:documentation>CreatePosition is used in the Ordering and Selection process, scenario A (step 1), B (step 1), C (step 1), D (step 1). The request message is a Position (SO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePosition">
+			<wsdl:documentation>UpdatePosition is used in the Ordering and Selection process. The request message is a Position (SO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="CreateOrder">
+			<wsdl:documentation>CreateOrder is used in the Ordering and Selection process, scenario D (step 3). The request message is a Order (SO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="ClosePosition">
+			<wsdl:documentation>ClosePosition iis used in the Ordering and Selection process, scenario A (step 4), B (step 8), C (step 5,10), D (step 4). The request message is a PositionStatus (sSO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StatusStaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="ReopenPosition">
+			<wsdl:documentation>ReopenPosition is used in the Ordering and Selection process, scenario C (step 7). The request message is a PositionStatus (sSO) message..</wsdl:documentation>
+			<wsdl:input message="tns:StatusStaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="ArchivePosition">
+			<wsdl:documentation>ArchivePosition is used in the Ordering and Selection process, scenario A (step 5), B (step 9), C (step 11), D (step 5). The request message is a PositionStatus (sSO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StatusStaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+		<wsdl:operation name="RejectPosition">
+			<wsdl:documentation>RejectPosition is used in the Ordering and Selection process. The request message is a PositionStatus (sSO) message.</wsdl:documentation>
+			<wsdl:input message="tns:StatusStaffingOrderRequest"/>
+			<wsdl:output message="tns:Response"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	<wsdl:binding name="SoapServiceHttpBinding" type="tns:StaffingOrderService">
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:documentation>The soapAction value for each operation can be used to indicate the intent of the SOAP request. It enables the receiver to appropriately identify the operation requested.</wsdl:documentation>
+		<wsdl:operation name="CreatePosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/CreatePosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="UpdatePosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/UpdatePosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="CreateOrder">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/CreateOrder" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ClosePosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/ClosePosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ReopenPosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/ReopenPosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="ArchivePosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/ArchivePosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+		<wsdl:operation name="RejectPosition">
+			<wsdlsoap:operation soapAction="http://www.organisatie.nl/SETUServicesEndpoint/RejectPosition" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	<wsdl:service name="StaffingOrderSoapService">
+		<wsdl:port name="SETUServicesEndpoint" binding="tns:SoapServiceHttpBinding">
+			<wsdlsoap:address location="https://www.organisatie.nl/SETUServicesEndpoint"/>
+			<wsdl:documentation>The address location (URL) for the services endpoint of the StaffingOrder operations can be selected freely.</wsdl:documentation>
+		</wsdl:port>
+	</wsdl:service>
+	<wsdl:documentation>
+	
+		Name: OrderingSelection-StaffingOrderServiceSETU-supplier.wsdl
+		Purpose: specifies the webservices for receiving StaffingOrder messages at the supplier interface in an Ordering and Selection process.
+		Author(s): SETU
+		Release: v1.0 
+		
+	</wsdl:documentation>
+</wsdl:definitions>

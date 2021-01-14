@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns="http://ns.setu.nl/2008-01" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:hr="http://ns.hr-xml.org/2007-04-15" targetNamespace="http://ns.setu.nl/2008-01" elementFormDefault="qualified" version="2008-01">
+	<xsd:annotation>
+		<xsd:documentation>	
+		Name: 		StafffingOrderAdditionalNL.xsd
+		Purpose: 	Defines the additional staffingorder schema elements for the Netherlands.
+		Author(s): 	SETU (helpdesk@setu.nl)
+		Standard: 	SETU Standard for Ordering and Selection v1.1
+		Last edit:	2020-11-24
+		</xsd:documentation>
+	</xsd:annotation>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SEP/Resume.xsd"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/EntityIdType.xsd"/>
+	
+	<xsd:element name="StaffingOrderAdditionalNL" type="StaffingOrderAdditionalNLType"/>
+	<xsd:complexType name="CLAReferenceType">
+		<xsd:sequence>
+			<xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAId" type="xsd:string" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="StaffingOrderAdditionalNLType">
+		<xsd:sequence>
+			<xsd:element name="OfferId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="PreviousOrderId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="RFQOrderId" type="hr:EntityIdType" minOccurs="0"/>
+			<xsd:element name="DaysPerWeek" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="StructuredXMLResume" type="hr:StructuredXMLResumeType" minOccurs="0"/>
+			<xsd:element name="ReasonOfChange" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CLAReference" type="CLAReferenceType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

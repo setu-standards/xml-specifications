@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+	xmlns:hr="http://ns.hr-xml.org/2007-04-15"
+	xmlns:soap11="http://schemas.xmlsoap.org/soap/envelope/"
+	xmlns:soapenc11="http://schemas.xmlsoap.org/soap/encoding/"
+	xmlns:tns="http://www.setu.nl/SETUWebServices/2012-01"
+	xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.setu.nl/SETUWebServices/2012-01">
+	<wsdl:documentation>
+		Name: 		OrderingSelection-HumanResourceServiceSETU-supplier.wsdl
+		Purpose: 	specifies the webservices for receiving HumanResource messages at the supplier interface in an Ordering and Selection process. 
+		Author(s): 	SETU
+		Release: 	SETU Standard for Ordering and Selection v1.2
+		Date: 		2012-12-13
+		Last edit:	2020-11-24
+	</wsdl:documentation>
+	
+	<wsdl:types>
+		<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.setu.nl/SETUWebServices/2012-01" elementFormDefault="qualified">
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/CPO/Acknowledgement.xsd"/>
+			<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/HumanResource.xsd"/>
+			<xsd:import namespace="http://ns.setu.nl/2012-01" schemaLocation="../../schemas/2012-01/HumanResourceAdditionalNL.xsd"/>
+		</xsd:schema>
+	</wsdl:types>
+	
+	<wsdl:message name="StatusHumanResourceRequest">
+		<wsdl:documentation>A generic request of type StatusHumanResource (sHR).</wsdl:documentation>
+		<wsdl:part name="input" element="hr:HumanResource"/>
+	</wsdl:message>
+	<wsdl:message name="Acknowledgement">
+		<wsdl:documentation>A generic response of type Acknowledgement.</wsdl:documentation>
+		<wsdl:part name="output" element="hr:Acknowledgement"/>
+	</wsdl:message>
+	
+	<wsdl:portType name="HumanResourceService">
+		<wsdl:operation name="ProcessStatusHumanResource">
+			<wsdl:input message="tns:StatusHumanResourceRequest"/>
+			<wsdl:output message="tns:Acknowledgement"/>
+		</wsdl:operation>
+	</wsdl:portType>
+	
+	<wsdl:binding name="SoapServiceHttpBinding" type="tns:HumanResourceService">
+		<wsdl:documentation>The soapAction value for each operation can be used to indicate the intent of the SOAP request. It enables the receiver to appropriately identify the operation requested.</wsdl:documentation>		
+		<wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+		<wsdl:operation name="ProcessStatusHumanResource">
+			<wsdlsoap:operation soapAction="https://www.organisatie.nl/SETUServicesEndpoint/ProcessStatusHumanResource" style="document"/>
+			<wsdl:input>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:input>
+			<wsdl:output>
+				<wsdlsoap:body use="literal"/>
+			</wsdl:output>
+		</wsdl:operation>
+	</wsdl:binding>
+	
+	<wsdl:service name="HumanResourceSoapService">
+		<wsdl:port name="SETUServicesEndpoint" binding="tns:SoapServiceHttpBinding">
+			<wsdl:documentation>The address location (URL) for the services endpoint of the HumanResource operations can be selected freely. </wsdl:documentation>
+			<wsdlsoap:address location="https://www.organisatie.nl/SETUServicesEndpoint"/>			
+		</wsdl:port>
+	</wsdl:service>	
+</wsdl:definitions>

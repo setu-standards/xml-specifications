@@ -1,0 +1,202 @@
+<codelist id="SETU_CL_HourTypes">
+    <item>
+        <code>Additional wage dispensation</code>
+        <description>Additional with wage dispensation, i.e. below-minimum wage for (partially) disabled workers. (in Dutch: Onregelmatigheidstoeslag met loondispensatie)</description>
+    </item>
+    <item>
+        <code>Adoption leave</code>
+        <description>In Dutch: Adoptieverlof</description>
+    </item>
+    <item>
+        <code>Child-birth sick time</code>
+        <description>In Dutch: Ziekte a.g.v. bevalling</description>
+    </item>
+    <item>
+        <code>Internship</code>
+        <description>In Dutch: Stage uren</description>
+    </item>
+    <item>
+        <code>Overtime wage dispensation</code>
+        <description>Overtime with wage dispensation, i.e.  below-minimum wage for (partially) disabled workers. (in Dutch: Overuren met loondispensatie)</description>
+    </item>
+    <item>
+        <code>Pregnancy sick time</code>
+        <description>In Dutch: Ziekte a.g.v. zwangerschap</description>
+    </item>
+    <item>
+        <code>Regular wage dispensation</code>
+        <description>Regular with wage dispensation, i.e. below-minimum wage for (partially) disabled workers. (in Dutch: Normale/standaard uren met loondispensatie)</description>
+    </item>
+    <item>
+        <code>Shift wage dispensation</code>
+        <description>Shift with wage dispensation, i.e. below-minimum wage for (partially) disabled workers. (in Dutch: Ploegentoeslag met loondispensatie)</description>
+    </item>
+    <item>
+        <code>Transition allowance</code>
+        <description>In Dutch: Transitievergoeding</description>
+    </item>
+    <item>
+        <code>Vacation additional</code>
+        <description>Vacation allowance to replace the allowance that the temporary worker would have received on account of the ABU remuneration or hirer's remuneration if he had worked during the leave period (e.g. irregularity allowance or shift work). The reason for this...</description>
+    </item>
+    <item>
+        <code>Additionalplus</code>
+        <description>Irregularity allowance hours with which vacation bonus is gained. (in Dutch: Onregelmatigheidstoeslag waarbij vakantiegeld wordt opgebouwd)</description>
+    </item>
+    <item>
+        <code>Regular canceled</code>
+        <description>In Dutch: Normale/standaard uren die zijn afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleiding is de WAB)</description>
+    </item>
+    <item>
+        <code>Shift canceled</code>
+        <description>In Dutch: Ploegentoeslag die is afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleiding is de WAB)</description>
+    </item>
+    <item>
+        <code>Shiftplus canceled</code>
+        <description>In Dutch: Ploegentoeslag waarbij vakantiegeld wordt opgebouwd die is afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleid...</description>
+    </item>
+    <item>
+        <code>Additional canceled</code>
+        <description>In Dutch: Onregelmatigheidstoeslag die is afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleiding is de WAB)</description>
+    </item>
+    <item>
+        <code>Additionalplus canceled</code>
+        <description>In Dutch: Onregelmatigheidstoeslag waarbij vakantiegeld wordt opgebouwd die is afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden...</description>
+    </item>
+    <item>
+        <code>Regular complemented</code>
+        <description>In Dutch: Normale/standaard uren die zijn aangevuld. Deze uren worden gebruikt wanneer een flexkracht minder dan drie uur heeft gewerkt, maar het totaal aantal uren wel tot drie uur moet worden aangevuld en uitbetaald (aanleiding is de WAB).</description>
+    </item>
+    <item>
+        <code>Additional complemented</code>
+        <description>In Dutch: Onregelmatigheidstoeslag die is aangevuld. Deze uren worden gebruikt wanneer een flexkracht minder dan drie uur heeft gewerkt, maar het totaal aantal uren wel tot drie uur moet worden aangevuld en uitbetaald (aanleiding is de WAB).</description>
+    </item>
+    <item>
+        <code>Shift complemented</code>
+        <description>In Dutch: Ploegentoeslag die is aangevuld. Deze uren worden gebruikt wanneer een flexkracht minder dan drie uur heeft gewerkt, maar het totaal aantal uren wel tot drie uur moet worden aangevuld en uitbetaald (aanleiding is de WAB).</description>
+    </item>
+    <item>
+        <code>Overtime complemented</code>
+        <description>In Dutch: Overuren die zijn aangevuld. Deze uren worden gebruikt wanneer een flexkracht minder dan drie uur heeft gewerkt, maar het totaal aantal uren wel tot drie uur moet worden aangevuld en uitbetaald (aanleiding is de WAB).</description>
+    </item>
+    <item>
+        <code>Overtime canceled</code>
+        <description>In Dutch: Overuren die zijn afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleiding is de WAB)</description>
+    </item>
+    <item>
+        <code>Overtimeplus canceled</code>
+        <description>In Dutch: Overuren waarbij vakantiegeld wordt opgebouwd die zijn afgezegd. Deze uren stonden ingepland maar zijn voor aanvang afgezegd. Gebruik deze urencode ook bij het verschuiven van uren voor de uren die uiteindelijk niet gewerkt worden. (aanleiding ...</description>
+    </item>
+    <item>
+        <code>Regular</code>
+        <description>In Dutch: Normale/standaard uren</description>
+    </item>
+    <item>
+        <code>Overtime</code>
+        <description>In Dutch: Overuren</description>
+    </item>
+    <item>
+        <code>Overtimeplus</code>
+        <description>Overtime with which vacation bonus is gained. (in Dutch: Overuren waarbij vakantiegeld wordt opgebouwd)</description>
+    </item>
+    <item>
+        <code>Shift</code>
+        <description>In Dutch: Ploegentoeslag</description>
+    </item>
+    <item>
+        <code>Shiftplus</code>
+        <description>Shiftwork with which vacation bonus is gained. (in Dutch: Ploegentoeslag waarbij vakantiegeld wordt opgebouwd)</description>
+    </item>
+    <item>
+        <code>Attendance</code>
+        <description>Availability hours in which the candidate must be present at the customer (in Dutch: Beschikbaarheidsuren waarbij kandidaat naar klant toe moet)</description>
+    </item>
+    <item>
+        <code>Travel</code>
+        <description>In Dutch: Reisuren</description>
+    </item>
+    <item>
+        <code>Additional</code>
+        <description>In Dutch: Onregelmatigheidstoeslag</description>
+    </item>
+    <item>
+        <code>Internal</code>
+        <description>In Dutch: Interne uren</description>
+    </item>
+    <item>
+        <code>Time for time hour build-up</code>
+        <description>Time for time is the mechanism of working at the one moment and paying at the other moment. (in Dutch: Opbouw tijd voor tijd)</description>
+    </item>
+    <item>
+        <code>Time for time overtime hour build-up</code>
+        <description>Time for time is the mechanism of working at the one moment and paying at the other moment. (in Dutch: Opbouw tijd voor tijd overuren)</description>
+    </item>
+    <item>
+        <code>Special Leave</code>
+        <description>In Dutch: Buitengewoon verlof</description>
+    </item>
+    <item>
+        <code>Short leave</code>
+        <description>In Dutch: Kort verzuim</description>
+    </item>
+    <item>
+        <code>Holiday</code>
+        <description>In Dutch: Feestdag</description>
+    </item>
+    <item>
+        <code>Unpaid leave</code>
+        <description>In Dutch: Onbetaald verlof</description>
+    </item>
+    <item>
+        <code>Training</code>
+        <description>In Dutch: Training / scholing</description>
+    </item>
+    <item>
+        <code>Vacation</code>
+        <description>In Dutch: Verlof</description>
+    </item>
+    <item>
+        <code>Reduction of working hours</code>
+        <description>In Dutch: ADV</description>
+    </item>
+    <item>
+        <code>Sick time</code>
+        <description>In Dutch: Zieke / ongeval</description>
+    </item>
+    <item>
+        <code>Work underload</code>
+        <description>In Dutch: Leegloop</description>
+    </item>
+    <item>
+        <code>Care Leave</code>
+        <description>In Dutch: Zorgverlof</description>
+    </item>
+    <item>
+        <code>WTR (work time reduction)</code>
+        <description>In Dutch: ATV (arbeidstijd verkoring)</description>
+    </item>
+    <item>
+        <code>Compensation leave</code>
+        <description>In Dutch: Compensatieverlof</description>
+    </item>
+    <item>
+        <code>Funeral</code>
+        <description>In Dutch: Begrafenis</description>
+    </item>
+    <item>
+        <code>Maternity Leave</code>
+        <description>In Dutch: Zwangerschapsverlof</description>
+    </item>
+    <item>
+        <code>Withdrawal time for time hours</code>
+        <description>Time for time is the mechanism of working at the one moment and paying at the other moment. (in Dutch: Tijd voor tijd opname)</description>
+    </item>
+    <item>
+        <code>Contract hours</code>
+        <description>In Dutch: Contracturen</description>
+    </item>
+    <item>
+        <code>Standby</code>
+        <description>In Dutch: Standby</description>
+    </item>
+</codelist>

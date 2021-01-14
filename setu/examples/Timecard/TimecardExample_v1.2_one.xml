@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TimeCard xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/TimeCardAdditionalData.xsd">
+<!--		
+	Name: 		TimecardExample_v1.2_one.xml
+	Purpose: 	Specifies a timecard example for the Netherlands.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Reporting Time and Expenses v1.2
+	Last edit:	2020-11-25
+-->
+	<Id>
+		<IdValue>12345678</IdValue>
+	</Id>
+	<ReportedResource>
+		<Person>
+			<!-- The IdValue of the ReportedResource may specify the identifier of a person within an organization. Via the idOwner attribute we can specify whether this id is valid wih the Staffing company or the Staffing customer -->
+			<Id idOwner="StaffingCustomer">
+				<IdValue>23456</IdValue>
+			</Id>
+			<PersonName>
+				<FormattedName>Piet Jansen</FormattedName>
+				<LegalName>Pieter</LegalName>
+				<PreferredGivenName>Piet</PreferredGivenName>
+				<FamilyName primary="true" prefix="van">Jansen</FamilyName>
+			</PersonName>
+		</Person>
+	</ReportedResource>
+	<ReportedTime>
+		<PeriodStartDate>2011-08-09</PeriodStartDate>
+		<PeriodEndDate>2011-08-10</PeriodEndDate>
+		<!-- The TimeInterval types have been standardized: Regular, Overtime, Shift, Travel, Additional, Special leave, Short leave, Holiday, Unpayed leave, Training, Vacation, Sick time, Work underload -->
+		<TimeInterval type="regular" billable="true">
+			<StartDateTime>2011-08-09T09:00:00</StartDateTime>
+			<EndDateTime>2011-08-09T17:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly">30 </RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="overtime" billable="true">
+			<StartDateTime>2011-08-09T19:00:00</StartDateTime>
+			<EndDateTime>2011-08-09T21:00:00</EndDateTime>
+			<Duration>2.00</Duration>
+			<!-- The mark-up for the hourly rate is specified by means of the 'multiplier' attribute in <RateOrAmount>. A rate of 150% includes a mark-up of 50%. A rate of 100% means that there is no mark-up. -->
+			<RateOrAmount currency="EUR" type="hourly" multiplier="150">30</RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="shift" billable="true">
+			<StartDateTime>2011-08-10T18:00:00</StartDateTime>
+			<EndDateTime>2011-08-10T23:00:00</EndDateTime>
+			<Duration>3.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="125">30</RateOrAmount>
+		</TimeInterval>
+		<!-- Costs are specified in an <Allowance> element. A list of suggested types of costs/expenses is provided in Appendix D -->
+		<Allowance type="102B" billable="true">
+			<Id>
+				<!--  The attribute 'name' specifies whether it should be intepreted as  an allowance or an expense.-->
+				<IdValue name="allowance"/>
+			</Id>
+			<StartDate>2011-08-09</StartDate>
+			<EndDate>2011-08-10</EndDate>
+			<Amount currency="EUR">14.00</Amount>
+			<Comment>Example of a travel allowance</Comment>
+		</Allowance>
+		<Allowance type="202B" billable="true">
+			<Id>
+				<IdValue name="expense"/>
+			</Id>
+			<StartDate>2011-08-09</StartDate>
+			<EndDate>2011-08-09</EndDate>
+			<Amount currency="EUR">10.00</Amount>
+			<!-- Several items (e.g. department code/name, cost code/name, project code, etc) can be specified under <CustomerReportingRequirements> for the purpose of invoice processing in the staffing customer�s system. Additional requirements/references that cannot be entered in another element can be entered in AdditionalRequirements.-->
+			<AdditionalData>
+				<StaffingAdditionalData>
+					<CustomerReportingRequirements>
+						<CostCenterCode>AA-123</CostCenterCode>
+						<ProjectCode>P-Project 02.21</ProjectCode>
+					</CustomerReportingRequirements>
+				</StaffingAdditionalData>
+			</AdditionalData>
+			<Comment>Example of a statement of meal expenses </Comment>
+		</Allowance>
+		<!-- Allowances that are not billable should specify the attribute 'billable=false'.-->
+		<Allowance type="202B" billable="false">
+			<Id>
+				<IdValue name="expense"/>
+			</Id>
+			<StartDate>2011-08-09T09:00:00</StartDate>
+			<EndDate>2011-08-09T17:00:00</EndDate>
+			<Amount currency="EUR">15.00</Amount>
+			<Quantity>1</Quantity>
+		</Allowance>
+	</ReportedTime>
+	<ApprovalInfo>
+		<Person>
+			<PersonName>
+				<FormattedName>Jan Pietersen</FormattedName>
+			</PersonName>
+		</Person>
+		<ApprovedDateTime>2011-08-13T09:30:00</ApprovedDateTime>
+	</ApprovalInfo>
+	<AdditionalData>
+		<StaffingAdditionalData>
+			<CustomerReportingRequirements>
+				<!-- CustomerReportingRequirements allow for specification of multiple reporting elements  in order to provide input to processing the invoice at the customer's site -->
+				<DepartmentCode>4321</DepartmentCode>
+				<DepartmentName>Department B</DepartmentName>
+				<CostCenterCode>BB-456</CostCenterCode>
+				<CostCenterName>costcenter name</CostCenterName>
+				<!--Projectcode -->
+				<ProjectCode>P-Project 01.26</ProjectCode>
+				<!-- Additional requirements may be specified in the AdditionalRequirements -->
+				<AdditionalRequirement requirementTitle="InclusiveRate">true</AdditionalRequirement>
+			</CustomerReportingRequirements>
+			<ReferenceInformation>
+				<!-- A reference on the time card to a Staffing Customer and an AssignmentId.-->	
+				<StaffingCustomerId idOwner="StaffingCompany">
+					<IdValue>223445</IdValue>
+				</StaffingCustomerId>
+				<!-- A reference to the AssignmentId -->
+				<AssignmentId>
+					<IdValue>1234/1234561</IdValue>
+				</AssignmentId>
+			</ReferenceInformation>
+		</StaffingAdditionalData>
+	</AdditionalData>
+</TimeCard>

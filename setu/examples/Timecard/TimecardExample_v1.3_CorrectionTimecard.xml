@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--		
+	Name: 		TimecardExample_v1.3_CorrectionTimecard.xml
+	Purpose: 	Specifies a timecard example.
+	Author(s): 	SETU
+	Standard: 	SETU Standard for Reporting Time and Expenses v1.3
+	Last edit:	2020-11-25
+-->
+<TimeCard xmlns="http://ns.hr-xml.org/2007-04-15" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://ns.hr-xml.org/2007-04-15 ../../../hr-xml/SIDES/TimeCardAdditionalData.xsd">
+	<Id idOwner="StaffingCustomer">
+		<IdValue>TC00123456</IdValue>
+	</Id>
+	<ReportedResource>
+		<Person>
+			<Id idOwner="StaffingCustomer">
+				<IdValue>23456</IdValue>
+			</Id>
+			<PersonName>
+				<FormattedName>Piet van der Berg</FormattedName>
+				<LegalName>Pieter Arend van der Berg MSc</LegalName>
+				<GivenName>Pieter</GivenName>
+				<GivenName>Arend</GivenName>
+				<PreferredGivenName>Piet</PreferredGivenName>
+				<FamilyName primary="true" prefix="van der">Berg</FamilyName>
+				<Affix type="qualification">MSc</Affix>
+			</PersonName>
+		</Person>
+	</ReportedResource>
+	<ReportedTime status="corrected">
+		<PeriodStartDate>2013-10-24</PeriodStartDate>
+		<PeriodEndDate>2013-10-31</PeriodEndDate>
+		<TimeInterval type="regular" dayAssignment="2013-10-26" billable="true" actionCode="Unchanged">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-1</IdValue>
+			</Id>
+			<StartDateTime>2013-10-25T23:00:00</StartDateTime>
+			<EndDateTime>2013-10-26T07:00:00</EndDateTime>
+			<Duration>8.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">30</RateOrAmount>
+			<Comment>Comment for this time interval</Comment>
+		</TimeInterval>
+		<TimeInterval type="overtime" billable="true" actionCode="Change">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-2</IdValue>
+			</Id>
+			<StartDateTime>2013-10-26T07:00:00</StartDateTime>
+			<EndDateTime>2013-10-26T08:00:00</EndDateTime>
+			<Duration>1.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="150">30</RateOrAmount>
+		</TimeInterval>
+		<TimeInterval type="shift" billable="true" actionCode="Void">
+			<Id idOwner="StaffingCustomer">
+				<IdValue>TC00123456-3</IdValue>
+			</Id>
+			<StartDateTime>2013-10-30T18:00:00</StartDateTime>
+			<EndDateTime>2013-10-30T23:00:00</EndDateTime>
+			<Duration>4.00</Duration>
+			<RateOrAmount currency="EUR" type="hourly" multiplier="125">30</RateOrAmount>
+		</TimeInterval>
+		<Allowance type="102B" billable="true" actionCode="Change">
+			<Id idOwner="StaffingCustomer">
+				<IdValue name="allowance">TC00123456-4</IdValue>
+			</Id>
+			<StartDate>2013-10-24</StartDate>
+			<EndDate>2013-10-31</EndDate>
+			<Amount currency="EUR">14.00</Amount>
+			<Quantity>1</Quantity>
+			<Comment>Example of a travel allowance</Comment>
+		</Allowance>
+		<Allowance type="202B" billable="false" actionCode="Void">
+			<Id idOwner="StaffingCustomer">
+				<IdValue name="expense">TC00123456-5</IdValue>
+			</Id>
+			<StartDate>2013-10-30</StartDate>
+			<EndDate>2013-10-30</EndDate>
+			<Amount currency="EUR">10.00</Amount>
+		</Allowance>
+	</ReportedTime>
+	<SubmitterInfo>
+		<Source>TimeCardSubmitter</Source>
+		<SubmittedDateTime>2013-11-04T06:30:00</SubmittedDateTime>
+	</SubmitterInfo>
+	<ApprovalInfo>
+		<Person>
+			<PersonName>
+				<FormattedName>Jan Pietersen</FormattedName>
+			</PersonName>
+		</Person>
+		<ApprovedDateTime>2013-11-03T14:26:42</ApprovedDateTime>
+		<Comment>Any comment</Comment>
+	</ApprovalInfo>
+	<AdditionalData>
+		<StaffingAdditionalData>
+			<CustomerReportingRequirements>
+				<PurchaseOrderNumber>O-3344</PurchaseOrderNumber>				
+				<DepartmentCode>4321</DepartmentCode>
+				<DepartmentName>Department B</DepartmentName>
+				<CostCenterCode>BB-456</CostCenterCode>
+				<CostCenterName>costcenter name</CostCenterName>
+				<ProjectCode>P-Project 01.26</ProjectCode>
+				<CustomerReferenceNumber>5678</CustomerReferenceNumber>
+				<AdditionalRequirement requirementTitle="InclusiveRate">true</AdditionalRequirement>		
+			</CustomerReportingRequirements>
+			<ReferenceInformation>
+				<StaffingSupplierId idOwner="StaffingCustomer">
+					<IdValue>39876</IdValue>
+				</StaffingSupplierId>
+				<StaffingCustomerId idOwner="StaffingCompany">
+					<IdValue>223445</IdValue>
+				</StaffingCustomerId>
+				<AssignmentId idOwner="StaffingCompany">
+					<IdValue>1234/1234561</IdValue>
+				</AssignmentId>
+				<StaffingSupplierOrgUnitId idOwner="StaffingCustomer">
+					<IdValue>53954</IdValue>					
+				</StaffingSupplierOrgUnitId>
+				<StaffingCustomerOrgUnitId idOwner="StaffingCompany">
+					<IdValue>1234</IdValue>
+				</StaffingCustomerOrgUnitId>			
+			</ReferenceInformation>
+		</StaffingAdditionalData>
+	</AdditionalData>
+</TimeCard>
