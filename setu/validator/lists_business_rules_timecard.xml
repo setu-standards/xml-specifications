@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Lijst met mogelijke waarde, worden gebruikt in de business rules voor timecard, 
+     Onderdeel van Reporting Time & Expenses versie 1.3 -->
+
+<dl schemaVersion="nl.setu.2007.businessrules.timecard">
+
+	<!-- Lijst met waarden voor actioncode-->
+	<di id="nl.setu.2007.businessrules.timecard.list.ActionCode">
+		<dt>Add</dt>
+		<dt>Change</dt>
+		<dt>Void</dt>
+		<dt>Unchanged</dt>
+	</di>
+
+	<!-- Lijst met waarden voor idOwner-->
+	<di id="nl.setu.2007.businessrules.timecard.list.IdOwner">
+		<dt>StaffingCustomer</dt>
+		<dt>StaffingCompany</dt>
+		<dt>KvK</dt>
+		<dt>OIN</dt>
+		<dt>BTW</dt>
+		<dt>Fi</dt>
+	</di>
+	
+	<!-- Lijst met waarden voor RateOrAmount -->
+	<di id="nl.setu.2007.businessrules.timecard.list.RateOrAmount">
+		<dt>hourly</dt>
+		<dt>hourlyconsolidated</dt>
+		<dt>hourlysplit</dt>
+		<dt>4weekly</dt> 
+		<dt>monthly</dt>
+	</di>
+
+</dl>
