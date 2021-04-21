@@ -10,7 +10,7 @@
 		Last edit: 	2020-11-24
 		</xsd:documentation>
 	</xsd:annotation>
-	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment"/>
+	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment.xsd"/>
 	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/StaffingWorkSite.xsd"/>
     
 	<xsd:element name="AssignmentAdditionalNL" type="AssignmentAdditionalNLType"/>
