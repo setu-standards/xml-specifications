@@ -7,7 +7,7 @@
 		Author(s): 	SETU (helpdesk@setu.nl)
 		Standard: 	SETU Standard for Assignment v1.4
 		Date:		2020-08-04
-		Last edit: 	2020-11-24
+		Last edit: 	2021-04-21
 		</xsd:documentation>
 	</xsd:annotation>
 	<xsd:import namespace="http://ns.hr-xml.org/2007-04-15" schemaLocation="../../../hr-xml/SIDES/Assignment.xsd"/>
