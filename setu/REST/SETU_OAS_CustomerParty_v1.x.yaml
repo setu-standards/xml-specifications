@@ -5,7 +5,7 @@ info:
     This specification provides standardized APIs that customers of temporary staffing (in dutch Inleners) can 
     provide to their suppliers to support the SETU processes of elektronic data exchange.
     The API is documented from the viewpoint of the consumer of the API (in this case the staffing supplier)
-  version: 1.0.0
+  version: 1.1.0
 
 servers:
   - url: "https://api.yourorganization.nl/setu"
