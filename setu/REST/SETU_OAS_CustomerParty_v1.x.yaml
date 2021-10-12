@@ -276,7 +276,7 @@ components:
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.staffing-order-v1.3+xml'
+      example: 'application/x.setu.staffing-order-v1.4+xml'
       schema:
         type: string
         enum:
@@ -284,12 +284,13 @@ components:
           - 'application/x.setu.staffing-order-v1.1+xml'
           - 'application/x.setu.staffing-order-v1.2+xml'
           - 'application/x.setu.staffing-order-v1.3+xml'
+          - 'application/x.setu.staffing-order-v1.4+xml'
     messageVersionHumanResource:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.human-resource-v1.3+xml'
+      example: 'application/x.setu.human-resource-v1.4+xml'
       schema:
         type: string
         enum:
@@ -297,12 +298,13 @@ components:
           - 'application/x.setu.human-resource-v1.1+xml'
           - 'application/x.setu.human-resource-v1.2+xml'
           - 'application/x.setu.human-resource-v1.3+xml'
+          - 'application/x.setu.human-resource-v1.4+xml'
     messageVersionAssignment:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.assignment-v1.3+xml'
+      example: 'application/x.setu.assignment-v1.4+xml'
       schema:
         type: string
         enum:
@@ -310,6 +312,7 @@ components:
           - 'application/x.setu.assignment-v1.1+xml'
           - 'application/x.setu.assignment-v1.2+xml'
           - 'application/x.setu.assignment-v1.3+xml'
+          - 'application/x.setu.assignment-v1.4+xml'
     messageVersionTimecard:
       name: messageVersion
       in: header
@@ -329,7 +332,7 @@ components:
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.invoice-v1.4+xml'
+      example: 'application/x.setu.invoice-v2.2+xml'
       schema:
         type: string
         enum:
@@ -339,6 +342,8 @@ components:
           - 'application/x.setu.invoice-v1.3+xml'
           - 'application/x.setu.invoice-v1.4+xml'
           - 'application/x.setu.invoice-v2.0+xml'
+          - 'application/x.setu.invoice-v2.1+xml'
+          - 'application/x.setu.invoice-v2.2+xml'
   responses:
     '200':
       description: OK. Standard response for successful request
