@@ -1,15 +1,16 @@
 openapi: 3.0.0
 info:
-  title: SETU REST API - SUPPLIER PARTY
+  title: SETU REST API - CUSTOMER PARTY
   description: >-
-    This specification provides standardized APIs that a supplier for temporary staffing (in dutch Uitzendbureau) can 
-    provide to their customers to support the SETU processes of elektronic data exchange. 
-    The API is documented from the viewpoint of the consumer of the API (in this case the staffing customer)
-  version: 1.0.0
+    This specification provides standardized APIs that customers of temporary staffing (in dutch Inleners) can 
+    provide to their suppliers to support the SETU processes of elektronic data exchange.
+    The API is documented from the viewpoint of the consumer of the API (in this case the staffing supplier)
+  version: 1.1.0
+
 servers:
-  - url: 'https://api.yourorganization.nl/setu'
-    description: Replace the host url and this description to your own organization API
-      endpoint
+  - url: "https://api.yourorganization.nl/setu"
+    description: "Replace the host url and this description to your own organization API endpoint"
+
 tags:
   - name: Ordering and selection
     description: API regarding ordering and selection of temporary staffing personnel
@@ -21,26 +22,22 @@ tags:
     externalDocs:
       description: Find out more
       url: 'http://standaard.setu.nl'
-  - name: Reporting time and expenses
-    description: API regarding timecards of temporary staffing personnel
-    externalDocs:
-      description: Find out more
-      url: 'http://standaard.setu.nl'
   - name: Invoicing
-    description: API regarding invoicing of temporary staffing personnelt
+    description: API regarding invoicing of temporary staffing personnel
     externalDocs:
       description: Find out more
       url: 'http://standaard.setu.nl'
+
 paths:
-  '/rfq':
+  '/offer':
     post:
       tags:
         - Ordering and selection
-      summary: Request a quotation for a temporary staffing position.
+      summary: Offer a quote to the staffing customer.
       parameters:
-        - $ref: '#/components/parameters/messageVersionStaffingOrder'
+        - $ref: '#/components/parameters/messageVersionHumanResource'
       requestBody:
-        $ref: '#/components/requestBodies/orderrfq'
+        $ref: '#/components/requestBodies/offer'
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -60,78 +57,24 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
-  '/rfq/{rfqId}':
-    delete:
-      tags:
-        - Ordering and selection
-      summary: Close/cancel a RFQ, because the position is fulfilled or does not need to be fulfilled anymore.
-      parameters:
-        - name: rfqId
-          in: path
-          description: Identifies the request for quotation
-          required: true
-          schema: 
-            type: string
-      responses:
-        '204':
-          $ref: '#/components/responses/204'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-        '503':
-          $ref: '#/components/responses/503'
-  '/offer/{offerId}/status':
+  '/offer/{offerId}':
     put:
       tags:
         - Ordering and selection
-      summary: Accept/reject an offer.
+      summary: Revise previously sent offer when information regarding an offer changes.
       parameters:
         - name: offerId
           in: path
-          description: Identifies the offer that must be accepted/rejected
+          description: Identifies the offer that must be updated
           required: true
           schema: 
             type: string
-      requestBody: 
-        $ref: '#/components/requestBodies/offerStatus'
-      responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-        '503':
-          $ref: '#/components/responses/503'
-  '/order':
-    post:
-      tags:
-        - Ordering and selection
-      summary: Place an order for fulfillment of a temporary staffing position.
-      parameters:
-        - $ref: '#/components/parameters/messageVersionStaffingOrder'
+        - $ref: '#/components/parameters/messageVersionHumanResource'
       requestBody:
-        $ref: '#/components/requestBodies/order'
+        $ref: '#/components/requestBodies/offer'
       responses:
         '200':
           $ref: '#/components/responses/200'
-        '201':
-          $ref: '#/components/responses/201'
-        '202':
-          $ref: '#/components/responses/202'
         '400':
           $ref: '#/components/responses/400'
         '401':
@@ -144,15 +87,14 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
-  '/order/{orderId}':
     delete:
       tags:
         - Ordering and selection
-      summary: Close/cancel an order, because the position is fulfilled or does not need to be fulfilled anymore.
+      summary: Withdraw previously sent offer (e.g. the human resource is not available anymore).
       parameters:
-        - name: rfqId
+        - name: offerId
           in: path
-          description: Identifies the order
+          description: Identifies the offer that must be updated
           required: true
           schema: 
             type: string
@@ -171,44 +113,19 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
-  '/assignment/{assignmentId}/status':
-    put:
-      tags:
-        - Assignment
-      summary: Confirm or reject an assignment.
-      parameters:
-        - name: assignmentId
-          in: path
-          description: Identifies the assignment
-          required: true
-          schema: 
-            type: string
-      requestBody:
-        $ref: '#/components/requestBodies/assignmentStatus'
-      responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-        '503':
-          $ref: '#/components/responses/503'
-  '/timecard':
+  '/humanresource':
     post:
       tags:
-        - Reporting time and expenses
-      summary: Send a timecard message.
+        - Ordering and selection
+      summary: Sent (additional) information about the human resource.
+      description: >-
+        In the case the staffing customer has ordered or accepted an offer of a
+        human resource, the staffing supplier assigns the human resource. It is
+        common that this messages comes together with an assignment (POST /assignment).
       parameters:
-        - $ref: '#/components/parameters/messageVersionTimecard'
+        - $ref: '#/components/parameters/messageVersionHumanResource'
       requestBody:
-        $ref: '#/components/requestBodies/timecard'
+        $ref: '#/components/requestBodies/humanResource'
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -228,22 +145,82 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
-  '/timecard/{timecardId}':
+  '/humanresource/{humanResourceId}':
     put:
       tags:
-        - Reporting time and expenses
-      summary: Update a previously sent timecard.
-      description: This operation allows to update/overwrite a previously sent timecard. The identifier therefore MUST be the same.
+        - Ordering and selection
+      summary: Revise/add information about an assigned human resource.
       parameters:
-        - name: timecardId
+        - name: humanResourceId
           in: path
-          description: The identifier of the previously sent timecard that must be updated
+          description: Identifies the human resource that must be updated
           required: true
-          schema: 
+          schema:
             type: string
-        - $ref: '#/components/parameters/messageVersionTimecard'
+        - $ref: '#/components/parameters/messageVersionHumanResource'
       requestBody:
-        $ref: '#/components/requestBodies/timecard'
+        $ref: '#/components/requestBodies/humanResource'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/assignment':
+    post:
+      tags:
+        - Assignment
+      summary: Place an assignment.
+      parameters:
+        - $ref: '#/components/parameters/messageVersionAssignment'
+      requestBody:
+        $ref: '#/components/requestBodies/assignment'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '202':
+          $ref: '#/components/responses/202'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        '503':
+          $ref: '#/components/responses/503'
+  '/assignment/{assignmentId}':
+    put:
+      tags:
+        - Assignment
+      summary: Revise/cancel an assignment. 
+      description: >-
+        Canceling an assignment is also done with this operation, by revising the ActualEndDate 
+        in the AssignmentDateRange to the current date.
+      parameters:
+        - name: assignmentId
+          in: path
+          description: Identifies the assignment that must be updated
+          required: true
+          schema:
+            type: string
+        - $ref: '#/components/parameters/messageVersionAssignment'
+      requestBody:
+        $ref: '#/components/requestBodies/assignment'
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -263,7 +240,12 @@ paths:
     post:
       tags:
         - Invoicing
-      summary: Sent a self-billed invoice message (usually not supported by staffing suppliers).
+      summary: Sent a regular, credit or correction invoice message.
+      description: >-
+        There is no API endpoint for changing/updating a previously sent invoice. This is legally not allowed.
+        Changes must be done either by sending a full credit and a new invoice message or sending a so called
+        correction invoice which invoices the differences compaired to the original invoice. Regular, credit and
+        correction invoices always get a new unique invoice number.
       parameters:
         - $ref: '#/components/parameters/messageVersionInvoice'
       requestBody:
@@ -287,43 +269,14 @@ paths:
           $ref: '#/components/responses/500'
         '503':
           $ref: '#/components/responses/503'
-  '/invoice/{invoiceId}/status':
-    put:
-      tags:
-        - Invoicing
-      summary: Confirm or reject a received invoice.
-      parameters:
-        - name: invoiceId
-          in: path
-          description: Identifies the received invoice
-          required: true
-          schema: 
-            type: string
-      requestBody:
-        $ref: '#/components/requestBodies/invoiceStatus'
-      responses:
-        '200':
-          $ref: '#/components/responses/200'
-        '400':
-          $ref: '#/components/responses/400'
-        '401':
-          $ref: '#/components/responses/401'
-        '403':
-          $ref: '#/components/responses/403'
-        '404':
-          $ref: '#/components/responses/404'
-        '500':
-          $ref: '#/components/responses/500'
-        '503':
-          $ref: '#/components/responses/503'
 components:
   parameters:
     messageVersionStaffingOrder:
       name: messageVersion
       in: header
-      description: Specification of the SETU standard version that is used as body message.
+      description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.staffing-order-v1.3+xml'
+      example: 'application/x.setu.staffing-order-v1.4+xml'
       schema:
         type: string
         enum:
@@ -331,12 +284,13 @@ components:
           - 'application/x.setu.staffing-order-v1.1+xml'
           - 'application/x.setu.staffing-order-v1.2+xml'
           - 'application/x.setu.staffing-order-v1.3+xml'
+          - 'application/x.setu.staffing-order-v1.4+xml'
     messageVersionHumanResource:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.human-resource-v1.3+xml'
+      example: 'application/x.setu.human-resource-v1.4+xml'
       schema:
         type: string
         enum:
@@ -344,12 +298,13 @@ components:
           - 'application/x.setu.human-resource-v1.1+xml'
           - 'application/x.setu.human-resource-v1.2+xml'
           - 'application/x.setu.human-resource-v1.3+xml'
+          - 'application/x.setu.human-resource-v1.4+xml'
     messageVersionAssignment:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.assignment-v1.3+xml'
+      example: 'application/x.setu.assignment-v1.4+xml'
       schema:
         type: string
         enum:
@@ -357,6 +312,7 @@ components:
           - 'application/x.setu.assignment-v1.1+xml'
           - 'application/x.setu.assignment-v1.2+xml'
           - 'application/x.setu.assignment-v1.3+xml'
+          - 'application/x.setu.assignment-v1.4+xml'
     messageVersionTimecard:
       name: messageVersion
       in: header
@@ -376,7 +332,7 @@ components:
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.invoice-v1.4+xml'
+      example: 'application/x.setu.invoice-v2.2+xml'
       schema:
         type: string
         enum:
@@ -386,6 +342,8 @@ components:
           - 'application/x.setu.invoice-v1.3+xml'
           - 'application/x.setu.invoice-v1.4+xml'
           - 'application/x.setu.invoice-v2.0+xml'
+          - 'application/x.setu.invoice-v2.1+xml'
+          - 'application/x.setu.invoice-v2.2+xml'
   responses:
     '200':
       description: OK. Standard response for successful request
@@ -412,132 +370,59 @@ components:
     '503':
       description: Service Unavailable
   requestBodies:
-    orderrfq:
-      description: 'A StaffingOrder (RFQ) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004'
+    offer:
+      description: 'A HumanResource (offer) message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e' 
       content:
         'application/xml':
           schema:
             type: object
             xml:
-              name: StaffingOrder
+              name: HumanResource
               namespace: http://ns.hr-xml.org/2007-04-15
               prefix: hr-xml
           examples:
             orderrfq:
-              summary: StaffingOrder (RFQ) example in XML
-              value: "<StaffingOrder>...</StaffingOrder>"
+              summary: A HumanResource (offer) example in XML'
+              value: "<HumanResource>...</HumanResource>"
       required: true
-    order:
-      description: 'A StaffingOrder (order) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+    humanResource:
+      description: 'A HumanResource message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e' 
       content:
         'application/xml':
           schema:
             type: object
             xml:
-              name: StaffingOrder
+              name: HumanResource
               namespace: http://ns.hr-xml.org/2007-04-15
               prefix: hr-xml
           examples:
             orderrfq:
-              summary: StaffingOrder (order) example in XML
-              value: "<StaffingOrder>...</StaffingOrder>"
+              summary: A HumanResource example in XML'
+              value: "<HumanResource>...</HumanResource>"
       required: true
-    offerStatus:
+    assignment:
+      description: 'An Assignment message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_2bb215d2-60a5-458e-9366-2bc7f543f520' 
       content:
         'application/xml':
           schema:
             type: object
             xml:
-              name: OfferStatus
-            required:
-              - status
-            properties:
-              status:
-                type: string
-                xml:
-                  name: status
-                description: status field indicating whether the offer is accepted or rejected
-                enum:
-                  - accepted
-                  - rejected
-              reason:
-                type: string
-                xml:
-                  name: reason
-                description: optional reason why the offer is accepted or rejected
-      required: true
-    assignmentStatus:
-      description: >-
-        Message to accept/reject a received assignment. Rejection is not allowed when 
-        the assignment was previously confirmed nor when the first related Timecard is sent.
-      content:
-        'application/xml':
-          schema:
-            type: object
-            xml:
-              name: AssignmentStatus
-            required:
-              - status
-            properties:
-              status:
-                type: string
-                xml:
-                  name: status
-                enum:
-                  - accepted
-                  - rejected
-              reason:
-                type: string
-                xml:
-                  name: reason
-                description: optional reason why the assignment is accepted or rejected
-      required: true
-    timecard:
-      description: 'A Timecard message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00002' 
-      content:
-        'application/xml':
-          schema:
-            type: object
-            xml:
-              name: TimeCard
+              name: Assignment
               namespace: http://ns.hr-xml.org/2007-04-15
               prefix: hr-xml
           examples:
             orderrfq:
-              summary: TimeCard example in XML
-              value: "<TimeCard>...</TimeCard>"
+              summary: An Assignment example in XML'
+              value: "<Assignment>...</Assignment>"
       required: true
     invoice:
-      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00001'
+      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: hhttps://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742'
       content:
         'application/xml':
           schema:
             type: object
             xml:
               name: Invoice
-      required: true
-    invoiceStatus:
-      content:
-        'application/xml':
-          schema:
-            type: object
-            xml:
-              name: InvoiceStatus
-            required:
-              - status
-            properties:
-              status:
-                type: string
-                xml:
-                  name: status
-                enum:
-                  - accepted
-                  - rejected
-              reason:
-                type: string
-                xml:
-                  name: reason
-                description: optional reason why the invoice is accepted or rejected
       required: true
 externalDocs:
   description: Find out more about the SETU standards

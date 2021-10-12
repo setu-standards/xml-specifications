@@ -5,7 +5,7 @@ info:
     This specification provides standardized APIs that customers of temporary staffing (in dutch Inleners) can 
     provide to their suppliers to support the SETU processes of elektronic data exchange.
     The API is documented from the viewpoint of the consumer of the API (in this case the staffing supplier)
-  version: 1.0.0
+  version: 1.1.0
 
 servers:
   - url: "https://api.yourorganization.nl/setu"
@@ -276,7 +276,7 @@ components:
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.staffing-order-v1.3+xml'
+      example: 'application/x.setu.staffing-order-v1.4+xml'
       schema:
         type: string
         enum:
@@ -284,12 +284,13 @@ components:
           - 'application/x.setu.staffing-order-v1.1+xml'
           - 'application/x.setu.staffing-order-v1.2+xml'
           - 'application/x.setu.staffing-order-v1.3+xml'
+          - 'application/x.setu.staffing-order-v1.4+xml'
     messageVersionHumanResource:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.human-resource-v1.3+xml'
+      example: 'application/x.setu.human-resource-v1.4+xml'
       schema:
         type: string
         enum:
@@ -297,12 +298,13 @@ components:
           - 'application/x.setu.human-resource-v1.1+xml'
           - 'application/x.setu.human-resource-v1.2+xml'
           - 'application/x.setu.human-resource-v1.3+xml'
+          - 'application/x.setu.human-resource-v1.4+xml'
     messageVersionAssignment:
       name: messageVersion
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.assignment-v1.3+xml'
+      example: 'application/x.setu.assignment-v1.4+xml'
       schema:
         type: string
         enum:
@@ -310,6 +312,7 @@ components:
           - 'application/x.setu.assignment-v1.1+xml'
           - 'application/x.setu.assignment-v1.2+xml'
           - 'application/x.setu.assignment-v1.3+xml'
+          - 'application/x.setu.assignment-v1.4+xml'
     messageVersionTimecard:
       name: messageVersion
       in: header
@@ -329,7 +332,7 @@ components:
       in: header
       description: Specification of the SETU standard version that is used as body message
       required: true
-      example: 'application/x.setu.invoice-v1.4+xml'
+      example: 'application/x.setu.invoice-v2.2+xml'
       schema:
         type: string
         enum:
@@ -339,6 +342,8 @@ components:
           - 'application/x.setu.invoice-v1.3+xml'
           - 'application/x.setu.invoice-v1.4+xml'
           - 'application/x.setu.invoice-v2.0+xml'
+          - 'application/x.setu.invoice-v2.1+xml'
+          - 'application/x.setu.invoice-v2.2+xml'
   responses:
     '200':
       description: OK. Standard response for successful request
@@ -366,7 +371,7 @@ components:
       description: Service Unavailable
   requestBodies:
     offer:
-      description: 'A HumanResource (offer) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+      description: 'A HumanResource (offer) message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e' 
       content:
         'application/xml':
           schema:
@@ -381,7 +386,7 @@ components:
               value: "<HumanResource>...</HumanResource>"
       required: true
     humanResource:
-      description: 'A HumanResource message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+      description: 'A HumanResource message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_e9c078df-343f-4421-b09b-9e509e7b754e' 
       content:
         'application/xml':
           schema:
@@ -396,13 +401,13 @@ components:
               value: "<HumanResource>...</HumanResource>"
       required: true
     assignment:
-      description: 'An Assignment message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00003' 
+      description: 'An Assignment message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_2bb215d2-60a5-458e-9366-2bc7f543f520' 
       content:
         'application/xml':
           schema:
             type: object
             xml:
-              name: HumanResource
+              name: Assignment
               namespace: http://ns.hr-xml.org/2007-04-15
               prefix: hr-xml
           examples:
@@ -411,7 +416,7 @@ components:
               value: "<Assignment>...</Assignment>"
       required: true
     invoice:
-      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00001'
+      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: hhttps://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742'
       content:
         'application/xml':
           schema:
