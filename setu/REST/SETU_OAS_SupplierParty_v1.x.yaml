@@ -413,7 +413,7 @@ components:
       description: Service Unavailable
   requestBodies:
     orderrfq:
-      description: 'A StaffingOrder (RFQ) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004'
+      description: 'A StaffingOrder (RFQ) message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_c557ecea-1e1b-4997-9b90-f6aed797de2d'
       content:
         'application/xml':
           schema:
@@ -428,7 +428,7 @@ components:
               value: "<StaffingOrder>...</StaffingOrder>"
       required: true
     order:
-      description: 'A StaffingOrder (order) message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00004' 
+      description: 'A StaffingOrder (order) message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_c557ecea-1e1b-4997-9b90-f6aed797de2d' 
       content:
         'application/xml':
           schema:
@@ -493,7 +493,7 @@ components:
                 description: optional reason why the assignment is accepted or rejected
       required: true
     timecard:
-      description: 'A Timecard message as specified by SETU. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00002' 
+      description: 'A Timecard message as specified by SETU. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_f1b8ba4d-9434-456f-94ac-031765cd36ea' 
       content:
         'application/xml':
           schema:
@@ -508,7 +508,7 @@ components:
               value: "<TimeCard>...</TimeCard>"
       required: true
     invoice:
-      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: https://setu.t4smm.nl/#/Standard/SETU_Standard_00001'
+      description: 'An Invoice message as specified by SETU. Invoice messages according to v1.0-1.4 are formatted as HR-XML. As of v2.0 invoice messages use the UBL syntax. See message specification here: https://setu.semantic-treehouse.nl/#/Message_32_model/MessageModel_527939af-3e6c-436e-8a85-e749724a8742'
       content:
         'application/xml':
           schema:
