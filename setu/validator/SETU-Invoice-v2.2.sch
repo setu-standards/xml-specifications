@@ -110,7 +110,7 @@
         </rule>
     </pattern>
     <pattern>
-        <rule id="nl.setu.invoice.businessrule.CompanyID.1" fpi="This element is mandatory in the SETU Invoice" context="//cbc:CompanyID" flag="error">
+        <rule id="nl.setu.invoice.businessrule.CompanyID.1" fpi="This element is mandatory in the SETU Invoice" context="//cac:PartyLegalEntity/cbc:CompanyID" flag="error">
             <assert test="@schemeID">Attribute schemeID is mandatory.</assert>
         </rule>
     </pattern>
