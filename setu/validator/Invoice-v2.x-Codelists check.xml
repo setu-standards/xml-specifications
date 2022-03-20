@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
+  xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
+  xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
+  xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" 
+  xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
+    <title>SETU Invoice 2.x codelists check</title>
+    <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
+    <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
+    <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>
+    <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+
+    <let name="SETU_CL_InvReasons" value="',On-Charged-VAT,Education,Project invoicing,Training costs,Take-over fee,Secundary staffing,Reimbursement of expenses,For forms sake invoice,Merging invoices,Compensation,Calculated discount,Accomodation expenses,Transportation costs,Other deviant invoicing,Recruitment,'"/>
+    <let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+
+    <!-- BR-16 Value must exists in specified codelists Invoice Reasons or Hour Types -->
+    <pattern>
+        <rule id="BR-16" context="ubl:Invoice/cac:InvoiceLine/cac:Item/cbc:Name" flag="error">
+            <assert test="contains($SETU_CL_InvReasons, concat(',', ., ',')) or contains($SETU_CL_HourTypes, concat(',', ., ','))">
+                Value '<value-of select="."/>' is not part of codelists Invoice Reasons and/or Hour Types
+            </assert>
+        </rule>
+    </pattern>
+</schema>

@@ -15,6 +15,9 @@
     <!-- SETU BR268 regarding OrderReference -->
     <!-- SETU BR270 regarding BuyerReference -->
 
+    <!-- Codelist check specified in other schematron file -->
+    <!-- SETU BR16  regarding Invoice Reasons and Hour Types -->
+
     <pattern>
         <rule id="nl.setu.invoice.businessrule.Invoice.1" fpi="This element is not allowed in the SETU Invoice" context="ubl:Invoice" flag="error">
             <assert test="not(cbc:UBLVersionID)">The SETU Invoice should not contain UBLVersionID.</assert>
@@ -195,14 +198,4 @@
             <assert test="not(cac:AllowanceCharge)">Price should not contain AllowanceCharge.</assert>
         </rule>
     </pattern>
-
-    <!-- <pattern>
-        <rule id="BusinessRule_1468395086_686263" fpi="BR16 Value must exists in specified codelists Invoice Reasons or Hour Types." 
-            context="ubl:Invoice/cac:InvoiceLine/cac:Item/cbc:Name" flag="error">
-            <assert test="count(document('codelists/SETU-HourTypes.xml')/codelist[@id = 'SETU_CL_HourTypes']/item/code[text() = .]) > 0
-                           or count(document('codelists/SETU-InvoiceLineReasons.xml')/codelist[@id = 'SETU_CL_InvReasons']/item/code[text() = .]) > 0">
-                Value '<value-of select="."/>' does not exists in codelists Invoice Reasons and/or Hour Types
-            </assert>
-        </rule>
-    </pattern> -->
 </schema>
