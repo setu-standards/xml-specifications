@@ -11,7 +11,12 @@
     nl.setu.2007.businessrules.invoice.businessrule.StaffingCustomerOrgUnitId.2
     -->
     <sch:let name="IdOwner" value="',StaffingCustomer,StaffingCompany,KvK,OIN,BTW,Fi,'"/>
-        
+    <!-- Lijst met waarden voor rules:
+    nl.setu.2022.businessrules.invoice.businessrule.PerQuantity.1
+    nl.setu.2022.businessrules.invoice.businessrule.ItemQuantity.1
+    -->
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+
     <sch:pattern>
         <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.DocumentIds.1" fpi="Controleren of het element DocumentIds exact 1x aanwezig is." context="/setu:Invoice/setu:Header" flag="error">
             <sch:assert test="count(setu:DocumentIds) = 1">
@@ -548,6 +553,24 @@
         <sch:rule id="nl.setu.2007.businessrules.invoice.businessrule.Currency.1" fpi="Controleren of de opgegeven currency- en currencyCode attributen de waarde 'EUR' hebben." context="//*[@currency or @currencyCode]" flag="error">
             <sch:assert test="(normalize-space(@currency) = 'EUR') or (normalize-space(@currencyCode) = 'EUR') ">
                 The value of the @currency and @currencyCode attributes must be equal to 'EUR'.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.PerQuantity.1" context="//setu:Line/setu:Price/setu:PerQuantity" flag="error">
+            <sch:assert test="(contains($SETU_CL_HourTypes, concat(',', @uom, ','))) or (normalize-space(@uom) = 'C62')">
+            Value '
+            <sch:value-of select="@uom"/>
+            ' is not part of codelist Hour types or code 'C62' is not used.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.ItemQuantity.1" context="//setu:Line/setu:ItemQuantity" flag="error">
+            <sch:assert test="(contains($SETU_CL_HourTypes, concat(',', @uom, ','))) or (normalize-space(@uom) = 'C62')">
+            Value '
+            <sch:value-of select="@uom"/>
+            ' is not part of codelist Hour types or code 'C62' is not used.
             </sch:assert>
         </sch:rule>
     </sch:pattern>
