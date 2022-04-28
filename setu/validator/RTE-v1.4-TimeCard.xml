@@ -7,7 +7,7 @@
     <sch:ns prefix="xsd" uri="http://www.w3.org/2001/XMLSchema"/>
     
     <!-- Lijst met waarden voor rule urenbriefje RateOrAmount.1 -->
-    <sch:let name="RateOrAmount" value="',hourly,hourlysplit,4weekly,monthly,'"/>
+    <sch:let name="RateOrAmount" value="',hourly,hourlysplit,4weekly,monthly,weekly,hourlyconsolidated,'"/>
 
     <!-- Lijst met waarden voor rule urenbriefje nl.setu.2007.businessrules.timecard.businessrule.ActionCode.1 -->
     <sch:let name="ActionCode" value="',Add,Change,Void,Unchanged,'"/>
@@ -18,6 +18,16 @@
         nl.setu.2007.businessrules.timecard.businessrule.StaffingSupplierOrgUnitId.2
         nl.setu.2007.businessrules.timecard.businessrule.StaffingCustomerOrgUnitId.2-->
     <sch:let name="IdOwner" value="',StaffingCustomer,StaffingCompany,KvK,OIN,BTW,Fi,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.invoice.businessrule.TimeInterval.1
+    -->
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.invoice.businessrule.Allowance.1
+    -->
+    <sch:let name="SETU_CL_ExpenseAllowanceTypes" value="',100,100B,100O,101,101B,101O,102,102B,102O,103,103B,103O,104,104B,104O,105,105B,105O,106,106B,106O,107,107B,107O,201,201B,201O,202,202B,202O,203,203B,203O,300,300B,300O,301,301B,301O,302,302B,302O,303,303B,303O,304,304B,304O,400,400B,400O,501,501B,501O,502,502B,502O,503,503B,503O,600,600B,600O,601,601B,601O,602,602B,602O,603,603B,603O,604,604B,604O,701,701B,701O,702,702B,702O,703,703B,703O,801,801B,801O,802,802B,802O,803,803B,803O,900,900B,900O,901,901B,901O,903,903B,903O,904,904B,904O,905,905B,905O,906,906B,906O,907,907B,907O,908,908B,908O,909,909B,909O,910,910B,910O,911,911B,911O,912,912B,912O,913,913B,913O,914,914B,914O,'"/>
 
     <sch:pattern>
         <sch:rule id="nl.setu.2007.businessrules.timecard.businessrule.Id.1" fpi="Controleren of het Id element aanwezig is, en het attribuut idOwner en het element IdValue bevat." context="/setu:TimeCard" flag="error">
@@ -285,6 +295,24 @@
         <sch:rule id="nl.setu.2007.businessrules.timevard.businessrule.AdditionalData.1" fpi="Controleren of elk AdditionalData element een StaffingAdditionalData element bevat" context="//setu:AdditionalData" flag="error">
             <sch:assert test="count(setu:StaffingAdditionalData) = 1">
                 Each AdditionalData element must have exactly one StaffingAdditionalData element as a child.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.TimeInterval.1" fpi="Controleren of type attribuut de goede waarde bevat." context="//setu:ReportedTime/setu:TimeInterval" flag="error">
+            <sch:assert test="contains($SETU_CL_HourTypes, concat(',', @type, ','))">
+            Value '
+            <sch:value-of select="@type"/>
+            ' is not part of codelist Hour types.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.Allowance.1" fpi="Controleren of type attribuut de goede waarde bevat." context="//setu:ReportedTime/setu:Allowance" flag="error">
+            <sch:assert test="contains($SETU_CL_ExpenseAllowanceTypes, concat(',', @type, ','))">
+            Value '
+            <sch:value-of select="@type"/>
+            ' is not part of codelist Expense and Allowance types.
             </sch:assert>
         </sch:rule>
     </sch:pattern>
