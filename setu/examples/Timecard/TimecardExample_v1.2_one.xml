@@ -28,20 +28,20 @@
 		<PeriodStartDate>2011-08-09</PeriodStartDate>
 		<PeriodEndDate>2011-08-10</PeriodEndDate>
 		<!-- The TimeInterval types have been standardized: Regular, Overtime, Shift, Travel, Additional, Special leave, Short leave, Holiday, Unpayed leave, Training, Vacation, Sick time, Work underload -->
-		<TimeInterval type="regular" billable="true">
+		<TimeInterval type="Regular" billable="true">
 			<StartDateTime>2011-08-09T09:00:00</StartDateTime>
 			<EndDateTime>2011-08-09T17:00:00</EndDateTime>
 			<Duration>8.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly">30 </RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="overtime" billable="true">
+		<TimeInterval type="Overtime" billable="true">
 			<StartDateTime>2011-08-09T19:00:00</StartDateTime>
 			<EndDateTime>2011-08-09T21:00:00</EndDateTime>
 			<Duration>2.00</Duration>
 			<!-- The mark-up for the hourly rate is specified by means of the 'multiplier' attribute in <RateOrAmount>. A rate of 150% includes a mark-up of 50%. A rate of 100% means that there is no mark-up. -->
 			<RateOrAmount currency="EUR" type="hourly" multiplier="150">30</RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="shift" billable="true">
+		<TimeInterval type="Shift" billable="true">
 			<StartDateTime>2011-08-10T18:00:00</StartDateTime>
 			<EndDateTime>2011-08-10T23:00:00</EndDateTime>
 			<Duration>3.00</Duration>

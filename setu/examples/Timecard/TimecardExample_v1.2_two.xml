@@ -26,13 +26,13 @@
 		<PeriodStartDate>2011-08-09</PeriodStartDate>
 		<PeriodEndDate>2011-08-10</PeriodEndDate>
 		<!-- The TimeInterval types have been standardized: Regular, Overtime, Shift, Travel, Additional, Special leave, Short leave, Holiday, Unpayed leave, Training, Vacation, Sick time, Work underload -->
-		<TimeInterval type="regular" billable="true">
+		<TimeInterval type="Regular" billable="true">
 			<StartDateTime>2011-08-09T09:00:00</StartDateTime>
 			<EndDateTime>2011-08-09T17:00:00</EndDateTime>
 			<Duration>8.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly">30 </RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="overtime" billable="true">
+		<TimeInterval type="Overtime" billable="true">
 			<StartDateTime>2011-08-09T19:00:00</StartDateTime>
 			<EndDateTime>2011-08-09T21:00:00</EndDateTime>
 			<Duration>2.00</Duration>

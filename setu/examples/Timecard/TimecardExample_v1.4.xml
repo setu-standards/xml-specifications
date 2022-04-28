@@ -30,7 +30,7 @@
 	<ReportedTime status="">
 		<PeriodStartDate>2017-08-07</PeriodStartDate>
 		<PeriodEndDate>2017-08-11</PeriodEndDate>
-		<TimeInterval type="regular" billable="true">
+		<TimeInterval type="Regular" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-1</IdValue>
 			</Id>
@@ -39,7 +39,7 @@
 			<Duration>8.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">0.00</RateOrAmount> <!--0, because rate is already specified in Assignment. The same holds for RateOrAmount elements following.-->
 		</TimeInterval>
-		<TimeInterval type="overtime" billable="true">
+		<TimeInterval type="Overtime" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-2</IdValue>
 			</Id>
@@ -48,7 +48,7 @@
 			<Duration>2.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly" multiplier="150">0.00</RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="regular" billable="true">
+		<TimeInterval type="Regular" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-3</IdValue>
 			</Id>
@@ -57,7 +57,7 @@
 			<Duration>8.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">0.00</RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="shift" dayAssignment="2017-08-10" billable="true">
+		<TimeInterval type="Shift" dayAssignment="2017-08-10" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-4</IdValue>
 			</Id>
@@ -66,7 +66,7 @@
 			<Duration>8.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly" multiplier="125">0.00</RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="shift" dayAssignment="2017-08-11" billable="true">
+		<TimeInterval type="Shift" dayAssignment="2017-08-11" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-5</IdValue>
 			</Id>

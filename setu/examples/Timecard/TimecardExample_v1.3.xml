@@ -29,7 +29,7 @@
 	<ReportedTime status="">
 		<PeriodStartDate>2013-10-24</PeriodStartDate>
 		<PeriodEndDate>2013-10-31</PeriodEndDate>
-		<TimeInterval type="regular" dayAssignment="2013-10-26" billable="true">
+		<TimeInterval type="Regular" dayAssignment="2013-10-26" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-1</IdValue>
 			</Id>
@@ -39,7 +39,7 @@
 			<RateOrAmount currency="EUR" type="hourly" multiplier="100" toBeBilled="true" toBePaid="true">30</RateOrAmount>
 			<Comment>Comment for this time interval</Comment>
 		</TimeInterval>
-		<TimeInterval type="overtime" billable="true">
+		<TimeInterval type="Overtime" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-2</IdValue>
 			</Id>
@@ -48,7 +48,7 @@
 			<Duration>2.00</Duration>
 			<RateOrAmount currency="EUR" type="hourly" multiplier="150">30</RateOrAmount>
 		</TimeInterval>
-		<TimeInterval type="shift" billable="true">
+		<TimeInterval type="Shift" billable="true">
 			<Id idOwner="StaffingCustomer">
 				<IdValue>TC00123456-3</IdValue>
 			</Id>
