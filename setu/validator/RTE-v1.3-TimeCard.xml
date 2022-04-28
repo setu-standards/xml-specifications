@@ -4,6 +4,30 @@
 	<sch:ns prefix="setu" uri="http://ns.hr-xml.org/2007-04-15"/>
 	<sch:ns prefix="xsd" uri="http://www.w3.org/2001/XMLSchema"/>
 
+	<!-- Lijst met waarden voor rule urenbriefje RateOrAmount.1 -->
+    <sch:let name="RateOrAmount" value="',hourly,hourlysplit,4weekly,monthly,weekly,hourlyconsolidated,'"/>
+
+    <!-- Lijst met waarden voor rule urenbriefje nl.setu.2007.businessrules.timecard.businessrule.ActionCode.1 -->
+    <sch:let name="ActionCode" value="',Add,Change,Void,Unchanged,'"/>
+
+    <!-- Lijst met waarden voor rules urenbriefje 
+        nl.setu.2007.businessrules.timecard.businessrule.StaffingSupplierId.2
+        nl.setu.2007.businessrules.timecard.businessrule.StaffingCustomerId.2
+        nl.setu.2007.businessrules.timecard.businessrule.StaffingSupplierOrgUnitId.2
+        nl.setu.2007.businessrules.timecard.businessrule.StaffingCustomerOrgUnitId.2-->
+    <sch:let name="IdOwner" value="',StaffingCustomer,StaffingCompany,KvK,OIN,BTW,Fi,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.invoice.businessrule.TimeInterval.1
+    -->
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+
+    <!-- Lijst met waarden voor rules:
+        nl.setu.2022.businessrules.invoice.businessrule.Allowance.1
+    -->
+    <sch:let name="SETU_CL_ExpenseAllowanceTypes" value="',100,100B,100O,101,101B,101O,102,102B,102O,103,103B,103O,104,104B,104O,105,105B,105O,106,106B,106O,107,107B,107O,201,201B,201O,202,202B,202O,203,203B,203O,300,300B,300O,301,301B,301O,302,302B,302O,303,303B,303O,304,304B,304O,400,400B,400O,501,501B,501O,502,502B,502O,503,503B,503O,600,600B,600O,601,601B,601O,602,602B,602O,603,603B,603O,604,604B,604O,701,701B,701O,702,702B,702O,703,703B,703O,801,801B,801O,802,802B,802O,803,803B,803O,900,900B,900O,901,901B,901O,903,903B,903O,904,904B,904O,905,905B,905O,906,906B,906O,907,907B,907O,908,908B,908O,909,909B,909O,910,910B,910O,911,911B,911O,912,912B,912O,913,913B,913O,914,914B,914O,'"/>
+
+
 	<sch:pattern id="nl.setu.2007.businessrules.timecard.businessrule.Id.1">
 		<sch:title>Controleren of het Id element aanwezig is, en het attribuut idOwner en het element IdValue bevat.</sch:title>
 		<sch:p>In de context wordt het TimeCard element geselecteerd waarvan Id een kind is.
@@ -37,8 +61,7 @@
     <sch:p>In de context wordt het element Person geselecteerd waarvan Id een subelement is.
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedResource/setu:Person/setu:Id">
-      <sch:assert test="(count(@idOwner)=1) and 
-						((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany')) "
+      <sch:assert test="(count(@idOwner)=1) and ((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany'))"
             flag="error"
             diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Person.2">
       </sch:assert>
@@ -114,9 +137,8 @@
 			In de test wordt vervolgens aan de hand van een lijst gecontroleerd of de waarde van het actionCode attribuut overeenkomt met een van de 
 			vastgestelde waardes voor dat attribuut. Deze lijst is opgenomen in een los document.</sch:p>
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval">
-			<sch:assert test=" if(count(@actionCode) = 1)
-								then (document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']/*[ lower-case(.) = lower-case(current()/@actionCode) ])
-								else 'true'" 
+
+			<sch:assert test="((count(@actionCode) = 1) and contains($ActionCode, concat(',', @actionCode, ','))) or not(count(@actionCode) = 1)" 
 					flag="error" 
 					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1">
 			</sch:assert>
@@ -231,7 +253,7 @@
 			Vervolgens wordt er aan de hand van een vastgestelde lijst gecontroleerd of het attribuut
 			een geldige waarde heeft. Deze lijst is opgenomen in een los document.</sch:p>			
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval/setu:RateOrAmount">
-			<sch:assert test="document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.RateOrAmount']/*[ lower-case(.) = lower-case(current()/@type) ]" 
+			<sch:assert test="contains($RateOrAmount, concat(',', @type, ','))" 
 					flag="error" 
 					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1">
 			</sch:assert>
@@ -256,9 +278,7 @@
 			In de test wordt vervolgens aan de hand van een lijst gecontroleerd of de waarde van het actionCode attribuut overeenkomt met een van de 
 			vastgestelde waardes voor dat attribuut. Deze lijst is opgenomen in een los document.</sch:p>
 		<sch:rule context="//setu:Allowance">
-			<sch:assert test=" if (count(@actionCode)=1)
-								then (document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']/*[ lower-case(.) = lower-case(current()/@actionCode) ])
-								else 'true'" 
+			<sch:assert test="((count(@actionCode) = 1) and contains($ActionCode, concat(',', @actionCode, ','))) or not(count(@actionCode) = 1)" 
 					flag="error" 
 					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2">
 			</sch:assert>
@@ -362,8 +382,7 @@
     <sch:p>In de context wordt het element ReferenceInformation geselecteerd waarvan StaffingSupplierId een subelement is.
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierId">
-      <sch:assert test="(count(@idOwner)=1) and 
-						(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*[ lower-case(.) = lower-case(current()/@idOwner) ]) "
+      <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
             flag="error"
             diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2">
       </sch:assert>
@@ -399,8 +418,7 @@
     <sch:p>In de context wordt het element ReferenceInformation geselecteerd waarvan StaffingCustomerId een subelement is.
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerId">
-      <sch:assert test="(count(@idOwner)=1) and 
-						(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*[ lower-case(.) = lower-case(current()/@idOwner) ]) "
+      <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
             flag="error"
             diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2">
       </sch:assert>
@@ -461,8 +479,7 @@
     <sch:p>In de context wordt het element ReferenceInformation geselecteerd waarvan StaffingSupplierOrgUnitId een subelement is.
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId">
-      <sch:assert test="(count(@idOwner)=1) and 
-						(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*[ lower-case(.) = lower-case(current()/@idOwner) ]) "
+      <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
             flag="error"
             diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2">
       </sch:assert>
@@ -498,8 +515,7 @@
     <sch:p>In de context wordt het element ReferenceInformation geselecteerd waarvan StaffingCustomerOrgUnitId een subelement is.
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId">
-      <sch:assert test="(count(@idOwner)=1) and 
-						(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*[ lower-case(.) = lower-case(current()/@idOwner) ]) "
+      <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
             flag="error"
             diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2">
       </sch:assert>
@@ -603,13 +619,13 @@
 			
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1" xml:lang="en">
 			The attribute actionCode of TimeInterval must contain one of the following values:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$ActionCode"/>
 			
 			Currently '<sch:value-of select="@actionCode"/>' is provided.
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1" xml:lang="nl">
 			Voor het attribuut actionCode van TimeInterval moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$ActionCode"/>
 			
 			Momenteel is '<sch:value-of select="@actionCode"/>' opgegeven.
 		</sch:diagnostic>
@@ -670,13 +686,13 @@
 		
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1" xml:lang="en">
 			The attribute type of the element RateOrAmount must contain one of the following values:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.RateOrAmount']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$RateOrAmount"/>
 			
 			Currently '<sch:value-of select="@type"/>' is provided.
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1" xml:lang="nl">
 			Voor het attribuut type van het element RateOrAmount moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.RateOrAmount']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$RateOrAmount"/>
 			
 			Momenteel is '<sch:value-of select="@type"/>' opgegeven.
 		</sch:diagnostic>
@@ -690,13 +706,13 @@
 	
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2" xml:lang="en">
 			The attribute actionCode of Allowance must contain one of the following values:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$ActionCode"/>
 			
 			Currently '<sch:value-of select="@actionCode"/>' is provided.
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2" xml:lang="nl">
 			Voor het attribuut actionCode van Allowance moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.ActionCode']//dt, '&#xA; &#x9; * ')"/>
+			* <sch:value-of select="$ActionCode"/>
 			
 			Momenteel is '<sch:value-of select="@actionCode"/>' opgegeven.
 		</sch:diagnostic>
@@ -754,14 +770,14 @@
 		
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2" xml:lang="en">
 		 The attribute idOwner of the element StaffingSupplierId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		  * <sch:value-of select="$IdOwner"/>
 		  
 		  Currently '<sch:value-of select="@idOwner"/>' is used.
 		 
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2" xml:lang="nl">
 		 Het attribuut idOwner van het element StaffingSupplierId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		 * <sch:value-of select="$IdOwner"/>
 		  
 		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
 		 
@@ -783,14 +799,14 @@
 		
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2" xml:lang="en">
 		 The attribute idOwner of the element StaffingCustomerId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		  * <sch:value-of select="$IdOwner"/>
 		  
 		  Currently '<sch:value-of select="@idOwner"/>' is used.
 		 
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2" xml:lang="nl">
 		 Het attribuut idOwner van het element StaffingCustomerId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		 * <sch:value-of select="$IdOwner"/>
 		  
 		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
 		 
@@ -828,14 +844,14 @@
 		
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2" xml:lang="en">
 		 The attribute idOwner of the element StaffingSupplierOrgUnitId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		  * <sch:value-of select="$IdOwner"/>
 		  
 		  Currently '<sch:value-of select="@idOwner"/>' is used.
 		 
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2" xml:lang="nl">
 		 Het attribuut idOwner van het element StaffingSupplierOrgUnitId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		 * <sch:value-of select="$IdOwner"/>
 		  
 		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
 		 
@@ -857,14 +873,14 @@
 		
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2" xml:lang="en">
 		 The attribute idOwner of the element StaffingCustomerOrgUnitId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		  * <sch:value-of select="$IdOwner"/>
 		  
 		  Currently '<sch:value-of select="@idOwner"/>' is used.
 		 
 		</sch:diagnostic>
 		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2" xml:lang="nl">
 		 Het attribuut idOwner van het element StaffingCustomerOrgUnitId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="string-join(document('lists_business_rules_timecard.xml')/dl/di[@id='nl.setu.2007.businessrules.timecard.list.IdOwner']/*, '&#xA; &#x9; * ')"/>
+		 * <sch:value-of select="$IdOwner"/>
 		  
 		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
 		 
