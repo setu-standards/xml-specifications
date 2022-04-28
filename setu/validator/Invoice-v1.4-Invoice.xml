@@ -557,7 +557,7 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.PerQuantity.1" context="//setu:Line/setu:Price/setu:PerQuantity" flag="error">
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.PerQuantity.1" fpi="Controleren of uom attribuut de goede waarde bevat." context="//setu:Line/setu:Price/setu:PerQuantity" flag="error">
             <sch:assert test="(contains($SETU_CL_HourTypes, concat(',', @uom, ','))) or (normalize-space(@uom) = 'C62')">
             Value '
             <sch:value-of select="@uom"/>
@@ -566,7 +566,7 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.ItemQuantity.1" context="//setu:Line/setu:ItemQuantity" flag="error">
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.ItemQuantity.1" fpi="Controleren of uom attribuut de goede waarde bevat." context="//setu:Line/setu:ItemQuantity" flag="error">
             <sch:assert test="(contains($SETU_CL_HourTypes, concat(',', @uom, ','))) or (normalize-space(@uom) = 'C62')">
             Value '
             <sch:value-of select="@uom"/>
