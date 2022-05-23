@@ -37,8 +37,7 @@
 			<sch:assert test="(count(setu:Id) = 1) and (normalize-space(setu:Id) != '') and
 								(count(setu:Id/@idOwner) = 1) and (normalize-space(setu:Id/@idOwner) != '') and
 								(count(setu:Id/setu:IdValue) = 1) and (normalize-space(setu:Id/setu:IdValue) != '')"
-					flag="error"
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Id.1">
+					flag="error">A timecard should have exactly one Id element, with exactly one idOwner attribuut and one IdValue element.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -50,8 +49,7 @@
 			Anders wordt een foutmelding gegeven.</sch:p>	
 		<sch:rule context="/setu:TimeCard/setu:Id">
 			<sch:assert test="normalize-space(@idOwner) = 'StaffingCustomer'"
-					flag="error"
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Id.2">
+					flag="error">The idOwner attribute of Id should have the value 'StaffingCustomer'.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -62,8 +60,8 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedResource/setu:Person/setu:Id">
       <sch:assert test="(count(@idOwner)=1) and ((normalize-space(@idOwner) = 'StaffingCustomer') or (normalize-space(@idOwner) = 'StaffingCompany'))"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Person.2">
+            flag="error">The Person/Id element should have exactly one idOwner attribute, with the value 'StaffingCustomer' or 'StaffingCompany'.
+			Currently '<sch:value-of select="@idOwner"/>' is provided.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -74,8 +72,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedResource/setu:Person/setu:Id">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Person.3">
+            flag="error">The Person/Id element should contain exactly one IdValue element. 
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -87,8 +84,7 @@
 			Anders wordt een foutmelding gegeven.</sch:p>			
 		<sch:rule context="/setu:TimeCard">
 			<sch:assert test="count(setu:ReportedTime) = 1"
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.1">
+					flag="error">The ReportedTime element must exist exactly once.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -100,8 +96,7 @@
 			Anders wordt een foutmelding gegeven.</sch:p>			
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime">
 			<sch:assert test="(normalize-space(@status) = 'rejected') or (normalize-space(@status) = 'corrected') or (normalize-space(@status) = '')"
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.2">
+					flag="error">The status of a ReportedTime element must be empty or contain 'rejected'.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -123,8 +118,7 @@
 										+ (seconds-from-duration(xsd:dateTime(setu:PeriodEndDate) - xsd:dateTime(setu:PeriodStartDate)) div 3600)
 										) &gt; 0)
 								else 'true'" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.PeriodEndDate.1">
+					flag="error">The PeriodEndDate must be larger than or equal to the PeriodStartDate.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -139,8 +133,10 @@
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval">
 
 			<sch:assert test="((count(@actionCode) = 1) and contains($ActionCode, concat(',', @actionCode, ','))) or not(count(@actionCode) = 1)" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1">
+					flag="error">The attribute actionCode of TimeInterval must contain one of the following values:
+			* <sch:value-of select="$ActionCode"/>
+			
+			Currently '<sch:value-of select="@actionCode"/>' is provided.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -151,8 +147,7 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval/setu:Id">
       <sch:assert test="(count(@idOwner)=1) and (normalize-space(@idOwner) != '') "
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.1">
+            flag="error">The TimeInterval/Id element should have exactly one idOwner attribute.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -163,63 +158,10 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue maximaal 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval/setu:Id">
       <sch:assert test="count(setu:IdValue) &lt;= 1"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.2">
+            flag="error">The TimeInterval/Id element may have at most one IdValue element.
       </sch:assert>
     </sch:rule>
-	</sch:pattern> 
-
-	<!--
-	<sch:pattern id="nl.setu.2007.businessrules.timecard.businessrule.EndDateTime.1">
-		<sch:title>Controleren of het opgegeven aantal gewerkte uren past binnen het start- en eindtijdstip.</sch:title>
-		<sch:p>In de context wordt het element geselecteerd waarin de start- en eindtijd en de gewerkte uren
-			worden opgeslagen. Vervolgens wordt er gekeken of er een eindtijd en een duration zijn ingevuld,
-			als deze beide zijn ingevuld wordt er gekeken of de duration past binnen de start- en eindtijd.
-			Verder wordt er geen foutmelding gegeven als alleen duration of alleen de eindtijd is ingevuld
-			(de starttijd moet verplicht ingevuld worden). Als de duration niet past binnen de start- en eindtijd
-			wordt er een foutmelding gegeven, waarin tevens wordt aangegeven hoeveel uur er momenteel tussen start-
-			en eindtijd zit.
-			
-			Als een start- of einddatum wel opgegeven is, maar het tijdstip ontbreekt, wordt er geen controle uitgevoerd
-			aangezien het aantal uur dan niet te bepalen is en dus niet met de duration vergeleken kan worden.</sch:p>
-		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval">
-			<sch:assert test="	if(./setu:StartDateTime castable as xsd:dateTime and
-									./setu:EndDateTime castable as xsd:dateTime and 
-									./setu:Duration castable as xsd:float)
-								then(
-									xsd:float(setu:Duration) &lt;= (	(years-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 365 * 24)
-																		+ (days-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 24)
-																		+ (hours-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)))
-																		+ (minutes-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 60)
-																		+ (seconds-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 3600)
-																	)
-								)
-								else 'true'" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.1">
-			</sch:assert>
-		</sch:rule>
 	</sch:pattern>
-	
-	
-	<sch:pattern id="nl.setu.2007.businessrules.timecard.businessrule.EndDateTime.2">
-		<sch:title>Controleren of eindtijdstip van een TimeInterval later is dan het begintijdstip.</sch:title>
-		<sch:p></sch:p>
-		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval">
-			<sch:assert test="	if((count(setu:EndDateTime)=1) and (./setu:StartDateTime castable as xsd:dateTime) and (./setu:EndDateTime castable as xsd:dateTime))
-								then (	((years-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 365 * 24)
-										+ (days-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 24)
-										+ (hours-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)))
-										+ (minutes-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 60)
-										+ (seconds-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 3600)
-										) &gt; 0)
-								else 'true'" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.2">
-			</sch:assert>
-		</sch:rule>
-	</sch:pattern>
-	-->
 	
 	<sch:pattern id="nl.setu.2007.businessrules.timecard.businessrule.EndDateTime.3">
 		<sch:title>Controleren of EndDateTime element exact 1x aanwezig is als Duration afwezig is.</sch:title>
@@ -228,8 +170,7 @@
 			<sch:assert test="	if(count(setu:Duration)=0)
 								then(count(setu:EndDateTime) = 1)
 								else 'true'" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.3">
+					flag="error">For a TimeInterval the EndDateTime element must be present if no Duration element is provided.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -241,8 +182,7 @@
 			<sch:assert test="	if(count(setu:EndDateTime)=0)
 								then(count(setu:Duration) = 1)
 								else 'true'" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.4">
+					flag="error">For a TimeInterval the Duration element must be present if no EndDateTime element is provided.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -254,8 +194,10 @@
 			een geldige waarde heeft. Deze lijst is opgenomen in een los document.</sch:p>			
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval/setu:RateOrAmount">
 			<sch:assert test="contains($RateOrAmount, concat(',', @type, ','))" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1">
+					flag="error">The attribute type of the element RateOrAmount must contain one of the following values:
+			* <sch:value-of select="$RateOrAmount"/>
+			
+			Currently '<sch:value-of select="@type"/>' is provided.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>	
@@ -266,8 +208,7 @@
 			Vervolgens wordt er gecontroleerd of het attribuut aanezig is en een geldige waarde heeft, namelijk groter of gelijk aan 100.</sch:p>			
 		<sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:TimeInterval/setu:RateOrAmount">
 			<sch:assert test="(count(@multiplier)=1) and ((@multiplier) &gt;= 100)" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.2">
+					flag="error">The attribute multiplier of the element RateOrAmount must be present exactly once and contain a value greater of equal to 100.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>	
@@ -279,8 +220,10 @@
 			vastgestelde waardes voor dat attribuut. Deze lijst is opgenomen in een los document.</sch:p>
 		<sch:rule context="//setu:Allowance">
 			<sch:assert test="((count(@actionCode) = 1) and contains($ActionCode, concat(',', @actionCode, ','))) or not(count(@actionCode) = 1)" 
-					flag="error" 
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2">
+					flag="error">The attribute actionCode of Allowance must contain one of the following values:
+			* <sch:value-of select="$ActionCode"/>
+			
+			Currently '<sch:value-of select="@actionCode"/>' is provided.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -291,8 +234,7 @@
       Vervolgens wordt er vastgesteld of het attribuut idOwner exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:Allowance/setu:Id">
       <sch:assert test="(count(@idOwner)=1) and (normalize-space(@idOwner)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.1">
+            flag="error">The Allowance/Id element should have exactly one idOwner attribute.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -303,8 +245,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:Allowance/setu:Id">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.2">
+            flag="error">The Allowance/Id element should have exactly one IdValue element.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -315,8 +256,8 @@
       Vervolgens wordt er vastgesteld of het attribuut name van het subelement IdValue de waarde 'expense' of 'allowance' bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:ReportedTime/setu:Allowance/setu:Id/setu:IdValue">
       <sch:assert test="(count(@name)=1) and ((normalize-space(@name)='expense') or (normalize-space(@name)='allowance'))"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.3">
+            flag="error">The name attribute of the Allowance/Id/IdValue element should exist exactly once and must have the value 'expense' or 'allowance'.
+			Currently '<sch:value-of select="@name"/>' is provided.
       </sch:assert>
     </sch:rule>
 	</sch:pattern>
@@ -326,8 +267,7 @@
 		<sch:p></sch:p>
 		<sch:rule context="//Allowance">
 			<sch:assert test="(count(setu:Amount) = 1) and (normalize-space(setu:Amount) != '')"
-					flag="error"
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Amount.1">
+					flag="error">An Allowance must contain exactly one Amount element.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -346,8 +286,7 @@
 						(count(setu:ExternalOrderNumber)=0) and
 						(count(setu:ExternalReqNumber)=0) and (count(setu:Entity)=0) and	
 						(count(setu:SubEntity)=0) and (count(setu:Shift)=0)" 
-					flag="error"
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.1">
+					flag="error">The element CustomerReportingRequirements contains (a) subelement(s) that is/are not allowed.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -359,8 +298,7 @@
 			Is dit niet het geval dan wordt er een foutmelding gegeven.</sch:p>
 		<sch:rule context="/setu:Timecard/setu:ReportedTime/setu:TimeInterval/setu:AdditionalData/setu:StaffingAdditionalData/setu:CustomerReportingRequirements//setu:AdditionalRequirement">
 			<sch:assert test="count(@requirementTitle)=1 and normalize-space(@requirementTitle)!=''"
-					flag="error"
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.2">
+					flag="error">For each AdditionalRequirement the attribute requirementTitle must exist exactly once and may not be empty.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
@@ -371,8 +309,7 @@
 		Vervolgens wordt er vastgesteld of voor elk StaffingSupplierId element het attribuut idOwner een unieke waarde bevat.</sch:p>
     <sch:rule context="//setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierId">
       <sch:assert test="count(setu:StaffingSupplierId) = count(setu:StaffingSupplierId[not(@idOwner = preceding-sibling::setu:StaffingSupplierId/@idOwner)])"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.1">
+            flag="error">The idOwner attributes of the StaffingSupplierId elements are not unique.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -383,8 +320,10 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierId">
       <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2">
+            flag="error">The attribute idOwner of the element StaffingSupplierId must exist exactly once and should have a valid value:
+		  * <sch:value-of select="$IdOwner"/>
+		  
+		  Currently '<sch:value-of select="@idOwner"/>' is used.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -395,8 +334,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierId">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.3">
+            flag="error">The subelement IdValue of the element StaffingSupplierId must exist exactly once.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -407,8 +345,7 @@
 		Vervolgens wordt er vastgesteld of voor elk StaffingCustomerId element het attribuut idOwner een unieke waarde bevat.</sch:p>
     <sch:rule context="//setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerId">
       <sch:assert test="count(setu:StaffingCustomerId) = count(setu:StaffingCustomerId[not(@idOwner = preceding-sibling::setu:StaffingCustomerId/@idOwner)])"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.1">
+            flag="error">The idOwner attributes of the StaffingCustomerId elements are not unique.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -419,8 +356,10 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerId">
       <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2">
+            flag="error">The attribute idOwner of the element StaffingCustomerId must exist exactly once and should have a valid value:
+		  * <sch:value-of select="$IdOwner"/>
+		  
+		  Currently '<sch:value-of select="@idOwner"/>' is used.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -431,8 +370,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerId">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.3">
+            flag="error">The subelement IdValue of the element StaffingCustomerId must exist exactly once.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -444,8 +382,8 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en de juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation/setu:AssignmentId">
       <sch:assert test="(count(@idOwner)=1) and (normalize-space(@idOwner) = 'StaffingCompany')"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.1">
+            flag="error">The attribute idOwner of the element AssignmentId must exist exactly once and should have the valid value 'StaffingCompany'.
+		 Currently '<sch:value-of select="@idOwner"/>' is used.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -456,8 +394,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation/setu:AssignmentId">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.2">
+            flag="error">The subelement IdValue of the element AssignmentId must exist exactly once.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -468,8 +405,7 @@
 		Vervolgens wordt er vastgesteld of voor elk StaffingSupplierOrgUnitId element het attribuut idOwner een unieke waarde bevat.</sch:p>
     <sch:rule context="//setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId">
       <sch:assert test="count(setu:StaffingSupplierOrgUnitId) = count(setu:StaffingSupplierOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingSupplierOrgUnitId/@idOwner)])"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.1">
+            flag="error">The idOwner attributes of the StaffingSupplierOrgUnitId elements are not unique.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -480,8 +416,10 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId">
       <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2">
+            flag="error">The attribute idOwner of the element StaffingSupplierOrgUnitId must exist exactly once and should have a valid value:
+		  * <sch:value-of select="$IdOwner"/>
+		  
+		  Currently '<sch:value-of select="@idOwner"/>' is used.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -492,8 +430,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingSupplierOrgUnitId">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.3">
+            flag="error">The subelement IdValue of the element StaffingSupplierOrgUnitId must exist exactly once.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -504,8 +441,7 @@
 		Vervolgens wordt er vastgesteld of voor elk StaffingCustomerOrgUnitId element het attribuut idOwner een unieke waarde bevat.</sch:p>
     <sch:rule context="//setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId">
       <sch:assert test="count(setu:StaffingCustomerOrgUnitId) = count(setu:StaffingCustomerOrgUnitId[not(@idOwner = preceding-sibling::setu:StaffingCustomerOrgUnitId/@idOwner)])"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.1">
+            flag="error">The idOwner attributes of the StaffingCustomerOrgUnitId elements are not unique. 
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -516,8 +452,10 @@
 	Vervolgens wordt gecontroleerd of het attribuut idOwner exact 1x aanwezig is en een juiste waarde bevat.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId">
       <sch:assert test="(count(@idOwner)=1) and contains($IdOwner, concat(',', @idOwner, ','))"
-            flag="error"
-            diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2">
+            flag="error">The attribute idOwner of the element StaffingCustomerOrgUnitId must exist exactly once and should have a valid value:
+		  * <sch:value-of select="$IdOwner"/>
+		  
+		  Currently '<sch:value-of select="@idOwner"/>' is used.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -528,8 +466,7 @@
       Vervolgens wordt er vastgesteld of het subelement IdValue exact 1x voorkomt.</sch:p>
     <sch:rule context="/setu:TimeCard/setu:AddtionalData/setu:StaffingAdditionalData/setu:ReferenceInformation//setu:StaffingCustomerOrgUnitId">
       <sch:assert test="(count(setu:IdValue)=1) and (normalize-space(setu:IdValue)!='')"
-            flag="error"
-			diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.3">
+            flag="error">The subelement IdValue of the element StaffingCustomerOrgUnitId must exist exactly once.
       </sch:assert>
     </sch:rule>
 	</sch:pattern> 
@@ -540,365 +477,8 @@
 			is ingevuld wordt hierover een foutmelding gegeven.</sch:p>
 		<sch:rule context="//setu:Duration">
 			<sch:assert test=". &gt;= 0" 
-					flag="error"  
-					diagnostics="nl.setu.2007.businessrules.timecard.diagnostic.Duration.1">
+					flag="error">A negative Duration is provided: '<sch:value-of select="current()"/>', for corrections use the correction message instead of negative hours.
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
-	
-	
-
-	<!-- 
-		A number of XSLT operations are required when elements from external lists are referred to:
-			1. document(): select the elements from a list (this returns a list of strings, seperated by \n and \t characters)
-			2. tokenize(): split the returned elements into a sequence
-			3. string-join(): join the sequence-elements to one string (implode)
-			4. substring(): remove the first comma from the resulting string by starting at character position 2
-			5. normalize-space(): normalize the resulting string to remove spaces and other whitespaces such as tabs 
-	-->
-	<sch:diagnostics>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Id.1" xml:lang="en">
-			A timecard should have exactly one Id element, with exactly one idOwner attribuut and one IdValue element.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Id.1" xml:lang="nl">
-			Een timecard moet exact 1 Id element bevatten, met daaronder exact 1 idOwner attribuut en 1 IdValue element.
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Id.2" xml:lang="en">
-			The idOwner attribute of Id should have the value 'StaffingCustomer'.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Id.2" xml:lang="nl">
-			Het idOwner attribuut van Id moet de volgende waarde bevatten: 'StaffingCustomer'.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Person.2" xml:lang="en">
-			The Person/Id element should have exactly one idOwner attribute, with the value 'StaffingCustomer' or 'StaffingCompany'.
-			Currently '<sch:value-of select="@idOwner"/>' is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Person.2" xml:lang="nl">
-			Het Person/Id element moet exact 1 idOwner attribuut bevatten met de waarde 'StaffingCustomer' of 'StaffingCompany'.
-			Momenteel is '<sch:value-of select="@idOwner"/>' opgegeven.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Person.3" xml:lang="en">
-			The Person/Id element should contain exactly one IdValue element. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Person.3" xml:lang="nl">
-			Het Person/Id element moet exact 1 IdValue element bevatten.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.1" xml:lang="en">
-			The ReportedTime element must exist exactly once. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.1" xml:lang="nl">
-			Het ReportedTime element moet exact 1x aanwezig zijn. 
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.2" xml:lang="en">
-			The status of a ReportedTime element must be empty or contain 'rejected'. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.2" xml:lang="nl">
-			De status van een ReportedTime element moet leeg zijn of 'rejected' bevatten. 
-		</sch:diagnostic>
-		
-		<!--
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.PeriodEndDate.1" xml:lang="en">
-			The PeriodEndDate must be larger than or equal to the PeriodStartDate. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.PeriodEndDate.1" xml:lang="nl">
-			De PeriodEndDate moet later of gelijk zijn aan de PeriodStartDate. 
-		</sch:diagnostic>
-		-->
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.3" xml:lang="en">
-			The ReportedTime element must contain at least one TimeInterval element or one Allowance element. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ReportedTime.3" xml:lang="nl">
-			Het ReportedTime element moet ten minste 1 TimeInterval element of 1 Allowance element bevatten. 
-		</sch:diagnostic>
-			
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1" xml:lang="en">
-			The attribute actionCode of TimeInterval must contain one of the following values:
-			* <sch:value-of select="$ActionCode"/>
-			
-			Currently '<sch:value-of select="@actionCode"/>' is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.1" xml:lang="nl">
-			Voor het attribuut actionCode van TimeInterval moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="$ActionCode"/>
-			
-			Momenteel is '<sch:value-of select="@actionCode"/>' opgegeven.
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.1" xml:lang="en">
-			The TimeInterval/Id element should have exactly one idOwner attribute.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.1" xml:lang="nl">
-			Het TimeInterval/Id element moet exact 1 idOwner attribuut bevatten.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.2" xml:lang="en">
-			The TimeInterval/Id element may have at most one IdValue element.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.TimeInterval.2" xml:lang="nl">
-			Het TimeInterval/Id element mag hoogstens 1 IdValue element bevatten.
-		</sch:diagnostic>
-		
-		<!--		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.1" xml:lang="en">
-			The number of worked hours (Duration) must be smaller or equal than EndDateTime minus StartDateTime.
-			The provided number of worked hours (<sch:value-of select="(setu:Duration)"/>), does not match the duration between start- and endtime (<sch:value-of select="(setu:StartDateTime)"/> and <sch:value-of select="(setu:EndDateTime)"/> repectively, which equals <sch:value-of select="(years-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 365 * 24)
-															+ (days-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 24)
-															+ (hours-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)))
-															+ (minutes-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 60)
-															+ (seconds-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 3600)"/> hours).
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.1" xml:lang="nl">
-			Het aantal gewerkte uren (Duration) moet kleiner dan, of gelijk zijn aan de eindtijd minus de starttijd. 
-			Het opgegeven aantal gewerkte uren (<sch:value-of select="(setu:Duration)"/>), past momenteel niet tussen het start- en eindtijdstip (<sch:value-of select="(setu:StartDateTime)"/> en <sch:value-of select="(setu:EndDateTime)"/> repectievelijk, wat neerkomt op <sch:value-of select="(years-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 365 * 24)
-															+ (days-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) * 24)
-															+ (hours-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)))
-															+ (minutes-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 60)
-															+ (seconds-from-duration(xsd:dateTime(setu:EndDateTime) - xsd:dateTime(setu:StartDateTime)) div 3600)"/> uur).
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.2" xml:lang="en">
-			For a TimeInterval the EndDateTime cannot be earlier than the StartDateTime.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.2" xml:lang="nl">
-			Voor een TimeInterval kan de eindtijd niet eerder zijn dan de starttijd. 
-		</sch:diagnostic>
-		-->
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.3" xml:lang="en">
-			For a TimeInterval the EndDateTime element must be present if no Duration element is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.3" xml:lang="nl">
-			Voor een TimeInterval moet de eindtijd (EndDateTime) aanwezig zijn als het aantal gewerkte uren (Duration) niet is opgegeven. 
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.4" xml:lang="en">
-			For a TimeInterval the Duration element must be present if no EndDateTime element is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.EndDateTime.4" xml:lang="nl">
-			Voor een TimeInterval moet het aantal gewerkte uren (Duration) aanwezig zijn als de eindtijd (EndDateTime) niet is opgegeven. 
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1" xml:lang="en">
-			The attribute type of the element RateOrAmount must contain one of the following values:
-			* <sch:value-of select="$RateOrAmount"/>
-			
-			Currently '<sch:value-of select="@type"/>' is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.1" xml:lang="nl">
-			Voor het attribuut type van het element RateOrAmount moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="$RateOrAmount"/>
-			
-			Momenteel is '<sch:value-of select="@type"/>' opgegeven.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.2" xml:lang="en">
-			The attribute multiplier of the element RateOrAmount must be present exactly once and contain a value greater of equal to 100.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.RateOrAmount.2" xml:lang="nl">
-			Het attribuut multiplier van het element RateOrAmount moet exact 1x aanwezig zijn en een waarde bevatten groter of gelijk aan 100.
-		</sch:diagnostic>
-	
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2" xml:lang="en">
-			The attribute actionCode of Allowance must contain one of the following values:
-			* <sch:value-of select="$ActionCode"/>
-			
-			Currently '<sch:value-of select="@actionCode"/>' is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.ActionCode.2" xml:lang="nl">
-			Voor het attribuut actionCode van Allowance moet gekozen worden uit een van de volgende waarden:
-			* <sch:value-of select="$ActionCode"/>
-			
-			Momenteel is '<sch:value-of select="@actionCode"/>' opgegeven.
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.1" xml:lang="en">
-			The Allowance/Id element should have exactly one idOwner attribute.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.1" xml:lang="nl">
-			Het Allowance/Id element moet exact 1 idOwner attribuut bevatten.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.2" xml:lang="en">
-			The Allowance/Id element should have exactly one IdValue element.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.2" xml:lang="nl">
-			Het Allowance/Id element moet exact 1 IdValue element bevatten.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.3" xml:lang="en">
-			The name attribute of the Allowance/Id/IdValue element should exist exactly once and must have the value 'expense' or 'allowance'.
-			Currently '<sch:value-of select="@name"/>' is provided.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Allowance.3" xml:lang="nl">
-			Het name attribuut van het Allowance/Id/IdValue element moet exact 1x aanwezig zijn en moet de waarde 'expense' of 'allowance' bevatten.
-			Momenteel is '<sch:value-of select="@name"/>' opgegeven.
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Amount.1" xml:lang="en">
-			An Allowance must contain exactly one Amount element.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Amount.1" xml:lang="nl">
-			Een Allowance moet exact 1x het element Amount bevatten.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.1" xml:lang="en">
-			The element CustomerReportingRequirements contains (a) subelement(s) that is/are not allowed.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.1" xml:lang="nl">
-			Het element CustomerReportingRequirements bevat (een) subelement(en) welke niet is/zijn toegestaan. 
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.2" xml:lang="en">
-			For each AdditionalRequirement the attribute requirementTitle must exist exactly once and may not be empty .
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.CustomerReportingRequirements.2" xml:lang="nl">
-			Voor elke AdditionalRequirement moet het attribuut requirementTitle exact 1 keer voorkomen en mag niet leeg zijn.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.1" xml:lang="en">
-		 The idOwner attributes of the StaffingSupplierId elements are not unique. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.1" xml:lang="nl">
-		 De idOwner attributen van de StaffingSupplierId elementen zijn niet uniek.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2" xml:lang="en">
-		 The attribute idOwner of the element StaffingSupplierId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="$IdOwner"/>
-		  
-		  Currently '<sch:value-of select="@idOwner"/>' is used.
-		 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.2" xml:lang="nl">
-		 Het attribuut idOwner van het element StaffingSupplierId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="$IdOwner"/>
-		  
-		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
-		 
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.3" xml:lang="en">
-		  The subelement IdValue of the element StaffingSupplierId must exist exactly once.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierId.3" xml:lang="nl">
-		  Het subelement IdValue van het element StaffingSupplierId moet exact 1 keer voorkomen.
-		</sch:diagnostic>
-	
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.1" xml:lang="en">
-		 The idOwner attributes of the StaffingCustomerId elements are not unique. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.1" xml:lang="nl">
-		 De idOwner attributen van de StaffingCustomerId elementen zijn niet uniek.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2" xml:lang="en">
-		 The attribute idOwner of the element StaffingCustomerId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="$IdOwner"/>
-		  
-		  Currently '<sch:value-of select="@idOwner"/>' is used.
-		 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.2" xml:lang="nl">
-		 Het attribuut idOwner van het element StaffingCustomerId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="$IdOwner"/>
-		  
-		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
-		 
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.3" xml:lang="en">
-		  The subelement IdValue of the element StaffingCustomerId must exist exactly once.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerId.3" xml:lang="nl">
-		  Het subelement IdValue van het element StaffingCustomerId moet exact 1 keer voorkomen.
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.1" xml:lang="en">
-		 The attribute idOwner of the element AssignmentId must exist exactly once and should have the valid value 'StaffingCompany'.
-		 Currently '<sch:value-of select="@idOwner"/>' is used.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.1" xml:lang="nl">
-		 Het attribuut idOwner van het element AssignmentId moet exact 1 keer voorkomen en moet de geldige waarde 'StaffingCompany' bevatten.
-		 Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.2" xml:lang="en">
-		  The subelement IdValue of the element AssignmentId must exist exactly once.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.AssignmentId.2" xml:lang="nl">
-		  Het subelement IdValue van het element AssignmentId moet exact 1 keer voorkomen.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.1" xml:lang="en">
-		 The idOwner attributes of the StaffingSupplierOrgUnitId elements are not unique. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.1" xml:lang="nl">
-		 De idOwner attributen van de StaffingSupplierOrgUnitId elementen zijn niet uniek.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2" xml:lang="en">
-		 The attribute idOwner of the element StaffingSupplierOrgUnitId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="$IdOwner"/>
-		  
-		  Currently '<sch:value-of select="@idOwner"/>' is used.
-		 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.2" xml:lang="nl">
-		 Het attribuut idOwner van het element StaffingSupplierOrgUnitId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="$IdOwner"/>
-		  
-		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
-		 
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.3" xml:lang="en">
-		  The subelement IdValue of the element StaffingSupplierOrgUnitId must exist exactly once.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingSupplierOrgUnitId.3" xml:lang="nl">
-		  Het subelement IdValue van het element StaffingSupplierOrgUnitId moet exact 1 keer voorkomen.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.1" xml:lang="en">
-		 The idOwner attributes of the StaffingCustomerOrgUnitId elements are not unique. 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.1" xml:lang="nl">
-		 De idOwner attributen van de StaffingCustomerOrgUnitId elementen zijn niet uniek.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2" xml:lang="en">
-		 The attribute idOwner of the element StaffingCustomerOrgUnitId must exist exactly once and should have a valid value:
-		  * <sch:value-of select="$IdOwner"/>
-		  
-		  Currently '<sch:value-of select="@idOwner"/>' is used.
-		 
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.2" xml:lang="nl">
-		 Het attribuut idOwner van het element StaffingCustomerOrgUnitId moet exact 1 keer voorkomen en moet een geldige waarde bevatten:
-		 * <sch:value-of select="$IdOwner"/>
-		  
-		  Momenteel is '<sch:value-of select="@idOwner"/>' opgegegeven.
-		 
-		</sch:diagnostic>
-
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.3" xml:lang="en">
-		  The subelement IdValue of the element StaffingCustomerOrgUnitId must exist exactly once.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.StaffingCustomerOrgUnitId.3" xml:lang="nl">
-		  Het subelement IdValue van het element StaffingCustomerOrgUnitId moet exact 1 keer voorkomen.
-		</sch:diagnostic>
-		
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Duration.1" xml:lang="en">
-			A negative Duration is provided: '<sch:value-of select="current()"/>', for corrections use the correction message instead of negative hours.
-		</sch:diagnostic>
-		<sch:diagnostic id="nl.setu.2007.businessrules.timecard.diagnostic.Duration.1" xml:lang="nl">
-			Er is een negatieve hoeveelheid uren opgegeven: '<sch:value-of select="current()"/>', gebruik voor correcties het correctiebericht in plaats van negatieve uren.
-		</sch:diagnostic>
-
-	</sch:diagnostics>
 </sch:schema>
