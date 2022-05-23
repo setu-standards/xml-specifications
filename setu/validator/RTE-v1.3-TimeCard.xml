@@ -481,4 +481,24 @@
 			</sch:assert>
 		</sch:rule>
 	</sch:pattern>
+
+	<sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.TimeInterval.1" fpi="Controleren of type attribuut de goede waarde bevat." context="//setu:ReportedTime/setu:TimeInterval" flag="error">
+            <sch:assert test="contains($SETU_CL_HourTypes, concat(',', @type, ','))">
+            Value '
+            <sch:value-of select="@type"/>
+            ' is not part of codelist Hour types.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
+	
+    <sch:pattern>
+        <sch:rule id="nl.setu.2022.businessrules.invoice.businessrule.Allowance.1" fpi="Controleren of type attribuut de goede waarde bevat." context="//setu:ReportedTime/setu:Allowance" flag="error">
+            <sch:assert test="contains($SETU_CL_ExpenseAllowanceTypes, concat(',', @type, ','))">
+            Value '
+            <sch:value-of select="@type"/>
+            ' is not part of codelist Expense and Allowance types.
+            </sch:assert>
+        </sch:rule>
+    </sch:pattern>
 </sch:schema>
