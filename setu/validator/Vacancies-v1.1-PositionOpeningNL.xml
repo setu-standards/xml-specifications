@@ -2,13 +2,19 @@
 <sch:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" 
     xmlns:fn="http://www.w3.org/2005/xpath-functions" 
     xmlns:sch="http://purl.oclc.org/dsdl/schematron" schemaVersion="nl.setu.2007.businessrules.positionopeningnl">
+    
+    <!--
+        ** CHANGELOG 03/06/2022**
+        * Added 'RSIN' as code to codelist SupplierId.1
+    -->
+
     <sch:title>Business rules voor het controleren van een timecard bericht (SETU Standard for Vacancies versie 1.0).</sch:title>
     <sch:ns prefix="setu" uri="http://ns.hr-xml.org/2007-04-15"/>
     <sch:ns prefix="xsd" uri="http://www.w3.org/2001/XMLSchema"/>
     
     <sch:let name="PositionRecordInfo.2" value="',owner,recruiter,distributor,publicist,'"/>
     <sch:let name="PositionRecordInfo.3" value="',x:put,x:edit,x:delete,x:duplicate,x:activate,x:deactivate,x:prolong,'"/>
-    <sch:let name="SupplierId.1" value="',owner,recruiter,distributor,publicist,KVK,OIN,BTW,Fi,'"/>
+    <sch:let name="SupplierId.1" value="',owner,recruiter,distributor,publicist,KVK,OIN,BTW,Fi,RSIN,'"/>
     <sch:let name="SocialMedia.1" value="',facebook,twitter,linkedin,hyves,google+,'"/>
     <sch:let name="RecruiterType.1" value="',direct,intermediary,media-agency,rpo,'"/>
     <sch:let name="PhysicalLocation.2" value="',municipality,x:region,x:province,country,'"/>
