@@ -4,11 +4,16 @@
   xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
   xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" 
   xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
-    <title>SETU Invoice v2.2 validation rules</title>
+    <title>SETU Invoice v2.2.1 validation rules</title>
     <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
     <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
     <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>
     <ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    
+    <!--
+        ** CHANGELOG version 2.2.1 (10/06/2022)**
+        * Removed rule: nl.setu.invoice.businessrule.TaxCategory.1
+    -->
 
     <!-- Business rules that cannot be expressed in schematron; and therefore cannot be checked automatically -->
     <!-- SETU BR12  regarding AdditionalDocumentReference) -->
@@ -163,12 +168,6 @@
     <pattern>
         <rule id="nl.setu.invoice.businessrule.CurrencyID.1" fpi="This value is not allowed in the SETU Invoice" context="//*[@currencyID]" flag="error">
             <assert test="@currencyID = 'EUR'">The attribute currencyID must contain value 'EUR'.</assert>
-        </rule>
-    </pattern>
-    <pattern>
-        <rule id="nl.setu.invoice.businessrule.TaxCategory.1" fpi="This element is not allowed in the SETU Invoice" context="//cac:TaxCategory" flag="error">
-            <assert test="not(cbc:TaxExemptionReasonCode)">TaxCategory should not contain TaxExemptionReasonCode.</assert>
-            <assert test="not(cbc:TaxExemptionReason)">TaxCategory should not contain TaxExemptionReason.</assert>
         </rule>
     </pattern>
     <pattern>
