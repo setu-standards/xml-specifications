@@ -4,7 +4,7 @@
   xmlns:ubl="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
   xmlns:cn="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2" 
   xmlns="http://purl.oclc.org/dsdl/schematron" queryBinding="xslt2">
-    <title>SETU Invoice v2.2.1 validation rules</title>
+    <title>SETU Invoice v2.2.2 validation rules</title>
     <ns prefix="cbc" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"/>
     <ns prefix="cac" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"/>
     <ns prefix="ubl" uri="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"/>
@@ -13,6 +13,9 @@
     <!--
         ** CHANGELOG version 2.2.1 (13/06/2022)**
         * Removed rule: nl.setu.invoice.businessrule.TaxCategory.1
+
+        ** CHANGELOG version 2.2.2 (16/06/2022)**
+        * Removed rule: nl.setu.invoice.businessrule.ChargeIndicator.1
     -->
 
     <!-- Business rules that cannot be expressed in schematron; and therefore cannot be checked automatically -->
@@ -158,11 +161,6 @@
     <pattern>
         <rule id="nl.setu.invoice.businessrule.AllowanceCharge.3" fpi="This element is mandatory in the SETU Invoice" context="ubl:Invoice/cac:AllowanceCharge" flag="error">
             <assert test="cbc:AllowanceChargeReason">AllowanceChargeReason is mandatory.</assert>
-        </rule>
-    </pattern>
-    <pattern>
-        <rule id="nl.setu.invoice.businessrule.ChargeIndicator.1" fpi="This value is not allowed in the SETU Invoice" context="ubl:Invoice/cac:AllowanceCharge/cbc:ChargeIndicator" flag="error">
-            <assert test="(. = 'false')">ChargeIndicator must contain value 'false'.</assert>
         </rule>
     </pattern>
     <pattern>
