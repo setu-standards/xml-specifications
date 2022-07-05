@@ -16,6 +16,9 @@
 
         ** CHANGELOG version 2.2.2 (16/06/2022)**
         * Removed rule: nl.setu.invoice.businessrule.ChargeIndicator.1
+
+        ** CHANGELOG version 2.2.3 (05/07/2022)**
+        * Correction by removing rule: nl.setu.invoice.businessrule.Invoice.4 
     -->
 
     <!-- Business rules that cannot be expressed in schematron; and therefore cannot be checked automatically -->
@@ -50,11 +53,6 @@
             <assert test="cac:TaxTotal">TaxTotal is mandatory.</assert>
         </rule>
     </pattern>
-    <pattern>
-        <rule id="nl.setu.invoice.businessrule.Invoice.4" context="ubl:Invoice/cbc:CustomizationID" flag="warning">
-            <assert test="contains(., 'urn:fdc:setu.nl:invoice:v2.2')">CustomizationID SHOULD contain part that specifies this is a SETU Invoice v2.2 message</assert>
-        </rule>
-    </pattern>    
     <pattern>
         <rule id="nl.setu.invoice.businessrule.DocumentCurrencyCode.1" fpi="This value is not allowed in the SETU Invoice" context="ubl:Invoice/cbc:DocumentCurrencyCode" flag="error">
             <assert test="(. = 'EUR')">DocumentCurrencyCode must contain value 'EUR'.</assert>

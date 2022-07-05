@@ -8,13 +8,16 @@
     <sch:ns prefix="ext" uri="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"/>
 
     <!--
-        ** CHANGELOG version 2.1.1 (16/06/2022)**
+        ** CHANGELOG version 2.1.2 (16/06/2022)**
         * Removed rule: TEMP-SETU-10004
+
+        ** CHANGELOG version 2.1.3 (05/07/2022)**
+        * Corrected rule: TEMP-SETU-10001
     -->
 
     <sch:pattern>
         <sch:rule id="TEMP-SETU-10001" context="ubl:Invoice" flag="warning">
-            <sch:assert test="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0#compliant#urn:fdc:setu.nl:invoice:v2.1'">
+            <sch:assert test="cbc:CustomizationID = 'urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0'">
                 Unexpected value of CustomizationID 
             </sch:assert>
         </sch:rule>

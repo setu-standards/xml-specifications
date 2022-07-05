@@ -5,7 +5,7 @@
     Author(s):  SETU
     Standard:   SETU Standard for Invoicing v2.1
     Date:       2018-09-19
-    Last edit:  2020-11-25
+    Last edit:  2022-07-05
 -->
 <Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2" 
             xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2" 
@@ -16,7 +16,7 @@
             xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 http://docs.oasis-open.org/ubl/os-UBL-2.1/xsd/maindoc/UBL-Invoice-2.1.xsd">
     
     <!-- Elementen voor interpretatie van UBL bericht -->
-    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0#compliant#urn:fdc:setu.nl:invoice:v2.1</cbc:CustomizationID>
+    <cbc:CustomizationID>urn:cen.eu:en16931:2017#compliant#urn:fdc:nen.nl:nlcius:v1.0</cbc:CustomizationID>
     
     <!-- Vanaf hier: kernfactuur elementen -->
     <cbc:ID>28425365</cbc:ID>
@@ -249,6 +249,5 @@
             <cbc:PriceAmount currencyID="EUR">3.50</cbc:PriceAmount>
             <cbc:BaseQuantity unitCode="C62">1</cbc:BaseQuantity>
         </cac:Price>
-    </cac:InvoiceLine>    
-
+    </cac:InvoiceLine>
 </Invoice>
