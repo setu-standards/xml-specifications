@@ -1,0 +1,454 @@
+$id: 'https://ontology.setu.nl/planning#PlanningConstraints'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+title: 'PlanningConstraints_v1.0.yml'
+description: 'Defines the JSON Schema in YAML for the PlanningConstraints message.'
+# Author(s): SETU
+# Standard: SETU Standard for Planning and Scheduling v1.0
+# Date: 2023-06-12
+# Last edit: 2023-06-12
+required:
+  - documentId
+  - supplier
+  - customer
+  - worker
+additionalProperties: false
+properties:
+  documentId:
+    required:
+      - value
+      - schemeAgencyId
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+      schemeAgencyId:
+        type: string
+        const: Supplier
+    type: object
+  actionCode:
+    enum:
+      - DELETE
+      - GET
+      - POST
+      - PUT
+    type: string
+  supplier:
+    additionalProperties: false
+    properties:
+      id:
+        items:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        maxItems: 2
+        type: array
+      legalId:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            enum:
+              - KvK
+              - OIN
+              - RSIN
+            type: string
+        type: object
+      taxId:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            type: string
+            const: BTW
+        type: object
+    type: object
+  customer:
+    additionalProperties: false
+    properties:
+      id:
+        items:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        maxItems: 2
+        type: array
+      legalId:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            enum:
+              - KvK
+              - OIN
+              - RSIN
+            type: string
+        type: object
+      taxId:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            type: string
+            const: BTW
+        type: object
+    type: object
+  worker:
+    required:
+      - workerId
+    additionalProperties: false
+    properties:
+      workerId:
+        items:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        maxItems: 2
+        minItems: 1
+        type: array
+      workAssignments:
+        required:
+          - item
+        additionalProperties: false
+        properties:
+          item:
+            required:
+              - id
+            additionalProperties: false
+            properties:
+              id:
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    type: string
+                    const: Supplier
+                type: object
+            type: object
+        type: object
+    type: object
+  positionProfile:
+    additionalProperties: false
+    properties:
+      positionPeriod:
+        required:
+          - start
+        additionalProperties: false
+        properties:
+          start:
+            type: string
+            format: date
+          end:
+            type: string
+            format: date
+        type: object
+      workingPeriods:
+        required:
+          - item
+        additionalProperties: false
+        properties:
+          item:
+            items:
+              required:
+                - workDuration
+                - baseDuration
+              additionalProperties: false
+              properties:
+                workDuration:
+                  required:
+                    - value
+                    - unitCode
+                  additionalProperties: false
+                  properties:
+                    value:
+                      type: number
+                    unitCode:
+                      required:
+                        - value
+                      additionalProperties: false
+                      properties:
+                        value:
+                          enum:
+                            - Days
+                            - Hours
+                          type: string
+                      type: object
+                  type: object
+                baseDuration:
+                  required:
+                    - value
+                    - unitCode
+                  additionalProperties: false
+                  properties:
+                    value:
+                      type: number
+                    unitCode:
+                      required:
+                        - value
+                      additionalProperties: false
+                      properties:
+                        value:
+                          enum:
+                            - Daily
+                            - FourWeekly
+                            - Monthly
+                            - Quarterly
+                            - Weekly
+                            - Yearly
+                          type: string
+                      type: object
+                  type: object
+              type: object
+            minItems: 1
+            type: array
+        type: object
+    type: object
+  periodicAvailabilityLine:
+    items:
+      required:
+        - lineId
+        - availabilityStatus
+        - availabilityPeriod
+      additionalProperties: false
+      properties:
+        lineId:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        actionCode:
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+          type: string
+        availabilityStatus:
+          enum:
+            - Available
+            - NotAvailable
+            - RatherNot
+          type: string
+        availabilityPeriod:
+          enum:
+            - Daily
+            - FourWeekly
+            - Friday
+            - Monday
+            - Monthly
+            - Saturday
+            - Sunday
+            - Thursday
+            - Tuesday
+            - Wednesday
+            - Weekly
+          type: string
+        startTime:
+          type: string
+          format: time
+        endTime:
+          type: string
+          format: time
+        hours:
+          type: number
+        relatedWorker:
+          items:
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    enum:
+                      - Customer
+                      - Supplier
+                    type: string
+                type: object
+              relatedWorkerType:
+                enum:
+                  - Preferred
+                  - Required
+                type: string
+              startDateTime:
+                type: string
+                format: date-time
+              endDateTime:
+                type: string
+                format: date-time
+            type: object
+          type: array
+        availabilityComment:
+          type: string
+      type: object
+    type: array
+  singleAvailabilityLine:
+    items:
+      required:
+        - lineId
+        - singleAvailabilityType
+        - availabilityStatus
+        - startDateTime
+        - endDateTime
+      additionalProperties: false
+      properties:
+        lineId:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        actionCode:
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+          type: string
+        singleAvailabilityType:
+          enum:
+            - Exception
+            - Occasional
+          type: string
+        periodicAvailabilityLineReference:
+          required:
+            - lineId
+          additionalProperties: false
+          properties:
+            lineId:
+              required:
+                - value
+                - schemeAgencyId
+              additionalProperties: false
+              properties:
+                value:
+                  type: string
+                schemeAgencyId:
+                  enum:
+                    - Customer
+                    - Supplier
+                  type: string
+              type: object
+          type: object
+        availabilityStatus:
+          enum:
+            - Available
+            - NotAvailable
+            - RatherNot
+          type: string
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        hours:
+          type: number
+        relatedWorker:
+          items:
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    enum:
+                      - Customer
+                      - Supplier
+                    type: string
+                type: object
+              relatedWorkerType:
+                enum:
+                  - Preferred
+                  - Required
+                type: string
+            type: object
+          type: array
+        availabilityComment:
+          type: string
+      type: object
+    type: array
+  maximumTravelDistance:
+    type: number
+type: object

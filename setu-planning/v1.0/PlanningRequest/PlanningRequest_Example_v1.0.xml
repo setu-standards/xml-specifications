@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlanningRequest xmlns="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#">
+<!--
+	Name: 		PlanningRequest_Example_v1.0.xml
+	Purpose: 	Example of PlanningRequest message.
+	Author(s): 	SETU, OTTO, Ortec
+	Standard: 	SETU Standard for Planning and Scheduling v1.0
+	Date: 		2023-06-12
+	Last edit:	2023-06-12
+-->
+	<documentId>
+		<value>Requests_20220912170054727202</value>
+		<schemeAgencyId>Customer</schemeAgencyId>
+	</documentId>
+	<supplier>
+		<id>
+			<value>OTTO</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</supplier>
+	<customer>
+		<id>
+			<value>OTTO_NLTHO001</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</customer>
+	<positionProfile>
+		<positionId>
+			<value>E420-PIK-02</value>
+		</positionId>
+		<positionTitle>Picker</positionTitle>
+		<positionTask>
+			<id>
+				<value>PIHP</value>
+			</id>
+			<description>
+				<value>Picking High Pallet</value>
+			</description>
+		</positionTask>
+		<positionLocation>
+			<item>
+				<name>Tholen</name>
+			</item>
+		</positionLocation>
+		<requestedWorker>
+			<workerId>
+				<value>313283</value>
+				<schemeAgencyId>Supplier</schemeAgencyId>
+			</workerId>
+		</requestedWorker>
+		<positionQualifications>
+			<item>
+				<positionCompetencies>
+					<item>
+						<competencyIds>
+							<item>
+								<value>THO-RIET-PIHP</value>
+								<schemeAgencyId>Customer</schemeAgencyId>
+							</item>
+						</competencyIds>
+						<competencyName>Picking High Pallet Rieter</competencyName>
+					</item>
+					<item>
+						<competencyIds>
+							<item>
+								<value>THO-RIET-UNP</value>
+								<schemeAgencyId>Customer</schemeAgencyId>
+							</item>
+						</competencyIds>
+						<competencyName>Unloading Pallet Rieter</competencyName>
+					</item>
+				</positionCompetencies>
+				<licenses>
+					<name>HEF</name>
+				</licenses>
+			</item>
+		</positionQualifications>
+		<positionPeriod>
+			<start>2023-06-13</start>
+			<end>2024-06-13</end>
+		</positionPeriod>
+	</positionProfile>
+	<periodicPlanningLine>
+		<lineId>
+			<value>345677</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</lineId>
+		<planningLineName>OPL-E-RIET-PIHP-0699</planningLineName>
+		<planningPeriod>Monday</planningPeriod>
+		<startTime>08:00:00</startTime>
+		<endTime>16:00:00</endTime>
+		<breaks>
+			<paidOrUnpaid>Paid</paidOrUnpaid>
+			<startTime>10:00:00</startTime>
+			<endTime>10:30:00</endTime>
+		</breaks>
+		<breaks>
+			<paidOrUnpaid>Paid</paidOrUnpaid>
+			<startTime>12:00:00</startTime>
+			<endTime>13:00:00</endTime>
+		</breaks>
+		<positionQuantity>1</positionQuantity>
+	</periodicPlanningLine>
+	<singlePlanningLine>
+		<lineId>
+			<value>345678</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</lineId>
+		<planningLineName>OPL-E-RIET-PIHP-0700</planningLineName>
+		<singlePlanningType>Occasional</singlePlanningType>
+		<startDateTime>2022-09-14T07:00:00+02:00</startDateTime>
+		<endDateTime>2022-09-14T16:00:00+02:00</endDateTime>
+		<breaks>
+			<paidOrUnpaid>Paid</paidOrUnpaid>
+			<startDateTime>2022-09-14T11:30:00+02:00</startDateTime>
+			<endDateTime>2022-09-14T12:00:00+02:00</endDateTime>
+		</breaks>
+		<positionQuantity>1</positionQuantity>
+	</singlePlanningLine>
+</PlanningRequest>

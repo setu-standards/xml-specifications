@@ -1,0 +1,93 @@
+{
+  "documentId": {
+    "value": "Assignments_20220912170054727202",
+    "schemeAgencyId": "Customer"
+  },
+  "supplier": {
+    "id": [
+      {
+        "value": "OTTO",
+        "schemeAgencyId": "Customer"
+      }
+    ]
+  },
+  "customer": {
+    "id": [
+      {
+        "value": "OTTO_NLTHO001",
+        "schemeAgencyId": "Customer"
+      }
+    ]
+  },
+  "assignedWorker": {
+    "assignedStatus": true,
+    "workerId": {
+      "value": "313283",
+      "schemeAgencyId": "Supplier"
+    },
+    "person": {
+      "name": {
+        "formattedName": "Doe, John"
+      }
+    }
+  },
+  "positionProfile": {
+    "positionId": {
+      "value": "E420-PIK-02"
+    },
+    "positionTitle": "Picker",
+    "positionTask": {
+      "id": {
+        "value": "PIHP"
+      },
+      "description": {
+        "value": "Picking High Pallet"
+      }
+    },
+    "positionLocation": {
+      "item": {
+        "name": "Tholen"
+      }
+    },
+    "positionPeriod": {
+      "start": "2023-06-13",
+      "end": "2024-06-13"
+    }
+  },
+  "periodicPlanningLine": [
+    {
+      "lineId": {
+        "value": "345677",
+        "schemeAgencyId": "Customer"
+      },
+      "planningPeriod": "Monday",
+      "startTime": "07:00:00",
+      "endTime": "16:00:00",
+      "breaks": [
+        {
+          "paidOrUnpaid": "Paid",
+          "startTime": "11:30:00",
+          "endTime": "12:00:00"
+        }
+      ]
+    }
+  ],
+  "singlePlanningLine": [
+    {
+      "lineId": {
+        "value": "345678",
+        "schemeAgencyId": "Customer"
+      },
+      "singlePlanningType": "Occasional",
+      "startDateTime": "2022-09-14T07:00:00+02:00",
+      "endDateTime": "2022-09-14T16:00:00+02:00",
+      "breaks": [
+        {
+          "paidOrUnpaid": "Paid",
+          "startDateTime": "2022-09-14T11:30:00+02:00",
+          "endDateTime": "2022-09-14T12:00:00+02:00"
+        }
+      ]
+    }
+  ]
+}

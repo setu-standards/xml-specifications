@@ -1,0 +1,83 @@
+{
+  "documentId": {
+    "value": "Constraints_20220912170054727202",
+    "schemeAgencyId": "Supplier"
+  },
+  "supplier": {
+    "id": [
+      {
+        "value": "OTTO",
+        "schemeAgencyId": "Customer"
+      }
+    ]
+  },
+  "customer": {
+    "id": [
+      {
+        "value": "OTTO_NLTHO001",
+        "schemeAgencyId": "Customer"
+      }
+    ]
+  },
+  "worker": {
+    "workerId": [
+      {
+        "value": "313283",
+        "schemeAgencyId": "Supplier"
+      }
+    ]
+  },
+  "periodicAvailabilityLine": [
+    {
+      "lineId": {
+        "value": "periodicplanningline_1",
+        "schemeAgencyId": "Supplier"
+      },
+      "availabilityStatus": "Available",
+      "availabilityPeriod": "Monday",
+      "startTime": "08:00:00",
+      "endTime": "16:00:00"
+    }
+  ],
+  "singleAvailabilityLine": [
+    {
+      "lineId": {
+        "value": "singleplanningline_2",
+        "schemeAgencyId": "Supplier"
+      },
+      "singleAvailabilityType": "Occasional",
+      "availabilityStatus": "Available",
+      "startDateTime": "2022-09-12T00:00:00+02:00",
+      "endDateTime": "2022-09-18T00:00:00+02:00",
+      "relatedWorker": [
+        {
+          "workerId": {
+            "value": "313271",
+            "schemeAgencyId": "Supplier"
+          },
+          "relatedWorkerType": "Required"
+        }
+      ]
+    },
+    {
+      "lineId": {
+        "value": "singplanningline_3",
+        "schemeAgencyId": "Supplier"
+      },
+      "singleAvailabilityType": "Occasional",
+      "availabilityStatus": "NotAvailable",
+      "startDateTime": "2022-09-19T00:00:00+02:00",
+      "endDateTime": "2022-10-09T00:00:00+02:00"
+    },
+    {
+      "lineId": {
+        "value": "singleplanningline_4",
+        "schemeAgencyId": "Supplier"
+      },
+      "singleAvailabilityType": "Occasional",
+      "availabilityStatus": "Available",
+      "startDateTime": "2022-10-10T00:00:00+02:00",
+      "endDateTime": "2022-10-16T00:00:00+02:00"
+    }
+  ]
+}
