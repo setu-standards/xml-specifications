@@ -12,11 +12,11 @@ externalDocs:
   url: https://www.setu.nl
 
 tags:
-  - name: "Planning Constraints"
+  - name: "Planning constraints"
     description: Set of APIs for availability registration of human resources.
-  - name: "Planning Request"
+  - name: "Planning request"
     description: Set of APIs for requesting fulfillment of a position.
-  - name: "Planning Assignment"
+  - name: "Planning assignment"
     description: Set of APIs for communicating assignment of human resources to a position.
   - name: "Scenario 1 | Planning software APIs"
     description: Set of APIs to be implemented by the planning software.
