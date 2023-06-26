@@ -1,0 +1,74 @@
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="http://purl.oclc.org/dsdl/schematron">
+    <sch:ns prefix="setu" uri="https://ontology.setu.nl/planning#"/>
+    <sch:ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    <sch:ns prefix="hropen" uri="https://hropenstandards.org/schema/xml/"/>
+    <!-- === Rules for category: default === -->
+    <sch:pattern id="BusinessRule_2979fa92-4b5d-42ee-bd0e-eac07366546d">
+        <sch:title>In the 'position profile' container, at least 'position id ref' or 'position task/id ref' must be filled. They can also be used both within the 'position profile' container.</sch:title>
+        <sch:rule id="BusinessRule_2979fa92-4b5d-42ee-bd0e-eac07366546d" fpi="294" context="/setu:PlanningAssignment/setu:positionProfile | /setu:PlanningRequest/setu:positionProfile">
+            <sch:assert fpi="294-1" test="setu:positionId or setu:positionTask/setu:id" flag="error" see="#/Business_32_rule/BusinessRule_2979fa92-4b5d-42ee-bd0e-eac07366546d">In the 'position profile' container, at least 'position id ref' or 'position task/id ref' must be filled.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_bc081b0c-9522-44ae-b789-6bfd512e0635">
+        <sch:title>In the 'breaks' container, either startDateTime and endDateTime must be filled, or the breakTrigger container must be filled. They cannot be used both within the same 'breaks' container.</sch:title>
+        <sch:rule id="BusinessRule_bc081b0c-9522-44ae-b789-6bfd512e0635" fpi="289" context="/setu:PlanningRequest/setu:singlePlanningLine/setu:breaks | /setu:PlanningAssignment/setu:singlePlanningLine/setu:breaks">
+            <sch:assert fpi="289-1" test="count(setu:startDateTime and setu:endDateTime) + count(setu:breakTrigger) = 1" flag="error" see="#/Business_32_rule/BusinessRule_bc081b0c-9522-44ae-b789-6bfd512e0635">Either startDateTime and endDateTime must be filled, or the breakTrigger container must be filled.They cannot be used both within the same 'breaks' container.</sch:assert>
+            <sch:assert fpi="289-2" test="(setu:startDateTime and setu:endDateTime) or setu:breakTrigger" flag="error" see="#/Business_32_rule/BusinessRule_bc081b0c-9522-44ae-b789-6bfd512e0635">In the 'breaks' container, either startDateTime and endDateTime must be filled, or the breakTrigger container must be filled.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_959ca449-1d98-40fa-8ecf-b74a4a8eae2a">
+        <sch:title>At least one periodicPlanningLine or singlePlanningLine must be provided for the Planning Request/Assignment message to be valid.</sch:title>
+        <sch:rule id="BusinessRule_959ca449-1d98-40fa-8ecf-b74a4a8eae2a" fpi="285" context="setu:PlanningRequest | setu:PlanningAssignment">
+            <sch:assert fpi="285-1" test="count(setu:periodicPlanningLine | setu:singlePlanningLine) > 0" flag="error" see="#/Business_32_rule/BusinessRule_959ca449-1d98-40fa-8ecf-b74a4a8eae2a">At least one periodicPlanningLine or singlePlanningLine must be provided for the Planning Request/Assignment message to be valid.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88">
+        <sch:title>Action codes are mandatory when the planning messages are NOT exchanged via REST APIs. The action codes should be ignored when planning messages are exchanged via REST APIs, as the action codes are already captured in the API calls.</sch:title>
+        <sch:rule id="BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88" fpi="292" context="/setu:PlanningConstraints | /setu:PlanningConstraints/setu:periodicAvailabilityLine | /setu:PlanningConstraints/singleAvailabilityLine | /setu:PlanningRequest | /setu:PlanningRequest/setu:periodicPlanningLine | /setu:PlanningRequest/singlePlanningLine | /setu:PlanningAssignment | /setu:PlanningAssignment/setu:periodicPlanningLine | /setu:PlanningAssignment/singlePlanningLine">
+            <sch:assert fpi="292-1" test="not(setu:actionCode)" flag="warning" see="#/Business_32_rule/BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88">Action codes should be ignored when planning messages are exchanged via REST APIs.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_e58c9cc9-808a-4d76-b748-d4b974dea84c">
+        <sch:title>In case of a PUT, it is not possible to modify the element 'position id ref', 'position task/id ref', or 'position location ref' under the container element 'position profile'. Modifying the content of these elements can result in a new planning request or assignment, and for this purpose, a POST is intended.</sch:title>
+        <sch:rule id="BusinessRule_e58c9cc9-808a-4d76-b748-d4b974dea84c" fpi="295" context="/setu:PlanningRequest | /setu:PlanningAssignment">
+            <sch:assert fpi="295-1" test="not(setu:actionCode = 'PUT')" flag="warning" see="#/Business_32_rule/BusinessRule_e58c9cc9-808a-4d76-b748-d4b974dea84c">In case of a PUT, it is not possible to modify the element 'position id ref', 'position task/id ref', or 'position location ref' under the container element 'position profile'.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_cd1889bb-ba6a-4ded-8259-d4f9e02ed80c">
+        <sch:title>In the 'breaks' container, either startTime and endTime must be filled, or the breakTrigger container must be filled. They cannot be used both within the same 'breaks' container.</sch:title>
+        <sch:rule id="BusinessRule_cd1889bb-ba6a-4ded-8259-d4f9e02ed80c" fpi="286" context="/setu:PlanningRequest/setu:periodicPlanningLine/setu:breaks | /setu:PlanningAssignment/setu:periodicPlanningLine/setu:breaks">
+            <sch:assert fpi="286-1" test="(setu:startTime and setu:endTime) or setu:breakTrigger" flag="error" see="#/Business_32_rule/BusinessRule_cd1889bb-ba6a-4ded-8259-d4f9e02ed80c">In the 'breaks' container, either startTime and endTime must be filled, or the breakTrigger container must be filled.</sch:assert>
+            <sch:assert fpi="286-2" test="count(setu:startTime and setu:endTime) + count(setu:breakTrigger) = 1" flag="error" see="#/Business_32_rule/BusinessRule_cd1889bb-ba6a-4ded-8259-d4f9e02ed80c">Either startTime and endTime must be filled, or the breakTrigger container must be filled. They cannot be used both within the same 'breaks' container.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37">
+        <sch:title>To identify the party, at least one id, legalId and/or taxId must be provided.</sch:title>
+        <sch:rule id="BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37" fpi="290" context="/setu:PlanningAssignment/setu:customer | /setu:PlanningAssignment/setu:supplier | /setu:PlanningRequest/setu:customer | /setu:PlanningRequest/setu:supplier | /setu:PlanningConstraints/setu:supplier | /setu:PlanningConstraints/setu:customer">
+            <sch:assert fpi="290-1" test="setu:id or setu:legalId or setu:taxId" flag="error" see="#/Business_32_rule/BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37">To identify the party, at least one id, legalId and/or taxId must be provided.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_1dc21d2e-7725-4fe5-ada8-fd211996aad5">
+        <sch:title>If one or more periodicPlanningLine elements are specified, it is mandatory to specify positionPeriod.</sch:title>
+        <sch:rule id="BusinessRule_1dc21d2e-7725-4fe5-ada8-fd211996aad5" fpi="291" context="/setu:PlanningRequest | /setu:PlanningAssignment[count(setu:periodicPlanningLine) > 0]">
+            <sch:assert fpi="291-1" test="setu:positionProfile/setu:positionPeriod" flag="error" see="#/Business_32_rule/BusinessRule_1dc21d2e-7725-4fe5-ada8-fd211996aad5">If one or more periodicPlanningLine elements are specified, it is mandatory to specify positionPeriod.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_0444b76f-6a44-4966-ace9-bfade2c99999">
+        <sch:title>If singlePlanningType = 'Occasional', periodicPlanningLineReference must not be used.</sch:title>
+        <sch:rule id="BusinessRule_0444b76f-6a44-4966-ace9-bfade2c99999" fpi="288" context="/setu:PlanningRequest/setu:singlePlanningLine[setu:singlePlanningType = 'Occasional'] | /setu:PlanningAssignment/setu:singlePlanningLine[setu:singlePlanningType = 'Occasional']">
+            <sch:assert fpi="288-1" test="not(setu:periodicPlanningLineReference)" flag="error" see="#/Business_32_rule/BusinessRule_0444b76f-6a44-4966-ace9-bfade2c99999">If singlePlanningType = 'Occasional', periodicPlanningLineReference must not be used.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_cb201eb5-9e01-4db3-b734-740accf921f4">
+        <sch:title>If singlePlanningType = 'Exception', a reference to the associated periodic planning line must be provided. In this case, specifying periodicPlanningLineReference becomes mandatory.</sch:title>
+        <sch:rule id="BusinessRule_cb201eb5-9e01-4db3-b734-740accf921f4" fpi="287" context="setu:PlanningRequest/setu:singlePlanningLine[setu:singlePlanningType = 'Exception'] | setu:PlanningAssignment/setu:singlePlanningLine[setu:singlePlanningType = 'Exception']">
+            <sch:assert fpi="287-1" test="setu:periodicPlanningLineReference" flag="error" see="#/Business_32_rule/BusinessRule_cb201eb5-9e01-4db3-b734-740accf921f4">If singlePlanningType = 'Exception', a reference to the associated periodic planning line must be provided.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_125083fe-bdd2-4e00-b907-0cee5adfb44e">
+        <sch:title>When assignedStatus is 'true' (meaning a worker is assigned to the position planning), at least the workerId must be specified.</sch:title>
+        <sch:rule id="BusinessRule_125083fe-bdd2-4e00-b907-0cee5adfb44e" fpi="293" context="/setu:PlanningAssignment/setu:assignedWorker[setu:assignedStatus = 'true']">
+            <sch:assert fpi="293-1" test="setu:workerId" flag="error" see="#/Business_32_rule/BusinessRule_125083fe-bdd2-4e00-b907-0cee5adfb44e">When assignedStatus is 'true' (meaning a worker is assigned to the position planning), at least the workerId must be specified.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+</sch:schema>

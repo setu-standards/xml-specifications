@@ -1,0 +1,36 @@
+<sch:schema xmlns:sch="http://purl.oclc.org/dsdl/schematron" xmlns="http://purl.oclc.org/dsdl/schematron">
+    <sch:ns prefix="hropen" uri="https://hropenstandards.org/schema/xml/"/>
+    <sch:ns prefix="setu" uri="https://ontology.setu.nl/planning#"/>
+    <sch:ns prefix="xs" uri="http://www.w3.org/2001/XMLSchema"/>
+    <!-- === Rules for category: default === -->
+    <sch:pattern id="BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88">
+        <sch:title>Action codes are mandatory when the planning messages are NOT exchanged via REST APIs. The action codes should be ignored when planning messages are exchanged via REST APIs, as the action codes are already captured in the API calls.</sch:title>
+        <sch:rule id="BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88" fpi="292" context="/setu:PlanningConstraints | /setu:PlanningConstraints/setu:periodicAvailabilityLine | /setu:PlanningConstraints/singleAvailabilityLine | /setu:PlanningRequest | /setu:PlanningRequest/setu:periodicPlanningLine | /setu:PlanningRequest/singlePlanningLine | /setu:PlanningAssignment | /setu:PlanningAssignment/setu:periodicPlanningLine | /setu:PlanningAssignment/singlePlanningLine">
+            <sch:assert fpi="292-1" test="not(setu:actionCode)" flag="warning" see="#/Business_32_rule/BusinessRule_6017d5ed-6354-4264-ae15-7a917c15fc88">Action codes should be ignored when planning messages are exchanged via REST APIs.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_b376b32a-4381-471c-af5c-e503a98b0feb">
+        <sch:title>If singleAvailabilityType = 'Exception', a reference to the associated periodic availability line must be provided. In this case, specifying periodicAvailabilityLineReference becomes mandatory.</sch:title>
+        <sch:rule id="BusinessRule_b376b32a-4381-471c-af5c-e503a98b0feb" fpi="283" context="setu:PlanningConstraints/setu:singleAvailabilityLine[setu:singleAvailabilityType = 'Exception']">
+            <sch:assert fpi="283-1" test="setu:periodicAvailabilityLineReference" flag="error" see="#/Business_32_rule/BusinessRule_b376b32a-4381-471c-af5c-e503a98b0feb">If singleAvailabilityType = 'Exception', a reference to the associated periodic availability line must be provided.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_cf25c8a3-ac36-449d-a63a-b54b2c8bb0e2">
+        <sch:title>If singleAvailabilityType = 'Occasional', periodicAvailabilityLineReference must not be used.</sch:title>
+        <sch:rule id="BusinessRule_cf25c8a3-ac36-449d-a63a-b54b2c8bb0e2" fpi="284" context="/setu:PlanningConstraints/setu:singleAvailabilityLine[setu:singleAvailabilityType = 'Occasional']">
+            <sch:assert fpi="284-1" test="not(setu:periodicAvailabilityLineReference)" flag="error" see="#/Business_32_rule/BusinessRule_cf25c8a3-ac36-449d-a63a-b54b2c8bb0e2">If singleAvailabilityType = 'Occasional', periodicAvailabilityLineReference must not be used.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37">
+        <sch:title>To identify the party, at least one id, legalId and/or taxId must be provided.</sch:title>
+        <sch:rule id="BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37" fpi="290" context="/setu:PlanningAssignment/setu:customer | /setu:PlanningAssignment/setu:supplier | /setu:PlanningRequest/setu:customer | /setu:PlanningRequest/setu:supplier | /setu:PlanningConstraints/setu:supplier | /setu:PlanningConstraints/setu:customer">
+            <sch:assert fpi="290-1" test="setu:id or setu:legalId or setu:taxId" flag="error" see="#/Business_32_rule/BusinessRule_05790ebd-0f56-4750-b8f7-ba0018fc2a37">To identify the party, at least one id, legalId and/or taxId must be provided.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+    <sch:pattern id="BusinessRule_5485d35b-80bb-4b46-b1a4-2a033c90c5ea">
+        <sch:title>At least one periodicAvailabilityLine or singleAvailabilityLine must be provided for the Planning Constraints message to be valid.</sch:title>
+        <sch:rule id="BusinessRule_5485d35b-80bb-4b46-b1a4-2a033c90c5ea" fpi="282" context="/setu:PlanningConstraints">
+            <sch:assert fpi="282-1" test="count(setu:periodicAvailabilityLine | setu:singleAvailabilityLine) > 0" flag="error" see="#/Business_32_rule/BusinessRule_5485d35b-80bb-4b46-b1a4-2a033c90c5ea">At least one periodicAvailabilityLine or singleAvailabilityLine must be provided for the Planning Constraints message to be valid.</sch:assert>
+        </sch:rule>
+    </sch:pattern>
+</sch:schema>
