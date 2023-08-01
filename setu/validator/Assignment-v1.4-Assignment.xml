@@ -19,9 +19,12 @@
 
         ** CHANGELOG 03/06/2022**
         * Added rule: nl.setu.2022.businessrules.assignment.businessrule.CustomerRateClassification.1
+        **CHANGELOG 01/08/2023**
+        * Revised rule: nl.setu.businessrule.280 (= SETU BR 280)
+        * Revised rule: nl.setu.businessrule.281 (= SETU BR 281)
     -->
 
-    <sch:title>Business rules voor het controleren van een assignment bericht (SETU Standard for Assignment versie 1.4).</sch:title>
+    <sch:title>Business rules voor het controleren van een assignment bericht (SETU Standard for Assignment versie 1.4.1).</sch:title>
     <sch:ns prefix="setu" uri="http://ns.hr-xml.org/2007-04-15"/>
     <sch:ns prefix="nl" uri="http://ns.setu.nl/2020-01"/>
     
@@ -426,24 +429,24 @@
     </sch:pattern>
     <sch:pattern>
         <sch:rule id="nl.setu.businessrule.280" 
-            fpi="For the StaffingShift it is mandatory to specify at least one of the elements Hours, MinimumHours (in StaffingShiftAddition) or MaximumHours (in StaffingShiftAddition). If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours."
-            context="/setu:Assignment"
+            fpi="If the ContractStaffingShift is not specified, it is mandatory to ensure that the container element StaffingShift specifies at least one of the elements Hours, MinimumHours (in StaffingShiftAddition) or MaximumHours (in StaffingShiftAddition). If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours."
+            context="/setu:Assignment[not(setu:UserArea/nl:AssignmentAdditionalNL/nl:HumanResourceInformation/nl:ContractStaffingShift)]"
             flag="error">
             <!-- x and not(y) or not(x) and y -->
             <sch:assert test="((count(setu:StaffingShift/setu:Hours) &gt; 0) and not(count(setu:UserArea/nl:AssignmentAdditionalNL/nl:HumanResourceInformation/nl:StaffingShiftAddition) &gt; 0)) 
                                     or (not(count(setu:StaffingShift/setu:Hours) &gt; 0) and (count(setu:UserArea/nl:AssignmentAdditionalNL/nl:HumanResourceInformation/nl:StaffingShiftAddition) &gt; 0))">
-                If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours.
+                If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours. This only holds when the container element ContractStaffingShift is not specified.
             </sch:assert>
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
         <sch:rule id="nl.setu.businessrule.281" 
-            fpi="For SETU the shiftPeriod attribute is mandatory, except to specify a '4weekly', 'quarterly' or 'yearly' period. Then AdditionalRequirement with requirementTitle 'shiftPeriodExtension' must be specified."
-            context="/setu:Assignment"
+            fpi="If the attribute contractShiftPeriod is not specified, the shiftPeriod attribute is mandatory, except to specify a '4weekly', 'quarterly' or 'yearly' period. Then AdditionalRequirement with requirementTitle 'shiftPeriodExtension' must be specified."
+            context="/setu:Assignment[not(setu:UserArea/nl:AssignmentAdditionalNL/nl:HumanResourceInformation/nl:ContractStaffingShift[@contractShiftPeriod])]"
             flag="error">
             <sch:assert test="(count(setu:StaffingShift[@shiftPeriod]) &gt; 0) 
                     or (count(setu:CustomerReportingRequirements/setu:AdditionalRequirement[@requirementTitle = 'shiftPeriodExtension']) &gt; 0)">
-                You must specify the shiftPeriod
+                If the attribute contractShiftPeriod is not specified, you must specify the shiftPeriod
             </sch:assert>
         </sch:rule>
     </sch:pattern>
