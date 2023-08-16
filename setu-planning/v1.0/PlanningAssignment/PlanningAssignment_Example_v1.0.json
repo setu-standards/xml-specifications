@@ -61,13 +61,13 @@
         "schemeAgencyId": "Customer"
       },
       "planningPeriod": "Monday",
-      "startTime": "07:00:00",
-      "endTime": "16:00:00",
+      "startTime": "07:00:00Z",
+      "endTime": "16:00:00Z",
       "breaks": [
         {
           "paidOrUnpaid": "Paid",
-          "startTime": "11:30:00",
-          "endTime": "12:00:00"
+          "startTime": "11:30:00Z",
+          "endTime": "12:00:00Z"
         }
       ]
     }
