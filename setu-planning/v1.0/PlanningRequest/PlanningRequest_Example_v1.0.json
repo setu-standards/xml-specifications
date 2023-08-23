@@ -93,18 +93,18 @@
       },
       "planningLineName": "OPL-E-RIET-PIHP-0699",
       "planningPeriod": "Monday",
-      "startTime": "08:00:00",
-      "endTime": "16:00:00",
+      "startTime": "08:00:00Z",
+      "endTime": "16:00:00Z",
       "breaks": [
         {
           "paidOrUnpaid": "Paid",
-          "startTime": "10:00:00",
-          "endTime": "10:30:00"
+          "startTime": "10:00:00Z",
+          "endTime": "10:30:00Z"
         },
         {
           "paidOrUnpaid": "Paid",
-          "startTime": "12:00:00",
-          "endTime": "13:00:00"
+          "startTime": "12:00:00Z",
+          "endTime": "13:00:00Z"
         }
       ],
       "positionQuantity": 1
