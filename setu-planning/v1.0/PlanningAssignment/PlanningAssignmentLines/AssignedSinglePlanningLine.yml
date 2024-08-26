@@ -1,14 +1,20 @@
-id: 'https://ontology.setu.nl/planning#AssignedSinglePlanningLine'
+$id: 'https://ontology.setu.nl/planning#AssignedSinglePlanningLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the AssignedSinglePlanningLine.'
-singlePlanningLine:
+type: object
+properties:
+  singlePlanningLine:
+    type: array
     items:
+      type: object
       required:
         - lineId
         - singlePlanningType
+        - positionQuantity
       additionalProperties: false
       properties:
         lineId:
+          type: object
           required:
             - value
             - schemeAgencyId
@@ -17,31 +23,32 @@ singlePlanningLine:
             value:
               type: string
             schemeAgencyId:
+              type: string
               enum:
                 - Customer
                 - Supplier
-              type: string
-          type: object
         actionCode:
+          type: string
           enum:
             - DELETE
             - GET
             - POST
             - PUT
-          type: string
         planningLineName:
           type: string
         singlePlanningType:
+          type: string
           enum:
             - Exception
             - Occasional
-          type: string
         periodicPlanningLineReference:
+          type: object
           required:
             - lineId
           additionalProperties: false
           properties:
             lineId:
+              type: object
               required:
                 - value
                 - schemeAgencyId
@@ -50,12 +57,10 @@ singlePlanningLine:
                 value:
                   type: string
                 schemeAgencyId:
+                  type: string
                   enum:
                     - Customer
                     - Supplier
-                  type: string
-              type: object
-          type: object
         startDateTime:
           type: string
           format: date-time
@@ -65,16 +70,18 @@ singlePlanningLine:
         hours:
           type: number
         breaks:
+          type: array
           items:
+            type: object
             required:
               - paidOrUnpaid
             additionalProperties: false
             properties:
               paidOrUnpaid:
+                type: string
                 enum:
                   - Paid
                   - Unpaid
-                type: string
               startDateTime:
                 type: string
                 format: date-time
@@ -82,6 +89,7 @@ singlePlanningLine:
                 type: string
                 format: date-time
               breakTrigger:
+                type: object
                 required:
                   - hours
                   - breakDuration
@@ -92,17 +100,17 @@ singlePlanningLine:
                   breakDuration:
                     type: string
                     format: time
-                type: object
-            type: object
-          type: array
         relatedWorker:
+          type: array
           items:
+            type: object
             required:
               - workerId
               - relatedWorkerType
             additionalProperties: false
             properties:
               workerId:
+                type: object
                 required:
                   - value
                   - schemeAgencyId
@@ -111,18 +119,12 @@ singlePlanningLine:
                   value:
                     type: string
                   schemeAgencyId:
+                    type: string
                     enum:
                       - Customer
                       - Supplier
-                    type: string
-                type: object
               relatedWorkerType:
+                type: string
                 enum:
                   - Preferred
                   - Required
-                type: string
-            type: object
-          type: array
-      type: object
-    type: array
-type: object
