@@ -112,4 +112,4 @@ properties:
                 enum:
                   - Preferred
                   - Required
-      type: object
+     
