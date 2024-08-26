@@ -1,98 +1,104 @@
 $id: 'https://ontology.setu.nl/planning#RequestedSinglePlanningLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the SinglePlanningLine'
-singlePlanningLine:
-  items:
-    required:
-      - lineId
-      - singlePlanningType
-      - positionQuantity
-    additionalProperties: false
-    properties:
-      lineId:
-        required:
-          - value
-          - schemeAgencyId
-        additionalProperties: false
-        properties:
-          value:
-            type: string
-          schemeAgencyId:
-            enum:
-              - Customer
-              - Supplier
-            type: string
-        type: object
-      actionCode:
-        enum:
-          - DELETE
-          - GET
-          - POST
-          - PUT
-        type: string
-      planningLineName:
-        type: string
-      singlePlanningType:
-        enum:
-          - Exception
-          - Occasional
-        type: string
-      periodicPlanningLineReference:
-        required:
-          - lineId
-        additionalProperties: false
-        properties:
-          lineId:
-            required:
-              - value
-              - schemeAgencyId
-            additionalProperties: false
-            properties:
-              value:
-                type: string
-              schemeAgencyId:
-                enum:
-                  - Customer
-                  - Supplier
-                type: string
-            type: object
-        type: object
-      startDateTime:
-        type: string
-        format: date-time
-      endDateTime:
-        type: string
-        format: date-time
-      hours:
-        type: number
-      breaks:
-        items:
+type: object
+properties:
+  singlePlanningLine:
+    type: array
+    items:
+      type: object
+      required:
+        - lineId
+        - singlePlanningType
+        - positionQuantity
+      additionalProperties: false
+      properties:
+        lineId:
+          type: object
           required:
-            - paidOrUnpaid
+            - value
+            - schemeAgencyId
           additionalProperties: false
           properties:
-            paidOrUnpaid:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
               enum:
-                - Paid
-                - Unpaid
-              type: string
-            startDateTime:
-              type: string
-              format: date-time
-            endDateTime:
-              type: string
-              format: date-time
-            breakTrigger:
+                - Customer
+                - Supplier
+        actionCode:
+          type: string
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+        planningLineName:
+          type: string
+        singlePlanningType:
+          type: string
+          enum:
+            - Exception
+            - Occasional
+        periodicPlanningLineReference:
+          type: object
+          required:
+            - lineId
+          additionalProperties: false
+          properties:
+            lineId:
+              type: object
               required:
-                - hours
-                - breakDuration
+                - value
+                - schemeAgencyId
               additionalProperties: false
               properties:
-                hours:
-                  type: number
-                breakDuration:
+                value:
                   type: string
-                  format: time
-              type: object
-          type: object
-        type: array
+                schemeAgencyId:
+                  type: string
+                  enum:
+                    - Customer
+                    - Supplier
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        hours:
+          type: number
+        breaks:
+          type: array
+          items:
+            type: object
+            required:
+              - paidOrUnpaid
+            additionalProperties: false
+            properties:
+              paidOrUnpaid:
+                type: string
+                enum:
+                  - Paid
+                  - Unpaid
+              startDateTime:
+                type: string
+                format: date-time
+              endDateTime:
+                type: string
+                format: date-time
+              breakTrigger:
+                type: object
+                required:
+                  - hours
+                  - breakDuration
+                additionalProperties: false
+                properties:
+                  hours:
+                    type: number
+                  breakDuration:
+                    type: string
+                    format: time
+        positionQuantity:
+          type: integer
