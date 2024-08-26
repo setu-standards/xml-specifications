@@ -1,0 +1,130 @@
+$id: 'https://ontology.setu.nl/planning#AssignedSinglePlanningLine'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+description: 'Defines the JSON Schema in YAML for the AssignedSinglePlanningLine.'
+type: object
+properties:
+  singlePlanningLine:
+    type: array
+    items:
+      type: object
+      required:
+        - lineId
+        - singlePlanningType
+        - positionQuantity
+      additionalProperties: false
+      properties:
+        lineId:
+          type: object
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+              enum:
+                - Customer
+                - Supplier
+        actionCode:
+          type: string
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+        planningLineName:
+          type: string
+        singlePlanningType:
+          type: string
+          enum:
+            - Exception
+            - Occasional
+        periodicPlanningLineReference:
+          type: object
+          required:
+            - lineId
+          additionalProperties: false
+          properties:
+            lineId:
+              type: object
+              required:
+                - value
+                - schemeAgencyId
+              additionalProperties: false
+              properties:
+                value:
+                  type: string
+                schemeAgencyId:
+                  type: string
+                  enum:
+                    - Customer
+                    - Supplier
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        hours:
+          type: number
+        breaks:
+          type: array
+          items:
+            type: object
+            required:
+              - paidOrUnpaid
+            additionalProperties: false
+            properties:
+              paidOrUnpaid:
+                type: string
+                enum:
+                  - Paid
+                  - Unpaid
+              startDateTime:
+                type: string
+                format: date-time
+              endDateTime:
+                type: string
+                format: date-time
+              breakTrigger:
+                type: object
+                required:
+                  - hours
+                  - breakDuration
+                additionalProperties: false
+                properties:
+                  hours:
+                    type: number
+                  breakDuration:
+                    type: string
+                    format: time
+        relatedWorker:
+          type: array
+          items:
+            type: object
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                type: object
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    type: string
+                    enum:
+                      - Customer
+                      - Supplier
+              relatedWorkerType:
+                type: string
+                enum:
+                  - Preferred
+                  - Required

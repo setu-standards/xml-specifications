@@ -1,0 +1,115 @@
+$id: 'https://ontology.setu.nl/planning#AssignedPeriodicPlanningLine'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+description: 'Defines the JSON Schema in YAML for the AssignedPeriodicPlanningLine.'
+type: object
+properties:
+  periodicPlanningLine:
+    type: array
+    items:
+      type: object
+      required:
+        - lineId
+        - planningPeriod
+      additionalProperties: false
+      properties:
+        lineId:
+          type: object
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+              enum:
+                - Customer
+                - Supplier
+        actionCode:
+          type: string
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+        planningLineName:
+          type: string
+        planningPeriod:
+          type: string
+          enum:
+            - Friday
+            - Monday
+            - Saturday
+            - Sunday
+            - Thursday
+            - Tuesday
+            - Wednesday
+        startTime:
+          type: string
+          format: time
+        endTime:
+          type: string
+          format: time
+        hours:
+          type: number
+        breaks:
+          type: array
+          items:
+            type: object
+            required:
+              - paidOrUnpaid
+            additionalProperties: false
+            properties:
+              paidOrUnpaid:
+                type: string
+                enum:
+                  - Paid
+                  - Unpaid
+              startTime:
+                type: string
+                format: time
+              endTime:
+                type: string
+                format: time
+              breakTrigger:
+                type: object
+                required:
+                  - hours
+                  - breakDuration
+                additionalProperties: false
+                properties:
+                  hours:
+                    type: number
+                  breakDuration:
+                    type: string
+                    format: time
+        relatedWorker:
+          type: array
+          items:
+            type: object
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                type: object
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    type: string
+                    enum:
+                      - Customer
+                      - Supplier
+              relatedWorkerType:
+                type: string
+                enum:
+                  - Preferred
+                  - Required
+     

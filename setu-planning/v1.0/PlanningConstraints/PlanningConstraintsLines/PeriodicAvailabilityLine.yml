@@ -1,0 +1,100 @@
+$id: 'https://ontology.setu.nl/planning#PeriodicAvailbilityLine'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+description: 'Defines the JSON Schema in YAML for the PeriodicAvailablityLine'
+type: object
+properties:
+  periodicAvailabilityLine:
+    type: array
+    items:
+      type: object
+      required:
+        - lineId
+        - availabilityStatus
+        - availabilityPeriod
+      additionalProperties: false
+      properties:
+        lineId:
+          type: object
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+              enum:
+                - Customer
+                - Supplier
+        actionCode:
+          type: string
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+        availabilityStatus:
+          type: string
+          enum:
+            - Available
+            - NotAvailable
+            - RatherNot
+        availabilityPeriod:
+          type: string
+          enum:
+            - Daily
+            - FourWeekly
+            - Friday
+            - Monday
+            - Monthly
+            - Saturday
+            - Sunday
+            - Thursday
+            - Tuesday
+            - Wednesday
+            - Weekly
+        startTime:
+          type: string
+          format: time
+        endTime:
+          type: string
+          format: time
+        hours:
+          type: number
+        relatedWorker:
+          type: array
+          items:
+            type: object
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                type: object
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    type: string
+                    enum:
+                      - Customer
+                      - Supplier
+              relatedWorkerType:
+                type: string
+                enum:
+                  - Preferred
+                  - Required
+              startDateTime:
+                type: string
+                format: date-time
+              endDateTime:
+                type: string
+                format: date-time
+        availabilityComment:
+          type: string
