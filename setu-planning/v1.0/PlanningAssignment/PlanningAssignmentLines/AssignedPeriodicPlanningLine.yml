@@ -1,14 +1,19 @@
-id: 'https://ontology.setu.nl/planning#AssignedPeriodicPlanningLine'
+$id: 'https://ontology.setu.nl/planning#AssignedPeriodicPlanningLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the AssignedPeriodicPlanningLine.'
-periodicPlanningLine:
+type: object
+properties:
+  periodicPlanningLine:
+    type: array
     items:
+      type: object
       required:
         - lineId
         - planningPeriod
       additionalProperties: false
       properties:
         lineId:
+          type: object
           required:
             - value
             - schemeAgencyId
@@ -17,21 +22,21 @@ periodicPlanningLine:
             value:
               type: string
             schemeAgencyId:
+              type: string
               enum:
                 - Customer
                 - Supplier
-              type: string
-          type: object
         actionCode:
+          type: string
           enum:
             - DELETE
             - GET
             - POST
             - PUT
-          type: string
         planningLineName:
           type: string
         planningPeriod:
+          type: string
           enum:
             - Friday
             - Monday
@@ -40,7 +45,6 @@ periodicPlanningLine:
             - Thursday
             - Tuesday
             - Wednesday
-          type: string
         startTime:
           type: string
           format: time
@@ -50,16 +54,18 @@ periodicPlanningLine:
         hours:
           type: number
         breaks:
+          type: array
           items:
+            type: object
             required:
               - paidOrUnpaid
             additionalProperties: false
             properties:
               paidOrUnpaid:
+                type: string
                 enum:
                   - Paid
                   - Unpaid
-                type: string
               startTime:
                 type: string
                 format: time
@@ -67,6 +73,7 @@ periodicPlanningLine:
                 type: string
                 format: time
               breakTrigger:
+                type: object
                 required:
                   - hours
                   - breakDuration
@@ -77,17 +84,17 @@ periodicPlanningLine:
                   breakDuration:
                     type: string
                     format: time
-                type: object
-            type: object
-          type: array
         relatedWorker:
+          type: array
           items:
+            type: object
             required:
               - workerId
               - relatedWorkerType
             additionalProperties: false
             properties:
               workerId:
+                type: object
                 required:
                   - value
                   - schemeAgencyId
@@ -96,17 +103,13 @@ periodicPlanningLine:
                   value:
                     type: string
                   schemeAgencyId:
+                    type: string
                     enum:
                       - Customer
                       - Supplier
-                    type: string
-                type: object
               relatedWorkerType:
+                type: string
                 enum:
                   - Preferred
                   - Required
-                type: string
-            type: object
-          type: array
       type: object
-    type: array
