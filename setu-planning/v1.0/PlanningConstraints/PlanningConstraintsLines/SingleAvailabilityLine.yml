@@ -1,84 +1,54 @@
 $id: 'https://ontology.setu.nl/planning#SingleAvailabilityLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the SingleAvailabilityLine.'
-singleAvailabilityLine:
-  items:
-    required:
-      - lineId
-      - singleAvailabilityType
-      - availabilityStatus
-      - startDateTime
-      - endDateTime
-    additionalProperties: false
-    properties:
-      lineId:
-        required:
-          - value
-          - schemeAgencyId
-        additionalProperties: false
-        properties:
-          value:
-            type: string
-          schemeAgencyId:
-            enum:
-              - Customer
-              - Supplier
-            type: string
-        type: object
-      actionCode:
-        enum:
-          - DELETE
-          - GET
-          - POST
-          - PUT
-        type: string
-      singleAvailabilityType:
-        enum:
-          - Exception
-          - Occasional
-        type: string
-      periodicAvailabilityLineReference:
-        required:
-          - lineId
-        additionalProperties: false
-        properties:
-          lineId:
-            required:
-              - value
-              - schemeAgencyId
-            additionalProperties: false
-            properties:
-              value:
-                type: string
-              schemeAgencyId:
-                enum:
-                  - Customer
-                  - Supplier
-                type: string
-            type: object
-        type: object
-      availabilityStatus:
-        enum:
-          - Available
-          - NotAvailable
-          - RatherNot
-        type: string
-      startDateTime:
-        type: string
-        format: date-time
-      endDateTime:
-        type: string
-        format: date-time
-      hours:
-        type: number
-      relatedWorker:
-        items:
+type: object
+properties:
+  singleAvailabilityLine:
+    type: array
+    items:
+      type: object
+      required:
+        - lineId
+        - singleAvailabilityType
+        - availabilityStatus
+        - startDateTime
+        - endDateTime
+      additionalProperties: false
+      properties:
+        lineId:
+          type: object
           required:
-            - workerId
-            - relatedWorkerType
+            - value
+            - schemeAgencyId
           additionalProperties: false
           properties:
-            workerId:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+              enum:
+                - Customer
+                - Supplier
+        actionCode:
+          type: string
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+        singleAvailabilityType:
+          type: string
+          enum:
+            - Exception
+            - Occasional
+        periodicAvailabilityLineReference:
+          type: object
+          required:
+            - lineId
+          additionalProperties: false
+          properties:
+            lineId:
+              type: object
               required:
                 - value
                 - schemeAgencyId
@@ -87,19 +57,52 @@ singleAvailabilityLine:
                 value:
                   type: string
                 schemeAgencyId:
+                  type: string
                   enum:
                     - Customer
                     - Supplier
-                  type: string
-              type: object
-            relatedWorkerType:
-              enum:
-                - Preferred
-                - Required
-              type: string
-          type: object
-        type: array
-      availabilityComment:
-        type: string
-    type: object
-  type: array
+        availabilityStatus:
+          type: string
+          enum:
+            - Available
+            - NotAvailable
+            - RatherNot
+        startDateTime:
+          type: string
+          format: date-time
+        endDateTime:
+          type: string
+          format: date-time
+        hours:
+          type: number
+        relatedWorker:
+          type: array
+          items:
+            type: object
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                type: object
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    type: string
+                    enum:
+                      - Customer
+                      - Supplier
+              relatedWorkerType:
+                type: string
+                enum:
+                  - Preferred
+                  - Required
+            type: object
+        availabilityComment:
+          type: string
