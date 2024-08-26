@@ -103,6 +103,5 @@ properties:
                 enum:
                   - Preferred
                   - Required
-            type: object
         availabilityComment:
           type: string
