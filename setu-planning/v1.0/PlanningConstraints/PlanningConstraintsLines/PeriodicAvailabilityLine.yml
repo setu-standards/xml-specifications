@@ -1,0 +1,98 @@
+$id: 'https://ontology.setu.nl/planning#PeriodicAvailbilityLine'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+description: 'Defines the JSON Schema in YAML for the PeriodicAvailablityLine'
+periodicAvailabilityLine:
+    items:
+      required:
+        - lineId
+        - availabilityStatus
+        - availabilityPeriod
+      additionalProperties: false
+      properties:
+        lineId:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        actionCode:
+          enum:
+            - DELETE
+            - GET
+            - POST
+            - PUT
+          type: string
+        availabilityStatus:
+          enum:
+            - Available
+            - NotAvailable
+            - RatherNot
+          type: string
+        availabilityPeriod:
+          enum:
+            - Daily
+            - FourWeekly
+            - Friday
+            - Monday
+            - Monthly
+            - Saturday
+            - Sunday
+            - Thursday
+            - Tuesday
+            - Wednesday
+            - Weekly
+          type: string
+        startTime:
+          type: string
+          format: time
+        endTime:
+          type: string
+          format: time
+        hours:
+          type: number
+        relatedWorker:
+          items:
+            required:
+              - workerId
+              - relatedWorkerType
+            additionalProperties: false
+            properties:
+              workerId:
+                required:
+                  - value
+                  - schemeAgencyId
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  schemeAgencyId:
+                    enum:
+                      - Customer
+                      - Supplier
+                    type: string
+                type: object
+              relatedWorkerType:
+                enum:
+                  - Preferred
+                  - Required
+                type: string
+              startDateTime:
+                type: string
+                format: date-time
+              endDateTime:
+                type: string
+                format: date-time
+            type: object
+          type: array
+        availabilityComment:
+          type: string
+      type: object
+    type: array
