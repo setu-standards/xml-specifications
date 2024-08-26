@@ -1,8 +1,12 @@
 $id: 'https://ontology.setu.nl/planning#PeriodicAvailbilityLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the PeriodicAvailablityLine'
-periodicAvailabilityLine:
+type: object
+properties:
+  periodicAvailabilityLine:
+    type: array
     items:
+      type: object
       required:
         - lineId
         - availabilityStatus
@@ -10,6 +14,7 @@ periodicAvailabilityLine:
       additionalProperties: false
       properties:
         lineId:
+          type: object
           required:
             - value
             - schemeAgencyId
@@ -18,25 +23,25 @@ periodicAvailabilityLine:
             value:
               type: string
             schemeAgencyId:
+              type: string
               enum:
                 - Customer
                 - Supplier
-              type: string
-          type: object
         actionCode:
+          type: string
           enum:
             - DELETE
             - GET
             - POST
             - PUT
-          type: string
         availabilityStatus:
+          type: string
           enum:
             - Available
             - NotAvailable
             - RatherNot
-          type: string
         availabilityPeriod:
+          type: string
           enum:
             - Daily
             - FourWeekly
@@ -49,7 +54,6 @@ periodicAvailabilityLine:
             - Tuesday
             - Wednesday
             - Weekly
-          type: string
         startTime:
           type: string
           format: time
@@ -59,13 +63,16 @@ periodicAvailabilityLine:
         hours:
           type: number
         relatedWorker:
+          type: array
           items:
+            type: object
             required:
               - workerId
               - relatedWorkerType
             additionalProperties: false
             properties:
               workerId:
+                type: object
                 required:
                   - value
                   - schemeAgencyId
@@ -74,25 +81,20 @@ periodicAvailabilityLine:
                   value:
                     type: string
                   schemeAgencyId:
+                    type: string
                     enum:
                       - Customer
                       - Supplier
-                    type: string
-                type: object
               relatedWorkerType:
+                type: string
                 enum:
                   - Preferred
                   - Required
-                type: string
               startDateTime:
                 type: string
                 format: date-time
               endDateTime:
                 type: string
                 format: date-time
-            type: object
-          type: array
         availabilityComment:
           type: string
-      type: object
-    type: array
