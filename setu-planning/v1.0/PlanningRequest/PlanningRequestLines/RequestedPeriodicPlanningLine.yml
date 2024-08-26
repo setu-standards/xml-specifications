@@ -1,87 +1,88 @@
 $id: 'https://ontology.setu.nl/planning#RequestedPeriodicPlanningLine'
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 description: 'Defines the JSON Schema in YAML for the PeriodicRequestLine'
+
 periodicPlanningLine:
-    items:
-      required:
-        - lineId
-        - planningPeriod
-        - positionQuantity
-      additionalProperties: false
-      properties:
-        lineId:
+  type: array
+  items:
+    type: object
+    required:
+      - lineId
+      - planningPeriod
+      - positionQuantity
+    additionalProperties: false
+    properties:
+      lineId:
+        type: object
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            type: string
+            enum:
+              - Customer
+              - Supplier
+      actionCode:
+        type: string
+        enum:
+          - DELETE
+          - GET
+          - POST
+          - PUT
+      planningLineName:
+        type: string
+      planningPeriod:
+        type: string
+        enum:
+          - Friday
+          - Monday
+          - Saturday
+          - Sunday
+          - Thursday
+          - Tuesday
+          - Wednesday
+      startTime:
+        type: string
+        format: time
+      endTime:
+        type: string
+        format: time
+      hours:
+        type: number
+      breaks:
+        type: array
+        items:
+          type: object
           required:
-            - value
-            - schemeAgencyId
+            - paidOrUnpaid
           additionalProperties: false
           properties:
-            value:
+            paidOrUnpaid:
               type: string
-            schemeAgencyId:
               enum:
-                - Customer
-                - Supplier
+                - Paid
+                - Unpaid
+            startTime:
               type: string
-          type: object
-        actionCode:
-          enum:
-            - DELETE
-            - GET
-            - POST
-            - PUT
-          type: string
-        planningLineName:
-          type: string
-        planningPeriod:
-          enum:
-            - Friday
-            - Monday
-            - Saturday
-            - Sunday
-            - Thursday
-            - Tuesday
-            - Wednesday
-          type: string
-        startTime:
-          type: string
-          format: time
-        endTime:
-          type: string
-          format: time
-        hours:
-          type: number
-        breaks:
-          items:
-            required:
-              - paidOrUnpaid
-            additionalProperties: false
-            properties:
-              paidOrUnpaid:
-                enum:
-                  - Paid
-                  - Unpaid
-                type: string
-              startTime:
-                type: string
-                format: time
-              endTime:
-                type: string
-                format: time
-              breakTrigger:
-                required:
-                  - hours
-                  - breakDuration
-                additionalProperties: false
-                properties:
-                  hours:
-                    type: number
-                  breakDuration:
-                    type: string
-                    format: time
-                type: object
-            type: object
-          type: array
-        positionQuantity:
-          type: integer
-      type: object
-    type: array
+              format: time
+            endTime:
+              type: string
+              format: time
+            breakTrigger:
+              type: object
+              required:
+                - hours
+                - breakDuration
+              additionalProperties: false
+              properties:
+                hours:
+                  type: number
+                breakDuration:
+                  type: string
+                  format: time
+      positionQuantity:
+        type: integer
