@@ -1,0 +1,98 @@
+$id: 'https://ontology.setu.nl/planning#RequestedSinglePlanningLine'
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+description: 'Defines the JSON Schema in YAML for the SinglePlanningLine'
+singlePlanningLine:
+  items:
+    required:
+      - lineId
+      - singlePlanningType
+      - positionQuantity
+    additionalProperties: false
+    properties:
+      lineId:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          schemeAgencyId:
+            enum:
+              - Customer
+              - Supplier
+            type: string
+        type: object
+      actionCode:
+        enum:
+          - DELETE
+          - GET
+          - POST
+          - PUT
+        type: string
+      planningLineName:
+        type: string
+      singlePlanningType:
+        enum:
+          - Exception
+          - Occasional
+        type: string
+      periodicPlanningLineReference:
+        required:
+          - lineId
+        additionalProperties: false
+        properties:
+          lineId:
+            required:
+              - value
+              - schemeAgencyId
+            additionalProperties: false
+            properties:
+              value:
+                type: string
+              schemeAgencyId:
+                enum:
+                  - Customer
+                  - Supplier
+                type: string
+            type: object
+        type: object
+      startDateTime:
+        type: string
+        format: date-time
+      endDateTime:
+        type: string
+        format: date-time
+      hours:
+        type: number
+      breaks:
+        items:
+          required:
+            - paidOrUnpaid
+          additionalProperties: false
+          properties:
+            paidOrUnpaid:
+              enum:
+                - Paid
+                - Unpaid
+              type: string
+            startDateTime:
+              type: string
+              format: date-time
+            endDateTime:
+              type: string
+              format: date-time
+            breakTrigger:
+              required:
+                - hours
+                - breakDuration
+              additionalProperties: false
+              properties:
+                hours:
+                  type: number
+                breakDuration:
+                  type: string
+                  format: time
+              type: object
+          type: object
+        type: array
