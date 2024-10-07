@@ -14,8 +14,13 @@
         * Added rule: nl.setu.businessrule.281 (= SETU BR 281)
         * Removed x:4weekly from StaffingShift list
 
-        ** CHANGELOG 03/06/2022**
+        ** CHANGELOG 03/06/2022 **
         * Added rule: nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
+
+        ** CHANGELOG 07/10/2024 v1.4.1 **
+        * Revised rule: nl.setu.2022.businessrules.assignment.businessrule.CustomerRateClassification.1 -> add Break as value to codelist
+        * Issue 226: Replaced nl.setu.businessrule.280 with nl.setu.businessrule.320. Validation of the rule remained the same
+        * Issue 226: Replaced nl.setu.businessrule.281 with nl.setu.businessrule.321. Validation of the rule remained the same
     -->
 
     <sch:title>Business rules voor het controleren van een staffingorder bericht (SETU Standard for Ordering &amp; Selection versie 1.4).</sch:title>
@@ -64,7 +69,7 @@
     <!-- Lijst met waarden voor rules:
         nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
     -->
-    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,Break,'"/>
 
     <!-- Lijst met waarden voor rules:
         nl.setu.2022.businessrules.staffingorder.businessrule.CustomerRateClassification.1
@@ -697,7 +702,7 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule id="nl.setu.businessrule.280" 
+        <sch:rule id="nl.setu.businessrule.320" 
             fpi="For the StaffingShift it is mandatory to specify at least one of the elements Hours, MinimumHours (in StaffingShiftAddition) or MaximumHours (in StaffingShiftAddition). If you specify Hours, do not use MinimumHours and MaximumHours. If you specify MinimumHours and/or MaximumHours, do no use Hours."
             context="/setu:StaffingOrder"
             flag="error">
@@ -709,8 +714,8 @@
         </sch:rule>
     </sch:pattern>
     <sch:pattern>
-        <sch:rule id="nl.setu.businessrule.281" 
-            fpi="For SETU the shiftPeriod attribute is mandatory, except to specify a '4weekly', 'quarterly' or 'yearly' period. Then AdditionalRequirement with requirementTitle 'shiftPeriodExtension' must be specified."
+        <sch:rule id="nl.setu.businessrule.321" 
+            fpi="The shiftPeriod attribute is mandatory, except to specify a '4weekly', 'quarterly' or 'yearly' period. Then AdditionalRequirement with requirementTitle 'shiftPeriodExtension' must be specified."
             context="/setu:StaffingOrder"
             flag="error">
             <sch:assert test="(count(setu:StaffingPosition/setu:StaffingShift[@shiftPeriod]) &gt; 0) 

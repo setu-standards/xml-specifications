@@ -9,8 +9,11 @@
         * Changed rule: nl.setu.200801.businessrules.humanresource.businessrule.SETUVersionId.1 -> use value 1.4
         * Only the namespace of the 'nl' prefix is changed, due to change in namespace of HumanResourceAdditionalNL schema
         
-        ** CHANGELOG 03/06/2022**
+        ** CHANGELOG 03/06/2022 **
         * Added rule: nl.setu.2022.businessrules.humanresource.businessrule.CustomerRateClassification.1
+
+        ** CHANGELOG 07/10/2024 v1.4.1 **
+        * Revised rule: nl.setu.2022.businessrules.assignment.businessrule.CustomerRateClassification.1 -> add Break as value to codelist
     -->
 
     <sch:title>Business rules voor het controleren van een human resource bericht (SETU Standard for Ordering &amp; Selection versie 1.4).</sch:title>
@@ -38,7 +41,7 @@
     <!-- Lijst met waarden voor rules:
         nl.setu.2022.businessrules.humanresource.businessrule.CustomerRateClassification.1
     -->
-    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,'"/>
+    <sch:let name="SETU_CL_HourTypes" value="',Additional wage dispensation,Adoption leave,Child-birth sick time,Internship,Overtime wage dispensation,Pregnancy sick time,Regular wage dispensation,Shift wage dispensation,Transition allowance,Vacation additional,Additionalplus,Regular canceled,Shift canceled,Shiftplus canceled,Additional canceled,Additionalplus canceled,Regular complemented,Additional complemented,Shift complemented,Overtime complemented,Overtime canceled,Overtimeplus canceled,Regular,Overtime,Overtimeplus,Shift,Shiftplus,Attendance,Travel,Additional,Internal,Time for time hour build-up,Time for time overtime hour build-up,Special Leave,Short leave,Holiday,Unpaid leave,Training,Vacation,Reduction of working hours,Sick time,Work underload,Care Leave,WTR (work time reduction),Compensation leave,Funeral,Maternity Leave,Withdrawal time for time hours,Contract hours,Standby,Break,'"/>
 
     <!-- Lijst met waarden voor rules:
         nl.setu.2022.businessrules.humanresource.businessrule.CustomerRateClassification.1
