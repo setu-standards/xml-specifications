@@ -1,0 +1,1818 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/#" xmlns:hropen="https://hropenstandards.org/schema/xml" xmlns:setu="https://ontology.setu.nl">
+  <!--===== Root element definition =====-->
+  <xs:element name="StaffingOrder">
+    <xs:annotation>
+      <xs:documentation>
+        <sth:definition>The Staffing Order message is used by a staffing customer to request and order (an) employee(s) for an open position.</sth:definition>
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="documentId">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Provides the Identifier(s) of the document being communicated. Uniquely identifies a Document within an organization.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The value of the unique identifier.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="schemeAgencyId">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Customer"/>
+                    <xs:enumeration value="Supplier"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="supplier" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>The supplier of the worker.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A unique identifier which cannot be expressed as enumeration.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="legalId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A government assigned identifier to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="KvK"/>
+                          <xs:enumeration value="OIN"/>
+                          <xs:enumeration value="RSIN"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="taxId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>An identifier assigned by a government tax authority to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="BTW"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="establishment" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Information to identify and reference a specific establishment within an organization.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="responsibilityCode">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The level or the responsibility at which the establishment operates.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the responsibility code.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="id" minOccurs="0" maxOccurs="2">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A unique identifier which cannot be expressed as enumeration.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Customer"/>
+                                <xs:enumeration value="Supplier"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="legalId" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A government assigned identifier to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="KvK"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="customer">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>The customer of the worker.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A unique identifier which cannot be expressed as enumeration.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="legalId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A government assigned identifier to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="KvK"/>
+                          <xs:enumeration value="OIN"/>
+                          <xs:enumeration value="RSIN"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="taxId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>An identifier assigned by a government tax authority to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="BTW"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="establishment" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Information to identify and reference a specific establishment within an organization.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="responsibilityCode">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The level or the responsibility at which the establishment operates.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the responsibility code.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="id" minOccurs="0" maxOccurs="2">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A unique identifier which cannot be expressed as enumeration.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Customer"/>
+                                <xs:enumeration value="Supplier"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="legalId" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A government assigned identifier to distinguish the party (organization, person, or legal entity) to a transaction.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="KvK"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="personContacts" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Specific people at the party who are contacts.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A component for capturing summary or fine-grain data comprising a person's name.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="formattedName">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The formatted name of a person, as it would be written out together (for example, on a mailing label).
+</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="communication" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The communication channels (phone, email and web) to contact and reach the contact person.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="phone" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>Array of phone information details.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="formattedNumber">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The formatted formatted phone number according to the E.164 standard. For example +31 612345678, where +31 is the country code (1 to 3 digits) and 612345678 is the subscriber telephone number (maximum 12 digits).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element name="email" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>Array of email information details.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="address">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The actual email address.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="useCode" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>Code identifying the usage of the contact point e.g. business, private, etc.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="Business"/>
+                                      <xs:enumeration value="Private"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="roleCode" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The role of the contact person.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="orderType">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Specifies whether the Staffing Order message is used as RFQ (= request for quotation) or Order (= procurement order).</sth:definition>
+              <sth:note>See the [‘Supported processes’ section](https://standard.setu.nl/docs/purchase-to-pay-v2/OrderingSelection/Processes) of the documentation for more information on the different process steps to use the Staffing Order message and the different use cases.</sth:note>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+            <xs:restriction base="xs:string">
+              <xs:enumeration value="Order"/>
+              <xs:enumeration value="RFQ"/>
+            </xs:restriction>
+          </xs:simpleType>
+        </xs:element>
+        <xs:element name="positionProfile">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>A profile of a position opening that is available at an organization.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="positionId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The identifier for the position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionTitle" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The title of the position the human resource is going to fulfill.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="positionTask" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The type of task or activity the worker performs on the position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The identifier of the task performed.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="description" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>A brief description of the task performed.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionLocation">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The work location of a position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="id" minOccurs="0" maxOccurs="2">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The identifier of the work location.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Customer"/>
+                                <xs:enumeration value="Supplier"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="name" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The name of the work location.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="countryCode" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Container for specifying the country code.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The two letter value of the country code.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="city" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The city. </sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="postalCode" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The postal code of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="streetName" minOccurs="0" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The street name of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="houseNumber" minOccurs="0" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The house number of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="houseNumberAddition" minOccurs="0" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The addition of the house number.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="buildingAddition" minOccurs="0" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Any additional, identifiable information regarding the building, e.g. the floor, room, apartment number within a building.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="requestedWorker" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Container to specify the preferred worker(s).</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="workerId" minOccurs="0" maxOccurs="2">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Provides a unique identifier to a specific worker.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the unique identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="schemeAgencyId">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string">
+                                <xs:enumeration value="Customer"/>
+                                <xs:enumeration value="Supplier"/>
+                              </xs:restriction>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="person" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Information to identify the person, including name, communication, demographic details and other identifiers.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="name" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>A component for capturing summary or fine-grain data comprising a person's name.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="formattedName">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The formatted name of a person, as it would be written out together (for example, on a mailing label).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="legal" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The legal name of a person (typically used if it differs from family name).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="given" minOccurs="0" maxOccurs="unbounded">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The given name(s) of a person. The element may occur more than once, one element for each given name. </sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="preferred" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The preferred name of a person (if it differs from given name).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="family" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The family name (or surname) of a person.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="familyPrefix" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The prefix of a family name, e.g. van der, de jong.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="formerFamily" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The former family name of a person (used if the person's name was changed).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="formerFamilyPrefix" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The prefix of the former family name, e.g. van der, de jong.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="preferredSalutationCode" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The salutation used to address a person (such as Dr., Mr., Mrs.).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="qualificationAffixCode" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The professional designation attached to the end of a person's name (such as M.Sc., Ph.D).</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                                <xs:element name="initials" minOccurs="0">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The initials of a person.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string"/>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionOpenQuantity" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The position quantity currently available to be filled. This is intended as a finer-grained expression of the total number of positions to be filled, the total number of requested workers (NOT FTE).</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:integer"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="positionOfferingTypes" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The type of contract classifying the position. Indicates whether it is a position for temporary work, secondment, payroll or recruitment and selection.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the postion offering type.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionQualifications" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The qualifications that are required for a position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="certifications" minOccurs="0" maxOccurs="unbounded">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Any certifications and/or licenses the person holds for the related position.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="name">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The common name of the certificate.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="descriptions" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>Additional details or descriptions about the certification/license.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionPeriod">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The start and (expected) end of the position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="start" type="xs:date">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The start date of the position.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="end" minOccurs="0" type="xs:date">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The (expected) end date of the position.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="workingPeriods" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Describes the working period of the position that the worker is required for, e.g. 32 hours per week and/or 4 days per week. This is excluding break time(s).</sth:definition>
+                    <sth:note>It is allowed to use workingPeriods more than once, for example to specify that the worker is requested to work 36 hours a week, but also to specify that this needs to happen within 4 (or 5) days a week.</sth:note>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="workDuration" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The amount of time to work, e.g. 40 hours, 4 days. This is excluding break time(s).</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the work duration, expressed as decimal.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="unitCode">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The unit of measure.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="value">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The value of the unit of measure.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="Days"/>
+                                      <xs:enumeration value="Hours"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="minimumWorkDuration" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The minimum amount of time the worker has to work within the specified base duration, e.g. 24 hours. This is excluding break time(s).</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the work duration, expressed as decimal.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="unitCode">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The unit of measure.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="value">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The value of the unit of measure.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="Days"/>
+                                      <xs:enumeration value="Hours"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="maximumWorkDuration" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The maximum amount of time the worker has to work within the specified base duration, e.g. 40 hours. This is excluding break time(s).</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the work duration, expressed as decimal.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="unitCode">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The unit of measure.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="value">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The value of the unit of measure.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="Days"/>
+                                      <xs:enumeration value="Hours"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="baseDuration">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The related base time interval, e.g. 1 week, 1 month.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the base duration, expressed as decimal.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:decimal"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="unitCode">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The unit of measure.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="value">
+                                  <xs:annotation>
+                                    <xs:documentation>
+                                      <sth:definition>The value of the unit of measure.</sth:definition>
+                                    </xs:documentation>
+                                  </xs:annotation>
+                                  <xs:simpleType>
+                                    <xs:restriction base="xs:string">
+                                      <xs:enumeration value="Daily"/>
+                                      <xs:enumeration value="FourWeekly"/>
+                                      <xs:enumeration value="Monthly"/>
+                                      <xs:enumeration value="Quarterly"/>
+                                      <xs:enumeration value="Weekly"/>
+                                      <xs:enumeration value="Yearly"/>
+                                    </xs:restriction>
+                                  </xs:simpleType>
+                                </xs:element>
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="positionReason" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The reason for the open position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="shiftDescription" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>If the position consists of shift work, this element is used for a description of the type of shift, e.g. 4-shift work.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="collectiveLabourAgreement" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Information about the collective labour agreement (CLA; CAO in Dutch) that determines the renumeration. In the Netherlands this can be the CLA of the ABU, NBBU or a specific CLA of the staffing customer.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" minOccurs="0" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The name of the collective labour agreement (CLA).</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                    <xs:element name="id" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The identifier of the collective labour agreement (CLA).</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The identifier.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="payRates" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Container to specify the pay and/or bill rate the staffing customer is willing/going to pay and/or bill for the required human resource.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="id" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A unique identifier which cannot be expressed as enumeration.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="rateType">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Indicates whether the rate applies to a time interval, an allowance or an expense.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:enumeration value="Allowance/Expense"/>
+                    <xs:enumeration value="TimeInterval"/>
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="code">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The code of the rate, e.g. regular hours, travel expenses or meal compensation.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="amount">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The amount of the rate. The amount is always excluding multiplier.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the amount. The amount is always excluding multiplier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:decimal"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="currency">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The currency of the amount.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The value of the currency code.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="intervalCode">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The timeframe to which the pay rate applies. </sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the interval code.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Daily"/>
+                          <xs:enumeration value="FlatFee"/>
+                          <xs:enumeration value="FourWeekly"/>
+                          <xs:enumeration value="HourlyConsolidated"/>
+                          <xs:enumeration value="HourlySplit"/>
+                          <xs:enumeration value="Monthly"/>
+                          <xs:enumeration value="Weekly"/>
+                          <xs:enumeration value="Yearly"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="period">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Container to specify the period in which the pay rate is valid. </sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DatePeriod">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The period in which the pay rate is valid. </sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="start">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The start date of the period in which the pay rate is valid.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:date"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="end" minOccurs="0">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The end date of the period in which the pay rate is valid.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:date"/>
+                            </xs:simpleType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="multiplier" minOccurs="0" type="xs:decimal">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The multiplier that should be applied to the pay rate in order to determine the real amount that has to be paid or billed (depending on toBeBilled and toBePaid). The 'standard multiplier' for a pay rate without mark-up is 100% (fill in value '100'). A different value can be used in situations where a mark-up is provided on top of the standard rate. The mark-up should be added to the 'base percentage' of 100%, so a mark-up of 50% (1.5 times the standard rate) makes a multiplier of 150%.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="toBeBilled" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Specifies whether this pay rate is specified for billing purposes or not.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+              <xs:element name="toBePaid" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Specifies whether this pay rate is specified for payment purposes or not.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="requestForQuotationDetails" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Contains elements only used when the Staffing Order message is used as request for quotation. The elements are used to specify further details regarding the handling of the request for quotation and the quotation (Human Resource message) itself.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="multiVendorDistribution" minOccurs="0" type="xs:boolean">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Indication whether the staffing position is sent to multiple staffing suppliers ('true') or not ('false').</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="resourceClassificationInclusion" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Container for related information concerning the processing of the message.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="department" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Container specifying the department at the staffing customer the human resource is going to work. </sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The department name at the staffing customer the human resource is going to work.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="code">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The department code at the staffing customer the human resource is going to work.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="costCenter" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Container specifying the cost center of the staffing customer for the staffing position. </sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The cost center name of the staffing customer for the staffing position.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="code">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The cost center code of the staffing customer for the staffing position.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="project" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Container specifying the project at the staffing customer. </sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The project name at the staffing customer.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="code">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The project code at the staffing customer.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="referenceNumber" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>A reference number for the staffing position.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="staffingIds" minOccurs="0">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>A collection of identifiers related to this message.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="previousOrderId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Used to specify a reference to the previous procurement order (concerning the same staffing position).</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="requestForQuotationId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The identifier of the related request for quotation document (StaffingOrder = 'RFQ').</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="quoteId" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The identifier of the related quotation (Human Resource) document.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="masterOrderId" minOccurs="0" maxOccurs="2">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Reference to a master order/framework agreement. Used to associate multiple orders.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="schemeAgencyId">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="reasonOfChange" minOccurs="0" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>The reason for the change of the (status of the) message.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="comments" minOccurs="0" type="xs:string">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Additional comments about the message.</sth:definition>
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+        <xs:element name="customerSpecificRequirements" minOccurs="0" type="xs:any">
+          <xs:annotation>
+            <xs:documentation>
+              <sth:definition>Container for customer specific requirements. This container can only be filled with customer specific requirements that have been permitted and added to the customer specific requirements codelist by the SETU.</sth:definition>
+              <sth:note>Only customer specific requirements that have been placed on the SETU codelist may be used within this container. It is not permitted to deviate from the codelist in this container. Validation is built in for the permitted customer specific requirements and is checked for.</sth:note>
+              <sth:note>Customer specific requirements must be included in the syntax as follows:</sth:note>
+            </xs:documentation>
+          </xs:annotation>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
