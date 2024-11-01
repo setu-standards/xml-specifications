@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Timecard xmlns="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#">
+  <documentId>
+    <value>005aab 54c9f</value>
+    <schemeAgencyId>Customer</schemeAgencyId>
+  </documentId>
+  <supplier>
+    <id>
+      <value>3517d2 03675</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>a810b6 dbd00</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>5ef6f7 65664</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>9ec6f9 0e469</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>4450e0 4f862</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+  </supplier>
+  <customer>
+    <id>
+      <value>ff3736 b24fa</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>f5f5d5 cae1c</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>01c4f2 26001</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>e11b7a a70d0</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>62b407 cfba6</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Contant person name</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>+31692831524</formattedNumber>
+        </phone>
+        <email>
+          <address>jelte.bootsma@example.org</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+    </personContacts>
+  </customer>
+  <department>
+    <name>The Example Department</name>
+    <code>c9a3c1 543b7</code>
+  </department>
+  <costCenter>
+    <name>Example CostCenter</name>
+    <code>334f4ba5333</code>
+  </costCenter>
+  <project>
+    <name>The Example Project</name>
+    <code>782410 09d27</code>
+  </project>
+  <person>
+    <id>
+      <value>0bef87e0a7b</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <name>
+      <formattedName>Piet van der Berg</formattedName>
+    </name>
+  </person>
+  <period>
+    <DatePeriod>
+      <start>2024-10-23</start>
+      <end>2024-10-27</end>
+    </DatePeriod>
+  </period>
+  <staffingIds>
+    <assignmentId>
+      <value>12fe386fe7c</value>
+      <schemeAgencyId>Supplier</schemeAgencyId>
+    </assignmentId>
+  </staffingIds>
+  <timeInterval>
+    <id>
+      <value>8ae7c9583e3</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <department>
+      <name>Example Department</name>
+      <code>a045d7 d522c</code>
+    </department>
+    <costCenter>
+      <name>Example costCenter</name>
+      <code>0779ce da9a4</code>
+    </costCenter>
+    <project>
+      <name>Example Project</name>
+      <code>a32864 ad994</code>
+    </project>
+    <typeCode>
+      <value>HT100</value> 
+    </typeCode>
+    <period>
+      <DateTimePeriod>
+        <start>2024-10-23T09:00:00</start>
+        <end>2024-10-23T17:30:00</end>
+      </DateTimePeriod>
+    </period>
+    <timeTotal>8.00</timeTotal>
+    <payRates>
+      <amount>
+        <value>10</value>
+        <currency>
+          <value>EUR</value>
+        </currency>
+      </amount>
+      <intervalCode>
+        <value>HourlyConsolidated</value>
+      </intervalCode>
+      <multiplier>100</multiplier>
+      <toBeBilled>true</toBeBilled>
+      <toBePaid>true</toBePaid>
+    </payRates>
+    <homeOfficeIndicator>Office</homeOfficeIndicator>
+  </timeInterval>
+</Timecard>
