@@ -1,0 +1,206 @@
+{
+  "documentId": {
+    "value": "14b3fa 07e26",
+    "schemeAgencyId": "Supplier"
+  },
+  "supplier": {
+    "id": [
+      {
+        "value": "595b98 68a8b",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "b19fd1 62547",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "61d4f2 e0419",
+      "schemeAgencyId": "BTW"
+    },
+    "establishment": {
+      "responsibilityCode": {
+        "value": "Department"
+      },
+      "id": [
+        {
+          "value": "e08e6d 49fb7",
+          "schemeAgencyId": "Customer"
+        }
+      ],
+      "legalId": {
+        "value": "3452fb 176b6",
+        "schemeAgencyId": "KvK"
+      }
+    },
+    "personContacts": [
+      {
+        "name": {
+          "formattedName": "Name contact person"
+        },
+        "communication": {
+          "phone": [
+            {
+              "formattedNumber": "0604594928"
+            }
+          ],
+          "email": [
+            {
+              "address": "jelte.bootsma@example.org",
+              "useCode": "Business"
+            }
+          ]
+        },
+        "roleCode": "Supervisor"
+      }
+    ]
+  },
+  "customer": {
+    "id": [
+      {
+        "value": "d45887 ba13a",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "cd196a 8ad49",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "4c8445 65919",
+      "schemeAgencyId": "BTW"
+    },
+    "establishment": {
+      "responsibilityCode": {
+        "value": "Department"
+      },
+      "id": [
+        {
+          "value": "7976bb 2bcd9",
+          "schemeAgencyId": "Customer"
+        }
+      ],
+      "legalId": {
+        "value": "82352c f6932",
+        "schemeAgencyId": "KvK"
+      }
+    },
+    "personContacts": [
+      {
+        "name": {
+          "formattedName": "Name contactperson"
+        },
+        "communication": {
+          "phone": [
+            {
+              "formattedNumber": "061290228922"
+            }
+          ],
+          "email": [
+            {
+              "address": "jelte.bootsma@example.org",
+              "useCode": "Business"
+            }
+          ]
+        },
+        "roleCode": "FirstDayContact"
+      }
+    ]
+  },
+  "resourceClassificationInclusion": {
+    "department": {
+      "name": "71cbc0 566c6",
+      "code": "8a318b 89787"
+    },
+    "costCenter": {
+      "name": "90b28a fb9a4",
+      "code": "55ad78 0f3c4"
+    },
+    "project": {
+      "name": "2208c0 c38ae",
+      "code": "c8fa2c 469a3"
+    },
+    "referenceNumber": "21f290 fd2d3",
+    "purchaseOrderNumber": "485e00 1fc2c"
+  },
+  "payRates": [
+    {
+      "id": {
+        "value": "1dc21a 54822"
+      },
+      "rateType": "TimeInterval",
+      "code": "HT100",
+      "amount": {
+        "value": 10,
+        "currency": {
+          "value": "EUR"
+        }
+      },
+      "intervalCode": {
+        "value": "HourlyConsolidated"
+      },
+      "period": {
+        "DatePeriod": {
+          "start": "2024-10-23",
+          "end": "2024-12-24"
+        }
+      },
+      "multiplier": 100,
+      "toBeBilled": false,
+      "toBePaid": true,
+      "purchaseOrderLineItem": "935ff4 1174e"
+    }
+  ],
+  "positionProfile": {
+    "positionId": {
+      "value": "fc6eba 82f03"
+    },
+    "positionTitle": "Afwasser",
+    "positionTask": {
+      "id": {
+        "value": "50021"
+      },
+      "description": {
+        "value": "Afwassen bij restaurant X"
+      }
+    },
+    "positionPeriod": {
+      "start": "2024-10-23",
+      "expectedEnd": "2024-10-23",
+      "actualEnd": "2024-12-24"
+    },
+    "workingPeriods": [
+      {
+        "workDuration": {
+          "value": 8,
+          "unitCode": {
+            "value": "Hours"
+          }
+        },
+        "baseDuration": {
+          "value": 1,
+          "unitCode": {
+            "value": "Weekly"
+          }
+        }
+      }
+    ],
+    "travelDistance": 45
+  },
+  "assignedWorker": {
+    "workerId": [
+      {
+        "value": "29b2b0713de",
+        "schemeAgencyId": "Customer"
+      }
+    ]
+  },
+  "staffingIds": {
+    "requestForQuotationId": {
+      "value": "5c4279 6f9e0",
+      "schemeAgencyId": "Customer"
+    }
+  },
+  "reasonOfChange": "61f475 94d7d",
+  "customerSpecificRequirements": ""
+}
