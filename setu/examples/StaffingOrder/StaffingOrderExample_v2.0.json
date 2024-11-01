@@ -32,28 +32,7 @@
         "value": "47d71b f509c",
         "schemeAgencyId": "KvK"
       }
-    },
-    "personContacts": [
-      {
-        "name": {
-          "formattedName": "Jelte Bootsma"
-        },
-        "communication": {
-          "phone": [
-            {
-              "formattedNumber": "0644353183"
-            }
-          ],
-          "email": [
-            {
-              "address": "jelte.bootsma@setu.nl",
-              "useCode": "Business"
-            }
-          ]
-        },
-        "roleCode": "CreatedBy"
-      }
-    ]
+    }
   },
   "customer": {
     "id": [
