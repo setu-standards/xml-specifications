@@ -1,0 +1,154 @@
+{
+  "documentId": {
+    "value": "e87f1f5eb38",
+    "schemeAgencyId": "Supplier"
+  },
+  "supplier": {
+    "id": [
+      {
+        "value": "c83e56fd10e",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "2a1903a2cb4",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "68a8183c3a2",
+      "schemeAgencyId": "BTW"
+    },
+    "establishment": {
+      "responsibilityCode": {
+        "value": "Department"
+      },
+      "id": [
+        {
+          "value": "c83e56fd10a",
+          "schemeAgencyId": "Customer"
+        }
+      ]
+    },
+    "personContacts": [
+      {
+        "name": {
+          "formattedName": "Jelte Bootsma"
+        },
+        "communication": {
+          "phone": [
+            {
+              "formattedNumber": "0644353183"
+            }
+          ],
+          "email": [
+            {
+              "address": "jelte.bootsma@setu.nl",
+              "useCode": "Business"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "customer": {
+    "id": [
+      {
+        "value": "60a4f31faee",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "9f209b120a0",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "05550a05603",
+      "schemeAgencyId": "BTW"
+    }
+  },
+  "person": {
+    "legalId": {
+      "value": "04c08f96bdd",
+      "schemeAgencyId": "BSN"
+    },
+    "birthDate": "2000-10-23",
+    "gender": {
+      "value": "2"
+    },
+    "id": [
+      {
+        "value": "718ccad5908",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "name": {
+      "formattedName": "John Lennon"
+    },
+    "communication": {
+      "address": {
+        "countryCode": {
+          "value": "NL"
+        },
+        "city": "Amsterdam",
+        "postalCode": "9001 HL",
+        "streetName": "Mystreet",
+        "houseNumber": "10"
+      }
+    },
+    "primaryLanguage": {
+      "value": "NL"
+    },
+    "birthPlace": "Amsterdam",
+    "nationality": [
+      "NL"
+    ]
+  },
+  "profiles": {
+    "personAvailability": {
+      "availabilityDates": [
+        {
+          "startDateTime": "2024-10-23T00:00:00",
+          "endDateTime": "2025-01-20T00:00:00"
+        }
+      ]
+    },
+    "workingPeriods": [
+      {
+        "workDuration": {
+          "value": 8,
+          "unitCode": {
+            "value": "Hours"
+          }
+        },
+        "baseDuration": {
+          "value": 1,
+          "unitCode": {
+            "value": "Weekly"
+          }
+        }
+      }
+    ]
+  },
+  "resourceClassificationInclusion": {
+    "department": {
+      "name": "82b5c0 9634b",
+      "code": "81f509 f54d5"
+    },
+    "costCenter": {
+      "name": "cd3a6e f18a8",
+      "code": "5df978 516cf"
+    },
+    "project": {
+      "name": "042e6d 446b5",
+      "code": "2de8fd e6be4"
+    },
+    "referenceNumber": "8ff230 2484e"
+  },
+  "staffingIds": {
+    "requestForQuotationId": {
+      "value": "fb5006 f87de",
+      "schemeAgencyId": "Customer"
+    }
+  },
+  "reasonOfChange": "2cc166 861b9"
+}
