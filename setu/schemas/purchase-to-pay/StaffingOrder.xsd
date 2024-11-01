@@ -1803,7 +1803,7 @@
             </xs:documentation>
           </xs:annotation>
         </xs:element>
-        <xs:element name="customerSpecificRequirements" minOccurs="0" type="xs:any">
+        <xs:element name="customerSpecificRequirements" minOccurs="0" type="xs:string">
           <xs:annotation>
             <xs:documentation>
               <sth:definition>Container for customer specific requirements. This container can only be filled with customer specific requirements that have been permitted and added to the customer specific requirements codelist by the SETU.</sth:definition>
