@@ -1,0 +1,174 @@
+{
+  "documentId": {
+    "value": "005aab 54c9f",
+    "schemeAgencyId": "Customer"
+  },
+  "supplier": {
+    "id": [
+      {
+        "value": "3517d2 03675",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "a810b6 dbd00",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "5ef6f7 65664",
+      "schemeAgencyId": "BTW"
+    },
+    "establishment": {
+      "responsibilityCode": {
+        "value": "Department"
+      },
+      "id": [
+        {
+          "value": "9ec6f9 0e469",
+          "schemeAgencyId": "Customer"
+        }
+      ],
+      "legalId": {
+        "value": "4450e0 4f862",
+        "schemeAgencyId": "KvK"
+      }
+    }
+  },
+  "customer": {
+    "id": [
+      {
+        "value": "ff3736 b24fa",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "legalId": {
+      "value": "f5f5d5 cae1c",
+      "schemeAgencyId": "KvK"
+    },
+    "taxId": {
+      "value": "01c4f2 26001",
+      "schemeAgencyId": "BTW"
+    },
+    "establishment": {
+      "responsibilityCode": {
+        "value": "Department"
+      },
+      "id": [
+        {
+          "value": "e11b7a a70d0",
+          "schemeAgencyId": "Customer"
+        }
+      ],
+      "legalId": {
+        "value": "62b407 cfba6",
+        "schemeAgencyId": "KvK"
+      }
+    },
+    "personContacts": [
+      {
+        "name": {
+          "formattedName": "Contant person name"
+        },
+        "communication": {
+          "phone": [
+            {
+              "formattedNumber": "+31692831524"
+            }
+          ],
+          "email": [
+            {
+              "address": "jelte.bootsma@example.org",
+              "useCode": "Business"
+            }
+          ],
+          "web": {
+            "url": "example.org"
+          }
+        }
+      }
+    ]
+  },
+  "department": {
+    "name": "The Example Department",
+    "code": "c9a3c1 543b7"
+  },
+  "costCenter": {
+    "name": "Example CostCenter",
+    "code": "334f4ba5333"
+  },
+  "project": {
+    "name": "The Example Project",
+    "code": "782410 09d27"
+  },
+  "person": {
+    "id": [
+      {
+        "value": "0bef87e0a7b",
+        "schemeAgencyId": "Customer"
+      }
+    ],
+    "name": {
+      "formattedName": "Piet van der Berg"
+    }
+  },
+  "period": {
+    "DatePeriod": {
+      "start": "2024-10-23",
+      "end": "2024-10-27"
+    }
+  },
+  "staffingIds": {
+    "assignmentId": {
+      "value": "12fe386fe7c",
+      "schemeAgencyId": "Supplier"
+    }
+  },
+  "timeInterval": [
+    {
+      "id": {
+        "value": "8ae7c9583e3",
+        "schemeAgencyId": "Customer"
+      },
+      "department": {
+        "name": "Example Department",
+        "code": "a045d7 d522c"
+      },
+      "costCenter": {
+        "name": "Example costCenter",
+        "code": "0779ce da9a4"
+      },
+      "project": {
+        "name": "Example Project",
+        "code": "a32864 ad994"
+      },
+      "typeCode": {
+        "value": "HT100"
+      },
+      "period": {
+        "DateTimePeriod": {
+          "start": "2024-10-23T09:00:00",
+          "end": "2024-10-23T17:30:00"
+        }
+      },
+      "timeTotal": "8.00",
+      "payRates": [
+        {
+          "amount": {
+            "value": 10,
+            "currency": {
+              "value": "EUR"
+            }
+          },
+          "intervalCode": {
+            "value": "HourlyConsolidated"
+          },
+          "multiplier": 100,
+          "toBeBilled": true,
+          "toBePaid": true
+        }
+      ],
+      "homeOfficeIndicator": "Office"
+    }
+  ],
+  "customerSpecificRequirements": ""
+}
