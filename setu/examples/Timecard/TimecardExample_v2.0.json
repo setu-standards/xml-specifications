@@ -80,10 +80,7 @@
               "address": "jelte.bootsma@example.org",
               "useCode": "Business"
             }
-          ],
-          "web": {
-            "url": "example.org"
-          }
+          ]
         }
       }
     ]
