@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<HumanResource xmlns="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+<HumanResource xmlns="https://ontology.setu.nl/#" xmlns:setu="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#">
   <documentId>
     <value>e87f1f5eb38</value>
     <schemeAgencyId>Supplier</schemeAgencyId>
