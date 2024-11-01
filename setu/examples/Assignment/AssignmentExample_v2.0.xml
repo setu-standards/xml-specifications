@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Assignment xmlns="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#">
+  <documentId>
+    <value>14b3fa 07e26</value>
+    <schemeAgencyId>Supplier</schemeAgencyId>
+  </documentId>
+  <supplier>
+    <id>
+      <value>595b98 68a8b</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>b19fd1 62547</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>61d4f2 e0419</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>e08e6d 49fb7</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>3452fb 176b6</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Name contact person</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>0604594928</formattedNumber>
+        </phone>
+        <email>
+          <address>jelte.bootsma@example.org</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+      <roleCode>Supervisor</roleCode>
+    </personContacts>
+  </supplier>
+  <customer>
+    <id>
+      <value>d45887 ba13a</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>cd196a 8ad49</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>4c8445 65919</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>7976bb 2bcd9</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>82352c f6932</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Name contactperson</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>061290228922</formattedNumber>
+        </phone>
+        <email>
+          <address>jelte.botsam@example.org</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+      <roleCode>FirstDayContact</roleCode>
+    </personContacts>
+  </customer>
+  <resourceClassificationInclusion>
+    <department>
+      <name>71cbc0 566c6</name>
+      <code>8a318b 89787</code>
+    </department>
+    <costCenter>
+      <name>90b28a fb9a4</name>
+      <code>55ad78 0f3c4</code>
+    </costCenter>
+    <project>
+      <name>2208c0 c38ae</name>
+      <code>c8fa2c 469a3</code>
+    </project>
+    <referenceNumber>21f290 fd2d3</referenceNumber>
+    <purchaseOrderNumber>485e00 1fc2c</purchaseOrderNumber>
+  </resourceClassificationInclusion>
+  <payRates>
+    <id>
+      <value>1dc21a 54822</value>
+    </id>
+    <rateType>TimeInterval</rateType>
+    <code>HT100</code>
+    <amount>
+      <value>10</value>
+      <currency>
+        <value>EUR</value>
+      </currency>
+    </amount>
+    <intervalCode>
+      <value>HourlyConsolidated</value>
+    </intervalCode>
+    <period>
+      <DatePeriod>
+        <start>2024-10-23</start>
+        <end>2024-12-24</end>
+      </DatePeriod>
+    </period>
+    <multiplier>100</multiplier>
+    <toBeBilled>false</toBeBilled>
+    <toBePaid>true</toBePaid>
+    <purchaseOrderLineItem>935ff4 1174e</purchaseOrderLineItem>
+  </payRates>
+  <positionProfile>
+    <positionId>
+      <value>fc6eba 82f03</value>
+    </positionId>
+    <positionTitle>Afwasser</positionTitle>
+    <positionTask>
+      <id>
+        <value>50021</value>
+      </id>
+      <description>
+        <value>Afwassen bij restaurant X</value>
+      </description>
+    </positionTask>
+    <positionPeriod>
+      <start>2024-10-23</start>
+      <expectedEnd>2024-10-23</expectedEnd>
+      <actualEnd>2024-12-24</actualEnd>
+    </positionPeriod>
+    <workingPeriods>
+      <workDuration>
+        <value>8</value>
+        <unitCode>
+          <value>Hours</value>
+        </unitCode>
+      </workDuration>
+      <baseDuration>
+        <value>1</value>
+        <unitCode>
+          <value>Weekly</value>
+        </unitCode>
+      </baseDuration>
+    </workingPeriods>
+    <travelDistance>45</travelDistance>
+  </positionProfile>
+  <assignedWorker>
+    <workerId>
+      <value>29b2b0713de</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </workerId>
+  </assignedWorker>
+  <staffingIds>
+    <requestForQuotationId>
+      <value>5c4279 6f9e0</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </requestForQuotationId>
+  </staffingIds>
+  <reasonOfChange>61f475 94d7d</reasonOfChange>
+</Assignment>
