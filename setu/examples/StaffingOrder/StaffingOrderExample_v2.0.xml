@@ -29,21 +29,6 @@
         <schemeAgencyId>KvK</schemeAgencyId>
       </legalId>
     </establishment>
-    <personContacts>
-      <name>
-        <formattedName>Jelte Bootsma</formattedName>
-      </name>
-      <communication>
-        <phone>
-          <formattedNumber>0644353183</formattedNumber>
-        </phone>
-        <email>
-          <address>jelte.bootsma@setu.nl</address>
-          <useCode>Business</useCode>
-        </email>
-      </communication>
-      <roleCode>CreatedBy</roleCode>
-    </personContacts>
   </supplier>
   <customer>
     <id>
