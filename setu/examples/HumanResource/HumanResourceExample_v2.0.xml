@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<HumanResource xmlns="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#">
+  <documentId>
+    <value>e87f1f5eb38</value>
+    <schemeAgencyId>Supplier</schemeAgencyId>
+  </documentId>
+  <supplier>
+    <id>
+      <value>c83e56fd10e</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>2a1903a2cb4</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>68a8183c3a2</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+      <value>c83e56fd10a</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Jelte Bootsma</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>0644353183</formattedNumber>
+        </phone>
+        <email>
+          <address>jelte.bootsma@setu.nl</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+    </personContacts>
+  </supplier>
+  <customer>
+    <id>
+      <value>60a4f31faee</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>9f209b120a0</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>05550a05603</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+  </customer>
+  <person>
+    <legalId>
+      <value>04c08f96bdd</value>
+      <schemeAgencyId>BSN</schemeAgencyId>
+    </legalId>
+    <birthDate>2000-10-23</birthDate>
+    <gender>
+      <value>2</value>
+    </gender>
+    <id>
+      <value>718ccad5908</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <name>
+      <formattedName>John Lennon</formattedName>
+    </name>
+    <communication>
+      <address>
+        <countryCode>
+          <value>NL</value>
+        </countryCode>
+        <city>Amsterdam</city>
+        <postalCode>9001 HL</postalCode>
+        <streetName>Mystreet</streetName>
+        <houseNumber>10</houseNumber>
+      </address>
+    </communication>
+    <primaryLanguage>
+      <value>NL</value>
+    </primaryLanguage>
+    <birthPlace>Amsterdam</birthPlace>
+    <nationality>NL</nationality>
+  </person>
+  <profiles>
+    <personAvailability>
+      <availabilityDates>
+        <startDateTime>2024-10-23T00:00:00</startDateTime>
+        <endDateTime>2025-01-20T00:00:00</endDateTime>
+      </availabilityDates>
+    </personAvailability>
+    <workingPeriods>
+      <workDuration>
+        <value>8</value>
+        <unitCode>
+          <value>Hours</value>
+        </unitCode>
+      </workDuration>
+      <baseDuration>
+        <value>1</value>
+        <unitCode>
+          <value>Weekly</value>
+        </unitCode>
+      </baseDuration>
+    </workingPeriods>
+  </profiles>
+  <resourceClassificationInclusion>
+    <department>
+      <name>82b5c0 9634b</name>
+      <code>81f509 f54d5</code>
+    </department>
+    <costCenter>
+      <name>cd3a6e f18a8</name>
+      <code>5df978 516cf</code>
+    </costCenter>
+    <project>
+      <name>042e6d 446b5</name>
+      <code>2de8fd e6be4</code>
+    </project>
+    <referenceNumber>8ff230 2484e</referenceNumber>
+  </resourceClassificationInclusion>
+  <staffingIds>
+    <requestForQuotationId>
+      <value>fb5006 f87de</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </requestForQuotationId>
+  </staffingIds>
+  <reasonOfChange>2cc166 861b9</reasonOfChange>
+</HumanResource>
