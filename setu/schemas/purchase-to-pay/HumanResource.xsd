@@ -1224,7 +1224,7 @@ For more information read the [‘Supported processes’ section](https://standa
                         </xs:documentation>
                       </xs:annotation>
                       <xs:simpleType>
-                        <xs:restriction base="xs:anySimpleType"/>
+                        <xs:restriction base="xs:string"/>
                       </xs:simpleType>
                     </xs:element>
                     <xs:element name="issuingAuthority" minOccurs="0">
@@ -1432,7 +1432,7 @@ For more information read the [‘Supported processes’ section](https://standa
                               </xs:documentation>
                             </xs:annotation>
                             <xs:simpleType>
-                              <xs:restriction base="xs:anySimpleType"/>
+                              <xs:restriction base="xs:string"/>
                             </xs:simpleType>
                           </xs:element>
                           <xs:element name="endDateTime" minOccurs="0">
@@ -1443,7 +1443,7 @@ For more information read the [‘Supported processes’ section](https://standa
                               </xs:documentation>
                             </xs:annotation>
                             <xs:simpleType>
-                              <xs:restriction base="xs:anySimpleType"/>
+                              <xs:restriction base="xs:string"/>
                             </xs:simpleType>
                           </xs:element>
                         </xs:sequence>
