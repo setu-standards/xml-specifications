@@ -1,0 +1,163 @@
+<StaffingOrder xmlns="https://ontology.setu.nl/#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/#">
+  <documentId>
+    <value>39fc74 8a3ac</value>
+    <schemeAgencyId>Customer</schemeAgencyId>
+  </documentId>
+  <supplier>
+    <id>
+      <value>9b5415 90115</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>ba923c 76e00</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>35c3ae 64b46</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>0ed934 1fe4f</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>47d71b f509c</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Jelte Bootsma</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>0644353183</formattedNumber>
+        </phone>
+        <email>
+          <address>jelte.bootsma@setu.nl</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+      <roleCode>CreatedBy</roleCode>
+    </personContacts>
+  </supplier>
+  <customer>
+    <id>
+      <value>26348b 14208</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </id>
+    <legalId>
+      <value>696275 2648b</value>
+      <schemeAgencyId>KvK</schemeAgencyId>
+    </legalId>
+    <taxId>
+      <value>45bc19 5a177</value>
+      <schemeAgencyId>BTW</schemeAgencyId>
+    </taxId>
+    <establishment>
+      <responsibilityCode>
+        <value>Department</value>
+      </responsibilityCode>
+      <id>
+        <value>6b194d 25d18</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <legalId>
+        <value>32697e 1aa24</value>
+        <schemeAgencyId>KvK</schemeAgencyId>
+      </legalId>
+    </establishment>
+    <personContacts>
+      <name>
+        <formattedName>Hennie de Veer</formattedName>
+      </name>
+      <communication>
+        <phone>
+          <formattedNumber>0678123490</formattedNumber>
+        </phone>
+        <email>
+          <address>hennie.deveer@setu.nl</address>
+          <useCode>Business</useCode>
+        </email>
+      </communication>
+    </personContacts>
+  </customer>
+  <orderType>Order</orderType>
+  <positionProfile>
+    <positionId>
+      <value>e5418b 59268</value>
+    </positionId>
+    <positionTitle>Afwasser</positionTitle>
+    <positionTask>
+      <id>
+        <value>68284f 0b52b</value>
+      </id>
+      <description>
+        <value>Afwassen op locatie X</value>
+      </description>
+    </positionTask>
+    <positionLocation>
+      <id>
+        <value>42a957 03268</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </id>
+      <name>Restaurant aan zee</name>
+      <countryCode>
+        <value>NL</value>
+      </countryCode>
+      <city>Noordwijk aan zee</city>
+      <postalCode>9001 JJ</postalCode>
+      <streetName>Aan zee straat</streetName>
+      <houseNumber>17</houseNumber>
+    </positionLocation>
+    <requestedWorker>
+      <workerId>
+        <value>fda9a5 29d60</value>
+        <schemeAgencyId>Customer</schemeAgencyId>
+      </workerId>
+      <person>
+        <name>
+          <formattedName>John Lennon</formattedName>
+        </name>
+      </person>
+    </requestedWorker>
+    <positionOfferingTypes>
+      <value>temporary staffing</value>
+    </positionOfferingTypes>
+    <positionPeriod>
+      <start>2024-10-23</start>
+      <end>2024-10-23</end>
+    </positionPeriod>
+    <workingPeriods>
+      <workDuration>
+        <value>8</value>
+        <unitCode>
+          <value>Hours</value>
+        </unitCode>
+      </workDuration>
+      <baseDuration>
+        <value>1</value>
+        <unitCode>
+          <value>Weekly</value>
+        </unitCode>
+      </baseDuration>
+    </workingPeriods>
+    <positionReason>Season</positionReason>
+    <shiftDescription>Afwassen in de keuken</shiftDescription>
+  </positionProfile>
+  <staffingIds>
+    <requestForQuotationId>
+      <value>96d93e d945b</value>
+      <schemeAgencyId>Customer</schemeAgencyId>
+    </requestForQuotationId>
+    <quoteId>
+      <value>a411e1 9301e</value>
+      <schemeAgencyId>Supplier</schemeAgencyId>
+    </quoteId>
+  </staffingIds>
+  <comments>If anything was missing in this example message please contact us!</comments>
+</StaffingOrder>
