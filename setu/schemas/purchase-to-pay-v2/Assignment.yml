@@ -676,17 +676,6 @@ properties:
                       type: string
                   type: object
               type: object
-            effectiveTimePeriod:
-              required:
-                - validFrom
-                - validTo
-              additionalProperties: false
-              properties:
-                validFrom:
-                  type: string
-                validTo:
-                  type: string
-              type: object
             minimumWorkDuration:
               required:
                 - value
@@ -757,6 +746,17 @@ properties:
                         - Yearly
                       type: string
                   type: object
+              type: object
+            effectiveTimePeriod:
+              required:
+                - validFrom
+                - validTo
+              additionalProperties: false
+              properties:
+                validFrom:
+                  type: string
+                validTo:
+                  type: string
               type: object
           type: object
         type: array

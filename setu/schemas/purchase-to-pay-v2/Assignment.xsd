@@ -1555,37 +1555,6 @@
                         </xs:sequence>
                       </xs:complexType>
                     </xs:element>
-                    <xs:element name="effectiveTimePeriod" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The period for which the agreed hours in the contract are valid. </sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="validFrom">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The start date of the validity period for which the agreed hours in the contract are valid. </sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string"/>
-                            </xs:simpleType>
-                          </xs:element>
-                          <xs:element name="validTo">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The end date of the validity period for which the agreed hours in the contract are valid. </sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string"/>
-                            </xs:simpleType>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
                     <xs:element name="minimumWorkDuration" minOccurs="0">
                       <xs:annotation>
                         <xs:documentation>
@@ -1728,6 +1697,37 @@
                                 </xs:element>
                               </xs:sequence>
                             </xs:complexType>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="effectiveTimePeriod" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The period for which the agreed hours in the contract are valid. </sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="validFrom">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The start date of the validity period for which the agreed hours in the contract are valid. </sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
+                          </xs:element>
+                          <xs:element name="validTo">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The end date of the validity period for which the agreed hours in the contract are valid. </sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                              <xs:restriction base="xs:string"/>
+                            </xs:simpleType>
                           </xs:element>
                         </xs:sequence>
                       </xs:complexType>
