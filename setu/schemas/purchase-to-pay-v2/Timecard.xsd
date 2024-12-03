@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/#" xmlns:hropen="https://hropenstandards.org/schema/xml" xmlns:setu="https://ontology.setu.nl">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/#" xmlns:hropen="https://hropenstandards.org/schema/xml" xmlns:setu="https://ontology.setu.nl/#">
   <!--===== Root element definition =====-->
   <xs:element name="Timecard">
     <xs:annotation>
@@ -757,7 +757,7 @@
           </xs:annotation>
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="DatePeriod">
+              <xs:element name="datePeriod">
                 <xs:annotation>
                   <xs:documentation>
                     <sth:definition>The date period of the timeframe that is reported on this timecard.</sth:definition>
@@ -1020,7 +1020,7 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="DateTimePeriod">
+                    <xs:element name="dateTimePeriod">
                       <xs:annotation>
                         <xs:documentation>
                           <sth:definition>The date time period of the time interval that is reported.</sth:definition>
@@ -1405,7 +1405,7 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="DatePeriod" minOccurs="0">
+                    <xs:element name="datePeriod" minOccurs="0">
                       <xs:annotation>
                         <xs:documentation>
                           <sth:definition>The date period in which the allowance/expense is incurred.</sth:definition>

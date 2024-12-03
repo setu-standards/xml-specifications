@@ -321,10 +321,10 @@ properties:
     type: object
   period:
     required:
-      - DatePeriod
+      - datePeriod
     additionalProperties: false
     properties:
-      DatePeriod:
+      datePeriod:
         required:
           - start
           - end
@@ -421,10 +421,10 @@ properties:
           type: object
         period:
           required:
-            - DateTimePeriod
+            - dateTimePeriod
           additionalProperties: false
           properties:
-            DateTimePeriod:
+            dateTimePeriod:
               required:
                 - start
               additionalProperties: false
@@ -574,7 +574,7 @@ properties:
         period:
           additionalProperties: false
           properties:
-            DatePeriod:
+            datePeriod:
               required:
                 - start
               additionalProperties: false

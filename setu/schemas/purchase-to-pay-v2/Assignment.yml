@@ -403,10 +403,10 @@ properties:
           type: object
         period:
           required:
-            - DatePeriod
+            - datePeriod
           additionalProperties: false
           properties:
-            DatePeriod:
+            datePeriod:
               required:
                 - start
               additionalProperties: false
