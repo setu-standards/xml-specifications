@@ -140,7 +140,7 @@
         "value": "HourlyConsolidated"
       },
       "period": {
-        "DatePeriod": {
+        "datePeriod": {
           "start": "2024-10-23",
           "end": "2024-12-24"
         }
@@ -201,6 +201,5 @@
       "schemeAgencyId": "Customer"
     }
   },
-  "reasonOfChange": "61f475 94d7d",
-  "customerSpecificRequirements": ""
+  "reasonOfChange": "61f475 94d7d"
 }

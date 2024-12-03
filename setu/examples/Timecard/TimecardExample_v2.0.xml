@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Timecard xmlns="https://hropenstandards.org/schema/xml/" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#">
+<Timecard xmlns="https://ontology.setu.nl/#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/#">
   <documentId>
     <value>005aab 54c9f</value>
     <schemeAgencyId>Customer</schemeAgencyId>
@@ -94,10 +94,10 @@
     </name>
   </person>
   <period>
-    <DatePeriod>
+    <datePeriod>
       <start>2024-10-23</start>
       <end>2024-10-27</end>
-    </DatePeriod>
+    </datePeriod>
   </period>
   <staffingIds>
     <assignmentId>
@@ -126,10 +126,10 @@
       <value>HT100</value> 
     </typeCode>
     <period>
-      <DateTimePeriod>
+      <dateTimePeriod>
         <start>2024-10-23T09:00:00</start>
         <end>2024-10-23T17:30:00</end>
-      </DateTimePeriod>
+      </dateTimePeriod>
     </period>
     <timeTotal>8.00</timeTotal>
     <payRates>
