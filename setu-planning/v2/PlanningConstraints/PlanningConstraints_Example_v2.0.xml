@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlanningConstraints xmlns="https://ontology.setu.nl/planning#"	xmlns:hropen="https://hropenstandards.org/schema/xml/"	xmlns:setu="https://ontology.setu.nl/planning#">
+<!--
+	Name: 		PlanningConstraints_Example_v1.0.xml
+	Purpose: 	Example of PlanningConstraints message.
+	Author(s): 	SETU, OTTO, Ortec
+	Standard: 	SETU Standard for Planning and Scheduling v1.0
+	Date: 		2023-06-12
+	Last edit:	2023-06-12
+-->
+	<documentId>
+		<value>Constraints_20220912170054727202</value>
+		<schemeAgencyId>Supplier</schemeAgencyId>
+	</documentId>
+	<supplier>
+		<id>
+			<value>OTTO</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</supplier>
+	<customer>
+		<id>
+			<value>OTTO_NLTHO001</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</customer>
+	<worker>
+		<workerId>
+			<value>313283</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</workerId>
+	</worker>
+	<periodicAvailabilityLine>
+		<lineId>
+			<value>periodicplanningline_1</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</lineId>
+		<availabilityStatus>Available</availabilityStatus>
+		<availabilityPeriod>Monday</availabilityPeriod>
+		<startTime>08:00:00</startTime>
+		<endTime>16:00:00</endTime>
+	</periodicAvailabilityLine>
+	<singleAvailabilityLine>
+		<lineId>
+			<value>singleplanningline_2</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</lineId>
+		<singleAvailabilityType>Occasional</singleAvailabilityType>
+		<availabilityStatus>Available</availabilityStatus>
+		<startDateTime>2022-09-12T00:00:00+02:00</startDateTime>
+		<endDateTime>2022-09-18T00:00:00+02:00</endDateTime>
+		<relatedWorker>
+			<workerId>
+				<value>313271</value>
+				<schemeAgencyId>Supplier</schemeAgencyId>
+			</workerId>
+			<relatedWorkerType>Required</relatedWorkerType>
+		</relatedWorker>
+	</singleAvailabilityLine>
+	<singleAvailabilityLine>
+		<lineId>
+			<value>singplanningline_3</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</lineId>
+		<singleAvailabilityType>Occasional</singleAvailabilityType>
+		<availabilityStatus>NotAvailable</availabilityStatus>
+		<startDateTime>2022-09-19T00:00:00+02:00</startDateTime>
+		<endDateTime>2022-10-09T00:00:00+02:00</endDateTime>
+	</singleAvailabilityLine>
+	<singleAvailabilityLine>
+		<lineId>
+			<value>singleplanningline_4</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</lineId>
+		<singleAvailabilityType>Occasional</singleAvailabilityType>
+		<availabilityStatus>Available</availabilityStatus>
+		<startDateTime>2022-10-10T00:00:00+02:00</startDateTime>
+		<endDateTime>2022-10-16T00:00:00+02:00</endDateTime>
+	</singleAvailabilityLine>
+</PlanningConstraints>
