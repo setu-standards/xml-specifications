@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PlanningAssignment xmlns="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/planning#">
+<!--
+	Name: 		PlanningAssignment_Example_v1.0.xml
+	Purpose: 	Example of PlanningAssignment message.
+	Author(s): 	SETU, OTTO, Ortec
+	Standard: 	SETU Standard for Planning and Scheduling v1.0
+	Date: 		2023-06-12
+	Last edit:	2023-06-12
+-->
+	<documentId>
+		<value>Assignments_20220912170054727202</value>
+		<schemeAgencyId>Customer</schemeAgencyId>
+	</documentId>
+	<supplier>
+		<id>
+			<value>OTTO</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</supplier>
+	<customer>
+		<id>
+			<value>OTTO_NLTHO001</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</id>
+	</customer>
+	<assignedWorker>
+		<assignedStatus>true</assignedStatus>
+		<workerId>
+			<value>313283</value>
+			<schemeAgencyId>Supplier</schemeAgencyId>
+		</workerId>
+		<person>
+			<name>
+				<formattedName>Doe, John</formattedName>
+			</name>
+		</person>
+	</assignedWorker>
+	<positionProfile>
+		<positionId>
+			<value>E420-PIK-02</value>
+		</positionId>
+		<positionTitle>Picker</positionTitle>
+		<positionTask>
+			<id>
+				<value>PIHP</value>
+			</id>
+			<description>
+				<value>Picking High Pallet</value>
+			</description>
+		</positionTask>
+		<positionLocation>
+				<name>Tholen</name>
+		</positionLocation>
+		<positionPeriod>
+			<start>2023-06-13</start>
+			<end>2024-06-13</end>
+		</positionPeriod>
+	</positionProfile>
+	<periodicPlanningLine>
+		<lineId>
+			<value>345677</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</lineId>
+		<planningPeriod>Monday</planningPeriod>
+		<startTime>07:00:00</startTime>
+		<endTime>16:00:00</endTime>
+		<breaks>
+			<paidOrUnpaid>Paid</paidOrUnpaid>
+			<startTime>11:30:00</startTime>
+			<endTime>12:00:00</endTime>
+		</breaks>
+	</periodicPlanningLine>
+	<singlePlanningLine>
+		<lineId>
+			<value>345678</value>
+			<schemeAgencyId>Customer</schemeAgencyId>
+		</lineId>
+		<singlePlanningType>Occasional</singlePlanningType>
+		<startDateTime>2022-09-14T07:00:00+02:00</startDateTime>
+		<endDateTime>2022-09-14T16:00:00+02:00</endDateTime>
+		<breaks>
+			<paidOrUnpaid>Paid</paidOrUnpaid>
+			<startDateTime>2022-09-14T11:30:00+02:00</startDateTime>
+			<endDateTime>2022-09-14T12:00:00+02:00</endDateTime>
+		</breaks>
+	</singlePlanningLine>
+</PlanningAssignment>
