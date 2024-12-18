@@ -1172,6 +1172,15 @@
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
+              <xs:element name="groupId" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Planning lines with a position quantity of 1 can each have an individual identifier but can be functionally the same planning line with multiple position quantities. For this, we use the GroupID to group functionally identical planning lines.
+
+For more information refer to: https://standard.setu.nl/docs/planning/usage-notes/memo-planningrequest</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:element>
               <xs:element name="actionCode" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
@@ -1360,6 +1369,15 @@
                     </xs:element>
                   </xs:sequence>
                 </xs:complexType>
+              </xs:element>
+              <xs:element name="groupId" minOccurs="0" type="xs:string">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Planning lines with a position quantity of 1 can each have an individual identifier but can be functionally the same planning line with multiple position quantities. For this, we use the GroupID to group functionally identical planning lines.
+
+For more information refer to: https://standard.setu.nl/docs/planning/usage-notes/memo-planningrequest</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
               </xs:element>
               <xs:element name="actionCode" minOccurs="0">
                 <xs:annotation>
