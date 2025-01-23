@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PlanningRequest xmlns="https://ontology.setu.nl/planning#"
+<PlanningRequest xmlns="https://ontology.setu.nl/#"
 	xmlns:hropen="https://hropenstandards.org/schema/xml/"
-	xmlns:setu="https://ontology.setu.nl/planning#">
+	xmlns:setu="https://ontology.setu.nl/#">
 	<!--
-	Name: 		PlanningRequest_Example_v1.0.xml
+	Name: 		PlanningRequest_Example_v2.0.xml
 	Purpose: 	Example of PlanningRequest message.
 	Author(s): 	SETU, OTTO, Ortec
-	Standard: 	SETU Standard for Planning and Scheduling v1.0
+	Standard: 	SETU Standard for Planning and Scheduling v2.0
 	Date: 		2023-06-12
 	Last edit:	2023-06-12
 -->

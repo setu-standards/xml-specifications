@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://ontology.setu.nl/planning#" xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/planning#" xmlns:hropen="https://hropenstandards.org/schema/xml" xmlns:setu="https://ontology.setu.nl/planning">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://ontology.setu.nl/#" xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified" attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/#" xmlns:hropen="https://hropenstandards.org/schema/xml" xmlns:setu="https://ontology.setu.nl/">
 <xs:annotation>
     <xs:documentation>	
-    Name:       PlanningConstraints_v1.0.xsd
+    Name:       PlanningConstraints_v2.0.xsd
     Purpose:    Defines the XML Schema for the PlanningConstraints message.
     Author(s): 	SETU
-    Standard: 	SETU Standard for Planning and Scheduling v1.0
-    Date:       2023-06-12
-    Last edit:  2023-06-12
+    Standard: 	SETU Standard for Planning and Scheduling v2.0
+    Date:       2025-01-23
     </xs:documentation>
 </xs:annotation>
 <!--===== Root element definition =====-->

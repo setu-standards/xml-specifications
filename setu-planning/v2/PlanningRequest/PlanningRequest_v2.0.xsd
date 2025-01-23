@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://ontology.setu.nl/planning#"
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="https://ontology.setu.nl/#"
   xmlns:sth="https://ns.semantic-treehouse.nl/message#" elementFormDefault="qualified"
-  attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/planning#"
+  attributeFormDefault="unqualified" targetNamespace="https://ontology.setu.nl/#"
   xmlns:hropen="https://hropenstandards.org/schema/xml"
-  xmlns:setu="https://ontology.setu.nl/planning">
+  xmlns:setu="https://ontology.setu.nl">
   <xs:annotation>
-    <xs:documentation> Name: PlanningRequest_v1.0.xsd Purpose: Defines the XML Schema for the
-      PlanningRequest message. Author(s): SETU Standard: SETU Standard for Planning and Scheduling
-      v1.0 Date: 2023-06-12 Last edit: 2023-06-12 </xs:documentation>
+    <xs:documentation> 
+    Name:      PlanningRequest_v2.0.xsd 
+    Purpose:   Defines the XML Schema for the PlanningRequest message. 
+    Author(s): SETU 
+    Standard:  SETU Standard for Planning and Scheduling v2.0
+    Date:      2025-01-23
+    </xs:documentation>
   </xs:annotation>
-  <!--=====
-  Root element definition =====-->
+  <!--=====  Root element definition =====-->
   <xs:element name="PlanningRequest">
     <xs:annotation>
       <xs:documentation>
@@ -1172,15 +1175,6 @@
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-              <xs:element name="groupId" minOccurs="0" type="xs:string">
-                <xs:annotation>
-                  <xs:documentation>
-                    <sth:definition>Planning lines with a position quantity of 1 can each have an individual identifier but can be functionally the same planning line with multiple position quantities. For this, we use the GroupID to group functionally identical planning lines.
-
-For more information refer to: https://standard.setu.nl/docs/planning/usage-notes/memo-planningrequest</sth:definition>
-                  </xs:documentation>
-                </xs:annotation>
-              </xs:element>
               <xs:element name="actionCode" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
@@ -1369,15 +1363,6 @@ For more information refer to: https://standard.setu.nl/docs/planning/usage-note
                     </xs:element>
                   </xs:sequence>
                 </xs:complexType>
-              </xs:element>
-              <xs:element name="groupId" minOccurs="0" type="xs:string">
-                <xs:annotation>
-                  <xs:documentation>
-                    <sth:definition>Planning lines with a position quantity of 1 can each have an individual identifier but can be functionally the same planning line with multiple position quantities. For this, we use the GroupID to group functionally identical planning lines.
-
-For more information refer to: https://standard.setu.nl/docs/planning/usage-notes/memo-planningrequest</sth:definition>
-                  </xs:documentation>
-                </xs:annotation>
               </xs:element>
               <xs:element name="actionCode" minOccurs="0">
                 <xs:annotation>
