@@ -8,7 +8,7 @@
 	Author(s): 	SETU, OTTO, Ortec
 	Standard: 	SETU Standard for Planning and Scheduling v2.0
 	Date: 		2023-06-12
-	Last edit:	2023-06-12
+	Last edit:	2025-01-28
 -->
 	<documentId>
 		<value>Requests_20220912170054727202</value>
@@ -44,7 +44,7 @@
 		</positionLocation>
 		<requestedWorker>
 			<workerId>
-				<value>313283</value>
+				<value>123456</value>
 				<schemeAgencyId>Supplier</schemeAgencyId>
 			</workerId>
 		</requestedWorker>
