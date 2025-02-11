@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<PlanningAssignment xmlns="https://ontology.setu.nl/#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/#">
+<PlanningAssignment xmlns="https://ontology.setu.nl/messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <!--
 	Name: 		PlanningAssignment_Example_v2.0.xml
 	Purpose: 	Example of PlanningAssignment message.

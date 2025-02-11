@@ -1,4 +1,4 @@
-<StaffingOrder xmlns="https://ontology.setu.nl/#" xmlns:xs="http://www.w3.org/2001/XMLSchema#" xmlns:hropen="https://hropenstandards.org/schema/xml/" xmlns:setu="https://ontology.setu.nl/#">
+<StaffingOrder xmlns="https://ontology.setu.nl/messages" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <documentId>
     <value>39fc74 8a3ac</value>
     <schemeAgencyId>Customer</schemeAgencyId>
