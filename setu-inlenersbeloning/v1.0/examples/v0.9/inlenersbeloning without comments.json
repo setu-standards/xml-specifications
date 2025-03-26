@@ -1,0 +1,519 @@
+{
+   "id":{
+      "value":"e8ddd3 92ce2"
+   },
+   "documentId":{
+      "value":"499d87 ff2d5",
+      "schemeAgencyId":"Customer"
+   },
+   "effectivePeriod":{
+      "validFrom":"2025-03-26",
+      "validTo":"2025-03-26"
+   },
+   "customer":{
+      "id":[
+         {
+            "value":"123456",
+            "schemeAgencyId":"Customer"
+         }
+      ],
+      "name":"ABC Staffing Solutions",
+      "legalId":[
+         {
+            "value":"987654321",
+            "schemeAgencyId":"KvK"
+         }
+      ],
+      "personContacts":{
+         "name":{
+            "formattedName":"John Doe"
+         },
+         "communication":{
+            "phone":{
+               "formattedNumber":"+31 20 123 4567"
+            },
+            "email":{
+               "address":"john.doe@abcstaffing.com"
+            }
+         },
+         "roleCode":"AuthorizedBy"
+      },
+      "industryIdentifiers":{
+         "value":[
+            "Code uit Standaard Bedrijfsindeling (SBI) 2008"
+      ],
+      "collectiveLabourAgreement":{
+         "name":"CAO voor bouw",
+         "id":{
+            "value":"1496"
+         },
+         "validFrom":"2023-07-21",
+         "basedOn":"The CLA has been declared generally binding"
+      },
+      "customLabourAgreement":"false",
+      "positionProfile":[
+         {
+            "positionId":{
+               "value":"POS123"
+            },
+            "positionTitle":"Recruitment Specialist",
+            "referenceTitle":"HR Functions",
+            "workDescription":"Responsible for sourcing and hiring candidates.",
+            "salaryScale":[
+               "Scale 2"
+            ]
+         }
+      ]
+   },
+   "remunerations":[
+      {
+         "workDuration":{
+            "value":40 
+         },
+         "intervalCode":{
+            "value":"MON"
+         },
+         "hourlyWagesConversion":{
+            "hourlyWageFactor":"173.33"
+         },
+         "salaryScales":[
+            {
+               "name":"Scale 1",
+               "minValue":2000,
+               "maxValue":2500,
+               "salarySteps":[
+                  {
+                     "name":1,
+                     "value":2000 
+                  },
+                  {
+                     "name":2,
+                     "value":2200
+                  },
+                  {
+                     "name":3,
+                     "value":2400
+                  }
+               ]
+            },
+            {
+               "name":"Scale 2",
+               "minValue":2100,
+               "maxValue":2600,
+               "salarySteps":[
+                  {
+                     "name":1,
+                     "value":2100
+                  },
+                  {
+                     "name":2,
+                     "value":2300
+                  },
+                  {
+                     "name":3,
+                     "value":2500
+                  }
+               ]
+            }
+         ],
+         "careerLevel":{
+            "indicator":true,
+            "description":"Inschaling wordt meegenomen op de volgende manier: ..."
+         },
+         "individualSalaryIncreaseRate":[
+            {
+               "expenseDate":"2025-06-01",
+               "line":{
+                  "amount":{
+                     "value":4,
+                     "unitCode":"percentage",
+                     "baseAmount":{
+                        "unitCode":"YearlyRate",
+                        "maxValue":40000 
+                     }
+                  },
+                  "intervalCode":{
+                     "value":1,
+                     "unitCode":"Year"
+                  },
+                  "conditions":{
+                     "description":"Gebaseerd op performance kunnen werknemers 4% erbij krijgen"
+                  }
+               }
+            }
+         ]
+      }
+   ],
+   "allowance":[
+      {
+         "id":{
+            "value":"d9c69a 53623",
+            "schemeAgencyId":"Customer"
+         },
+         "name":"Kilometer vergoeding woon-werk",
+         "typeCode":{
+            "value":"EA103"
+         },
+         "line":[
+            {
+               "amount":{
+                  "value":0.23,
+                  "unitCode":"euro",
+                  "baseAmount":{
+                     "minValue":20,
+                     "unitCode":"km"
+                  }
+               },
+               "intervalCode":{
+                  "value":1,
+                  "unitCode":"km"
+               },
+               "conditions":{
+                  "description":"Dit is de kilometervergoeding voor de auto"
+               }
+            },
+            {
+               "amount":{
+                  "value":0.23,
+                  "unitCode":"euro"
+               },
+               "intervalCode":{
+                  "value":1,
+                  "unitCode":"km"
+               },
+               "conditions":{
+                  "description":"Dit is de kilometervergoeding voor de fiets"
+               }
+            },
+            {
+               "amount":{
+                  "value":100,
+                  "unitCode":"percentage",
+                  "base":{
+                     "code":"percentageOfExpense"
+                  }
+               },
+               "intervalCode":{
+                  "value":1,
+                  "unitCode":"rit"
+               },
+               "conditions":{
+                  "description":"Volledige vergoeding OV"
+               }
+            }
+         ]
+      },
+      {
+         "id":{
+            "value":"12345",
+            "schemeAgencyId":"customer"
+         },
+         "name":"onregelmatigheidstoeslag zomer",
+         "effectivePeriod":{
+            "validFrom":"2025-07-01",
+            "validTo":"2025-12-31"
+         },
+         "typeCode":"HT704",
+         "period":{
+            "weekday":[
+               "Monday",
+               "Tuesday",
+               "Wednesday"
+            ],
+            "timePeriod":{
+               "start":"18:00:00",
+               "end":"23:00:00"
+            }
+         },
+         "line":[
+            {
+               "amount":{
+                  "value":20,
+                  "unitCode":"percentage"
+               },
+               "baseAmount":{
+                  "unitCode":"percentageHourlyRate"
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"hour"
+               },
+               "conditions":{
+                  "description":"toeslag voor onregelmatige werktijden",
+                  "positionTitle":"administratief medewerker"
+               }
+            },
+            {
+               "amount":{
+                  "value":10,
+                  "unitCode":"percentage"
+               },
+               "baseAmount":{
+                  "unitCode":"percentageHourlyRate"
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"hour"
+               },
+               "conditions":{
+                  "description":"toeslag voor onregelmatige werktijden",
+                  "positionTitle":"kantoor medewerkers"
+               }
+            }
+         ]
+      }
+   ],
+   "holidayAllowance":[
+      {
+         "id":{
+            "value":"12345",
+            "schemeAgencyId":"customer"
+         },
+         "name":"vakantie bijslage",
+         "effectiveTimePeriod":{
+            "validFrom":"2025-01-01",
+            "validTo":"2025-12-31"
+         },
+         "typeCode":"HT...",
+         "line":[
+            {
+               "amount":{
+                  "value":8,
+                  "unitCode":"percentage",
+                  "baseAmount":{
+                     "unitCode":"yearlyRate"
+                  }
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"year"
+               },
+               "conditions":{
+                  "description":"Vakantie bijslage",
+                  "positionTitle":"administratief medewerker"
+               }
+            }
+         ],
+         "paydate":{
+            "start":"2025-05-01"
+         }
+      }
+   ],
+   "sickPay":[
+      {
+         "id":{
+            "value":"12345",
+            "schemeAgencyId":"customer"
+         },
+         "name":"Doorbetaling bij ziekte",
+         "typeCode":"HT701",
+         "line":[
+            {
+               "amount":{
+                  "value":100,
+                  "baseAmount":{
+                     "unitCode":"monthlyRate"
+                  }
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"month"
+               },
+               "conditions":{
+                  "description":"Eerste jaar 100% doorbetaald"
+               }
+            },
+            {
+               "amount":{
+                  "value":70,
+                  "unitCode":"percentage",
+                  "baseAmount":{
+                     "unitCode":"monthlyRate"
+                  }
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"month"
+               },
+               "conditions":{
+                  "description":"Tweede jaar 70% doorbetaald"
+               }
+            }
+         ],
+         "waiting_days":{
+            "amount":{
+               "value":2 
+            },
+            "conditions":{
+               "description":"Wachtdagen gelden alleen voor mensen die dit jaar al twee keer ziek hebben gemeld."
+            }
+         }
+      }
+   ],
+   "leave":[
+      {
+         "id":{
+            "value":"12345",
+            "schemeAgencyId":"customer"
+         },
+         "name":"vakantie en feestdagen",
+         "period":{
+            "datePeriod":{
+               "start":"2025-01-01",
+               "end":"2025-12-31"
+            }
+         },
+         "typeCode":"HT701",
+         "paidLeave":[
+            {
+               "amount":{
+                  "value":25 
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"year"
+               },
+               "conditions":{
+                  "description":"...."
+               }
+            }
+         ],
+         "holidays":[
+            {
+               "amount":{
+                  "value":7 
+               },
+               "names":[
+                  "2de kerstdag",
+                  "1e kerstdag",
+                  "etc."
+               ]
+            }
+         ]
+      }
+   ],
+   "individualChoiceBudget":[
+      {
+         "id":{
+            "value":"123456",
+            "schemeAgencyId":"Customer"
+         },
+         "name":"Individueel keuze budget kantoor medewerkers",
+         "effectivePeriod":{
+            "validFrom":"2025-01-01",
+            "validTo":"2025-12-31"
+         },
+         "budgetRate":[
+            {
+               "amount":{
+                  "value":5,
+                  "unitCode":"percentage",
+                  "baseAmount":{
+                     "unitCode":"YearlyRate"
+                  }
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"year"
+               },
+               "conditions":{
+                  "description":"Geldend voor junior werknemers. Een keuze budget van 5%"
+            }
+            }
+         ],
+         "option":[
+            {
+               "description":"Uitbetaling bij salaris"
+            },
+            {
+               "description":"Gebruik voor aflossing studieschuld"
+            },
+            {
+               "description":"Gebruik voor aankoop fiets"
+            },
+            {
+               "description":"Etc."
+            }
+         ]
+      }
+   ],
+   "pensioen":[
+      {
+         "franchise":{
+            
+         },
+         "effectivePeriod":{
+            "validFrom":"2025-01-01",
+            "validTo":"2025-12-31"
+         },
+         "line":{
+            "amount":{
+               "value":12,
+               "baseAmount":{
+                  "value":"..."
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"year"
+               }
+            }
+         }
+      }
+   ],
+   "sustainableEmployability":[
+      {
+         "id":{
+            "value":"7a6532 4a579",
+            "schemeAgencyId":"0a43d8 7f4dd"
+         },
+         "name":"03014c a4bfd",
+         "effectivePeriod":{
+            "validFrom":"2025-03-26",
+            "validTo":"2025-03-26"
+         },
+         "line":[
+            {
+               "amount":{
+                  "value":5,
+                 "unitCode":"percentage",
+                  "baseAmount":{
+                     "unitCode":"YearlyRate"
+                  }
+               },
+               "intervalCode":{
+                  "value":"1",
+                  "unitCode":"month"
+               },
+               "conditions":[
+                  {
+                     "conditionType":{
+                        "description":"Dit studiebudget geldt alleen voor full time werknemers."
+                     }
+                  }
+               ]
+            }
+         ],
+         "payDate":{
+            "start":"2025-03-26",
+            "end":"2025-03-26"
+         }
+      }
+   ],
+   "other":[
+      {
+         "id":{
+            "value":"24eb0b c66bd",
+            "schemeAgencyId":"3cab1f a2ef1"
+         },
+         "name":"ad8b0f a74b0",
+         "effectivePeriod":{
+            "validFrom":"3ba1b6 d2d68",
+            "validTo":"2025-03-26"
+         },
+         "amount":{
+            "value":"5bbd81 292d0"
+         }
+      }
+   ]
+}
+}

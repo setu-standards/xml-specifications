@@ -1,0 +1,43 @@
+
+  "leave": [
+      {
+          "id": {
+              "value": "12345", // Unique identifier for the leave allowance
+              "schemeAgencyId": "customer" // Agency that issued the ID
+          },
+          "name": "vakantie en feestdagen", // Name of the leave allowance (vacation and holidays)
+          "period": {
+              "datePeriod": {
+                  "start": "2025-01-01", // Start date of the period
+                  "end": "2025-12-31" // End date of the period
+              }
+          },
+          "typeCode": "HT701", // Type code for the allowance
+          "paidLeave": [
+              {
+                  "amount": {
+                      "value": 25 // Number of paid leave days
+                  },
+                  "intervalCode": {
+                      "value": "1", // Per year
+                      "unitCode": "year" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "...." // Description of the conditions (to be specified)
+                  }
+              }
+          ],
+          "holidays": [
+              {
+                  "amount": {
+                      "value": 7 // Number of holidays
+                  },
+                  "names": [
+                      "2de kerstdag", // Second Christmas Day
+                      "1e kerstdag", // First Christmas Day
+                      "etc." // Other holidays
+                  ]
+              }
+          ]
+      }
+  ]

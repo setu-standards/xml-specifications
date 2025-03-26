@@ -1,0 +1,518 @@
+{
+    "id": {
+        "value": "e8ddd3 92ce2" // Unique identifier for the inlenersbeloning
+    },
+    "documentId": {
+        "value": "499d87 ff2d5", // Unique identifier for the document
+        "schemeAgencyId": "Customer" // Agency that issued the document ID
+    },
+    "effectivePeriod": {
+        "validFrom": "2025-03-26", // Start date of the effective period
+        "validTo": "2025-03-26" // End date of the effective period
+    },
+    "customer": {
+        "id": [
+            {
+                "value": "123456", // Unique identifier for the customer
+                "schemeAgencyId": "Customer" // Agency that issued the customer ID
+            }
+        ],
+        "name": "ABC Staffing Solutions", // Name of the customer
+        "legalId": [
+            {
+                "value": "987654321", // Legal identifier for the customer
+                "schemeAgencyId": "KvK" // which legal identifier
+            }
+        ],
+        "personContacts": {
+            "name": {
+                "formattedName": "John Doe" // Name of the contact person
+            },
+            "communication": {
+                "phone": {
+                    "formattedNumber": "+31 20 123 4567" // Phone number of the contact person
+                },
+                "email": {
+                    "address": "john.doe@abcstaffing.com" // Email address of the contact person
+                }
+            },
+            "roleCode": "AuthorizedBy" // Role of the contact person
+        },
+        "industryIdentifiers": {
+            "value": [
+                "Code uit Standaard Bedrijfsindeling (SBI) 2008" // Industry code from the (SBI) 2008, representing the industries in which the organization is active
+            ]
+        },
+        "collectiveLabourAgreement": {
+            "name": "CAO voor bouw", // Name of the collective labour agreement
+            "id": {
+                "value": "1496" // Unique identifier for the collective labour agreement
+            },
+            "validFrom": "2023-07-21", // Start date of the collective labour agreement
+            "basedOn": "The CLA has been declared generally binding" // Basis for the collective labour agreement
+        },
+        "customLabourAgreement": "false", // Indicates if a custom labour agreement is used
+        "positionProfile": [
+            {
+                "positionId": {
+                    "value": "POS123" // Unique identifier for the position
+                },
+                "positionTitle": "Recruitment Specialist", // Title of the position
+                "referenceTitle": "HR Functions", // Reference title related to the position in the CAO/ CLA
+                "workDescription": "Responsible for sourcing and hiring candidates.", // Description of the work associated with the position
+                "salaryScale": [
+                    "Scale 2" // Salary scale for the position
+                ]
+            }
+        ]
+    },
+    "remunerations": [
+        {
+            "workDuration": {
+                "value": 40 // Number of hours worked per week
+            },
+            "intervalCode": {
+                "value": "MON" // Interval code for the numbers in the salary table
+            },
+            "hourlyWagesConversion": {
+                "hourlyWageFactor": "173.33" // Factor used to convert monthly salary to hourly wage
+            },
+            "salaryScales": [
+                {
+                    "name": "Scale 1", // Name / label of the salary scale
+                    "minValue": 2000, // Minimum salary value for this scale
+                    "maxValue": 2500, // Maximum salary value for this scale
+                    "salarySteps": [
+                        {
+                            "name": 1, // Step number within the salary scale
+                            "value": 2000 // Salary value for this step
+                        },
+                        {
+                            "name": 2,
+                            "value": 2200
+                        },
+                        {
+                            "name": 3,
+                            "value": 2400
+                        }
+                    ]
+                },
+                {
+                    "name": "Scale 2",
+                    "minValue": 2100,
+                    "maxValue": 2600,
+                    "salarySteps": [
+                        {
+                            "name": 1,
+                            "value": 2100
+                        },
+                        {
+                            "name": 2,
+                            "value": 2300
+                        },
+                        {
+                            "name": 3,
+                            "value": 2500
+                        }
+                    ]
+                }
+            ],
+            "careerLevel": {
+                "indicator": true, // Indicates if career level is considered
+                "description": "Inschaling wordt meegenomen op de volgende manier: ..." // Description of how career level is considered
+            },
+            "individualSalaryIncreaseRate": [
+                {
+                    "expenseDate": "2025-06-01", // Date when the salary increase takes effect
+                    "line": {
+                        "amount": {
+                            "value": 4, // Percentage increase in salary
+                            "unitCode": "percentage", // Unit of the increase value
+                            "baseAmount": {
+                                "unitCode": "YearlyRate", // Unit for the base amount
+                                "maxValue": 40000 // Maximum yearly salary considered for the increase
+                            }
+                        },
+                        "intervalCode": {
+                            "value": 1, // Frequency of the increase
+                            "unitCode": "Year" // Unit of the interval (e.g., yearly)
+                        },
+                        "conditions": {
+                            "description": "Gebaseerd op performance kunnen werknemers 4% erbij krijgen" // Conditions for the salary increase
+                        }
+                    }
+                }
+            ]
+        }
+    ],
+    "allowance": [
+        {
+            "id": {
+                "value": "d9c69a 53623", // Unique identifier for the allowance
+                "schemeAgencyId": "Customer" // Agency that issued the ID
+            },
+            "name": "Kilometer vergoeding woon-werk", // Name of the allowance
+            "typeCode": {
+                "value": "EA103" // SETU hour code
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": 0.23, // Compensation amount per kilometer
+                        "unitCode": "euro", // Unit of the compensation amount
+                        "baseAmount": {
+                            "minValue": 20, // Minimum distance for compensation
+                            "unitCode": "km" // Unit of the base amount
+                        }
+                    },
+                    "intervalCode": {
+                        "value": 1, // The interval per kilometer when you get the amount of compensation 
+                        "unitCode": "km" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Dit is de kilometervergoeding voor de auto" // Description of the condition
+                    }
+                },
+                {
+                    "amount": {
+                        "value": 0.23, // Compensation amount per kilometer for cycling
+                        "unitCode": "euro" // Unit of the compensation amount
+                    },
+                    "intervalCode": {
+                        "value": 1, // Compensation per kilometer for cycling
+                        "unitCode": "km" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Dit is de kilometervergoeding voor de fiets" // Description of the condition
+                    }
+                },
+                {
+                    "amount": {
+                        "value": 100, // Compensation amount as a percentage
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "base": {
+                            "code": "percentageOfExpense" // Basis for the compensation (percentage)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": 1, // Compensation per trip
+                        "unitCode": "rit" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Volledige vergoeding OV" // Description of the condition
+                    }
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "12345", // Unique identifier for the allowance
+                "schemeAgencyId": "customer" // Agency that issued the ID
+            },
+            "name": "onregelmatigheidstoeslag zomer", // Name of the allowance
+            "effectivePeriod": {
+                "validFrom": "2025-07-01", // Start date of the effective period
+                "validTo": "2025-12-31" // End date of the effective period
+            },
+            "typeCode": "HT704", // SETU hour code
+            "period": {
+                "weekday": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday"
+                ], // Days of the week the allowance applies
+                "timePeriod": {
+                    "start": "18:00:00", // Start time of the period
+                    "end": "23:00:00" // End time of the period
+                }
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": 20, // Compensation amount as a percentage
+                        "unitCode": "percentage" // Unit of the compensation amount
+                    },
+                    "baseAmount": {
+                        "unitCode": "percentageHourlyRate" // Basis for the compensation (percentage of hourly rate)
+                    },
+                    "intervalCode": {
+                        "value": "1", // Compensation per hour of overtime
+                        "unitCode": "hour" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "toeslag voor onregelmatige werktijden", // Description of the condition
+                        "positionTitle": "administratief medewerker" // Position title the allowance applies to
+                    }
+                },
+                {
+                    "amount": {
+                        "value": 10, // Compensation amount as a percentage
+                        "unitCode": "percentage" // Unit of the compensation amount
+                    },
+                    "baseAmount": {
+                        "unitCode": "percentageHourlyRate" // Basis for the compensation (percentage of hourly rate)
+                    },
+                    "intervalCode": {
+                        "value": "1", // Compensation per hour of overtime
+                        "unitCode": "hour" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "toeslag voor onregelmatige werktijden", // Description of the condition
+                        "positionTitle": "kantoor medewerkers" // Position title the allowance applies to
+                    }
+                }
+            ]
+        }
+    ],
+    "holidayAllowance": [
+        {
+            "id": {
+                "value": "12345", // Unique identifier for the allowance
+                "schemeAgencyId": "customer" // Agency that issued the ID
+            },
+            "name": "vakantie bijslage", // Name of the holiday allowance
+            "effectiveTimePeriod": {
+                "validFrom": "2025-01-01", // Start date of the effective period
+                "validTo": "2025-12-31" // End date of the effective period
+            },
+            "typeCode": "HT...", // Type code for the allowance
+            "line": [
+                {
+                    "amount": {
+                        "value": 8, // Compensation amount as a percentage
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "baseAmount": {
+                            "unitCode": "yearlyRate" // Basis for the compensation (percentage of yearly rate)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // you only get the compensation per year
+                        "unitCode": "year" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Vakantie bijslage", // Description of the condition
+                        "positionTitle": "administratief medewerker" // Position title the allowance applies to
+                    }
+                }
+            ],
+            "paydate": {
+                "start": "2025-05-01"
+            }
+        }
+    ],
+    "sickPay": [
+        {
+            "id": {
+                "value": "12345", // Unique identifier for the sick pay allowance
+                "schemeAgencyId": "customer" // Agency that issued the ID
+            },
+            "name": "Doorbetaling bij ziekte", // Name of the sick pay allowance
+            "typeCode": "HT701", // Type code for the allowance
+            "line": [
+                {
+                    "amount": {
+                        "value": 100, // 100 percent
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "baseAmount": {
+                            "unitCode": "monthlyRate" // Basis for the compensation (percentage of monthly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Per month
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Eerste jaar 100% doorbetaald" // Description of the condition (First year 100% paid)
+                    }
+                },
+                {
+                    "amount": {
+                        "value": 70, // 70 percent
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "baseAmount": {
+                            "unitCode": "monthlyRate" // Basis for the compensation (percentage of monthly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Per month
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Tweede jaar 70% doorbetaald" // Description of the condition (Second year 70% paid)
+                    }
+                }
+            ],
+            "waiting_days": { // Specifies if there are waiting days applicable and if they are compensated
+                "amount": {
+                    "value": 2 // Number of waiting days specified (in this case, 2)
+                },
+                "conditions": { // Conditions for these waiting days
+                    "description": "Wachtdagen gelden alleen voor mensen die dit jaar al twee keer ziek hebben gemeld." // Waiting days apply only to people who have reported sick twice this year
+                }
+            }
+        }
+    ],
+    "leave": [
+        {
+            "id": {
+                "value": "12345", // Unique identifier for the leave allowance
+                "schemeAgencyId": "customer" // Agency that issued the ID
+            },
+            "name": "vakantie en feestdagen", // Name of the leave allowance (vacation and holidays)
+            "period": {
+                "datePeriod": {
+                    "start": "2025-01-01", // Start date of the period
+                    "end": "2025-12-31" // End date of the period
+                }
+            },
+            "typeCode": "HT701", // Type code for the allowance
+            "paidLeave": [
+                {
+                    "amount": {
+                        "value": 25 // Number of paid leave days
+                    },
+                    "intervalCode": {
+                        "value": "1", // Per year
+                        "unitCode": "year" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "...." // Description of the conditions (to be specified)
+                    }
+                }
+            ],
+            "holidays": [
+                {
+                    "amount": {
+                        "value": 7 // Number of holidays
+                    },
+                    "names": [
+                        "2de kerstdag", // Second Christmas Day
+                        "1e kerstdag", // First Christmas Day
+                        "etc." // Other holidays
+                    ]
+                }
+            ]
+        }
+    ],
+    "individualChoiceBudget": [
+        {
+        "id": {
+            "value": "123456", // Unique identifier for the individual choice budget
+            "schemeAgencyId": "Customer" // Agency that issued the ID
+        },
+        "name": "Individueel keuze budget kantoor medewerkers", // Name of the individual choice budget for office employees
+        "effectivePeriod": {
+            "validFrom": "2025-01-01", // Start date of the effective period
+            "validTo": "2025-12-31" // End date of the effective period
+        },
+        "budgetRate": [
+            {
+                "amount": {
+                    "value": 5, // 5 percent
+                    "unitCode": "percentage", // Unit of the budget rate 
+                    "baseAmount": {
+                    "unitCode": "YearlyRate" // Basis for the budget rate (percentage of yearly salary)
+                    }
+                },
+                "intervalCode": {
+                    "value": "1", // Once per year
+                    "unitCode": "year" // Unit of the interval
+                },
+                "conditions": {
+                    "description": "Geldend voor junior werknemers. Een keuze budget van 5%" // Conditions (Applicable to junior employees. A choice budget of 5%)
+                }
+            }
+        ],
+        "option": [
+            {
+                "description": "Uitbetaling bij salaris" // Option: Payment with salary
+            },
+            {
+                "description": "Gebruik voor aflossing studieschuld" // Option: Use for repayment of student debt
+            },
+            {
+                "description": "Gebruik voor aankoop fiets" // Option: Use for purchase of a bicycle
+            },
+            {
+                "description": "Etc." // Other options
+            }
+        ]
+    }
+    ],
+    "pensioen": [
+        {
+            "franchise": {}, // Placeholder for franchise details (to be specified)
+            "effectivePeriod": {
+                "validFrom": "2025-01-01", // Start date of the effective period
+                "validTo": "2025-12-31" // End date of the effective period
+            },
+            "line": {
+                "amount": {
+                    "value": 12, // Percentage rate for the pension
+                    "baseAmount": {
+                        "value": "..." // Placeholder for the base amount (to be specified)
+                    },
+                    "intervalCode": {
+                        "value": "1", // Once per year
+                        "unitCode": "year" // Unit of the interval
+                    }
+                }
+            }
+        }
+    ],
+    "sustainableEmployability": [
+        {
+            "id": {
+                "value": "7a6532 4a579", // Unique identifier for the sustainable employability scheme
+                "schemeAgencyId": "0a43d8 7f4dd" // Agency that issued the ID
+            },
+            "name": "03014c a4bfd", // Name of the sustainable employability scheme
+            "effectivePeriod": {
+                "validFrom": "2025-03-26", // Start date of the effective period
+                "validTo": "2025-03-26" // End date of the effective period
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": 5, // 5 percent
+                        "unitCode": "percentage", // Unit of the amount
+                        "baseAmount": {
+                            "unitCode": "YearlyRate", // Basis for the budget rate (percentage of yearly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Interval code indicating the interval at which this rate is applied
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": {
+                                "description": "Dit studiebudget geldt alleen voor full time werknemers." // Conditions that must be met (This study budget only applies to full-time employees)
+                            }
+                        }
+                    ]
+                }
+            ],
+            "payDate": {
+                "start": "2025-03-26", // Start date of the pay period
+                "end": "2025-03-26" // End date of the pay period
+            }
+        }
+    ],
+    "other": [
+        {
+            "id": {
+                "value": "24eb0b c66bd", // Unique identifier for the other allowance
+                "schemeAgencyId": "3cab1f a2ef1" // Agency that issued the ID
+            },
+            "name": "ad8b0f a74b0", // Name of the other allowance
+            "effectivePeriod": {
+                "validFrom": "3ba1b6 d2d68", // Start date of the effective period
+                "validTo": "2025-03-26" // End date of the effective period
+            },
+            "amount": {
+                "value": "5bbd81 292d0" // Amount of the allowance
+            }
+        }
+    ]
+}

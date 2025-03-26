@@ -1,0 +1,43 @@
+{
+    "id": {
+        "value": "123456", // Unique identifier for the individual choice budget
+        "schemeAgencyId": "Customer" // Agency that issued the ID
+    },
+    "name": "Individueel keuze budget kantoor medewerkers", // Name of the individual choice budget for office employees
+    "effectivePeriod": {
+        "validFrom": "2025-01-01", // Start date of the effective period
+        "validTo": "2025-12-31" // End date of the effective period
+    },
+    "budgetRate": [
+        {
+            "amount": {
+                "value": 5, // 5 percent
+                "unitCode": "percentage", // Unit of the budget rate 
+                "baseAmount": {
+                "unitCode": "YearlyRate" // Basis for the budget rate (percentage of yearly salary)
+                }
+            },
+            "intervalCode": {
+                "value": "1", // Once per year
+                "unitCode": "year" // Unit of the interval
+            },
+            "conditions": {
+                "description": "Geldend voor junior werknemers. Een keuze budget van 5%" // Conditions (Applicable to junior employees. A choice budget of 5%)
+            }
+        }
+    ],
+    "option": [
+        {
+            "description": "Uitbetaling bij salaris" // Option: Payment with salary
+        },
+        {
+            "description": "Gebruik voor aflossing studieschuld" // Option: Use for repayment of student debt
+        },
+        {
+            "description": "Gebruik voor aankoop fiets" // Option: Use for purchase of a bicycle
+        },
+        {
+            "description": "Etc." // Other options
+        }
+    ]
+}

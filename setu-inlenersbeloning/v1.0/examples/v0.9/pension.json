@@ -1,0 +1,23 @@
+{
+    "pensioen": [
+        {
+            "franchise": {}, // Placeholder for franchise details (to be specified)
+            "effectivePeriod": {
+                "validFrom": "2025-01-01", // Start date of the effective period
+                "validTo": "2025-12-31" // End date of the effective period
+            },
+            "line": {
+                "amount": {
+                    "value": 12, // Percentage rate for the pension
+                    "baseAmount": {
+                        "value": "..." // Placeholder for the base amount (to be specified)
+                    },
+                    "intervalCode": {
+                        "value": "1", // Once per year
+                        "unitCode": "year" // Unit of the interval
+                    }
+                }
+            }
+        }
+    ]
+}   

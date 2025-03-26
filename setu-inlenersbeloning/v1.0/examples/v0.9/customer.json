@@ -1,0 +1,58 @@
+{
+    "customer": {
+        "id": [
+            {
+                "value": "123456",
+                "schemeAgencyId": "Customer"
+            }
+        ],
+        "name": "ABC Staffing Solutions",
+        "legalId": [
+            {
+                "value": "987654321",
+                "schemeAgencyId": "KvK"
+            }
+        ],
+        "personContacts": {
+            "name": {
+                "formattedName": "John Doe"
+            },
+            "communication": {
+                "phone": {
+                    "formattedNumber": "+31 20 123 4567"
+                },
+                "email": {
+                    "address": "john.doe@abcstaffing.com"
+                }
+            },
+            "roleCode": "AuthorizedBy"
+        },
+        "industryIdentifiers": {
+            "value": [
+                "Code uit Standaard Bedrijfsindeling (SBI) 2008"
+            ]
+        },
+        "collectiveLabourAgreement": {
+            "name": "CAO voor bouw",
+            "id": {
+                "value": "1496"
+            },
+            "validFrom": "2023-07-21",
+            "basedOn": "The CLA has been declared generally binding"
+        },
+        "customLabourAgreement": "false",
+        "positionProfile": [
+            {
+                "positionId": {
+                    "value": "POS123"
+                },
+                "positionTitle": "Recruitment Specialist",
+                "referenceTitle": "HR Functions",
+                "workDescription": "Responsible for sourcing and hiring candidates.",
+                "salaryScale": [
+                    "Scale 7"
+                ]
+            }
+        ]
+    }
+}

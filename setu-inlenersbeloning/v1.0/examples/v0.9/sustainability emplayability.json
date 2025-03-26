@@ -1,0 +1,41 @@
+{
+    "sustainableEmployability": [
+        {
+            "id": {
+                "value": "7a6532 4a579", // Unique identifier for the sustainable employability scheme
+                "schemeAgencyId": "0a43d8 7f4dd" // Agency that issued the ID
+            },
+            "name": "03014c a4bfd", // Name of the sustainable employability scheme
+            "effectivePeriod": {
+                "validFrom": "2025-03-26", // Start date of the effective period
+                "validTo": "2025-03-26" // End date of the effective period
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": 5, // 5 percent
+                        "unitCode": "percentage", // Unit of the amount
+                        "baseAmount": {
+                            "unitCode": "YearlyRate", // Basis for the budget rate (percentage of yearly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Interval code indicating the interval at which this rate is applied
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": {
+                                "description": "Dit studiebudget geldt alleen voor full time werknemers." // Conditions that must be met (This study budget only applies to full-time employees)
+                            }
+                        }
+                    ]
+                }
+            ],
+            "payDate": {
+                "start": "2025-03-26", // Start date of the pay period
+                "end": "2025-03-26" // End date of the pay period
+            }
+        }
+    ]
+}

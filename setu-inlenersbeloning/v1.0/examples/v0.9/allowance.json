@@ -1,0 +1,118 @@
+
+{
+  "allowance": [
+      {
+          "id": {
+              "value": "d9c69a 53623", // Unique identifier for the allowance
+              "schemeAgencyId": "Customer" // Agency that issued the ID
+          },
+          "name": "Kilometer vergoeding woon-werk", // Name of the allowance
+          "typeCode": {
+              "value": "EA103" // SETU hour code
+          },
+          "line": [
+              {
+                  "amount": {
+                      "value": 0.23, // Compensation amount per kilometer
+                      "unitCode": "euro", // Unit of the compensation amount
+                      "baseAmount": {
+                          "minValue": 20, // Minimum distance for compensation
+                          "unitCode": "km" // Unit of the base amount
+                      }
+                  },
+                  "intervalCode": {
+                      "value": 1, // The interval per kilometer when you get the amount of compensation 
+                      "unitCode": "km" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "Dit is de kilometervergoeding voor de auto" // Description of the condition
+                  }
+              },
+              {
+                  "amount": {
+                      "value": 0.23, // Compensation amount per kilometer for cycling
+                      "unitCode": "euro" // Unit of the compensation amount
+                  },
+                  "intervalCode": {
+                      "value": 1, // Compensation per kilometer for cycling
+                      "unitCode": "km" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "Dit is de kilometervergoeding voor de fiets" // Description of the condition
+                  }
+              },
+              {
+                  "amount": {
+                      "value": 100, // Compensation amount as a percentage
+                      "unitCode": "percentage", // Unit of the compensation amount
+                      "base": {
+                          "code": "percentageOfExpense" // Basis for the compensation (percentage)
+                      }
+                  },
+                  "intervalCode": {
+                      "value": 1, // Compensation per trip
+                      "unitCode": "rit" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "Volledige vergoeding OV" // Description of the condition
+                  }
+              }
+          ]
+      },
+      {
+          "id": {
+              "value": "12345", // Unique identifier for the allowance
+              "schemeAgencyId": "customer" // Agency that issued the ID
+          },
+          "name": "onregelmatigheidstoeslag zomer", // Name of the allowance
+          "effectivePeriod": {
+              "validFrom": "2025-07-01", // Start date of the effective period
+              "validTo": "2025-12-31" // End date of the effective period
+          },
+          "typeCode": "HT704", // SETU hour code
+          "period": {
+              "weekday": ["Monday", "Tuesday", "Wednesday"], // Days of the week the allowance applies
+              "timePeriod": {
+                  "start": "18:00:00", // Start time of the period
+                  "end": "23:00:00" // End time of the period
+              }
+          },
+          "line": [
+              {
+                  "amount": {
+                      "value": 20, // Compensation amount as a percentage
+                      "unitCode": "percentage" // Unit of the compensation amount
+                  },
+                  "baseAmount": {
+                      "unitCode": "percentageHourlyRate" // Basis for the compensation (percentage of hourly rate)
+                  },
+                  "intervalCode": {
+                      "value": "1", // Compensation per hour of overtime
+                      "unitCode": "hour" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "toeslag voor onregelmatige werktijden", // Description of the condition
+                      "positionTitle": "administratief medewerker" // Position title the allowance applies to
+                  }
+              },
+              {
+                  "amount": {
+                      "value": 10, // Compensation amount as a percentage
+                      "unitCode": "percentage" // Unit of the compensation amount
+                  },
+                  "baseAmount": {
+                      "unitCode": "percentageHourlyRate" // Basis for the compensation (percentage of hourly rate)
+                  },
+                  "intervalCode": {
+                      "value": "1", // Compensation per hour of overtime
+                      "unitCode": "hour" // Unit of the interval
+                  },
+                  "conditions": {
+                      "description": "toeslag voor onregelmatige werktijden", // Description of the condition
+                      "positionTitle": "kantoor medewerkers" // Position title the allowance applies to
+                  }
+              }
+          ]
+      }
+  ]
+}

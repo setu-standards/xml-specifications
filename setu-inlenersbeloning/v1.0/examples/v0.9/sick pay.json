@@ -1,0 +1,54 @@
+{
+    "sickPay": [
+        {
+            "id": {
+                "value": "12345", // Unique identifier for the sick pay allowance
+                "schemeAgencyId": "customer" // Agency that issued the ID
+            },
+            "name": "Doorbetaling bij ziekte", // Name of the sick pay allowance
+            "typeCode": "HT701", // Type code for the allowance
+            "line": [
+                {
+                    "amount": {
+                        "value": 100, // 100 percent
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "baseAmount": {
+                            "unitCode": "monthlyRate" // Basis for the compensation (percentage of monthly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Per month
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Eerste jaar 100% doorbetaald" // Description of the condition (First year 100% paid)
+                    }
+                },
+                {
+                    "amount": {
+                        "value": 70, // 70 percent
+                        "unitCode": "percentage", // Unit of the compensation amount
+                        "baseAmount": {
+                            "unitCode": "monthlyRate" // Basis for the compensation (percentage of monthly salary)
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1", // Per month
+                        "unitCode": "month" // Unit of the interval
+                    },
+                    "conditions": {
+                        "description": "Tweede jaar 70% doorbetaald" // Description of the condition (Second year 70% paid)
+                    }
+                }
+            ],
+            "waiting_days": { // Specifies if there are waiting days applicable and if they are compensated
+                "amount": {
+                    "value": 2 // Number of waiting days specified (in this case, 2)
+                },
+                "conditions": { // Conditions for these waiting days
+                    "description": "Wachtdagen gelden alleen voor mensen die dit jaar al twee keer ziek hebben gemeld." // Waiting days apply only to people who have reported sick twice this year
+                }
+            }
+        }
+    ]
+}

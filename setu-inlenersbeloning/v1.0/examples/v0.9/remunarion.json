@@ -1,0 +1,81 @@
+{
+    "remunerations": [
+        {
+            "workDuration": {
+                "value": 40 // Number of hours worked per week
+            },
+            "intervalCode": {
+                "value": "MON" // Interval code for the numbers in the salary table
+            },
+            "hourlyWagesConversion": {
+                "hourlyWageFactor": "173.33" // Factor used to convert monthly salary to hourly wage
+            },
+            "salaryScales": [
+                {
+                    "name": "Scale 1", // Name / label of the salary scale
+                    "minValue": 2000, // Minimum salary value for this scale
+                    "maxValue": 2500, // Maximum salary value for this scale
+                    "salarySteps": [
+                        {
+                            "name": 1, // Step number within the salary scale
+                            "value": 2000 // Salary value for this step
+                        },
+                        {
+                            "name": 2,
+                            "value": 2200
+                        },
+                        {
+                            "name": 3,
+                            "value": 2400
+                        }
+                    ]
+                },
+                {
+                    "name": "Scale 2",
+                    "minValue": 2100,
+                    "maxValue": 2600,
+                    "salarySteps": [
+                        {
+                            "name": 1,
+                            "value": 2100
+                        },
+                        {
+                            "name": 2,
+                            "value": 2300
+                        },
+                        {
+                            "name": 3,
+                            "value": 2500
+                        }
+                    ]
+                }
+            ],
+            "careerLevel": {
+                "indicator": true, // Indicates if career level is considered
+                "description": "Inschaling wordt meegenomen op de volgende manier: ..." // Description of how career level is considered
+            },
+            "individualSalaryIncreaseRate": [
+                {
+                    "expenseDate": "2025-06-01", // Date when the salary increase takes effect
+                    "line": {
+                        "amount": {
+                            "value": 4, // Percentage increase in salary
+                            "unitCode": "percentage", // Unit of the increase value
+                            "baseAmount": {
+                                "unitCode": "YearlyRate", // Unit for the base amount
+                                "maxValue": 40000 // Maximum yearly salary considered for the increase
+                            }
+                        },
+                        "intervalCode": {
+                            "value": 1, // Frequency of the increase
+                            "unitCode": "Year" // Unit of the interval (e.g., yearly)
+                        },
+                        "conditions": {
+                            "description": "Gebaseerd op performance kunnen werknemers 4% erbij krijgen" // Conditions for the salary increase
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

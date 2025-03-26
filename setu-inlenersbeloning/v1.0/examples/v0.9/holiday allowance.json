@@ -1,0 +1,34 @@
+{
+    "id": {
+        "value": "12345", // Unique identifier for the allowance
+        "schemeAgencyId": "customer" // Agency that issued the ID
+    },
+    "name": "vakantie bijslage", // Name of the holiday allowance
+    "effectiveTimePeriod": {
+        "validFrom": "2025-01-01", // Start date of the effective period
+        "validTo": "2025-12-31" // End date of the effective period
+    },
+    "typeCode": "HT...", // Type code for the allowance
+    "line": [
+        {
+            "amount": {
+                "value": 8, // Compensation amount as a percentage
+                "unitCode": "percentage", // Unit of the compensation amount
+                "baseAmount": {
+                    "unitCode": "yearlyRate" // Basis for the compensation (percentage of yearly rate)
+                }
+            },
+            "intervalCode": {
+                "value": "1", // you only get the compensation per year
+                "unitCode": "year" // Unit of the interval
+            },
+            "conditions": {
+                "description": "Vakantie bijslage", // Description of the condition
+                "positionTitle": "administratief medewerker" // Position title the allowance applies to
+            }
+        }
+    ],
+    "paydate": {
+        "start": "2025-05-01" 
+    }
+}
