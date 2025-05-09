@@ -33,7 +33,7 @@ properties:
     type: object
   issued:
     type: string
-    format: uri-reference
+    format: date-time
   effectivePeriod:
     required:
       - validFrom
@@ -124,7 +124,7 @@ properties:
           roleCode:
             type: string
           positionTitle:
-            type: string
+            type: stri
         type: object
     type: object
   labourAgreements:
@@ -503,8 +503,10 @@ properties:
                 properties:
                   start:
                     type: string
+                    format: date-time
                   end:
                     type: string
+                    format: date-time
                 type: object
               weekday:
                 items:
@@ -687,8 +689,10 @@ properties:
                 properties:
                   start:
                     type: string
+                    format: date-time
                   end:
                     type: string
+                    format: date-time
                 type: object
               weekday:
                 items:
@@ -856,8 +860,10 @@ properties:
                   properties:
                     start:
                       type: string
+                      format: date-time
                     end:
                       type: string
+                      format: date-time
                   type: object
                 type: array
               weekday:
@@ -1026,8 +1032,10 @@ properties:
                 properties:
                   start:
                     type: string
+                    format: date-time
                   end:
                     type: string
+                    format: date-time
                 type: object
               weekday:
                 items:
@@ -1311,8 +1319,10 @@ properties:
                   properties:
                     start:
                       type: string
+                      format: date-time
                     end:
                       type: string
+                      format: date-time
                   type: object
                 type: array
               weekday:
