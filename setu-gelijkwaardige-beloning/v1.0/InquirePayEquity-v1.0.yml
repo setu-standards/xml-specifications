@@ -1,0 +1,1687 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+title: 'SETU Inquiry Pay Equity version 1.0 (DRAFT)'
+description: 'The YAML Schema for the SETU Inquire Pay Equity V1.0 Standard'
+required:
+  - id
+  - documentId
+  - effectivePeriod
+  - customer
+  - remuneration
+additionalProperties: false
+properties:
+  id:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+    type: object
+  documentId:
+    required:
+      - value
+      - schemeAgencyId
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+      schemeAgencyId:
+        enum:
+          - Customer
+          - Supplier
+        type: string
+    type: object
+  issued:
+    type: string
+    format: uri-reference
+  effectivePeriod:
+    required:
+      - validFrom
+    additionalProperties: false
+    properties:
+      validFrom:
+        type: string
+        format: date
+      validTo:
+        type: string
+        format: date
+    type: object
+  customer:
+    required:
+      - legalId
+      - personContacts
+    additionalProperties: false
+    properties:
+      id:
+        items:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        maxItems: 2
+        type: array
+      name:
+        type: string
+      legalId:
+        items:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - KvK
+                - OIN
+                - RSIN
+              type: string
+          type: object
+        minItems: 1
+        type: array
+      personContacts:
+        required:
+          - name
+        additionalProperties: false
+        properties:
+          name:
+            required:
+              - formattedName
+            additionalProperties: false
+            properties:
+              formattedName:
+                type: string
+            type: object
+          communication:
+            additionalProperties: false
+            properties:
+              phone:
+                required:
+                  - formattedNumber
+                additionalProperties: false
+                properties:
+                  formattedNumber:
+                    type: string
+                type: object
+              email:
+                required:
+                  - address
+                additionalProperties: false
+                properties:
+                  address:
+                    type: string
+                type: object
+            type: object
+          roleCode:
+            type: string
+          positionTitle:
+            type: string
+        type: object
+    type: object
+  labourAgreements:
+    additionalProperties: false
+    properties:
+      industryIdentifiers:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            items:
+              type: string
+            minItems: 1
+            type: array
+        type: object
+      collectiveLabourAgreement:
+        required:
+          - name
+          - id
+        additionalProperties: false
+        properties:
+          name:
+            type: string
+          id:
+            required:
+              - value
+            additionalProperties: false
+            properties:
+              value:
+                type: string
+            type: object
+          effectivePeriod:
+            additionalProperties: false
+            properties:
+              validFrom:
+                type: string
+                format: date
+              validTo:
+                type: string
+                format: date
+            type: object
+          basedOn:
+            type: string
+        type: object
+      customLabourAgreement:
+        type: boolean
+    type: object
+  positionProfile:
+    items:
+      required:
+        - positionId
+        - positionTitle
+        - salaryScale
+      additionalProperties: false
+      properties:
+        positionId:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+        positionTitle:
+          type: string
+        referenceTitle:
+          type: string
+        workDescription:
+          type: string
+        salaryScale:
+          items:
+            type: string
+          minItems: 1
+          type: array
+      type: object
+    type: array
+  remuneration:
+    items:
+      required:
+        - workDuration
+        - intervalCode
+        - salaryScale
+      additionalProperties: false
+      properties:
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        workDuration:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: number
+          type: object
+        intervalCode:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              enum:
+                - fourWeeks
+                - hour
+                - month
+                - week
+              type: string
+          type: object
+        hourlyWageConversion:
+          additionalProperties: false
+          properties:
+            hourlyWageFactor:
+              type: string
+              format: uri-reference
+            hourlyWagePercentage:
+              type: string
+              format: uri-reference
+          type: object
+        salaryScale:
+          items:
+            required:
+              - name
+            additionalProperties: false
+            properties:
+              name:
+                type: string
+              maxValue:
+                type: number
+              minValue:
+                type: number
+              salaryStep:
+                items:
+                  required:
+                    - name
+                    - value
+                  additionalProperties: false
+                  properties:
+                    name:
+                      type: string
+                    value:
+                      type: number
+                    minimumWage:
+                      enum:
+                        - 'false'
+                        - 'true'
+                      type: boolean
+                    conditions:
+                      items:
+                        required:
+                          - conditionType
+                        additionalProperties: true
+                        properties:
+                          conditionType:
+                            type: string
+                            format: uri-reference
+                        type: object
+                      type: array
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        careerLevel:
+          additionalProperties: false
+          properties:
+            indicator:
+              type: boolean
+            description:
+              type: string
+          type: object
+        individualSalaryIncreaseRate:
+          items:
+            additionalProperties: false
+            properties:
+              expenseDate:
+                type: string
+                format: date
+              line:
+                required:
+                  - amount
+                  - intervalCode
+                additionalProperties: false
+                properties:
+                  amount:
+                    required:
+                      - value
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                      unitCode:
+                        enum:
+                          - euro
+                          - hour
+                          - percentage
+                        type: string
+                      baseAmount:
+                        required:
+                          - unitCode
+                        additionalProperties: false
+                        properties:
+                          unitCode:
+                            enum:
+                              - fixed
+                              - percentageFixedAmount
+                              - percentageHourlyRate
+                              - percentageMontlyRate
+                              - percentageOfExpense
+                              - percentageYearlyRate
+                            type: string
+                          value:
+                            type: string
+                          minValue:
+                            type: number
+                          maxValue:
+                            type: number
+                        type: object
+                    type: object
+                  intervalCode:
+                    required:
+                      - value
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      value:
+                        type: string
+                      unitCode:
+                        enum:
+                          - day
+                          - hour
+                          - month
+                          - week
+                          - year
+                        type: string
+                        format: uri-reference
+                    type: object
+                  conditions:
+                    items:
+                      required:
+                        - conditionType
+                      additionalProperties: true
+                      properties:
+                        conditionType:
+                          type: string
+                      type: object
+                    type: array
+                type: object
+            type: object
+          type: array
+        generalSalaryIncreaseRate:
+          items:
+            required:
+              - amount
+            additionalProperties: false
+            properties:
+              effectivePeriod:
+                required:
+                  - validFrom
+                additionalProperties: false
+                properties:
+                  validFrom:
+                    type: string
+                    format: date
+                type: object
+              amount:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                type: object
+              description:
+                type: string
+                format: uri-reference
+            type: object
+          type: array
+        conditions:
+          items:
+            required:
+              - conditionType
+            additionalProperties: true
+            properties:
+              conditionType:
+                type: string
+                format: uri-reference
+            type: object
+          type: array
+      type: object
+    minItems: 1
+    type: array
+  allowance:
+    items:
+      required:
+        - name
+        - typeCode
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+            validTo:
+              type: string
+          type: object
+        typeCode:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+        period:
+          items:
+            required:
+              - timePeriod
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  required:
+                    - start
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                      format: date
+                    end:
+                      type: string
+                      format: date
+                  type: object
+                type: array
+              timePeriod:
+                required:
+                  - start
+                  - end
+                additionalProperties: false
+                properties:
+                  start:
+                    type: string
+                  end:
+                    type: string
+                type: object
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                type: array
+            type: object
+          type: array
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - euro
+                      - hour
+                      - percentage
+                    type: string
+                    format: uri-reference
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageFixedAmount
+                          - percentageHourlyRate
+                          - percentageMinimumWage
+                          - percentageMonthlyRate
+                          - percentageOfExpense
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - item
+                      - kilometer
+                      - month
+                      - route
+                      - week
+                      - year
+                    type: string
+                    format: uri-reference
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        reference:
+          items:
+            required:
+              - typeCode
+              - description
+            additionalProperties: false
+            properties:
+              typeCode:
+                type: string
+              description:
+                type: string
+                format: uri-reference
+              relationType:
+                enum:
+                  - Compounding
+                  - Cumulative
+                  - Subtractive
+                type: string
+                format: uri-reference
+            type: object
+          type: array
+        phaseOutScheme:
+          type: string
+          format: uri-reference
+      type: object
+    type: array
+  holidayAllowance:
+    items:
+      required:
+        - name
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  required:
+                    - start
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                      format: date
+                    end:
+                      type: string
+                      format: date
+                  type: object
+                type: array
+              timePeriod:
+                required:
+                  - start
+                  - end
+                additionalProperties: false
+                properties:
+                  start:
+                    type: string
+                  end:
+                    type: string
+                type: object
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                  format: uri-reference
+                type: array
+            type: object
+          type: array
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - percentage
+                    type: string
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - percentageHourlyRate
+                          - percentageMinimumWage
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - fixed
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                    format: uri-reference
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        payDate:
+          required:
+            - start
+          additionalProperties: false
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
+          type: object
+      type: object
+    type: array
+  sickPay:
+    items:
+      required:
+        - name
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  required:
+                    - start
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                      format: date
+                    end:
+                      type: string
+                      format: date
+                  type: object
+                type: array
+              timePeriod:
+                items:
+                  required:
+                    - start
+                    - end
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                    end:
+                      type: string
+                  type: object
+                type: array
+              weekday:
+                enum:
+                  - Friday
+                  - Monday
+                  - Saturday
+                  - Sunday
+                  - Thursday
+                  - Tuesday
+                  - Wednesday
+                type: string
+                format: uri-reference
+            type: object
+          type: array
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    format: uri-reference
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+              waitingDays:
+                required:
+                  - value
+                additionalProperties: false
+                properties:
+                  value:
+                    type: number
+                  conditions:
+                    items:
+                      required:
+                        - conditionType
+                      additionalProperties: true
+                      properties:
+                        conditionType:
+                          type: string
+                          format: uri-reference
+                      type: object
+                    type: array
+                type: object
+            type: object
+          minItems: 1
+          type: array
+      type: object
+    type: array
+  leave:
+    items:
+      required:
+        - name
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  required:
+                    - start
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                      format: date
+                    end:
+                      type: string
+                      format: date
+                  type: object
+                type: array
+              TimePeriod:
+                required:
+                  - start
+                  - end
+                additionalProperties: false
+                properties:
+                  start:
+                    type: string
+                  end:
+                    type: string
+                type: object
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                  format: uri-reference
+                type: array
+            type: object
+          type: array
+        holidays:
+          items:
+            required:
+              - amount
+              - name
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                additionalProperties: false
+                properties:
+                  value:
+                    type: number
+                type: object
+              name:
+                items:
+                  type: string
+                minItems: 1
+                type: array
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          type: array
+        paidLeave:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                additionalProperties: false
+                properties:
+                  value:
+                    type: number
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    format: uri-reference
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          type: array
+        adv:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - hour
+                      - percentage
+                    type: string
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageFixedAmount
+                          - percentageMonthlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    format: uri-reference
+                  unitCode:
+                    enum:
+                      - day
+                      - fixed
+                      - month
+                      - week
+                      - year
+                    type: string
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+              reference:
+                items:
+                  required:
+                    - typeCode
+                    - description
+                  additionalProperties: false
+                  properties:
+                    typeCode:
+                      type: string
+                      format: uri-reference
+                    description:
+                      type: string
+                      format: uri-reference
+                    relationType:
+                      enum:
+                        - Compounding
+                        - Cumulative
+                        - Subtractive
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          type: array
+        leaveDayValue:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+        specialLeave:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+              format: uri-reference
+          type: object
+        WAZO:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+              format: uri-reference
+          type: object
+        MandatoryLeaveAllocation:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+              format: uri-reference
+          type: object
+      type: object
+    type: array
+  individualChoiceBudget:
+    items:
+      required:
+        - name
+        - budgetRate
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  required:
+                    - start
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                      format: date
+                    end:
+                      type: string
+                      format: date
+                  type: object
+                type: array
+              timePeriod:
+                items:
+                  required:
+                    - start
+                    - end
+                  additionalProperties: false
+                  properties:
+                    start:
+                      type: string
+                    end:
+                      type: string
+                  type: object
+                type: array
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                  format: uri-reference
+                type: array
+            type: object
+          type: array
+        budgetRate:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: number
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                    format: uri-reference
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    format: uri-reference
+                  unitCode:
+                    enum:
+                      - month
+                      - year
+                    type: string
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        option:
+          items:
+            required:
+              - description
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+            type: object
+          type: array
+      type: object
+    type: array
+  pension:
+    items:
+      required:
+        - line
+      additionalProperties: false
+      properties:
+        franchise:
+          additionalProperties: false
+          properties:
+            description:
+              type: string
+          type: object
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - percentage
+                    type: string
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - percentageYearlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                    format: uri-reference
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+      type: object
+    type: array
+  sustainableEmployability:
+    items:
+      required:
+        - name
+        - typeCode
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+              format: date
+            validTo:
+              type: string
+              format: date
+          type: object
+        typeCode:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  minValue:
+                    type: number
+                  maxValue:
+                    type: number
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageHourlyRate
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        format: uri-reference
+                      value:
+                        type: string
+                      minValue:
+                        type: number
+                      maxValue:
+                        type: number
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                    format: uri-reference
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                      format: uri-reference
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        payDate:
+          required:
+            - start
+          additionalProperties: false
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
+          type: object
+      type: object
+    type: array
+  other:
+    items:
+      required:
+        - name
+        - amount
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+            schemeAgencyId:
+              type: string
+          type: object
+        name:
+          type: string
+        effectivePeriod:
+          additionalProperties: false
+          properties:
+            validFrom:
+              type: string
+            validTo:
+              type: string
+              format: date
+          type: object
+        amount:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+      type: object
+    type: array
+type: object
+$id: 'https://ontology.setu.nl//InquiryPayEquity'
