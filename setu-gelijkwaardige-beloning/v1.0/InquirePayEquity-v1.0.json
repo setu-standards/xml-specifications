@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
-    "title": "SETU Inquiry Pay Equity version 1.0 (DRAFT)",
+    "title": "SETU Inquiry Pay Equity version 1.0 (RELEASE)",
     "description": "The JSON Schema for the SETU standard for Inquiry Pay Equity v1.0",
     "required": [
         "id",
@@ -45,7 +45,7 @@
         },
         "issued": {
             "type": "string",
-            "format": "uri-reference"
+            "format": "date-time"
         },
         "effectivePeriod": {
             "required": [
@@ -348,12 +348,10 @@
                         "additionalProperties": false,
                         "properties": {
                             "hourlyWageFactor": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "number"
                             },
                             "hourlyWagePercentage": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "number"
                             }
                         },
                         "type": "object"
@@ -389,10 +387,6 @@
                                                 "type": "number"
                                             },
                                             "minimumWage": {
-                                                "enum": [
-                                                    "false",
-                                                    "true"
-                                                ],
                                                 "type": "boolean"
                                             },
                                             "conditions": {
@@ -403,8 +397,7 @@
                                                     "additionalProperties": true,
                                                     "properties": {
                                                         "conditionType": {
-                                                            "type": "string",
-                                                            "format": "uri-reference"
+                                                            "type": "string"
                                                         }
                                                     },
                                                     "type": "object"
@@ -523,8 +516,7 @@
                                                         "week",
                                                         "year"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 }
                                             },
                                             "type": "object"
@@ -593,8 +585,7 @@
                                     "type": "object"
                                 },
                                 "description": {
-                                    "type": "string",
-                                    "format": "uri-reference"
+                                    "type": "string"
                                 }
                             },
                             "type": "object"
@@ -609,8 +600,7 @@
                             "additionalProperties": true,
                             "properties": {
                                 "conditionType": {
-                                    "type": "string",
-                                    "format": "uri-reference"
+                                    "type": "string"
                                 }
                             },
                             "type": "object"
@@ -773,8 +763,7 @@
                                                 "hour",
                                                 "percentage"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "baseAmount": {
                                             "required": [
@@ -791,8 +780,7 @@
                                                         "percentageMonthlyRate",
                                                         "percentageOfExpense"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -830,8 +818,7 @@
                                                 "week",
                                                 "year"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -844,8 +831,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -870,8 +856,7 @@
                                     "type": "string"
                                 },
                                 "description": {
-                                    "type": "string",
-                                    "format": "uri-reference"
+                                    "type": "string"
                                 },
                                 "relationType": {
                                     "enum": [
@@ -879,8 +864,7 @@
                                         "Cumulative",
                                         "Subtractive"
                                     ],
-                                    "type": "string",
-                                    "format": "uri-reference"
+                                    "type": "string"
                                 }
                             },
                             "type": "object"
@@ -888,8 +872,7 @@
                         "type": "array"
                     },
                     "phaseOutScheme": {
-                        "type": "string",
-                        "format": "uri-reference"
+                        "type": "string"
                     }
                 },
                 "type": "object"
@@ -988,8 +971,7 @@
                                             "Tuesday",
                                             "Wednesday"
                                         ],
-                                        "type": "string",
-                                        "format": "uri-reference"
+                                        "type": "string"
                                     },
                                     "type": "array"
                                 }
@@ -1042,8 +1024,7 @@
                                                         "percentageMonthlyRate",
                                                         "percentageYearlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -1079,8 +1060,7 @@
                                                 "week",
                                                 "year"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -1093,8 +1073,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1278,8 +1257,7 @@
                                                         "percentageMonthlyRate",
                                                         "percentageYearlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -1304,8 +1282,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "value": {
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "unitCode": {
                                             "enum": [
@@ -1328,8 +1305,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1353,8 +1329,7 @@
                                                 "additionalProperties": true,
                                                 "properties": {
                                                     "conditionType": {
-                                                        "type": "string",
-                                                        "format": "uri-reference"
+                                                        "type": "string"
                                                     }
                                                 },
                                                 "type": "object"
@@ -1511,8 +1486,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1552,8 +1526,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "value": {
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "unitCode": {
                                             "enum": [
@@ -1576,8 +1549,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1633,8 +1605,7 @@
                                                         "percentageFixedAmount",
                                                         "percentageMonthlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -1659,8 +1630,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "value": {
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "unitCode": {
                                             "enum": [
@@ -1683,8 +1653,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1700,12 +1669,10 @@
                                         "additionalProperties": false,
                                         "properties": {
                                             "typeCode": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             },
                                             "description": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             },
                                             "relationType": {
                                                 "enum": [
@@ -1713,8 +1680,7 @@
                                                     "Cumulative",
                                                     "Subtractive"
                                                 ],
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -1742,8 +1708,7 @@
                         "additionalProperties": false,
                         "properties": {
                             "description": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "string"
                             }
                         },
                         "type": "object"
@@ -1752,8 +1717,7 @@
                         "additionalProperties": false,
                         "properties": {
                             "description": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "string"
                             }
                         },
                         "type": "object"
@@ -1762,8 +1726,7 @@
                         "additionalProperties": false,
                         "properties": {
                             "description": {
-                                "type": "string",
-                                "format": "uri-reference"
+                                "type": "string"
                             }
                         },
                         "type": "object"
@@ -1911,8 +1874,7 @@
                                                 "euro",
                                                 "percentage"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "baseAmount": {
                                             "required": [
@@ -1926,8 +1888,7 @@
                                                         "percentageMonthlyRate",
                                                         "percentageYearlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -1952,8 +1913,7 @@
                                     "additionalProperties": false,
                                     "properties": {
                                         "value": {
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         },
                                         "unitCode": {
                                             "enum": [
@@ -1973,8 +1933,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -2078,8 +2037,7 @@
                                                     "enum": [
                                                         "percentageYearlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -2114,8 +2072,7 @@
                                                 "week",
                                                 "year"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -2128,8 +2085,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
@@ -2245,8 +2201,7 @@
                                                         "percentageMonthlyRate",
                                                         "percentageYearlyRate"
                                                     ],
-                                                    "type": "string",
-                                                    "format": "uri-reference"
+                                                    "type": "string"
                                                 },
                                                 "value": {
                                                     "type": "string"
@@ -2281,8 +2236,7 @@
                                                 "week",
                                                 "year"
                                             ],
-                                            "type": "string",
-                                            "format": "uri-reference"
+                                            "type": "string"
                                         }
                                     },
                                     "type": "object"
@@ -2295,8 +2249,7 @@
                                         "additionalProperties": true,
                                         "properties": {
                                             "conditionType": {
-                                                "type": "string",
-                                                "format": "uri-reference"
+                                                "type": "string"
                                             }
                                         },
                                         "type": "object"
