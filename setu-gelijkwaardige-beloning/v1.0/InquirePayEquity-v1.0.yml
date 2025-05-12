@@ -1,6 +1,6 @@
 $schema: 'https://json-schema.org/draft/2020-12/schema'
-title: 'SETU Inquiry Pay Equity version 1.0 (DRAFT)'
-description: 'The YAML Schema for the SETU Inquire Pay Equity V1.0 Standard'
+title: 'SETU Inquiry Pay Equity version 1.0 (RELEASE)'
+description: The YAML Schema for SETU Inquiry Pay Equity v1.0'
 required:
   - id
   - documentId
@@ -124,7 +124,7 @@ properties:
           roleCode:
             type: string
           positionTitle:
-            type: stri
+            type: string
         type: object
     type: object
   labourAgreements:
@@ -245,11 +245,9 @@ properties:
           additionalProperties: false
           properties:
             hourlyWageFactor:
-              type: string
-              format: uri-reference
+              type: number
             hourlyWagePercentage:
-              type: string
-              format: uri-reference
+              type: number
           type: object
         salaryScale:
           items:
@@ -275,9 +273,6 @@ properties:
                     value:
                       type: number
                     minimumWage:
-                      enum:
-                        - 'false'
-                        - 'true'
                       type: boolean
                     conditions:
                       items:
@@ -287,7 +282,6 @@ properties:
                         properties:
                           conditionType:
                             type: string
-                            format: uri-reference
                         type: object
                       type: array
                   type: object
@@ -372,7 +366,6 @@ properties:
                           - week
                           - year
                         type: string
-                        format: uri-reference
                     type: object
                   conditions:
                     items:
@@ -418,7 +411,6 @@ properties:
                 type: object
               description:
                 type: string
-                format: uri-reference
             type: object
           type: array
         conditions:
@@ -429,7 +421,6 @@ properties:
             properties:
               conditionType:
                 type: string
-                format: uri-reference
             type: object
           type: array
       type: object
@@ -503,10 +494,8 @@ properties:
                 properties:
                   start:
                     type: string
-                    format: date-time
                   end:
                     type: string
-                    format: date-time
                 type: object
               weekday:
                 items:
@@ -548,7 +537,6 @@ properties:
                       - hour
                       - percentage
                     type: string
-                    format: uri-reference
                   baseAmount:
                     required:
                       - unitCode
@@ -563,7 +551,6 @@ properties:
                           - percentageMonthlyRate
                           - percentageOfExpense
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -591,7 +578,6 @@ properties:
                       - week
                       - year
                     type: string
-                    format: uri-reference
                 type: object
               conditions:
                 items:
@@ -601,7 +587,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -618,19 +603,16 @@ properties:
                 type: string
               description:
                 type: string
-                format: uri-reference
               relationType:
                 enum:
                   - Compounding
                   - Cumulative
                   - Subtractive
                 type: string
-                format: uri-reference
             type: object
           type: array
         phaseOutScheme:
           type: string
-          format: uri-reference
       type: object
     type: array
   holidayAllowance:
@@ -689,10 +671,8 @@ properties:
                 properties:
                   start:
                     type: string
-                    format: date-time
                   end:
                     type: string
-                    format: date-time
                 type: object
               weekday:
                 items:
@@ -705,7 +685,6 @@ properties:
                     - Tuesday
                     - Wednesday
                   type: string
-                  format: uri-reference
                 type: array
             type: object
           type: array
@@ -745,7 +724,6 @@ properties:
                           - percentageMonthlyRate
                           - percentageYearlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -771,7 +749,6 @@ properties:
                       - week
                       - year
                     type: string
-                    format: uri-reference
                 type: object
               conditions:
                 items:
@@ -781,7 +758,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -860,10 +836,8 @@ properties:
                   properties:
                     start:
                       type: string
-                      format: date-time
                     end:
                       type: string
-                      format: date-time
                   type: object
                 type: array
               weekday:
@@ -915,7 +889,6 @@ properties:
                           - percentageMonthlyRate
                           - percentageYearlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -932,7 +905,6 @@ properties:
                 properties:
                   value:
                     type: string
-                    format: uri-reference
                   unitCode:
                     enum:
                       - day
@@ -950,7 +922,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
               waitingDays:
@@ -968,7 +939,6 @@ properties:
                       properties:
                         conditionType:
                           type: string
-                          format: uri-reference
                       type: object
                     type: array
                 type: object
@@ -1032,10 +1002,8 @@ properties:
                 properties:
                   start:
                     type: string
-                    format: date-time
                   end:
                     type: string
-                    format: date-time
                 type: object
               weekday:
                 items:
@@ -1080,7 +1048,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -1108,7 +1075,6 @@ properties:
                 properties:
                   value:
                     type: string
-                    format: uri-reference
                   unitCode:
                     enum:
                       - day
@@ -1126,7 +1092,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -1167,7 +1132,6 @@ properties:
                           - percentageFixedAmount
                           - percentageMonthlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -1184,7 +1148,6 @@ properties:
                 properties:
                   value:
                     type: string
-                    format: uri-reference
                   unitCode:
                     enum:
                       - day
@@ -1202,7 +1165,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
               reference:
@@ -1214,17 +1176,14 @@ properties:
                   properties:
                     typeCode:
                       type: string
-                      format: uri-reference
                     description:
                       type: string
-                      format: uri-reference
                     relationType:
                       enum:
                         - Compounding
                         - Cumulative
                         - Subtractive
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -1242,21 +1201,18 @@ properties:
           properties:
             description:
               type: string
-              format: uri-reference
           type: object
         WAZO:
           additionalProperties: false
           properties:
             description:
               type: string
-              format: uri-reference
           type: object
         MandatoryLeaveAllocation:
           additionalProperties: false
           properties:
             description:
               type: string
-              format: uri-reference
           type: object
       type: object
     type: array
@@ -1319,10 +1275,8 @@ properties:
                   properties:
                     start:
                       type: string
-                      format: date-time
                     end:
                       type: string
-                      format: date-time
                   type: object
                 type: array
               weekday:
@@ -1365,7 +1319,6 @@ properties:
                       - euro
                       - percentage
                     type: string
-                    format: uri-reference
                   baseAmount:
                     required:
                       - unitCode
@@ -1377,7 +1330,6 @@ properties:
                           - percentageMonthlyRate
                           - percentageYearlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -1394,7 +1346,6 @@ properties:
                 properties:
                   value:
                     type: string
-                    format: uri-reference
                   unitCode:
                     enum:
                       - month
@@ -1409,7 +1360,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -1482,7 +1432,6 @@ properties:
                         enum:
                           - percentageYearlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -1507,7 +1456,6 @@ properties:
                       - week
                       - year
                     type: string
-                    format: uri-reference
                 type: object
               conditions:
                 items:
@@ -1517,7 +1465,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
@@ -1600,7 +1547,6 @@ properties:
                           - percentageMonthlyRate
                           - percentageYearlyRate
                         type: string
-                        format: uri-reference
                       value:
                         type: string
                       minValue:
@@ -1625,7 +1571,6 @@ properties:
                       - week
                       - year
                     type: string
-                    format: uri-reference
                 type: object
               conditions:
                 items:
@@ -1635,7 +1580,6 @@ properties:
                   properties:
                     conditionType:
                       type: string
-                      format: uri-reference
                   type: object
                 type: array
             type: object
