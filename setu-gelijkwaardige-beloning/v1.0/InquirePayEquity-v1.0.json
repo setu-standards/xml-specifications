@@ -1,7 +1,7 @@
 {
     "$schema": "https://json-schema.org/draft/2020-12/schema",
     "title": "SETU Inquiry Pay Equity version 1.0 (RELEASE)",
-    "description": "The JSON Schema for the SETU standard for Inquiry Pay Equity v1.0",
+    "description": "The JSON Schema for SETU Inquiry Pay Equity version 1.0 ",
     "required": [
         "id",
         "documentId",
@@ -408,24 +408,24 @@
                                         "type": "object"
                                     },
                                     "type": "array"
+                                },
+                                "careerLevel": {
+                                    "additionalProperties": false,
+                                    "properties": {
+                                        "indicator": {
+                                            "type": "boolean"
+                                        },
+                                        "description": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "type": "object"
                                 }
                             },
                             "type": "object"
                         },
                         "minItems": 1,
                         "type": "array"
-                    },
-                    "careerLevel": {
-                        "additionalProperties": false,
-                        "properties": {
-                            "indicator": {
-                                "type": "boolean"
-                            },
-                            "description": {
-                                "type": "string"
-                            }
-                        },
-                        "type": "object"
                     },
                     "individualSalaryIncreaseRate": {
                         "items": {
