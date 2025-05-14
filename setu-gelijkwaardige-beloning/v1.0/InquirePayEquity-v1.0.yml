@@ -1,6 +1,6 @@
 $schema: 'https://json-schema.org/draft/2020-12/schema'
 title: 'SETU Inquiry Pay Equity version 1.0 (RELEASE)'
-description: The YAML Schema for SETU Inquiry Pay Equity v1.0'
+description: 'The YAMl Schema for SETU Inquiry Pay Equity version 1.0 '
 required:
   - id
   - documentId
@@ -286,17 +286,17 @@ properties:
                       type: array
                   type: object
                 type: array
+              careerLevel:
+                additionalProperties: false
+                properties:
+                  indicator:
+                    type: boolean
+                  description:
+                    type: string
+                type: object
             type: object
           minItems: 1
           type: array
-        careerLevel:
-          additionalProperties: false
-          properties:
-            indicator:
-              type: boolean
-            description:
-              type: string
-          type: object
         individualSalaryIncreaseRate:
           items:
             additionalProperties: false
