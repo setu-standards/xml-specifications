@@ -1,0 +1,1001 @@
+{
+    "id": { // Unique identifier for this specific set of pay equity regulations (assigned by the customer).
+        "value": "f5afe7a19d0"
+    },
+    "documentId": { // Identifier for this specific message instance.
+        "value": "233a94d5d8c", // The unique ID value for this document.
+        "schemeAgencyId": "Customer" // Indicates the party that assigned the document ID (Customer or Supplier).
+    },
+    "issued": "2025-05-09T18:25:43.511Z", // Timestamp indicating when this document was created/issued.
+    "effectivePeriod": { // The overall period during which the information in this document is valid.
+        "validFrom": "2025-05-09", // Start date of the validity period.
+        "validTo": "2026-05-09" // End date of the validity period.
+    },
+    "customer": { // Information about the staffing customer (hirer).
+        "id": [ // Customer's identifier(s).
+            {
+                "value": "9b184323200", // The customer's ID value.
+                "schemeAgencyId": "Customer" // Indicates who assigned this ID (usually the customer themselves).
+            }
+        ],
+        "name": "ABC Staffing Solutions", // The name of the customer organization.
+        "legalId": [ // Government-assigned legal identifiers for the customer.
+            {
+                "value": "be87d7192fc", // The value of the legal ID.
+                "schemeAgencyId": "KvK" // Type of legal ID (e.g., KvK, OIN, RSIN).
+            }
+        ],
+        "personContacts": { // Details of the contact person at the customer organization for this information.
+            "name": {
+                "formattedName": "John Doe" // Full name of the contact person.
+            },
+            "communication": { // Contact methods for the person.
+                "phone": {
+                    "formattedNumber": "+31 20 123 4567" // Phone number.
+                },
+                "email": {
+                    "address": "john.doe@abcstaffing.com" // Email address.
+                }
+            },
+            "roleCode": "AuthorizedBy", // Role of the contact person regarding this data (e.g., 'AuthorizedBy').
+            "positionTitle": "Recruitment Specialist" // Job title of the contact person.
+        }
+    },
+    "labourAgreements": { // Information about the collective labour agreement (CAO) or other agreements governing remuneration.
+        "industryIdentifiers": { // Identifiers for the industry the customer operates in.
+            "value": [
+                "Code from 'standaard bedrijfsindeling' (SBI) 2008" // Standard Business Classification code (SBI).
+            ]
+        },
+        "collectiveLabourAgreement": { // Details of the applicable CAO.
+            "name": "Collective labour agreement for construction sector", // Name of the CAO.
+            "id": {
+                "value": "1496" // Unique identifier for the CAO (e.g., from CBS).
+            },
+            "effectivePeriod": { // Validity period of this specific CAO version.
+                "validFrom": "2024-01-01",
+                "validTo": "2026-01-01"
+            },
+            "basedOn": "The CLA has been declared generally binding from ... till ..." // Reason why this CAO applies (e.g., generally binding declaration).
+        },
+        "customLabourAgreement": false // Boolean that indicates if a custom labour agreement is used
+    },
+    "positionProfile": [ // Defines the job positions covered by this pay equity specification.
+        {
+            "positionId": { // Unique identifier for this position profile within the customer's system.
+                "value": "POS123"
+            },
+            "positionTitle": "Recruitment Specialist", // The job title used by the customer.
+            "referenceTitle": "HR Functions", // The corresponding job title or group from the applicable CAO framework, if any.
+            "workDescription": "Responsible for sourcing and hiring candidates.", // Brief description of the main tasks/responsibilities.
+            "salaryScale": [ // Links this position to one or more salary scales defined in the 'remuneration' section.
+                "Scale 1" // Refers to the 'name' of a salaryScale object.
+            ]
+        }
+    ],
+    "remuneration": [ // Contains salary tables and related rules. Can have multiple entries for different work durations or conditions.
+        {
+            "effectivePeriod": { // Validity period for this specific remuneration block (e.g., for a specific year).
+                "validFrom": "2025-05-09",
+                "validTo": "2026-05-09"
+            },
+            "workDuration": { // The standard full-time work duration (hours per week) this salary table is based on.
+                "value": 40
+            },
+            "intervalCode": { // The time interval for which the salary amounts in the table are specified.
+                "value": "fourWeeks" // Options: month, fourWeeks, week, hour.
+            },
+            "hourlyWageConversion": { // Information on how to calculate the hourly wage from the table's interval.
+                "hourlyWageFactor": 173.33 // Factor to divide the interval salary by (e.g., average hours per month/four weeks). Alternatively, 'hourlyWagePercentage' could be used.
+            },
+            "salaryScale": [ // Defines the salary scales applicable under this remuneration block.
+                {
+                    "name": "Scale 1", // Unique name/label for this scale (referenced by positionProfile).
+                    "maxValue": 2500, // Optional: Maximum salary amount for this scale.
+                    "minValue": 2000, // Optional: Minimum salary amount for this scale.
+                    "salaryStep": [ // Defines the steps (treden) within this scale.
+                        {
+                            "name": "1", // Name/label for the step.
+                            "value": 2000 // Salary amount for this step in the specified interval.
+                        },
+                        {
+                            "name": "2",
+                            "value": 2200
+                        },
+                        {
+                            "name": "3",
+                            "value": 2400
+                        }
+                    ]
+                },
+                {
+                    "name": "Scale 2",
+                    "maxValue": 2600,
+                    "minValue": 2100,
+                    "salaryStep": [
+                        {
+                            "name": "1",
+                            "value": 2100
+                        },
+                        {
+                            "name": "2",
+                            "value": 2300
+                        },
+                        {
+                            "name": "3",
+                            "value": 2500
+                        }
+                    ]
+                }
+            ],
+            "individualSalaryIncreaseRate": [ // Rules for periodic individual salary increases (not general CAO increases).
+                {
+                    "expenseDate": "2026-01-01", // Date when this specific increase rule takes effect.
+                    "line": { // Details of the increase rate, using the standard 'pay equity' line structure.
+                        "amount": { // The amount of the increase.
+                            "value": "75", // The numeric value of the increase.
+                            "unitCode": "euro", // The unit (e.g., euro, percentage).
+                            "baseAmount": { // The base over which the 'value' is calculated (if applicable, e.g., if unitCode is 'percentage').
+                                "unitCode": "fixed" // Indicates this is a fixed amount increase, not based on a percentage of salary.
+                            }
+                        },
+                        "intervalCode": { // How often this increase is applied.
+                            "value": "1", // The frequency value (here this means every year - value of 0.5 would mean every half year.)
+                            "unitCode": "year" // The frequency unit (e.g., year, month).
+                        },
+                        "conditions": [ // Conditions that must be met for this specific increase rate to apply.
+                            {
+                                "conditionType": "employmentDurationCondition" // Type of condition (e.g., based on tenure). Specific fields depend on the type. See 'conditions' documentation.
+                                // Other condition fields like 'durationYears' (how many years you have to be employed) would be here based on the conditionType.
+                            }
+                        ]
+                    }
+                },
+                {
+                    "expenseDate": "2026-01-01", // Another potential increase rule effective on the same date.
+                    "line": {
+                        "amount": {
+                            "value": "4", // The target value (e.g., 4%).
+                            "minValue": 3, // Optional: Minimum possible value for the increase (e.g., 3%).
+                            "maxValue": 5, // Optional: Maximum possible value for the increase (e.g., 5%).
+                            "unitCode": "percentage", // Unit is percentage.
+                            "baseAmount": { // Base for the percentage calculation.
+                                "unitCode": "percentageHourlyRate", // Base is the hourly rate. Other options: percentageMonthlyRate, percentageYearlyRate, etc.
+                                "value": "3000", // Optional: The actual base value (e.g., the specific salary) if needed for calculation or context.
+                                "minValue": 2900, // Optional: Minimum base value to consider.
+                                "maxValue": 3100 // Optional: Maximum base value to consider.
+                            }
+                        },
+                        "intervalCode": {
+                            "value": "1",
+                            "unitCode": "year"
+                        },
+                        "conditions": [
+                            {
+                                "conditionType": "textualCondition" // Example of a textual condition type.
+                                // description : "Based on performance of the employee."
+                                // For structured conditions, use defined types like 'performanceCondition' if available.
+                            }
+                        ]
+                    }
+                }
+            ],
+            "generalSalaryIncreaseRate": [ // Rules for general, across-the-board increases affecting the entire salary table (often from CAO negotiations).
+                {
+                    "effectivePeriod": { // When this general increase takes effect. Only 'validFrom' is typically needed.
+                        "validFrom": "2026-01-01"
+                    },
+                    "amount": { // The amount of the general increase.
+                        "value": "200", // The numeric value.
+                        "unitCode": "euro" // The unit (euro or percentage). Base is implicitly the salary table values.
+                    },
+                    "description": "This salary increase is applicable to all employees." // Optional description or reference for the increase.
+                }
+            ],
+            "conditions": [ // Conditions that apply to this entire remuneration block (salary table).
+                {
+                    "conditionType": "functionCondition", // Specifies the condition relates to job functions.
+                    "applicableToAllFunctions": true, // Indicates if it applies to all functions by default.
+                    "except": ["function123"] // List of position IDs (from positionProfile) that are excluded from this remuneration block.
+                }
+            ]
+        },
+        { // Another remuneration block, potentially for a different group (e.g., youth minimum wage).
+            "effectivePeriod": {
+                "validFrom": "2025-05-09",
+                "validTo": "2026-05-09"
+            },
+            "workDuration": {
+                "value": 40
+            },
+            "intervalCode": {
+                "value": "fourWeeks"
+            },
+            "hourlyWageConversion": {
+                "hourlyWageFactor": 173.33
+            },
+            "salaryScale": [
+                {
+                    "name": "Minimum wage youth", // Scale specifically for youth wages.
+                    "maxValue": 2500, // Example range.
+                    "minValue": 2000, // Example range 
+                    "salaryStep": [
+                        {
+                            "name": "Pay for youth: Age 18", // Step label indicating the condition.
+                            "value": 1850.75, // Salary amount for this step.
+                            "minimumWage": true, // Indicates this step corresponds to the legal minimum wage for this group.
+                            "conditions": [
+                                {
+                                    "conditionType": "ageCondition" // Condition is based on age.
+                                    // Specific age fields like 'ageMinInclusive': 18, 'ageMaxExclusive': 19 would be here.
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pay for youth: Age 19 ",
+                            "value": 1900,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "ageCondition"
+                                    // Specific age fields like 'ageMinInclusive': 19, 'ageMaxExclusive': 20 would be here.
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pay for youth: Age: 20 ",
+                            "value": 1950,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "textualCondition" // Using textual condition if structured age condition isn't sufficient or preferred.
+                                    // 'description': 'Applies to employees aged 20' would be here.
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [ // Condition applying to this entire youth wage remuneration block.
+                {
+                    "conditionType": "ageCondition" // Indicates this block is relevant for specific age groups.
+                    // Specific age fields like 'ageMaxExclusive': 21 would be here.
+                }
+            ]
+        }
+    ],
+    "allowance": [ // Container for various allowances (supplements to base pay). Multiple allowance blocks can exist.
+        {
+            "id": { // Unique ID for this specific allowance regulation.
+                "value": "2b497da74f7",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Special Event Surcharge (e.g. Major Sporting Event)", // Descriptive name of the allowance.
+            "effectivePeriod": { // Validity period for this allowance rule.
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": { // Code identifying the type of allowance (from SETU codelist).
+                "value": "HT320" // Example: Code for shift/irregular hours allowance.
+            },
+            "period": [ // Defines when this allowance is applicable ('earned'). Can have multiple period blocks.
+                {
+                    "datePeriod": [ // Specific date or range of dates.
+                        {
+                            "start": "2025-07-26",
+                            "end": "2025-08-11" // Example: Applicable during the Olympics.
+                        }
+                    ],
+                    "timePeriod": { // Specific time or range of times during the applicable dates/days.
+                        "start": "00:00:00", // Start time (HH:MM:SS).
+                        "end": "23:59:59" // End time (HH:MM:SS).
+                    },
+                    "weekday": [ // Recurring days of the week.
+                        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday" // Applicable all days within the datePeriod/timePeriod.
+                    ]
+                }
+            ],
+            "line": [ // Defines the rate(s) for this allowance. Can have multiple lines for different conditions/rates.
+                {
+                    "amount": { // How the allowance amount is calculated.
+                        "value": "25", // The numeric value (e.g., 25%).
+                        "unitCode": "percentage", // Unit (percentage, euro, hour, etc.).
+                        "baseAmount": { // The base for calculation if unitCode is percentage.
+                            "unitCode": "percentageHourlyRate" // Base is the hourly rate.
+                        }
+                    },
+                    "intervalCode": { // The interval over which the allowance is applied/calculated.
+                        "value": "1", // The frequency value (e.g., for every 1 hour).
+                        "unitCode": "hour" // The frequency unit (hour, day, kilometer, item, etc.).
+                    }
+                    // 'conditions' block could be here if this specific rate line has conditions.
+                }
+            ],
+            "reference": [ // Defines relationships with other allowances (e.g., for calculation order).
+                {
+                    "typeCode": "HT320", // Refers to the type code of another allowance/component.
+                    "description": "special event compounding", // Describes the relationship.
+                    "relationType": "Compounding" // Type of relationship (Compounding, Cumulative, Subtractive). Compounding means this allowance is calculated on base pay + other referenced allowances.
+                }
+            ]
+        },
+        { // Another allowance example: Public Holiday Surcharge.
+            "id": {
+                "value": "2b497d34fs", 
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Public Holiday Surcharge",
+            "effectivePeriod": {
+                "validFrom": "2024-01-01",
+                "validTo": "2024-12-31"
+            },
+            "typeCode": {
+                "value": "HT340" // Example: Code for public holiday work.
+            },
+            "period": [
+                {
+                    "datePeriod": [ // Defines the specific public holidays this applies to.
+                        { 
+                            "start": "2024-12-25" // Christmas 2024
+                        },
+                        { 
+                            "start": "2024-04-15" // Easter 2024
+                        }
+                    ],
+                    "timePeriod": { // Applicable for the full day.
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [ // Optional: Further restrict by day of week if needed (e.g., if allowance only for holiday that falls on specific days). 
+
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "100", // 100% surcharge.
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour" // Per hour worked on the holiday.
+                    }
+                }
+            ],
+            "reference": [
+                {
+                    "typeCode": "HT320", // Refers to the shift allowance type code.
+                    "description": "This allowance is calculated cumulatively with the shift allowance.",
+                    "relationType": "Cumulative" // Cumulative means this allowance is added on top of the base pay and potentially other allowances like the shift surcharge (HT320).
+                }
+            ]
+        },
+        { // Another allowance example: Basic Weekend Surcharge.
+            "id": {
+                "value": "2b497dssfdg", 
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Basic Weekend Surcharge",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "HT320" // Using shift/irregular hours code.
+            },
+            "period": [
+                { // No datePeriod means it applies throughout the effectivePeriod.
+                    "timePeriod": { // Applicable full day.
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [ // Applicable only on weekends.
+                        "Saturday",
+                        "Sunday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "5", // Fixed amount surcharge.
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed" // Indicates it's a fixed amount, not percentage based.
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour" // 5 euro per hour worked during the weekend period.
+                    }
+                }
+            ]
+        },
+        { // Another allowance example: Travel Allowance with distance brackets.
+            "id": {
+                "value": "2b497dfsad3", 
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Travel Allowance with Distance Brackets",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "EA103" // Example: Code for travel costs home-work.
+            },
+            "period": [ // When travel allowance is applicable (e.g., workdays).
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-01-01",
+                            "end": "2025-12-31"
+                        }
+                    ],
+                    "timePeriod": { // Typically applies regardless of time, so full day.
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [ // Applicable on weekdays.
+                        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+                    ]
+                }
+            ],
+            "line": [ // Multiple lines define different rates based on conditions (distance brackets).
+                { // Line 1: Example for a specific distance bracket (e.g., > 50 km).
+                    "amount": {
+                        "value": "25.00", // Fixed amount per day for this bracket.
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "day" // Allowance is per day.
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition" // Condition defining the bracket.
+                            // 'description': 'Applies for travel distance > 50 km one way' would be here.
+                        }
+                    ]
+                },
+                { // Line 2: Example for another bracket (e.g., 20-50 km).
+                    "amount": {
+                        "value": "10.00",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "day"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Applies for travel distance between 20 and 50 km one way'
+                        }
+                    ]
+                },
+                { // Line 3: Example for per-km rate (e.g., < 20 km or specific transport).
+                    "amount": {
+                        "value": "0.23", // Per km rate.
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "kilometer" // Allowance is per kilometer.
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Applies for travel distance < 20 km one way, or for bicycle travel'
+                        }
+                    ]
+                }
+            ]
+        },
+        { // Another allowance example: Overtime Compensation (combined money and time).
+            "id": {
+                "value": "23asdfva32e", 
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Overtime Compensation (Money and Time)",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "HT601" // Example: Code for overtime hours.
+            },
+            "period": [ // When overtime rates apply.
+                {
+                    "datePeriod": [ // Applicable throughout the year.
+                        {
+                            "start": "2025-01-01",
+                            "end": "2025-12-31"
+                        }
+                    ],
+                    "timePeriod": { // Example: Overtime applies outside regular hours (e.g., 6 PM to 6 AM).
+                        "start": "18:00:00",
+                        "end": "06:00:00" // End time is on the next day.
+                    },
+                    "weekday": [ // Applicable on weekdays. Weekend overtime might be a separate allowance or rate line.
+                        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+                    ]
+                }
+            ],
+            "line": [ // Multiple lines can represent different compensation methods (money vs. time-for-time).
+                { // Line 1: Monetary compensation (e.g., 150% of hourly rate).
+                    "amount": {
+                        "value": "150",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour" // Per hour of overtime worked.
+                    },
+                    "conditions": [ // Conditions for choosing this rate (e.g., employee choice, default).
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Default overtime compensation in money' would be here.
+                        }
+                    ]
+                },
+                { // Line 2: Time-for-time compensation (e.g., 1 hour off for 1 hour overtime).
+                    "amount": {
+                        "value": "1", // 1 hour of leave.
+                        "unitCode": "hour", // Unit is 'hour' representing leave time.
+                        "baseAmount": {
+                            "unitCode": "fixed" // It's a fixed amount of time, not percentage based.
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour" // Per hour of overtime worked.
+                    },
+                    "conditions": [ // Conditions for choosing this rate (e.g., employee choice).
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Overtime compensation as time-off, if chosen by employee' would be here.
+                        }
+                    ]
+                }
+            ]
+        },
+        { // Another allowance example: Travel cost allowance.
+            "id": {
+                "value": "16b86b03751",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Travel cost allowance for travel between an employee's home and job.",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2026-01-01"
+            },
+            "typeCode": {
+                "value": "EA103" // Travel cost code.
+            },
+            "period": [ // When applicable.
+                {
+                    "datePeriod": [ // Example: Only applicable during summer months.
+                        {
+                            "start": "2025-05-01",
+                            "end": "2025-09-01"
+                        }
+                    ],
+                    "timePeriod": { // Example: Only applicable during specific hours (less common for travel allowance).
+                        "start": "08:00:00",
+                        "end": "20:00:00"
+                    },
+                    "weekday": [ // Applicable on weekdays.
+                        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+                    ]
+                }
+            ],
+            "line": [ // Example rate line with min/max values.
+                {
+                    "amount": {
+                        "value": "20", // Target value (e.g., 20%).
+                        "minValue": 15, // Minimum value (e.g., 15%).
+                        "maxValue": 25, // Maximum value (e.g., 25%).
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate", // Base is hourly rate.
+                            "value": "13.47", // Optional: The specific hourly rate this applies to or is based on.
+                            "minValue": 11.00, // Optional: Minimum base rate considered.
+                            "maxValue": 14.00 // Optional: Maximum base rate considered.
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour" // Example: Allowance calculated per hour.
+                    },
+                    "conditions": [ // Conditions for this rate line.
+                        {
+                            "conditionType": "positionCondition" // Example: Condition based on position.
+                            // Specific position fields like 'positionTitle': ['Specific Role'] would be here.
+                        }
+                    ]
+                }
+            ],
+            "reference": [ // Example reference.
+                {
+                    "typeCode": "EA100", // Refers to another expense allowance type.
+                    "description": "This allowance is calculated after compensating the employee for any expenses they may have incurred (hour code EA100).",
+                    "relationType": "Compounding" // Indicates calculation dependency.
+                }
+            ],
+            "phaseOutScheme": "This allowance will be phased out after ..." // Optional: Describes how this allowance might be phased out over time.
+        }
+    ],
+    "holidayAllowance": [ // Details specifically about the holiday pay (vakantiegeld).
+        {
+            "id": {
+                "value": "sadf3dvaa3", 
+                "schemeAgencyId": "customer" // Should be "Customer" or "Supplier".
+            },
+            "name": "holiday allowance 123", // Name of the holiday allowance regulation.
+            "effectivePeriod": { // Validity period for this rule.
+                "validFrom": "2023-01-01",
+                "validTo": "2025-12-31"
+            },
+            "period": [ // Defines the period over which the holiday allowance is accrued or applicable (usually the whole year).
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-05-01", // Example: Accrual period May-Sep.
+                            "end": "2025-09-30"
+                        }
+                    ],
+                    "timePeriod": { // Example: Accrual during specific times .
+                        "start": "09:00:00",
+                        "end": "20:00:00"
+                    },
+                    "weekday": [ // Example: Accrual only on weekends.
+                        "Saturday",
+                        "Sunday"
+                    ]
+                }
+            ],
+            "line": [ // Defines the rate of the holiday allowance.
+                {
+                    "amount": {
+                        "value": "8", // Standard 8%.
+                        "minValue": 7, // Optional minimum percentage.
+                        "maxValue": 10, // Optional maximum percentage.
+                        "unitCode": "percentage",
+                        "baseAmount": { // Base for the percentage calculation.
+                            "unitCode": "percentageYearlyRate", // Base is yearly rate.
+                            "value": "14.56", // Optional: Example base rate.
+                            "minValue": 13.45, // Optional: Minimum base rate considered.
+                            "maxValue": 15.00 // Optional: Maximum base rate considered.
+                        }
+                    },
+                    "intervalCode": { // The interval over which the base amount is considered for accrual.
+                        "value": "1",
+                        "unitCode": "year" // Typically based on yearly earnings. Could be 'fixed' if baseAmount unitCode implies the full base.
+                    },
+                    "conditions": [ // Conditions for eligibility for this holiday allowance rate.
+                        {
+                            "conditionType": "positionTitle" // Example: Condition based on position title.
+                            // Specific fields like 'positionTitle': ['Eligible Role'] would be here.
+                        }
+                    ]
+                }
+            ],
+            "payDate": { // Defines when the accrued holiday allowance is paid out.
+                "start": "2025-05-01", // Start of the payout window (e.g., May 1st).
+                "end": "2025-05-31" // End of the payout window (e.g., May 31st).
+            }
+        }
+    ],
+    "sickPay": [ // Rules regarding payment during sickness absence.
+        {
+            "id": {
+                "value": "9c36cb78897",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Continued sick pay.", // Name of the sick pay regulation.
+            "effectivePeriod": { // Validity period of this regulation.
+                "validFrom": "2025-01-01",
+                "validTo": "2026-01-01" // Example shows a single day validity, likely should be a longer period.
+            },
+            "period": [ // Defines when sick pay rules apply (usually always within the effective period).
+                {
+                    "datePeriod": [ // Example: Specific date range.
+                        {
+                            "start": "2024-02-01",
+                            "end": "2025-04-01"
+                        }
+                    ]
+                }
+            ],
+            "line": [ // Defines the rate(s) of sick pay, often changing based on duration.
+                { // Line 1: Example for the first period of sickness (e.g., first year).
+                    "amount": {
+                        "value": "100", // 100% of pay.
+                        "unitCode": "percentage",
+                        "baseAmount": { // Base for the percentage.
+                            "unitCode": "percentageMonthlyRate", // Based on monthly rate.
+                            "value": "3201" // Optional: Example monthly rate.
+                        }
+                    },
+                    "intervalCode": { // Interval the rate applies to.
+                        "value": "1",
+                        "unitCode": "month" // Rate is per month.
+                    },
+                    "conditions": [ // Conditions defining when this rate applies.
+                        {
+                            "conditionType": "textualCondition" // Example: Textual condition.
+                            // 'description': 'Applies during the first 52 weeks of sickness' would be here.
+                        }
+                    ],
+                    "waitingDays": { // Defines unpaid waiting days before sick pay starts.
+                        "value": 5, // Number of waiting days.
+                        "conditions": [ // Conditions under which waiting days apply.
+                            {
+                                "conditionType": "textualCondition"
+                                // 'description': 'Waiting days apply only if employee reported sick > 2 times in the last 12 months' would be here.
+                            }
+                        ]
+                    }
+                }
+                // Additional 'line' blocks could define rates for subsequent periods (e.g., 70% for the second year).
+            ]
+        }
+    ],
+    "leave": [ // Regulations regarding leave entitlements (vacation days, ADV, etc.).
+        {
+            "id": {
+                "value": "37605f8e84f",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Leave ruling that is valid for all employees.", // Name of the leave regulation set.
+            "effectivePeriod": { // Validity period for these leave rules.
+                "validFrom": "2023-01-01",
+                "validTo": "2028-01-01"
+            },
+            "period": [ // Defines when leave can be accrued or taken (usually all working days).
+                {
+                    // No datePeriod/timePeriod implies applies throughout the effectivePeriod.
+                    "weekday": [ // Applicable on standard workdays.
+                        "Monday", "Tuesday", "Wednesday", "Thursday", "Friday"
+                    ]
+                }
+            ],
+            "holidays": [ // Details about recognized public holidays (usually implies paid time off).
+                {
+                    "amount": { // Number of recognized holidays per year.
+                        "value": 7
+                    },
+                    "name": [ // List of the names of the recognized holidays.
+                        "Christmas Day",
+                        "Easter",
+                        "etc."
+                    ],
+                    "conditions": [ // Conditions related to holiday entitlement.
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Applies if the holiday falls on a regular working day' would be here.
+                        }
+                    ]
+                }
+            ],
+            "paidLeave": [ // Details about general paid leave (vacation days) accrual.
+                {
+                    "amount": { // Amount of leave accrued.
+                        "value": 25 // E.g., 25 days. Unit is implicitly 'days' for paidLeave.
+                    },
+                    "intervalCode": { // Interval over which this amount is accrued.
+                        "value": "1",
+                        "unitCode": "year" // 25 days per year.
+                    },
+                    "conditions": [ // Conditions for this accrual rate (e.g., based on age, tenure).
+                        {
+                            "conditionType": "ageCondition" // Example: Different accrual for different ages.
+                        }
+                    ]
+                }
+            ],
+            "adv": [ // Details about ADV (Arbeidsduurverkorting - reduction in working hours) entitlement.
+                {
+                    "amount": { // Amount of ADV accrued.
+                        "value": "3", // E.g., 3 hours.
+                        "unitCode": "hour", // Unit can be hour or percentage (of salary converted to time).
+                        "baseAmount": {
+                            "unitCode": "fixed" // Indicates fixed hours, not percentage based.
+                        }
+                    },
+                    "intervalCode": { // Interval for accrual.
+                        "value": "1",
+                        "unitCode": "year" // E.g., 3 ADV hours per year.
+                    },
+                    "conditions": [ // Conditions for ADV accrual.
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Applies only to full-time employees' would be here.
+                        }
+                    ],
+                    "reference": [ // Optional: Links ADV to other components if related.
+                        {
+                            "typeCode": "REF_ADV_001", // Reference code.
+                            "description": "Reference description for ADV",
+                            "relationType": "Cumulative" // Example relationship type.
+                        }
+                    ]
+                }
+            ],
+            "leaveDayValue": { // Financial value assigned to one day of leave (used for payout calculations).
+                "value": "133.00 euros" // Example value description. 
+            },
+            "specialLeave": { // Description of rules for special leave circumstances (bereavement, marriage, etc.).
+                "description": "Extra leave of 1 day per overtime shift that the employee has worked." // Example description or reference.
+            },
+            "WAZO": { // Description of employer supplements to statutory WAZO leave (Wet Arbeid en Zorg - e.g., parental leave).
+                "description": "Three extra days of parental leave." // Example description.
+            },
+            "MandatoryLeaveAllocation": { // Description of policies requiring employees to use leave by a certain time.
+                "description": "Leave days needs to be spent within 3 years of obtaining them." // Example description.
+            }
+        }
+    ],
+    "individualChoiceBudget": [ // Details about flexible benefits budgets (IKB - Individueel Keuzebudget).
+        {
+            "id": {
+                "value": "f8b0c203a3d",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Invidividual choice budget for all employees.", // Name of the IKB scheme.
+            "effectivePeriod": { // Validity period for this scheme.
+                "validFrom": "2023-01-01",
+                "validTo": "2029-01-01"
+            },
+            "period": [ // When the budget is accrued or applicable.
+                {
+                    "datePeriod": [ // Example: Accrual period.
+                        {
+                            "start": "2024-01-01",
+                            "end": "2025-01-01"
+                        }
+                    ]
+                }
+            ],
+            "budgetRate": [ // Defines how the budget amount is calculated.
+                {
+                    "amount": {
+                        "value": 5, // E.g., 5% of yearly rate.
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageYearlyRate", // Base is yearly salary.
+                            "value": "47000" // Optional: Example base salary.
+                        }
+                    },
+                    "intervalCode": { // Interval over which the budget is accrued/calculated.
+                        "value": "1",
+                        "unitCode": "year" // Budget is 5% per year. Could also be 'month'.
+                    },
+                    "conditions": [ // Conditions for eligibility for this budget rate.
+                        {
+                            "conditionType": "ageCondition" // Example: Age condition.
+                        }
+                    ]
+                }
+            ],
+            "option": [ // Describes the ways an employee can spend their IKB budget.
+                {
+                    "description": "Paid out with salary" // Option 1: Payout.
+                },
+                {
+                    "description": "Can be used for buying a bike." // Option 2: Bicycle plan.
+                },
+                {
+                    "description": "etc." // Other options (e.g., extra leave days, training).
+                }
+            ]
+        }
+    ],
+    "pension": [ // Information about the pension scheme contributions.
+        {
+            "franchise": { // Details about the pension franchise (the part of the salary over which no pension is accrued).
+                "description": "" // Description or the actual franchise amount/calculation method.
+            },
+            "effectivePeriod": { // Validity period for these pension rules.
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "line": [ // Defines the contribution rate(s). Can have multiple lines for employer/employee contributions or different schemes.
+                { // Example: Employer contribution rate.
+                    "amount": {
+                        "value": "12", // E.g., 12%.
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageYearlyRate", // Base is yearly salary (often minus franchise).
+                            "value": "87000" // Optional: Example base salary (pensionable salary).
+                        }
+                    },
+                    "intervalCode": { // Interval for contribution calculation.
+                        "value": "1",
+                        "unitCode": "year" // Contribution is 12% per year. Could be 'month'.
+                    },
+                    "conditions": [ // Conditions for this contribution rate.
+                        {
+                            "conditionType": "textualCondition"
+                            // 'description': 'Employer contribution rate' would be here.
+                        }
+                    ]
+                }
+                // Another 'line' block could specify the employee contribution rate.
+            ]
+        }
+    ],
+    "sustainableEmployability": [ // Schemes related to sustainable employability (e.g., training budgets).
+        {
+            "id": {
+                "value": "4ea88b6d2d6",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "General sustainable employability scheme", // Name of the scheme.
+            "effectivePeriod": { // Validity period.
+                "validFrom": "2024-03-26",
+                "validTo": "2025-03-26"
+            },
+            "typeCode": { // Type of scheme.
+                "value": "personal development budget" // Example type.
+            },
+            "line": [ // Defines the budget/rate for the scheme.
+                {
+                    "amount": {
+                        "value": "500", // E.g., 500 Euro budget.
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed" // Fixed amount.
+                        }
+                    },
+                    "intervalCode": { // Interval for the budget.
+                        "value": "1",
+                        "unitCode": "year" // 500 Euro per year.
+                    },
+                    "conditions": [ // Conditions for eligibility.
+                        {
+                            "conditionType": "positionCondition" // Example: Position-based condition.
+                        }
+                    ]
+                }
+            ],
+            "payDate": { // Optional: If the budget can be paid out, specifies the payout date/window.
+                "start": "2025-05-09",
+                "end": "2025-05-09" // Example: Payout on a specific date.
+            }
+        }
+    ],
+    "other": [ // Catch-all section for any other relevant regulations not covered by specific blocks.
+        {
+            "id": {
+                "value": "0c64038d805",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Regulation for the use of the free lunch.", // Description of the 'other' regulation.
+            "effectivePeriod": { // Validity period.
+                "validFrom": "2020-05-09",
+                "validTo": "2030-05-09"
+            },
+            "amount": { // Optional: If there's a monetary value associated.
+                "value": "5.30" // Example: Value of the lunch benefit per day/instance. Unit/interval would ideally be specified using the standard 'line' structure if applicable.
+            }
+        }
+    ]
+}
