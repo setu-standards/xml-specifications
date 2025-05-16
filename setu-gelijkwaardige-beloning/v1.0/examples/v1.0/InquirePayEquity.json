@@ -1,1 +1,1000 @@
-To be filled
+{
+    "id": {
+        "value": "f5afe7a19d0"
+    },
+    "documentId": {
+        "value": "233a94d5d8c",
+        "schemeAgencyId": "Customer"
+    },
+    "issued": "2025-05-09T18:25:43.511Z",
+    "effectivePeriod": {
+        "validFrom": "2025-05-09",
+        "validTo": "2026-05-09"
+    },
+    "customer": {
+        "id": [
+            {
+                "value": "9b184323200",
+                "schemeAgencyId": "Customer"
+            }
+        ],
+        "name": "ABC Staffing Solutions",
+        "legalId": [
+            {
+                "value": "be87d7192fc",
+                "schemeAgencyId": "KvK"
+            }
+        ],
+        "personContacts": {
+            "name": {
+                "formattedName": "John Doe"
+            },
+            "communication": {
+                "phone": {
+                    "formattedNumber": "+31 20 123 4567"
+                },
+                "email": {
+                    "address": "john.doe@abcstaffing.com"
+                }
+            },
+            "roleCode": "AuthorizedBy",
+            "positionTitle": "Recruitment Specialist"
+        }
+    },
+    "labourAgreements": {
+        "industryIdentifiers": {
+            "value": [
+                "Code from 'standaard bedrijfsindeling' (SBI) 2008"
+            ]
+        },
+        "collectiveLabourAgreement": {
+            "name": "Collective labour agreement for construction sector",
+            "id": {
+                "value": "1496"
+            },
+            "effectivePeriod": {
+                "validFrom": "2024-01-01",
+                "validTo": "2026-01-01"
+            },
+            "basedOn": "The CLA has been declared generally binding from ... till ..."
+        },
+        "customLabourAgreement": false
+    },
+    "positionProfile": [
+        {
+            "positionId": {
+                "value": "POS123"
+            },
+            "positionTitle": "Recruitment Specialist",
+            "referenceTitle": "HR Functions",
+            "workDescription": "Responsible for sourcing and hiring candidates.",
+            "salaryScale": [
+                "Scale 1"
+            ]
+        }
+    ],
+    "remuneration": [
+        {
+            "effectivePeriod": {
+                "validFrom": "2025-05-09",
+                "validTo": "2026-05-09"
+            },
+            "workDuration": {
+                "value": 40
+            },
+            "intervalCode": {
+                "value": "fourWeeks"
+            },
+            "hourlyWageConversion": {
+                "hourlyWageFactor": 173.33
+            },
+            "salaryScale": [
+                {
+                    "name": "Scale 1",
+                    "maxValue": 2500,  
+                    "minValue": 2000, 
+                    "salaryStep": [
+                        {
+                            "name": "1", 
+                            "value": 2000 
+                        },
+                        {
+                            "name": "2",
+                            "value": 2200
+                        },
+                        {
+                            "name": "3",
+                            "value": 2400
+                        }
+                    ]
+                },
+                {
+                    "name": "Scale 2",
+                    "maxValue": 2600,
+                    "minValue": 2100,
+                    "salaryStep": [
+                        {
+                            "name": "1",
+                            "value": 2100
+                        },
+                        {
+                            "name": "2",
+                            "value": 2300
+                        },
+                        {
+                            "name": "3",
+                            "value": 2500
+                        }
+                    ]
+                }
+            ],
+            "individualSalaryIncreaseRate": [
+                {
+                    "expenseDate": "2026-01-01",
+                    "line": {
+                        "amount": {
+                            "value": "75",
+                            "unitCode": "euro",
+                            "baseAmount": {
+                                "unitCode": "fixed"
+                            }
+                        },
+                        "intervalCode": {
+                            "value": "1",
+                            "unitCode": "year"
+                        },
+                        "conditions": [
+                            {
+                                "conditionType": "employmentDurationCondition"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "expenseDate": "2026-01-01",
+                    "line": {
+                        "amount": {
+                            "value": "4",
+                            "minValue": 3,
+                            "maxValue": 5,
+                            "unitCode": "percentage",
+                            "baseAmount": {
+                                "unitCode": "percentageHourlyRate",
+                                "value": "3000",
+                                "minValue": 2900,
+                                "maxValue": 3100
+                            }
+                        },
+                        "intervalCode": {
+                            "value": "1",
+                            "unitCode": "year"
+                        },
+                        "conditions": [
+                            {
+                                "conditionType": "textualCondition"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "generalSalaryIncreaseRate": [
+                {
+                    "effectivePeriod": {
+                        "validFrom": "2026-01-01"
+                    },
+                    "amount": {
+                        "value": "200",
+                        "unitCode": "euro"
+                    },
+                    "description": "This salary increase is applicable to all employees."
+                }
+            ],
+            "conditions": [
+                {
+                    "conditionType": "functionCondition",
+                    "applicableToAllFunctions": true,
+                    "except": ["function123"] 
+                }
+            ]
+        },
+        {
+            "effectivePeriod": {
+                "validFrom": "2025-05-09",
+                "validTo": "2026-05-09"
+            },
+            "workDuration": {
+                "value": 40
+            },
+            "intervalCode": {
+                "value": "fourWeeks"
+            },
+            "hourlyWageConversion": {
+                "hourlyWageFactor": 173.33
+            },
+            "salaryScale": [
+                {
+                    "name": "Minimum wage youth",
+                    "maxValue": 2500,
+                    "minValue": 2000,
+                    "salaryStep": [
+                        {
+                            "name": "Pay for youth: Age 18",
+                            "value": 1850.75,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "ageCondition"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pay for youth: Age 19 ",
+                            "value": 1900,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "ageCondition"
+                                }
+                            ]
+                        },
+                        {
+                            "name": "Pay for youth: Age: 20 ",
+                            "value": 1950,
+                            "minimumWage": true,
+                            "conditions": [
+                                {
+                                    "conditionType": "textualCondition"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            ],
+            "conditions": [
+                {
+                    "conditionType": "ageCondition" 
+                }
+            ]
+        }
+    ],
+    "allowance": [
+        {
+            "id": {
+                "value": "2b497da74f7",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Special Event Surcharge (e.g. Major Sporting Event)",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "HT320"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-07-26",
+                            "end": "2025-08-11"
+                        }
+                    ],
+                    "timePeriod": {
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday",
+                        "Saturday",
+                        "Sunday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "25",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    }
+                }
+            ],
+            "reference": [
+                {
+                    "typeCode": "HT320",
+                    "description": "special event compounding",
+                    "relationType": "Compounding"
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "2bweqrerd",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Public Holiday Surcharge",
+            "effectivePeriod": {
+                "validFrom": "2024-01-01",
+                "validTo": "2024-12-31"
+            },
+            "typeCode": {
+                "value": "HT340"
+            },
+            "period": [
+                {
+                    "datePeriod": [ 
+                        { 
+                            "start": "2024-12-25" 
+                        },
+                        { 
+                            "start": "2024-04-15" 
+                        }
+                    ],
+                    "timePeriod": { 
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [ 
+
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "100",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    }
+                }
+            ],
+            "reference": [
+                {
+                    "typeCode": "HT320",
+                    "description": "This allowance is calculated cumulatively with the shift allowance.",
+                    "relationType": "Cumulative"
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "jdhebridka23",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Basic Weekend Surcharge",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "HT320"
+            },
+            "period": [
+                {
+                    "timePeriod": {
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [
+                        "Saturday",
+                        "Sunday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "5",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    }
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "5oidsan23d",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Travel Allowance with Distance Brackets",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "EA103"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-01-01",
+                            "end": "2025-12-31"
+                        }
+                    ],
+                    "timePeriod": {
+                        "start": "00:00:00",
+                        "end": "23:59:59"
+                    },
+                    "weekday": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "25.00",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "day"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                },
+                {
+                    "amount": {
+                        "value": "10.00",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "day"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                },
+                {
+                    "amount": {
+                        "value": "0.23",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "kilometer"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "2dsajofoiasd",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Overtime Compensation (Money and Time)",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "typeCode": {
+                "value": "HT601"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-01-01",
+                            "end": "2025-12-31"
+                        }
+                    ],
+                    "timePeriod": {
+                        "start": "18:00:00",
+                        "end": "06:00:00"
+                    },
+                    "weekday": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "150",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                },
+                {
+                    "amount": {
+                        "value": "1",
+                        "unitCode": "hour",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": {
+                "value": "16b86b03751",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Travel cost allowance for travel between an employee's home and job.",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2026-01-01"
+            },
+            "typeCode": {
+                "value": "EA103"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-05-01",
+                            "end": "2025-09-01"
+                        }
+                    ],
+                    "timePeriod": {
+                        "start": "08:00:00",
+                        "end": "20:00:00"
+                    },
+                    "weekday": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "20",
+                        "minValue": 15,
+                        "maxValue": 25,
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageHourlyRate",
+                            "value": "13.47",
+                            "minValue": 11.00,
+                            "maxValue": 14.00
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "hour"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "positionCondition"
+                        }
+                    ]
+                }
+            ],
+            "reference": [
+                {
+                    "typeCode": "EA100",
+                    "description": "This allowance is calculated after compensating the employee for any expenses they may have incurred (hour code EA100)",
+                    "relationType": "Compounding"
+                }
+            ],
+            "phaseOutScheme": "This allowance will be phased out after ..."
+        }
+    ],
+    "holidayAllowance": [
+        {
+            "id": {
+                "value": "2asdfjiasoi",
+                "schemeAgencyId": "customer"
+            },
+            "name": "holiday allowance 123",
+            "effectivePeriod": {
+                "validFrom": "2023-01-01",
+                "validTo": "2025-12-31"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2025-05-01",
+                            "end": "2025-09-30"
+                        }
+                    ],
+                    "timePeriod": {
+                        "start": "09:00:00",
+                        "end": "20:00:00"
+                    },
+                    "weekday": [
+                        "Saturday",
+                        "Sunday"
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "8",
+                        "minValue": 7,
+                        "maxValue": 10,
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageYearlyRate",
+                            "value": "14.56",
+                            "minValue": 13.45,
+                            "maxValue": 15.00
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "positionTitle"
+                        }
+                    ]
+                }
+            ],
+            "payDate": {
+                "start": "2025-05-01",
+                "end": "2025-05-31"
+            }
+        }
+    ],
+    "sickPay": [
+        {
+            "id": {
+                "value": "9c36cb78897",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Continued sick pay.",
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2026-01-01"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2024-02-01",
+                            "end": "2025-04-01"
+                        }
+                    ]
+                }
+            ],
+            "line": [
+                {
+                    "amount": {
+                        "value": "100",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageMonthlyRate",
+                            "value": "3201"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "month"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ],
+                    "waitingDays": {
+                        "value": 5,
+                        "conditions": [
+                            {
+                                "conditionType": "textualCondition"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "leave": [
+        {
+            "id": {
+                "value": "37605f8e84f",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Leave ruling that is valid for all employees.",
+            "effectivePeriod": {
+                "validFrom": "2023-01-01",
+                "validTo": "2028-01-01"
+            },
+            "period": [
+                {
+                    "weekday": [
+                        "Monday",
+                        "Tuesday",
+                        "Wednesday",
+                        "Thursday",
+                        "Friday"
+                    ]
+                }
+            ],
+            "holidays": [
+                {
+                    "amount": {
+                        "value": 7
+                    },
+                    "name": [
+                        "Christmas Day",
+                        "Easter",
+                        "etc."
+                    ],
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                }
+            ],
+            "paidLeave": [
+                {
+                    "amount": {
+                        "value": 25
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "ageCondition"
+                        }
+                    ]
+                }
+            ],
+            "adv": [
+                {
+                    "amount": {
+                        "value": "3",
+                        "unitCode": "hour",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ],
+                    "reference": [
+                        {
+                            "typeCode": "REF_ADV_001",
+                            "description": "Reference description for ADV",
+                            "relationType": "Cumulative"
+                        }
+                    ]
+                }
+            ],
+            "leaveDayValue": {
+                "value": "133.00 euros"
+            },
+            "specialLeave": {
+                "description": "Extra leave of 1 day per overtime shift that the employee has worked."
+            },
+            "WAZO": {
+                "description": "Three extra days of parental leave."
+            },
+            "MandatoryLeaveAllocation": {
+                "description": "Leave days needs to be spent within 3 years of obtaining them."
+            }
+        }
+    ],
+    "individualChoiceBudget": [
+        {
+            "id": {
+                "value": "f8b0c203a3d",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Invidividual choice budget for all employees.",
+            "effectivePeriod": {
+                "validFrom": "2023-01-01",
+                "validTo": "2029-01-01"
+            },
+            "period": [
+                {
+                    "datePeriod": [
+                        {
+                            "start": "2024-01-01",
+                            "end": "2025-01-01"
+                        }
+                    ]
+                }
+            ],
+            "budgetRate": [
+                {
+                    "amount": {
+                        "value": 5,
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageYearlyRate",
+                            "value": "47000"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "ageCondition"
+                        }
+                    ]
+                }
+            ],
+            "option": [
+                {
+                    "description": "Paid out with salary"
+                },
+                {
+                    "description": "Can be used for buying a bike."
+                },
+                {
+                    "description": "etc."
+                }
+            ]
+        }
+    ],
+    "pension": [
+        {
+            "franchise": {
+                "description": ""
+            },
+            "effectivePeriod": {
+                "validFrom": "2025-01-01",
+                "validTo": "2025-12-31"
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": "12",
+                        "unitCode": "percentage",
+                        "baseAmount": {
+                            "unitCode": "percentageYearlyRate",
+                            "value": "87000"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "textualCondition"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "sustainableEmployability": [
+        {
+            "id": {
+                "value": "4ea88b6d2d6",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "General sustainable employability scheme",
+            "effectivePeriod": {
+                "validFrom": "2024-03-26",
+                "validTo": "2025-03-26"
+            },
+            "typeCode": {
+                "value": "personal development budget"
+            },
+            "line": [
+                {
+                    "amount": {
+                        "value": "500",
+                        "unitCode": "euro",
+                        "baseAmount": {
+                            "unitCode": "fixed"
+                        }
+                    },
+                    "intervalCode": {
+                        "value": "1",
+                        "unitCode": "year"
+                    },
+                    "conditions": [
+                        {
+                            "conditionType": "positionCondition"
+                        }
+                    ]
+                }
+            ],
+            "payDate": {
+                "start": "2025-05-09",
+                "end": "2025-05-09"
+            }
+        }
+    ],
+    "other": [
+        {
+            "id": {
+                "value": "0c64038d805",
+                "schemeAgencyId": "Customer"
+            },
+            "name": "Regulation for the use of the free lunch.",
+            "effectivePeriod": {
+                "validFrom": "2020-05-09",
+                "validTo": "2030-05-09"
+            },
+            "amount": {
+                "value": "5.30"
+            }
+        }
+    ]
+}
