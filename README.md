@@ -3,7 +3,9 @@ This repository contains all related XML and JSON specifications (example messag
 
 For more information about SETU, see https://www.setu.nl.
 
-For the semantic specifications and all SETU standards, see https://standard.setu.nl.
+For the semantic specifications and all SETU standards, see [https://standard.setu.nl](https://setu.semantic-treehouse.nl/#/Home).
+
+For more documentation, please see https://standard.setu.nl/docs
 
 ## Structure of repo
 * hr-xml/ -> contains HR-XML 2.5 specifications that SETU reuses
