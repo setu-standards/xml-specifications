@@ -1,0 +1,1522 @@
+$schema: 'https://json-schema.org/draft/2020-12/schema'
+title: 'SETU Inquiry Pay Equity version 1.0 (RELEASE)'
+description: 'YAML Schema Venetian Blind InquiryPayEquity Standard'
+required:
+  - id
+  - documentId
+  - effectivePeriod
+  - customer
+  - remuneration
+additionalProperties: false
+definitions:
+  Identifier:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Identifier-valueDatatype'
+      schemeAgencyId:
+        $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+    type: object
+  TimeCardItem:
+    required:
+      - name
+    additionalProperties: false
+    properties:
+      id:
+        required:
+          - value
+          - schemeAgencyId
+        additionalProperties: false
+        properties:
+          value:
+            $ref: '#/definitions/Identifier-valueDatatype'
+          schemeAgencyId:
+            $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+        type: object
+      name:
+        $ref: '#/definitions/TimeCardItem-nameDatatype'
+      effectivePeriod:
+        $ref: '#/definitions/EffectiveTimePeriod'
+      period:
+        items:
+          additionalProperties: false
+          properties:
+            datePeriod:
+              items:
+                $ref: '#/definitions/DatePeriod'
+              type: array
+            timePeriod:
+              $ref: '#/definitions/TimePeriod'
+            weekday:
+              items:
+                enum:
+                  - Friday
+                  - Monday
+                  - Saturday
+                  - Sunday
+                  - Thursday
+                  - Tuesday
+                  - Wednesday
+                type: string
+                $ref: '#/definitions/WeekdayCodeList'
+              type: array
+          type: object
+        type: array
+      holidays:
+        items:
+          required:
+            - amount
+            - name
+          additionalProperties: false
+          properties:
+            amount:
+              $ref: '#/definitions/Amount'
+            name:
+              items:
+                $ref: '#/definitions/PayRate-nameDatatype'
+              minItems: 1
+              type: array
+            conditions:
+              items:
+                $ref: '#/definitions/Condition'
+              type: array
+          type: object
+        type: array
+      paidLeave:
+        items:
+          required:
+            - amount
+            - intervalCode
+          additionalProperties: false
+          properties:
+            amount:
+              $ref: '#/definitions/Amount'
+            intervalCode:
+              $ref: '#/definitions/PayRateIntervalCodeList'
+            conditions:
+              items:
+                $ref: '#/definitions/Condition'
+              type: array
+          type: object
+        type: array
+      adv:
+        items:
+          $ref: '#/definitions/ADVType'
+        type: array
+      leaveDayValue:
+        $ref: '#/definitions/LeaveDayType'
+      specialLeave:
+        $ref: '#/definitions/SpecialLeaveType'
+      WAZO:
+        $ref: '#/definitions/WAZOType'
+      MandatoryLeaveAllocation:
+        $ref: '#/definitions/MandatoryLeaveType'
+    type: object
+  Party:
+    required:
+      - legalId
+      - personContacts
+    additionalProperties: false
+    properties:
+      id:
+        items:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        maxItems: 2
+        type: array
+      name:
+        $ref: '#/definitions/Party-nameDatatype'
+      legalId:
+        items:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              enum:
+                - KvK
+                - OIN
+                - RSIN
+              type: string
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        minItems: 1
+        type: array
+      personContacts:
+        $ref: '#/definitions/SpecifiedPerson'
+    type: object
+  JobPosting:
+    required:
+      - workDuration
+      - intervalCode
+      - salaryScale
+    additionalProperties: false
+    properties:
+      effectivePeriod:
+        additionalProperties: false
+        properties:
+          validFrom:
+            $ref: '#/definitions/DateTimeDatatype'
+          validTo:
+            $ref: '#/definitions/DateTimeDatatype'
+        type: object
+      workDuration:
+        $ref: '#/definitions/Measure'
+      intervalCode:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            enum:
+              - fourWeeks
+              - hour
+              - month
+              - week
+            type: string
+        type: object
+      hourlyWageConversion:
+        $ref: '#/definitions/WorkedCompensationAmount'
+      salaryScale:
+        items:
+          $ref: '#/definitions/MonetaryAmount'
+        minItems: 1
+        type: array
+      individualSalaryIncreaseRate:
+        items:
+          additionalProperties: false
+          properties:
+            expenseDate:
+              $ref: '#/definitions/DateDatatype'
+            line:
+              required:
+                - amount
+                - intervalCode
+              additionalProperties: false
+              properties:
+                amount:
+                  required:
+                    - value
+                    - unitCode
+                  additionalProperties: false
+                  properties:
+                    value:
+                      type: string
+                      $ref: '#/definitions/Amount-valueDatatype'
+                    minValue:
+                      $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                    maxValue:
+                      $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    unitCode:
+                      enum:
+                        - euro
+                        - hour
+                        - percentage
+                      type: string
+                      $ref: '#/definitions/UnitCodeType'
+                    baseAmount:
+                      required:
+                        - unitCode
+                      additionalProperties: false
+                      properties:
+                        unitCode:
+                          enum:
+                            - fixed
+                            - percentageFixedAmount
+                            - percentageHourlyRate
+                            - percentageMontlyRate
+                            - percentageOfExpense
+                            - percentageYearlyRate
+                          type: string
+                          $ref: '#/definitions/UnitCodeType'
+                        value:
+                          $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                        minValue:
+                          $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                        maxValue:
+                          $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                      type: object
+                  type: object
+                intervalCode:
+                  $ref: '#/definitions/PayRateIntervalCodeDatatype'
+                conditions:
+                  items:
+                    $ref: '#/definitions/Condition'
+                  type: array
+              type: object
+          type: object
+        type: array
+      generalSalaryIncreaseRate:
+        items:
+          required:
+            - amount
+          additionalProperties: false
+          properties:
+            effectivePeriod:
+              required:
+                - validFrom
+              additionalProperties: false
+              properties:
+                validFrom:
+                  $ref: '#/definitions/DateDatatype'
+              type: object
+            amount:
+              required:
+                - value
+                - unitCode
+              additionalProperties: false
+              properties:
+                value:
+                  $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                unitCode:
+                  enum:
+                    - euro
+                    - percentage
+                  type: string
+                  $ref: '#/definitions/UnitCodeType'
+              type: object
+            description:
+              type: string
+          type: object
+        type: array
+      conditions:
+        items:
+          $ref: '#/definitions/Condition'
+        type: array
+    type: object
+  PositionProfile:
+    required:
+      - positionId
+      - positionTitle
+      - salaryScale
+    additionalProperties: false
+    properties:
+      positionId:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            $ref: '#/definitions/Identifier-valueDatatype'
+        type: object
+      positionTitle:
+        $ref: '#/definitions/PositionProfile-positionTitleDatatype'
+      referenceTitle:
+        $ref: '#/definitions/Identifier-valueDatatype'
+      workDescription:
+        $ref: '#/definitions/PositionProfile-profileNameDatatype'
+      salaryScale:
+        items:
+          type: string
+        minItems: 1
+        type: array
+    type: object
+  EffectiveTimePeriod:
+    additionalProperties: false
+    properties:
+      validFrom:
+        $ref: '#/definitions/DateDatatype'
+      validTo:
+        $ref: '#/definitions/DateDatatype'
+    type: object
+  LabourAgreements:
+    additionalProperties: false
+    properties:
+      industryIdentifiers:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            items:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            minItems: 1
+            type: array
+        type: object
+      collectiveLabourAgreement:
+        $ref: '#/definitions/CollectiveLabourAgreement'
+      customLabourAgreement:
+        $ref: '#/definitions/CustomLabourAgreement'
+    type: object
+  PayRate:
+    required:
+      - amount
+      - intervalCode
+    additionalProperties: false
+    properties:
+      amount:
+        required:
+          - value
+          - unitCode
+          - baseAmount
+        additionalProperties: false
+        properties:
+          value:
+            $ref: '#/definitions/MonetaryAmount-valueDatatype'
+          minValue:
+            $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+          maxValue:
+            $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+          unitCode:
+            enum:
+              - euro
+              - percentage
+            type: string
+            $ref: '#/definitions/UnitCodeType'
+          baseAmount:
+            required:
+              - unitCode
+            additionalProperties: false
+            properties:
+              unitCode:
+                enum:
+                  - fixed
+                  - percentageMonthlyRate
+                  - percentageYearlyRate
+                type: string
+                $ref: '#/definitions/UnitCodeType'
+              value:
+                $ref: '#/definitions/MonetaryAmount-valueDatatype'
+              minValue:
+                $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+              maxValue:
+                $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+            type: object
+        type: object
+      intervalCode:
+        $ref: '#/definitions/PayRateIntervalCodeList'
+      conditions:
+        items:
+          $ref: '#/definitions/Condition'
+        type: array
+      waitingDays:
+        $ref: '#/definitions/WaitingDaysType'
+    type: object
+  Period:
+    additionalProperties: false
+    properties:
+      datePeriod:
+        items:
+          $ref: '#/definitions/DatePeriod'
+        type: array
+      timePeriod:
+        items:
+          $ref: '#/definitions/TimePeriod'
+        type: array
+      weekday:
+        items:
+          enum:
+            - Friday
+            - Monday
+            - Saturday
+            - Sunday
+            - Thursday
+            - Tuesday
+            - Wednesday
+          type: string
+          $ref: '#/definitions/WeekdayCodeList'
+        type: array
+    type: object
+  MandatoryLeaveType:
+    additionalProperties: false
+    properties:
+      description:
+        type: string
+    type: object
+  WAZOType:
+    additionalProperties: false
+    properties:
+      description:
+        type: string
+    type: object
+  SpecialLeaveType:
+    additionalProperties: false
+    properties:
+      description:
+        type: string
+    type: object
+  ADVType:
+    required:
+      - amount
+      - intervalCode
+    additionalProperties: false
+    properties:
+      amount:
+        required:
+          - value
+          - unitCode
+          - baseAmount
+        additionalProperties: false
+        properties:
+          value:
+            $ref: '#/definitions/MonetaryAmount-valueDatatype'
+          minValue:
+            $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+          maxValue:
+            $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+          unitCode:
+            enum:
+              - hour
+              - percentage
+            type: string
+            $ref: '#/definitions/UnitCodeType'
+          baseAmount:
+            required:
+              - unitCode
+            additionalProperties: false
+            properties:
+              unitCode:
+                enum:
+                  - fixed
+                  - percentageFixedAmount
+                  - percentageMonthlyRate
+                type: string
+                $ref: '#/definitions/UnitCodeType'
+              value:
+                $ref: '#/definitions/MonetaryAmount-valueDatatype'
+              minValue:
+                $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+              maxValue:
+                $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+            type: object
+        type: object
+      intervalCode:
+        required:
+          - value
+          - unitCode
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+          unitCode:
+            enum:
+              - day
+              - fixed
+              - month
+              - week
+              - year
+            type: string
+            $ref: '#/definitions/UnitCodeType'
+        type: object
+      conditions:
+        items:
+          required:
+            - conditionType
+          additionalProperties: true
+          properties:
+            conditionType:
+              type: string
+          type: object
+        type: array
+      reference:
+        items:
+          required:
+            - typeCode
+            - description
+          additionalProperties: false
+          properties:
+            typeCode:
+              type: string
+            description:
+              type: string
+            relationType:
+              enum:
+                - Compounding
+                - Cumulative
+                - Subtractive
+              type: string
+          type: object
+        type: array
+    type: object
+  LeaveDayType:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+    type: object
+  DatePeriod:
+    required:
+      - start
+    additionalProperties: false
+    properties:
+      start:
+        $ref: '#/definitions/DateDatatype'
+      end:
+        $ref: '#/definitions/DateDatatype'
+    type: object
+  MonetaryAmount:
+    required:
+      - name
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      maxValue:
+        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+      minValue:
+        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+      salaryStep:
+        items:
+          required:
+            - name
+            - value
+          additionalProperties: false
+          properties:
+            name:
+              type: string
+            value:
+              type: number
+              $ref: '#/definitions/MonetaryAmount-valueDatatype'
+            minimumWage:
+              type: boolean
+            conditions:
+              items:
+                $ref: '#/definitions/Condition'
+              type: array
+          type: object
+        type: array
+      careerLevel:
+        $ref: '#/definitions/AnnotatedDefinedTerm'
+    type: object
+  SpecifiedPerson:
+    required:
+      - name
+    additionalProperties: false
+    properties:
+      name:
+        $ref: '#/definitions/PersonName'
+      communication:
+        $ref: '#/definitions/Communication'
+      roleCode:
+        $ref: '#/definitions/CodeDatatype'
+      positionTitle:
+        $ref: '#/definitions/PositionProfile-positionTitleDatatype'
+    type: object
+  ItemTypeCode:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+    type: object
+  ReferenceObjectArray:
+    required:
+      - typeCode
+      - description
+    additionalProperties: false
+    properties:
+      typeCode:
+        $ref: '#/definitions/ReferenceObjectTypeArray-referenceObjectNameDatatype'
+      description:
+        type: string
+      relationType:
+        enum:
+          - Compounding
+          - Cumulative
+          - Subtractive
+        type: string
+    type: object
+  FranchiseType:
+    additionalProperties: false
+    properties:
+      description:
+        type: string
+    type: object
+  PayRateIntervalCodeDatatype:
+    required:
+      - value
+      - unitCode
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+      unitCode:
+        enum:
+          - day
+          - hour
+          - month
+          - week
+          - year
+        type: string
+        $ref: '#/definitions/UnitCodeType'
+    type: object
+  Measure:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Measure-valueDatatype'
+    type: object
+  Condition:
+    required:
+      - conditionType
+    additionalProperties: true
+    properties:
+      conditionType:
+        type: string
+    type: object
+  WorkedCompensationAmount:
+    additionalProperties: false
+    properties:
+      hourlyWageFactor:
+        type: number
+      hourlyWagePercentage:
+        type: number
+    type: object
+  CollectiveLabourAgreement:
+    required:
+      - name
+      - id
+    additionalProperties: false
+    properties:
+      name:
+        type: string
+      id:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            $ref: '#/definitions/Identifier-valueDatatype'
+        type: object
+      effectivePeriod:
+        additionalProperties: false
+        properties:
+          validFrom:
+            $ref: '#/definitions/DateTimeDatatype'
+          validTo:
+            $ref: '#/definitions/DateTimeDatatype'
+        type: object
+      basedOn:
+        type: string
+    type: object
+  Amount:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Amount-valueDatatype'
+    type: object
+  PayRateIntervalCodeList:
+    required:
+      - value
+      - unitCode
+    additionalProperties: false
+    properties:
+      value:
+        type: string
+      unitCode:
+        enum:
+          - day
+          - hour
+          - month
+          - week
+          - year
+        type: string
+        $ref: '#/definitions/UnitCodeType'
+    type: object
+  TimePeriod:
+    required:
+      - start
+      - end
+    additionalProperties: false
+    properties:
+      start:
+        type: string
+        format: time
+      end:
+        type: string
+        format: time
+    type: object
+  Communication:
+    additionalProperties: false
+    properties:
+      phone:
+        $ref: '#/definitions/PhoneTypeArray'
+      email:
+        $ref: '#/definitions/EmailTypeArray'
+    type: object
+  PersonName:
+    required:
+      - formattedName
+    additionalProperties: false
+    properties:
+      formattedName:
+        $ref: '#/definitions/PersonName-formattedNameDatatype'
+    type: object
+  AnnotatedDefinedTerm:
+    additionalProperties: false
+    properties:
+      indicator:
+        type: boolean
+      description:
+        $ref: '#/definitions/AnnotatedDefinedTerm-descriptionsDatatype'
+    type: object
+  WaitingDaysType:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Amount-valueDatatype'
+      conditions:
+        items:
+          $ref: '#/definitions/Condition'
+        type: array
+    type: object
+  PhoneTypeArray:
+    required:
+      - formattedNumber
+    additionalProperties: false
+    properties:
+      formattedNumber:
+        $ref: '#/definitions/PhoneTypeArray-formattedNumberDatatype'
+    type: object
+  EmailTypeArray:
+    required:
+      - address
+    additionalProperties: false
+    properties:
+      address:
+        $ref: '#/definitions/EmailTypeArray-addressDatatype'
+    type: object
+  Identifier-valueDatatype:
+    type: string
+  TimeCardItem-nameDatatype:
+    type: string
+  Party-nameDatatype:
+    type: string
+  PositionProfile-positionTitleDatatype:
+    type: string
+  PositionProfile-profileNameDatatype:
+    type: string
+  DateDatatype:
+    type: string
+    format: date
+  Identifier-schemeAgencyIdDatatype:
+    type: string
+  CustomLabourAgreement:
+    type: boolean
+  PayRate-nameDatatype:
+    type: string
+  WeekdayCodeList:
+    type: string
+  MonetaryAmount-valueDatatype:
+    type: string
+  CodeDatatype:
+    type: string
+  ReferenceObjectTypeArray-referenceObjectNameDatatype:
+    type: string
+  MonetaryAmount-maxValueDatatype:
+    type: number
+  MonetaryAmount-minValueDatatype:
+    type: number
+  DateTimeDatatype:
+    type: string
+    format: date
+  Measure-valueDatatype:
+    type: number
+  Amount-valueDatatype:
+    type: number
+  UnitCodeType:
+    type: string
+  PersonName-formattedNameDatatype:
+    type: string
+  AnnotatedDefinedTerm-descriptionsDatatype:
+    type: string
+  PhoneTypeArray-formattedNumberDatatype:
+    type: string
+  EmailTypeArray-addressDatatype:
+    type: string
+properties:
+  id:
+    required:
+      - value
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Identifier-valueDatatype'
+    type: object
+  documentId:
+    required:
+      - value
+      - schemeAgencyId
+    additionalProperties: false
+    properties:
+      value:
+        $ref: '#/definitions/Identifier-valueDatatype'
+      schemeAgencyId:
+        enum:
+          - Customer
+          - Supplier
+        type: string
+        $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+    type: object
+  issued:
+    type: string
+    format: date-time
+  effectivePeriod:
+    required:
+      - validFrom
+    additionalProperties: false
+    properties:
+      validFrom:
+        $ref: '#/definitions/DateDatatype'
+      validTo:
+        $ref: '#/definitions/DateDatatype'
+    type: object
+  customer:
+    $ref: '#/definitions/Party'
+  labourAgreements:
+    $ref: '#/definitions/LabourAgreements'
+  positionProfile:
+    items:
+      $ref: '#/definitions/PositionProfile'
+    type: array
+  remuneration:
+    items:
+      $ref: '#/definitions/JobPosting'
+    minItems: 1
+    type: array
+  allowance:
+    items:
+      required:
+        - name
+        - typeCode
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        typeCode:
+          $ref: '#/definitions/ItemTypeCode'
+        period:
+          items:
+            required:
+              - timePeriod
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  $ref: '#/definitions/DatePeriod'
+                type: array
+              timePeriod:
+                $ref: '#/definitions/TimePeriod'
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                  $ref: '#/definitions/WeekdayCodeList'
+                type: array
+            type: object
+          type: array
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    $ref: '#/definitions/Amount-valueDatatype'
+                  minValue:
+                    $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                  maxValue:
+                    $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                  unitCode:
+                    enum:
+                      - euro
+                      - hour
+                      - percentage
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageFixedAmount
+                          - percentageHourlyRate
+                          - percentageMinimumWage
+                          - percentageMonthlyRate
+                          - percentageOfExpense
+                        type: string
+                        $ref: '#/definitions/UnitCodeType'
+                      value:
+                        type: string
+                        $ref: '#/definitions/Amount-valueDatatype'
+                      minValue:
+                        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                      maxValue:
+                        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - hour
+                      - item
+                      - kilometer
+                      - month
+                      - route
+                      - week
+                      - year
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        reference:
+          items:
+            $ref: '#/definitions/ReferenceObjectArray'
+          type: array
+        phaseOutScheme:
+          type: string
+      type: object
+    type: array
+  holidayAllowance:
+    items:
+      required:
+        - name
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+            - schemeAgencyId
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  $ref: '#/definitions/DatePeriod'
+                type: array
+              timePeriod:
+                $ref: '#/definitions/TimePeriod'
+              weekday:
+                items:
+                  enum:
+                    - Friday
+                    - Monday
+                    - Saturday
+                    - Sunday
+                    - Thursday
+                    - Tuesday
+                    - Wednesday
+                  type: string
+                  $ref: '#/definitions/WeekdayCodeList'
+                type: array
+            type: object
+          type: array
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                  minValue:
+                    $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                  maxValue:
+                    $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                  unitCode:
+                    enum:
+                      - percentage
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - percentageHourlyRate
+                          - percentageMinimumWage
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        $ref: '#/definitions/UnitCodeType'
+                      value:
+                        $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                      minValue:
+                        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                      maxValue:
+                        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - day
+                      - fixed
+                      - hour
+                      - month
+                      - week
+                      - year
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                type: object
+              conditions:
+                items:
+                  $ref: '#/definitions/Condition'
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        payDate:
+          $ref: '#/definitions/DatePeriod'
+      type: object
+    type: array
+  sickPay:
+    items:
+      required:
+        - name
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        period:
+          items:
+            additionalProperties: false
+            properties:
+              datePeriod:
+                items:
+                  $ref: '#/definitions/DatePeriod'
+                type: array
+              timePeriod:
+                items:
+                  $ref: '#/definitions/TimePeriod'
+                type: array
+              weekday:
+                enum:
+                  - Friday
+                  - Monday
+                  - Saturday
+                  - Sunday
+                  - Thursday
+                  - Tuesday
+                  - Wednesday
+                type: string
+                $ref: '#/definitions/WeekdayCodeList'
+            type: object
+          type: array
+        line:
+          items:
+            $ref: '#/definitions/PayRate'
+          minItems: 1
+          type: array
+      type: object
+    type: array
+  leave:
+    items:
+      $ref: '#/definitions/TimeCardItem'
+    type: array
+  individualChoiceBudget:
+    items:
+      required:
+        - name
+        - budgetRate
+      additionalProperties: false
+      properties:
+        id:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/Identifier-valueDatatype'
+            schemeAgencyId:
+              enum:
+                - Customer
+                - Supplier
+              type: string
+              $ref: '#/definitions/Identifier-schemeAgencyIdDatatype'
+          type: object
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        period:
+          items:
+            $ref: '#/definitions/Period'
+          type: array
+        budgetRate:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    $ref: '#/definitions/Amount-valueDatatype'
+                  minValue:
+                    $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                  maxValue:
+                    $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        $ref: '#/definitions/UnitCodeType'
+                      value:
+                        $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                      minValue:
+                        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                      maxValue:
+                        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    type: object
+                type: object
+              intervalCode:
+                required:
+                  - value
+                  - unitCode
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                  unitCode:
+                    enum:
+                      - month
+                      - year
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                type: object
+              conditions:
+                items:
+                  required:
+                    - conditionType
+                  additionalProperties: true
+                  properties:
+                    conditionType:
+                      type: string
+                  type: object
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        option:
+          items:
+            required:
+              - description
+            additionalProperties: false
+            properties:
+              description:
+                type: string
+            type: object
+          type: array
+      type: object
+    type: array
+  pension:
+    items:
+      required:
+        - line
+      additionalProperties: false
+      properties:
+        franchise:
+          $ref: '#/definitions/FranchiseType'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                  minValue:
+                    $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                  maxValue:
+                    $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                  unitCode:
+                    enum:
+                      - percentage
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - percentageYearlyRate
+                        type: string
+                        $ref: '#/definitions/UnitCodeType'
+                      value:
+                        $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                      minValue:
+                        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                      maxValue:
+                        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    type: object
+                type: object
+              intervalCode:
+                $ref: '#/definitions/PayRateIntervalCodeList'
+              conditions:
+                items:
+                  $ref: '#/definitions/Condition'
+                type: array
+            type: object
+          minItems: 1
+          type: array
+      type: object
+    type: array
+  sustainableEmployability:
+    items:
+      required:
+        - name
+        - typeCode
+        - line
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/definitions/Identifier'
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        typeCode:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              type: string
+          type: object
+        line:
+          items:
+            required:
+              - amount
+              - intervalCode
+            additionalProperties: false
+            properties:
+              amount:
+                required:
+                  - value
+                  - unitCode
+                  - baseAmount
+                additionalProperties: false
+                properties:
+                  value:
+                    type: string
+                    $ref: '#/definitions/Amount-valueDatatype'
+                  minValue:
+                    $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                  maxValue:
+                    $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                  unitCode:
+                    enum:
+                      - euro
+                      - percentage
+                    type: string
+                    $ref: '#/definitions/UnitCodeType'
+                  baseAmount:
+                    required:
+                      - unitCode
+                    additionalProperties: false
+                    properties:
+                      unitCode:
+                        enum:
+                          - fixed
+                          - percentageHourlyRate
+                          - percentageMonthlyRate
+                          - percentageYearlyRate
+                        type: string
+                        $ref: '#/definitions/UnitCodeType'
+                      value:
+                        $ref: '#/definitions/MonetaryAmount-valueDatatype'
+                      minValue:
+                        $ref: '#/definitions/MonetaryAmount-minValueDatatype'
+                      maxValue:
+                        $ref: '#/definitions/MonetaryAmount-maxValueDatatype'
+                    type: object
+                type: object
+              intervalCode:
+                $ref: '#/definitions/PayRateIntervalCodeList'
+              conditions:
+                items:
+                  $ref: '#/definitions/Condition'
+                type: array
+            type: object
+          minItems: 1
+          type: array
+        payDate:
+          $ref: '#/definitions/DatePeriod'
+      type: object
+    type: array
+  other:
+    items:
+      required:
+        - name
+        - amount
+      additionalProperties: false
+      properties:
+        id:
+          $ref: '#/definitions/Identifier'
+        name:
+          $ref: '#/definitions/TimeCardItem-nameDatatype'
+        effectivePeriod:
+          $ref: '#/definitions/EffectiveTimePeriod'
+        amount:
+          required:
+            - value
+          additionalProperties: false
+          properties:
+            value:
+              $ref: '#/definitions/MonetaryAmount-valueDatatype'
+          type: object
+      type: object
+    type: array
+type: object
+$id: 'https://ontology.setu.nl//InquiryPayEquity'
