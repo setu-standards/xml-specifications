@@ -1,0 +1,12 @@
+type: object
+description: Een tekstuele conditie (fallback). Gebruik dit alleen als de regel niet te modelleren is met de andere types.
+properties:
+  conditionType:
+    type: string
+    const: Textual
+  description:
+    type: string
+    description: De volledig uitgeschreven voorwaarde die een mens moet interpreteren. Bijv: "Alleen geldig na goedkeuring manager".
+required:
+  - conditionType
+  - text
