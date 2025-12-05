@@ -1,0 +1,20 @@
+type: object
+description: >-
+  Een generieke container voor condities. Op basis van het veld 'conditionType' 
+  wordt de juiste validatie en structuur geladen.
+oneOf:
+  - $ref: ./conditions/ageCondition.yaml
+  - $ref: ./conditions/employmentDurationCondition.yaml
+  - $ref: ./conditions/functionDependentCondition.yaml
+  - $ref: ./conditions/overtimeHoursWorkedCondition.yaml
+  - $ref: ./conditions/salaryScaleCondition.yaml
+  - $ref: ./conditions/textualCondition.yaml
+discriminator:
+  propertyName: conditionType
+  mapping:
+    Age: ./conditions/ageCondition.yaml
+    EmploymentDuration: ./conditions/employmentDurationCondition.yaml
+    FunctionDependent: ./conditions/functionDependentCondition.yaml
+    OvertimeHoursWorked: ./conditions/overtimeHoursWorkedCondition.yaml
+    SalaryScale: ./conditions/salaryScaleCondition.yaml
+    Textual: ./conditions/textualCondition.yaml
