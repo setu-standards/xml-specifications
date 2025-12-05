@@ -1,0 +1,28 @@
+type: object
+description: Een blok om meerdere condities te combineren of uit te sluiten. Dit blok is recursief: de lijst 'conditions' verwijst terug naar het hoofd schema (mainConditions).
+properties:
+  conditionType:
+    type: string
+    const: Compound
+  operator:
+    type: string
+    enum: 
+      - and   # EN: Alle condities in de lijst moeten waar zijn.
+      - or    # OF: Minimaal één conditie in de lijst moet waar zijn.
+      - not   # NIET: Het resultaat van de condities in de lijst wordt omgedraaid.
+
+  description:
+    type: string
+    description: Een functionele omschrijving van deze groep regels voor de gebruiker. Bijv: "Geldt voor afdeling ICT of Marketing".
+    
+  conditions:
+    type: array
+    description: De lijst met onderliggende condities (of weer nieuwe Compound blokken).
+    minItems: 1
+    items:
+      $ref: '../mainCondition.yaml' 
+
+required:
+  - conditionType
+  - operator
+  - conditions
