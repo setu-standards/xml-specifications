@@ -1,0 +1,30 @@
+type: object
+description: Conditie o.b.v. salarisschaal en optioneel trede/stap.
+properties:
+  conditionType:
+    type: string
+    const: SalaryScale
+
+  operator:
+    type: string
+    enum: [eq, neq, in, not_in]
+    description: Vergelijkingsoperator. Meestal 'eq' (zit in schaal X).
+  scaleRef:
+    type: string
+    description:  De identificatie van de schaal (bijv. 'FWG-45' of 'Schaal 10').
+  step:
+    type: number
+    description: >-
+      Het specifieke trede nummer binnen de schaal. 
+      Laat leeg als de regel voor de hele schaal geldt.
+  stepMin:
+    type: number
+    description: Ondergrens van treden (bijv. trede 3 t/m 6).
+  stepMax:
+    type: number
+    description: Bovengrens van treden.
+
+required:
+  - conditionType
+  - operator
+  - scaleRef
