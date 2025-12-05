@@ -1,0 +1,48 @@
+type: object
+description: Conditie o.b.v. de duur van het dienstverband.
+properties:
+  conditionType:
+    type: string
+    const: EmploymentDuration
+  operator:
+    type: string
+    enum: [eq, neq, gt, gte, lt, lte, between, not_between]
+  value:
+    type: number
+  min:
+    type: number
+    description: Ondergrens bereik.
+  max:
+    type: number
+    description: Bovengrens bereik.
+  minExclusive:
+    type: boolean
+    default: false
+  maxExclusive:
+    type: boolean
+    default: false
+  unitCode:
+    type: string
+    enum: [Year, Month, Week]
+    description: De tijdseenheid. Essentieel om aan te geven of '12' maanden of jaren zijn.
+  basedOn:
+    type: string
+    enum: 
+      - ContractStartDate  # Vanaf start huidige contract
+      - SeniorityDate      # Vanaf officiële datum in dienst (anciënniteit)
+
+required:
+  - conditionType
+  - operator
+  - unitCode
+
+# Validatie: between heeft min/max nodig, overig heeft value nodig
+allOf:
+  - if:
+      properties: { operator: { enum: [between, not_between] } }
+    then:
+      required: [min, max]
+  - if:
+      properties: { operator: { enum: [eq, neq, gt, gte, lt, lte] } }
+    then:
+      required: [value]
