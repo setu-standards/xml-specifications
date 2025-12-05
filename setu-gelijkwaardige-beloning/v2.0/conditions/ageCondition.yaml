@@ -1,0 +1,92 @@
+type: object
+description: Een conditie gebaseerd op de leeftijd van de medewerker. De eenheid is altijd in jaren. Decimalen zijn toegestaan (bijv. 18.5 jaar).
+properties:
+  conditionType:
+    type: string
+    enum:
+      - Age
+    description: De identifier voor dit type conditie.
+
+  operator:
+    type: string
+    enum:
+      - eq            # Gelijk aan
+      - neq           # Ongelijk aan
+      - gt            # Groter dan (>)
+      - gte           # Groter of gelijk aan (>=)
+      - lt            # Kleiner dan (<)
+      - lte           # Kleiner of gelijk aan (<=)
+      - between       # Binnen bereik (standaard inclusief grenzen)
+      - not_between   # Buiten bereik
+    description: >-
+      De operator die bepaalt hoe er vergeleken wordt. 
+      Gebruik 'value' voor enkele vergelijkingen (gt, lt, eq).
+      Gebruik 'min/max' voor bereik vergelijkingen (between).
+
+  value:
+    type: number
+    description: >-
+      De waarde om mee te vergelijken bij enkelvoudige operators (eq, gt, lt, etc.).
+      Bijv: 21.
+
+  min:
+    type: number
+    description: >-
+      De ondergrens van het bereik. Alleen verplicht als operator 'between' of 
+      'not_between' is.
+
+  max:
+    type: number
+    description: >-
+      De bovengrens van het bereik. Alleen verplicht als operator 'between' of 
+      'not_between' is.
+
+  minExclusive:
+    type: boolean
+    default: false
+    description: >-
+      Geeft aan of de ondergrens exclusief is. 
+      Indien true: groter dan (>). Indien false: groter of gelijk aan (>=).
+      Standaard false.
+
+  maxExclusive:
+    type: boolean
+    default: false
+    description: >-
+      Geeft aan of de bovengrens exclusief is.
+      Indien true: kleiner dan (<). Indien false: kleiner of gelijk aan (<=).
+      Standaard false.
+
+  BasedOn:
+    type: string
+    enum: 
+      - CurrentDate       # Leeftijd op moment van berekening
+      - ContractStartDate # Leeftijd bij indiensttreding
+      - CalendarYearStart # Leeftijd op 1 januari van het huidige jaar
+      - SeniorityDate     # Leeftijd op datum anciënniteit
+    default: CurrentDate
+    description: >-
+      Bepaalt het referentiemoment om de leeftijd vast te stellen.
+      Zie discussie p.28 over 'momenten'.
+
+required:
+  - conditionType
+  - operator
+
+
+allOf:
+  # Als operator 'between' of 'not_between' is
+  - if:
+      properties:
+        operator:
+          enum: [between, not_between]
+    then:
+      required: [min, max]
+      
+  # Regel 2: Als operator IETS ANDERS is (eq, gt, lt, etc)
+  - if:
+      properties:
+        operator:
+          enum: [eq, neq, gt, gte, lt, lte]
+    then:
+      required: [value]  
