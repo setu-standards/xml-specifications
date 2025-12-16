@@ -1,0 +1,11 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Occurrence
+description: Definieert wanneer een betaling of gebeurtenis plaatsvindt. 
+type: object
+discriminator:
+  propertyName: occurrenceType
+oneOf:
+  - $ref: './fixedDateOccurrence.yaml'
+  - $ref: './calendarOccurrence.yaml'
+  - $ref: './relativeOccurrence.yaml'
+  - $ref: './OtherOccurrence.yaml'
