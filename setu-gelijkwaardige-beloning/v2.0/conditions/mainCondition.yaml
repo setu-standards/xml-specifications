@@ -9,7 +9,8 @@ oneOf:
   - $ref: ./conditions/overtimeHoursWorkedCondition.yaml
   - $ref: ./conditions/salaryScaleCondition.yaml
   - $ref: ./conditions/textualCondition.yaml
-  - $ref: ./conditions/compoundCondition.yaml 
+  - $ref: ./conditions/compoundCondition.yaml
+  - $ref: ./conditions/occurrenceCondition.yaml
 discriminator:
   propertyName: conditionType
   mapping:
@@ -20,3 +21,4 @@ discriminator:
     SalaryScale: ./conditions/salaryScaleCondition.yaml
     Textual: ./conditions/textualCondition.yaml
     Compound: ./conditions/compoundCondition.yaml 
+    Occurence: ./conditions/occurrenceCondition.yaml

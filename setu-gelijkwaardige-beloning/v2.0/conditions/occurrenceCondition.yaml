@@ -1,0 +1,12 @@
+type: object
+description: Een conditie gebaseerd op tijd of een gebeurtenis. 
+required:
+  - conditionType
+  - occurrence
+properties:
+  conditionType:
+    type: string
+    const: OccurrenceCondition
+  occurrence:
+    description: De definitie van het moment.
+    $ref: '../occurrences/mainOccurrence.yaml'

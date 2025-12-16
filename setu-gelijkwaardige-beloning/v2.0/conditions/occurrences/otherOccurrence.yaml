@@ -1,0 +1,20 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Event Occurrence
+description: Definieert een externe gebeurtenis (bijv. overlijden, huwelijk). Dient als trigger voor regelingen die niet aan standaard contract-data hangen.
+type: object
+required:
+  - occurrenceType
+  - eventName
+properties:
+  occurrenceType:
+    type: string
+    const: OtherOccurrence
+  
+  eventName:
+    type: string
+    description: "De naam van de gebeurtenis."
+    example: "Overlijden"
+
+  description:
+    type: string
+    description: description veld voor het toevoegen van een omschrijving.

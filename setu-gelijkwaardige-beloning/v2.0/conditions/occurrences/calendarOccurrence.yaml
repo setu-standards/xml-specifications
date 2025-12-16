@@ -1,0 +1,95 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Calendar Occurrence
+description:   Definieert een terugkerend moment op de kalender met een vaste frequentie (Maandelijks of Jaarlijks). Ondersteunt ook intervallen (bijv. 'eens in de 5 jaar').
+type: object
+required:
+  - occurrenceType
+  - frequency
+properties:
+  occurrenceType:
+    type: string
+    const: CalendarOccurrence
+  
+  frequency:
+    type: string
+    description: "De frequentie van de herhaling."
+    enum:
+      - Monthly
+      - Yearly
+
+  # --- Optie voor Monthly ---
+  dayOfMonth:
+    type: integer
+    description: "Dag van de maand (1-31). Verplicht als frequency 'Monthly' is."
+    minimum: 1
+    maximum: 31
+
+  # --- Opties voor Yearly (Mutually Exclusive) ---
+  datePattern:
+    type: string
+    description: Vaste datum zonder jaar in ISO 8601 formaat (--MM-DD). Bijv. --05-05 voor elk jaar 5 mei.
+    pattern: '^--\d{2}-\d{2}$'
+    example: "--05-05"
+
+  weekNumber:
+    type: integer
+    description: "ISO weeknummer (1-53). Het event vindt plaats in deze week van het jaar."
+    minimum: 1
+    maximum: 53
+
+  periodNumber:
+    type: integer
+    description: "Periodenummer (1-13)." #De periodenummers moeten nog worden afgestemt met de werkgroep. 
+    minimum: 1
+    maximum: 13 
+
+  # --- Interval Logica ---
+  recurrenceValue:
+    type: integer
+    description: >-
+      Stapgrootte van de herhaling. 
+      Bij Monthly: om de X maanden.
+      Bij Yearly: om de X jaren (bijv. 5 voor eens in de 5 jaar).
+    default: 1
+    minimum: 1
+
+  referenceYear:
+    type: integer
+    description: Nodig om te berekenen of het huidige jaar in de cyclus valt.
+    example: 1945
+
+allOf:
+  # Validatie Regel 1: Monthly
+  # Als frequency Monthly is, MOET dayOfMonth aanwezig zijn.
+  # De jaar-velden (datePattern, weekNumber, periodNumber) zijn verboden (null).
+  - if:
+      properties:
+        frequency: { const: Monthly }
+    then:
+      required: [dayOfMonth]
+      properties:
+        datePattern: { type: "null" }
+        weekNumber: { type: "null" }
+        periodNumber: { type: "null" }
+
+  # Validatie Regel 2: Yearly
+  # Als frequency Yearly is, MOET dayOfMonth verboden zijn.
+  # Je MOET precies één van de 3 jaar-opties kiezen (oneOf).
+  - if:
+      properties:
+        frequency: { const: Yearly }
+    then:
+      properties:
+        dayOfMonth: { type: "null" }
+      oneOf:
+        - required: [datePattern]
+        - required: [weekNumber]
+        - required: [periodNumber]
+
+  # Validatie Regel 3: Interval referentie
+  # Als de stapgrootte groter is dan 1, is een referentiejaar verplicht.
+  - if:
+      properties:
+        recurrenceValue: { minimum: 2 }
+    then:
+      required: [referenceYear]

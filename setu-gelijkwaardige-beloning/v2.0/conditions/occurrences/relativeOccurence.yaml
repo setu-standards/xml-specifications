@@ -1,0 +1,54 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Relative Occurrence
+description: >-
+  Een datum berekend ten opzichte van een referentiepunt (zoals indiensttreding of verjaardag).
+  Combineert een verschuiving in tijd (offset) met een uitlijn-regel (alignment).
+type: object
+required:
+  - occurrenceType
+  - basedOn
+  - dateAlignment
+properties:
+  occurrenceType:
+    type: string
+    const: RelativeOccurrence
+  
+  basedOn:
+    type: string
+    description: "Het startpunt van de berekening. Dit zijn persoons- of contractgebonden momenten."
+    enum:
+      - HireDate          # Datum indiensttreding
+      - ContractStart     # Ingangsdatum huidig contract
+      - ContractEnd       # Einddatum huidig contract
+      - SeniorityDate     # Startdatum anciënniteit/dienstjaren
+      - BirthDate         # Geboortedatum
+      - EvaluationDate    # Datum laatste beoordeling
+      - SalaryPeriodStart # bij de start van de loonperiode
+      - SalaryPeriodEnd   # bij de eind van de loonperiode
+      - StartOtherOccurrence # Ingangs(datum) van een andere regel
+      - Evaluation           # Plaatsvinden van beoordeling
+
+
+  duration:
+    type: string
+    description: >-
+      De tijd die opgeteld wordt bij het basedOn.
+      Gebruikt strikt ISO 8601 Duration formaat (PnYnMnWnD), zonder tijdcomponenten.
+      Voorbeelden: P1Y (1 jaar), P3M (3 maanden), P4W (4 weken), P0D (0 dagen).
+      Optioneel: indien weggelaten wordt P0D aangenomen.
+    pattern: '^P(?!$)(\d+Y)?(\d+M)?(\d+W)?(\d+D)?$'
+    example: "P1M"
+
+  dateAlignment:
+    type: string
+    description: >-
+      De logica om de datum (na de offset) uit te lijnen op het kalenderrooster.
+      Dit is nodig om regels als '1e van de volgende maand' te kunnen bouwen.
+    enum:
+      - Immediate            # Geen aanpassing. (14 jan + P1Y = 14 jan).
+      - StartOfNextMonth     # Schuif naar de 1e dag van de volgende kalendermaand.
+      - EndOfMonth           # Schuif naar de laatste dag van de berekende maand.
+      - StartOfNextPeriod    # Schuif naar de 1e dag van de volgende verloningsperiode (4-weken/week).
+      - NextMonday           # Schuif naar de eerstvolgende maandag.
+      - StartOfNextYear      # Schuif naar 1 januari van het volgende jaar.
+    default: Immediate

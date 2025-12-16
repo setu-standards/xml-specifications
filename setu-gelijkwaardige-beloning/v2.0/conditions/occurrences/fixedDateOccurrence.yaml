@@ -1,0 +1,16 @@
+$schema: https://json-schema.org/draft/2020-12/schema
+title: Fixed Date Occurrence
+description: Een specifiek en eenmalig moment op een vaste datum.
+type: object
+required:
+  - occurrenceType
+  - date
+properties:
+  occurrenceType:
+    type: string
+    const: FixedDate
+  date:
+    type: string
+    description: De vaste datum in ISO 8601 formaat (YYYY-MM-DD).
+    format: date
+    example: "2026-12-15"

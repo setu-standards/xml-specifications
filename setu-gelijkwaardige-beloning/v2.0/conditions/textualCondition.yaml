@@ -6,7 +6,9 @@ properties:
     const: Textual
   description:
     type: string
-    description: De volledig uitgeschreven voorwaarde die een mens moet interpreteren. Bijv: "Alleen geldig na goedkeuring manager".
+    description: >-
+    De volledig uitgeschreven voorwaarde die een mens moet interpreteren 
+    Bijv Alleen geldig na goedkeuring manager
 required:
   - conditionType
-  - text
+  - description
