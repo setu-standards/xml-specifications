@@ -5,7 +5,7 @@ properties:
     type: string
     enum:
       - Age
-    description: De identifier voor dit type conditie.
+    description: De aanduiding voor dit type conditie.
 
   operator:
     type: string
