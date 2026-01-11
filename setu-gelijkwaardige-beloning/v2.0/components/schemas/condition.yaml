@@ -15,6 +15,6 @@ discriminator:
     Age: ./condition-types/ageCondition.yaml
     EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
     SalaryScale: ./condition-types/salaryScaleCondition.yaml
-    Textual: ./condition-types/textualCondition.yaml
+    Text: ./condition-types/textualCondition.yaml
     Compound: ./condition-types/compoundCondition.yaml 
     Occurence: ./condition-types/occurrenceCondition.yaml
