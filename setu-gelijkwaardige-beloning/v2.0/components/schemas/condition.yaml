@@ -5,8 +5,6 @@ description: >-
 oneOf:
   - $ref: ./condition-types/ageCondition.yaml
   - $ref: ./condition-types/employmentDurationCondition.yaml
-  - $ref: ./condition-types/functionDependentCondition.yaml
-  - $ref: ./condition-types/overtimeHoursWorkedCondition.yaml
   - $ref: ./condition-types/salaryScaleCondition.yaml
   - $ref: ./condition-types/textualCondition.yaml
   - $ref: ./condition-types/compoundCondition.yaml
@@ -16,8 +14,6 @@ discriminator:
   mapping:
     Age: ./condition-types/ageCondition.yaml
     EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
-    FunctionDependent: ./condition-types/functionDependentCondition.yaml
-    OvertimeHoursWorked: ./condition-types/overtimeHoursWorkedCondition.yaml
     SalaryScale: ./condition-types/salaryScaleCondition.yaml
     Textual: ./condition-types/textualCondition.yaml
     Compound: ./condition-types/compoundCondition.yaml 
