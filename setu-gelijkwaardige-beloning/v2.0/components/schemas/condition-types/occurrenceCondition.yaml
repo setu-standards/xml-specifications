@@ -9,4 +9,4 @@ properties:
     const: OccurrenceCondition
   occurrence:
     description: De definitie van het moment.
-    $ref: '../occurrences/mainOccurrence.yaml'
+    $ref: './occurrences/mainOccurrence.yaml'

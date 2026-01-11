@@ -8,4 +8,4 @@ oneOf:
   - $ref: './fixedDateOccurrence.yaml'
   - $ref: './calendarOccurrence.yaml'
   - $ref: './relativeOccurrence.yaml'
-  - $ref: './OtherOccurrence.yaml'
+  - $ref: './otherOccurrence.yaml'
