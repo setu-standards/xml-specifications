@@ -1,0 +1,10 @@
+type: string
+enum:
+  - eq    # equal to
+  - neq   # not equal to
+  - gt    # greater than
+  - gte   # greater than or equal to
+  - lt    # less than
+  - lte   # less than or equal to
+  - in    # is in list
+description: Comparison operator used in conditions
