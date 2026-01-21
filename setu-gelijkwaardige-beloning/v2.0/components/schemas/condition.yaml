@@ -6,8 +6,9 @@ oneOf:
   # Structured condition types
   - $ref: ./condition-types/age.yaml
   - $ref: ./condition-types/employmentDuration.yaml
-  - $ref: ./condition-types/salaryScale.yaml
   - $ref: ./condition-types/occurrence.yaml
+  - $ref: ./condition-types/positionProfile.yaml
+  - $ref: ./condition-types/salaryScale.yaml
   # Textual condition type (to be used when no other type fits)
   - $ref: ./condition-types/text.yaml
   # Combination types
@@ -20,8 +21,9 @@ discriminator:
     # Structured condition types
     Age: ./condition-types/age.yaml
     EmploymentDuration: ./condition-types/employmentDuration.yaml
-    SalaryScale: ./condition-types/salaryScale.yaml
     Occurence: ./condition-types/occurrence.yaml
+    PositionProfile: ./condition-types/positionProfile.yaml
+    SalaryScale: ./condition-types/salaryScale.yaml
     # Textual condition type (to be used when no other type fits)
     Text: ./condition-types/textual.yaml
     # Combination types
