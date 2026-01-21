@@ -1,0 +1,12 @@
+type: object
+description: Combition of conditions that ALL must evaluate to true
+properties:
+  conditionType:
+    type: string
+    enum:
+      - AllOf
+  conditions:
+    type: array
+    minItems: 1
+    items:
+      - $ref: ./../../condition.yaml

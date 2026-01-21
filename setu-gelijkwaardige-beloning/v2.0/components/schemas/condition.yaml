@@ -7,8 +7,11 @@ oneOf:
   - $ref: ./condition-types/employmentDurationCondition.yaml
   - $ref: ./condition-types/salaryScaleCondition.yaml
   - $ref: ./condition-types/textualCondition.yaml
-  - $ref: ./condition-types/compoundCondition.yaml
   - $ref: ./condition-types/occurrenceCondition.yaml
+  # Combination types
+  - $ref: ./condition-types/combinations/allOf.yaml
+  - $ref: ./condition-types/combinations/anyOf.yaml
+  - $ref: ./condition-types/combinations/not.yaml
 discriminator:
   propertyName: conditionType
   mapping:
@@ -16,5 +19,8 @@ discriminator:
     EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
     SalaryScale: ./condition-types/salaryScaleCondition.yaml
     Text: ./condition-types/textualCondition.yaml
-    Compound: ./condition-types/compoundCondition.yaml 
     Occurence: ./condition-types/occurrenceCondition.yaml
+    # Combination types
+    AllOf: ./condition-types/combinations/allOf.yaml
+    AnyOf: ./condition-types/combinations/anyOf.yaml
+    Not: ./condition-types/combinations/not.yaml

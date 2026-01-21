@@ -1,0 +1,9 @@
+type: object
+description: Negation of condition
+properties:
+  conditionType:
+    type: string
+    enum:
+      - Not
+  condition:
+    - $ref: ./../../condition.yaml

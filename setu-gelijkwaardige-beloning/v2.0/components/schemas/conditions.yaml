@@ -1,4 +1,4 @@
 type: array
-description: List of conditions that should ALL evaluate to true
+description: List of conditions that ALL must evaluate to true
 items:
   - $ref: ./condition.yaml
