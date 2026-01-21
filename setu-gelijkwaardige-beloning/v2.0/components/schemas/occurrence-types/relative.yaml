@@ -1,0 +1,28 @@
+type: object
+description: Single occurrence relative to an event.
+required:
+  - occurrenceType
+  - interval
+properties:
+  occurrenceType:
+    type: string
+    const: Relative
+  event:
+    type: string
+    description: Type of event the occurrence is relative to.
+    enum:
+      - HireDate              # Datum indiensttreding
+      - ContractStart         # Ingangsdatum huidig contract
+      - ContractEnd           # Einddatum huidig contract
+      - SeniorityDate         # Startdatum anciënniteit/dienstjaren
+      - BirthDate             # Geboortedatum
+      - EvaluationDate        # Datum laatste beoordeling
+      - SalaryPeriodStart     # bij de start van de loonperiode
+      - SalaryPeriodEnd       # bij de eind van de loonperiode
+      - StartOtherOccurrence  # Ingangs(datum) van een andere regel
+      - Evaluation            # Plaatsvinden van beoordeling
+  offSet:
+    type: string
+    description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets.
+    format: duration
+    example: "P12Y6M" # e.g. 12 years and 6 months after the event (e.g. HireDate)

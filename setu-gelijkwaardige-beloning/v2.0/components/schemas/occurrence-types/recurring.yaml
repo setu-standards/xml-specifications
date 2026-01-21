@@ -1,0 +1,13 @@
+type: object
+description: Recurring occurrence, e.g. a weekly or monthly event.
+required:
+  - occurrenceType
+  - interval
+properties:
+  occurrenceType:
+    type: string
+    const: Recurring
+  interval:
+    type: string
+    description: Recurring time interval according to ISO 8601-1 format.
+    example: "R/1945-05-05/P5Y" # Liberation day, every 5 years

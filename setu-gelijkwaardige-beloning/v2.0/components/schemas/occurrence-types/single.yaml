@@ -1,0 +1,14 @@
+type: object
+description: Single occurrence, e.g. a fixed date.
+required:
+  - occurrenceType
+  - date
+properties:
+  occurrenceType:
+    type: string
+    const: Single
+  date:
+    type: string
+    description: Point in time according to ISO 8601-1 format.
+    format: date-time
+    example: "2026-12-15"
