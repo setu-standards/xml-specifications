@@ -3,11 +3,13 @@ description: >-
   Abstract condition object. Can be used to include different concrete condition types
   based on 'conditionType' discriminator property.
 oneOf:
-  - $ref: ./condition-types/ageCondition.yaml
-  - $ref: ./condition-types/employmentDurationCondition.yaml
-  - $ref: ./condition-types/salaryScaleCondition.yaml
-  - $ref: ./condition-types/textualCondition.yaml
-  - $ref: ./condition-types/occurrenceCondition.yaml
+  # Structured condition types
+  - $ref: ./condition-types/age.yaml
+  - $ref: ./condition-types/employmentDuration.yaml
+  - $ref: ./condition-types/salaryScale.yaml
+  - $ref: ./condition-types/occurrence.yaml
+  # Textual condition type (to be used when no other type fits)
+  - $ref: ./condition-types/text.yaml
   # Combination types
   - $ref: ./condition-types/combinations/allOf.yaml
   - $ref: ./condition-types/combinations/anyOf.yaml
@@ -15,11 +17,13 @@ oneOf:
 discriminator:
   propertyName: conditionType
   mapping:
-    Age: ./condition-types/ageCondition.yaml
-    EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
-    SalaryScale: ./condition-types/salaryScaleCondition.yaml
-    Text: ./condition-types/textualCondition.yaml
-    Occurence: ./condition-types/occurrenceCondition.yaml
+    # Structured condition types
+    Age: ./condition-types/age.yaml
+    EmploymentDuration: ./condition-types/employmentDuration.yaml
+    SalaryScale: ./condition-types/salaryScale.yaml
+    Occurence: ./condition-types/occurrence.yaml
+    # Textual condition type (to be used when no other type fits)
+    Text: ./condition-types/textual.yaml
     # Combination types
     AllOf: ./condition-types/combinations/allOf.yaml
     AnyOf: ./condition-types/combinations/anyOf.yaml

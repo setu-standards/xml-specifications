@@ -6,7 +6,7 @@ required:
 properties:
   conditionType:
     type: string
-    const: OccurrenceCondition
+    const: Occurrence
   occurrence:
     description: Specification of the occurrence.
     $ref: ./../occurrence.yaml
