@@ -2,6 +2,13 @@ openapi: 3.1.0
 info:
   title: Inquiry Pay Equity
   version: 2.0.0-alpha.1
+  description: |-
+    # Models
+    ## Conditions
+    <SchemaDefinition schemaRef="#/components/schemas/conditions" />
+    
+    ## Occurence
+    <SchemaDefinition schemaRef="#/components/schemas/occurrence" />
 components:
   schemas:
     conditions:
