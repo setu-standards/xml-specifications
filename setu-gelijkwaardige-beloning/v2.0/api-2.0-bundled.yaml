@@ -134,7 +134,7 @@ components:
       required:
         - occurrenceType
         - event
-        - offSet
+        - offset
       properties:
         occurrenceType:
           type: string
@@ -146,13 +146,13 @@ components:
             - HireDate
             - ContractStart
             - ContractEnd
-            - SeniorityDate
+            - SeniorityStart
             - BirthDate
             - EvaluationDate
             - SalaryPeriodStart
             - SalaryPeriodEnd
             - OtherEvent
-        offSet:
+        offset:
           type: string
           description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
           format: duration
@@ -160,10 +160,10 @@ components:
       examples:
         - occurrenceType: Relative
           event: HireDate
-          offSet: P6M
+          offset: P6M
         - occurrenceType: Relative
           event: ContractEnd
-          offSet: '-P6M'
+          offset: '-P6M'
     occurrence:
       type: object
       description: Base type for occurrences with different occurrence types.
@@ -311,7 +311,7 @@ components:
               occurrence:
                 type: Relative
                 event: EvaluationDate
-                offSet: PT0S
+                offset: PT0S
     anyOf:
       type: object
       description: Combition of conditions where at least one must evaluate to true
@@ -348,7 +348,7 @@ components:
               occurrence:
                 type: Relative
                 event: EvaluationDate
-                offSet: PT0S
+                offset: PT0S
     not:
       type: object
       description: Negation of condition
