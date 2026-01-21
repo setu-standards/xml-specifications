@@ -2,7 +2,8 @@ type: object
 description: Single occurrence relative to an event.
 required:
   - occurrenceType
-  - interval
+  - event
+  - offSet
 properties:
   occurrenceType:
     type: string
@@ -23,6 +24,6 @@ properties:
       - Evaluation            # Plaatsvinden van beoordeling
   offSet:
     type: string
-    description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets.
+    description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
     format: duration
     example: "P12Y6M" # e.g. 12 years and 6 months after the event (e.g. HireDate)
