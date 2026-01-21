@@ -1,8 +1,394 @@
-openapi: 3.0.0
+openapi: 3.1.0
 info:
-  title: Gelijkwaardige Beloning API
+  title: Inquiry Pay Equity
   version: 2.0.0-alpha.1
 components:
   schemas:
     conditions:
+      type: array
+      description: List of conditions that ALL must evaluate to true
+      items:
+        $ref: '#/components/schemas/condition'
+    operators:
+      type: string
+      enum:
+        - eq
+        - neq
+        - gt
+        - gte
+        - lt
+        - lte
+        - in
+      description: Comparison operator used in conditions
+    age:
       type: object
+      description: Condition based on age of the employee. The unit is always in years. Decimals are allowed (e.g. 18.5 years).
+      required:
+        - conditionType
+        - operator
+        - age
+      properties:
+        conditionType:
+          type: string
+          const: Age
+        operator:
+          $ref: '#/components/schemas/operators'
+        age:
+          type: number
+          description: The age of the employee in years. The unit is always in years. Decimals are allowed (e.g. 18.5 years).
+      examples:
+        - conditionType: Age
+          operator: gte
+          age: 18
+        - conditionType: Age
+          operator: lt
+          age: 30
+    employmentDuration:
+      type: object
+      description: Condition based on the duration of employment of the employee.
+      required:
+        - conditionType
+        - operator
+        - duration
+        - referenceDateType
+      properties:
+        conditionType:
+          type: string
+          const: EmploymentDuration
+        operator:
+          $ref: '#/components/schemas/operators'
+        duration:
+          type: string
+          description: Duration of the employment expressed according to ISO 8601-1 duration format.
+        referenceDateType:
+          type: string
+          description: Which start date type of the employment to consider for determining the duration.
+          enum:
+            - HireDate
+            - ContractStartDate
+            - SeniorityDate
+      examples:
+        - conditionType: EmploymentDuration
+          operator: gte
+          duration: P2Y
+          referenceDateType: HireDate
+        - conditionType: EmploymentDuration
+          operator: lt
+          duration: P6M
+          referenceDateType: ContractStartDate
+        - conditionType: EmploymentDuration
+          operator: eq
+          duration: P12Y6M
+          referenceDateType: SeniorityDate
+    single:
+      type: object
+      description: Single occurrence, e.g. a fixed date.
+      required:
+        - occurrenceType
+        - date
+      properties:
+        occurrenceType:
+          type: string
+          const: Single
+        date:
+          type: string
+          description: Point in time according to ISO 8601-1 format.
+          format: date-time
+          example: '2026-12-15'
+      examples:
+        - occurrenceType: Single
+          date: '2026-12-15'
+        - occurrenceType: Single
+          date: '2024-07-01'
+    recurring:
+      type: object
+      description: Recurring occurrence, e.g. a weekly or monthly event.
+      required:
+        - occurrenceType
+        - interval
+      properties:
+        occurrenceType:
+          type: string
+          const: Recurring
+        interval:
+          type: string
+          description: Recurring time interval according to ISO 8601-1 format.
+          example: R/1945-05-05/P5Y
+      examples:
+        - occurrenceType: Recurring
+          interval: R/P1M
+        - occurrenceType: Recurring
+          interval: R/P1W
+        - occurrenceType: Recurring
+          interval: R/1945-05-05/P5Y
+    relative:
+      type: object
+      description: Single occurrence relative to an event.
+      required:
+        - occurrenceType
+        - event
+        - offSet
+      properties:
+        occurrenceType:
+          type: string
+          const: Relative
+        event:
+          type: string
+          description: Type of event the occurrence is relative to.
+          enum:
+            - HireDate
+            - ContractStart
+            - ContractEnd
+            - SeniorityDate
+            - BirthDate
+            - EvaluationDate
+            - SalaryPeriodStart
+            - SalaryPeriodEnd
+            - OtherEvent
+        offSet:
+          type: string
+          description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
+          format: duration
+          example: P12Y6M
+      examples:
+        - occurrenceType: Relative
+          event: HireDate
+          offSet: P6M
+        - occurrenceType: Relative
+          event: ContractEnd
+          offSet: '-P6M'
+    occurrence:
+      type: object
+      description: Base type for occurrences with different occurrence types.
+      oneOf:
+        - $ref: '#/components/schemas/single'
+        - $ref: '#/components/schemas/recurring'
+        - $ref: '#/components/schemas/relative'
+      discriminator:
+        propertyName: occurrenceType
+        mapping:
+          Single: '#/components/schemas/single'
+          Recurring: '#/components/schemas/recurring'
+          Relative: '#/components/schemas/relative'
+    occurrence-2:
+      type: object
+      description: A condition based on time or an event.
+      required:
+        - conditionType
+        - occurrence
+      properties:
+        conditionType:
+          type: string
+          const: Occurrence
+        occurrence:
+          description: Specification of the occurrence.
+          $ref: '#/components/schemas/occurrence'
+    positionProfile:
+      type: object
+      description: Condition based on salary scale and optionally step within that scale.
+      required:
+        - conditionType
+        - operator
+        - positionProfileIds
+      properties:
+        conditionType:
+          type: string
+          const: PositionProfile
+        operator:
+          allOf:
+            - $ref: '#/components/schemas/operators'
+            - enum:
+                - in
+        positionProfileIds:
+          type: array
+          description: |-
+            List of position profiles to compare against. The condition is met when the employee's position profile
+            matches any of the position profiles in this list.
+          items:
+            type: string
+            description: |-
+              Reference to the identifier of the position profile.
+              Must match value in element 'Inquiry Pay Equity/position profile/position id /value'.
+      examples:
+        - conditionType: PositionProfile
+          operator: in
+          positionProfileIds:
+            - Manager
+            - TeamLead
+        - conditionType: PositionProfile
+          operator: in
+          positionProfileIds:
+            - 3b336865-0155-435b-8706-f3bf4e6bd953
+    salaryScale:
+      type: object
+      description: Condition based on salary scale and optionally step within that scale.
+      required:
+        - conditionType
+        - operator
+        - salaryScale
+      properties:
+        conditionType:
+          type: string
+          const: SalaryScale
+        operator:
+          $ref: '#/components/schemas/operators'
+        salaryScale:
+          type: string
+          description: |-
+            Reference to name of the salary scale (e.g. 'FWG-10' of 'Schaal 10').
+            Must match value in element 'Inquiry Pay Equity/remuneration/salary scale/name'
+        step:
+          type: string
+          description: |-
+            Optional reference to the name of the step within the scale (e.g. 'Trede 5').
+            Must match value in element 'Inquiry Pay Equity/remuneration/salary scale/salary step/name'
+      examples:
+        - conditionType: SalaryScale
+          operator: gte
+          salaryScale: FWG-10
+          step: Trede 5
+        - conditionType: SalaryScale
+          operator: eq
+          salaryScale: FWG-11
+    text:
+      type: object
+      description: A textual condition. Only use this one when a condition cannot be specified by means of the other condition types.
+      required:
+        - conditionType
+        - description
+      properties:
+        conditionType:
+          type: string
+          const: Text
+        description:
+          type: string
+          description: Full specification of the condition in natural language.
+      examples:
+        - conditionType: Text
+          description: Employee has completed a training program on workplace safety.
+        - conditionType: Text
+          description: Employee is eligible for a bonus if the company meets its annual revenue targets.
+    allOf:
+      type: object
+      description: Combition of conditions that ALL must evaluate to true
+      required:
+        - conditionType
+        - conditions
+      properties:
+        conditionType:
+          type: string
+          enum:
+            - AllOf
+        conditions:
+          type: array
+          minItems: 1
+          items:
+            - $ref: ./../../condition.yaml
+      examples:
+        - conditionType: AllOf
+          conditions:
+            - conditionType: Age
+              operator: gte
+              age: 18
+            - conditionType: SalaryScale
+              operator: gte
+              salaryScale: FWG-10
+              step: Trede 5
+        - conditionType: AllOf
+          conditions:
+            - conditionType: EmploymentDuration
+              operator: gte
+              duration: P2Y
+              referenceDateType: HireDate
+            - conditionType: Occurrence
+              occurrence:
+                type: Relative
+                event: EvaluationDate
+                offSet: PT0S
+    anyOf:
+      type: object
+      description: Combition of conditions where at least one must evaluate to true
+      required:
+        - conditionType
+        - conditions
+      properties:
+        conditionType:
+          type: string
+          enum:
+            - AnyOf
+        conditions:
+          type: array
+          minItems: 1
+          items:
+            - $ref: ./../../condition.yaml
+      examples:
+        - conditionType: AnyOf
+          conditions:
+            - conditionType: Age
+              operator: lt
+              age: 18
+            - conditionType: SalaryScale
+              operator: lt
+              salaryScale: FWG-10
+              step: Trede 5
+        - conditionType: AnyOf
+          conditions:
+            - conditionType: EmploymentDuration
+              operator: lt
+              duration: P2Y
+              referenceDateType: HireDate
+            - conditionType: Occurrence
+              occurrence:
+                type: Relative
+                event: EvaluationDate
+                offSet: PT0S
+    not:
+      type: object
+      description: Negation of condition
+      required:
+        - conditionType
+        - condition
+      properties:
+        conditionType:
+          type: string
+          enum:
+            - Not
+        condition:
+          - $ref: ./../../condition.yaml
+      examples:
+        - conditionType: Not
+          condition:
+            conditionType: Age
+            operator: gte
+            age: 18
+        - conditionType: Not
+          condition:
+            conditionType: SalaryScale
+            operator: gte
+            salaryScale: FWG-10
+            step: Trede 5
+    condition:
+      type: object
+      description: Abstract condition object. Can be used to include different concrete condition types based on 'conditionType' discriminator property.
+      oneOf:
+        - $ref: '#/components/schemas/age'
+        - $ref: '#/components/schemas/employmentDuration'
+        - $ref: '#/components/schemas/occurrence-2'
+        - $ref: '#/components/schemas/positionProfile'
+        - $ref: '#/components/schemas/salaryScale'
+        - $ref: '#/components/schemas/text'
+        - $ref: '#/components/schemas/allOf'
+        - $ref: '#/components/schemas/anyOf'
+        - $ref: '#/components/schemas/not'
+      discriminator:
+        propertyName: conditionType
+        mapping:
+          Age: '#/components/schemas/age'
+          EmploymentDuration: '#/components/schemas/employmentDuration'
+          Occurence: '#/components/schemas/occurrence-2'
+          PositionProfile: '#/components/schemas/positionProfile'
+          SalaryScale: '#/components/schemas/salaryScale'
+          Text: '#/components/schemas/text'
+          AllOf: '#/components/schemas/allOf'
+          AnyOf: '#/components/schemas/anyOf'
+          Not: '#/components/schemas/not'
