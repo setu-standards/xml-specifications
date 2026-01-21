@@ -35,4 +35,4 @@ examples:
         occurrence:
           type: Relative
           event: EvaluationDate
-          offSet: PT0S # No offset, i.e., on the evaluation
+          offset: PT0S # No offset, i.e., on the evaluation

@@ -3,7 +3,7 @@ description: Single occurrence relative to an event.
 required:
   - occurrenceType
   - event
-  - offSet
+  - offset
 properties:
   occurrenceType:
     type: string
@@ -15,13 +15,13 @@ properties:
       - HireDate              # Datum indiensttreding
       - ContractStart         # Ingangsdatum huidig contract
       - ContractEnd           # Einddatum huidig contract
-      - SeniorityDate         # Startdatum anciënniteit/dienstjaren
+      - SeniorityStart        # Startdatum anciënniteit/dienstjaren
       - BirthDate             # Geboortedatum
       - EvaluationDate        # Datum laatste beoordeling
       - SalaryPeriodStart     # bij de start van de loonperiode
       - SalaryPeriodEnd       # bij de eind van de loonperiode
-      - OtherEvent            # Datum van een ander soort event
-  offSet:
+      - OtherEvent            # Datum van een ander soort event, b.v. overlijden
+  offset:
     type: string
     description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
     format: duration
@@ -30,8 +30,8 @@ examples:
   # Example: Occurrence 6 months after hire date
   - occurrenceType: Relative
     event: HireDate
-    offSet: P6M
+    offset: P6M
   # Example: Occurrence 2 months before contract end date
   - occurrenceType: Relative
     event: ContractEnd
-    offSet: -P6M
+    offset: -P6M
