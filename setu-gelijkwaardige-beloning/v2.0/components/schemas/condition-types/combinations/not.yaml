@@ -1,5 +1,8 @@
 type: object
 description: Negation of condition
+required:
+  - conditionType
+  - condition
 properties:
   conditionType:
     type: string

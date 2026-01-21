@@ -1,5 +1,8 @@
 type: object
 description: A textual condition. Only use this one when a condition cannot be specified by means of the other condition types.
+required:
+  - conditionType
+  - description
 properties:
   conditionType:
     type: string
@@ -7,6 +10,3 @@ properties:
   description:
     type: string
     description: Full specification of the condition in natural language.
-required:
-  - conditionType
-  - description

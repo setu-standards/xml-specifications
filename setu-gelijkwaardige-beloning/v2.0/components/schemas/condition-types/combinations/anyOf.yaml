@@ -1,5 +1,8 @@
 type: object
 description: Combition of conditions where at least one must evaluate to true
+required:
+  - conditionType
+  - conditions
 properties:
   conditionType:
     type: string
