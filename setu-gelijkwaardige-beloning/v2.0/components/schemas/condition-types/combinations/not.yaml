@@ -10,3 +10,17 @@ properties:
       - Not
   condition:
     - $ref: ./../../condition.yaml
+examples:
+  # Example: Not age 18 years or older (i.e., under 18). Can of course also be expressed as age less than 18.
+  - conditionType: Not
+    condition:
+      conditionType: Age
+      operator: gte
+      age: 18
+  # Example: Not salary scale FWG-10, step Trede 5 or higher. Can of course also be expressed as salary scale less than FWG-10 step Trede 5.
+  - conditionType: Not
+    condition:
+      conditionType: SalaryScale
+      operator: gte
+      salaryScale: FWG-10
+      step: Trede 5

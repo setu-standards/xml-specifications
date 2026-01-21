@@ -13,3 +13,26 @@ properties:
     minItems: 1
     items:
       - $ref: ./../../condition.yaml
+examples:
+  # Example: Age less than 18 years OR Salary scale less than FWG-10 step 5
+  - conditionType: AnyOf
+    conditions:
+      - conditionType: Age
+        operator: lt
+        age: 18
+      - conditionType: SalaryScale
+        operator: lt
+        salaryScale: FWG-10
+        step: Trede 5
+  # Example: Employment duration less than 2 years OR Occurrence before last evaluation date
+  - conditionType: AnyOf
+    conditions:
+      - conditionType: EmploymentDuration
+        operator: lt
+        duration: P2Y
+        referenceDateType: HireDate
+      - conditionType: Occurrence
+        occurrence:
+          type: Relative
+          event: EvaluationDate
+          offSet: PT0S # No offset, i.e., on or before the evaluation date

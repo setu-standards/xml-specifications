@@ -26,3 +26,12 @@ properties:
     description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
     format: duration
     example: "P12Y6M" # e.g. 12 years and 6 months after the event (e.g. HireDate)
+examples:
+  # Example: Occurrence 6 months after hire date
+  - occurrenceType: Relative
+    event: HireDate
+    offSet: P6M
+  # Example: Occurrence 2 months before contract end date
+  - occurrenceType: Relative
+    event: ContractEnd
+    offSet: -P6M

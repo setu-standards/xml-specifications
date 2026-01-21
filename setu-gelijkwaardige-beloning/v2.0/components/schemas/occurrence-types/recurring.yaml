@@ -11,3 +11,13 @@ properties:
     type: string
     description: Recurring time interval according to ISO 8601-1 format.
     example: "R/1945-05-05/P5Y" # Liberation day, every 5 years
+examples:
+  # Example: Monthly occurrence at the start of each month
+  - occurrenceType: Recurring
+    interval: "R/P1M"
+  # Example: Weekly occurrence every Monday
+  - occurrenceType: Recurring
+    interval: "R/P1W"
+  # Example: 5-yearly occurrence on Liberation Day (May 5th)
+  - occurrenceType: Recurring
+    interval: "R/1945-05-05/P5Y"

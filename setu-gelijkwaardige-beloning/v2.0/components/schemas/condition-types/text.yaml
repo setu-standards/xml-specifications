@@ -10,3 +10,9 @@ properties:
   description:
     type: string
     description: Full specification of the condition in natural language.
+examples:
+  # Example: Condition specified in text
+  - conditionType: Text
+    description: Employee has completed a training program on workplace safety.
+  - conditionType: Text
+    description: Employee is eligible for a bonus if the company meets its annual revenue targets.
