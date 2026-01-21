@@ -25,7 +25,7 @@ discriminator:
     PositionProfile: ./condition-types/positionProfile.yaml
     SalaryScale: ./condition-types/salaryScale.yaml
     # Textual condition type (to be used when no other type fits)
-    Text: ./condition-types/textual.yaml
+    Text: ./condition-types/text.yaml
     # Combination types
     AllOf: ./condition-types/combinations/allOf.yaml
     AnyOf: ./condition-types/combinations/anyOf.yaml

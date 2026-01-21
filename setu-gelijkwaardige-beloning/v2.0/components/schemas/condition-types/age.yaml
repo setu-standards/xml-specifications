@@ -9,7 +9,7 @@ properties:
     type: string
     const: Age
   operator:
-    $ref: ../operators.yaml
+    $ref: ./operators.yaml
   age:
     type: number
     description: |-
