@@ -20,8 +20,7 @@ properties:
       - EvaluationDate        # Datum laatste beoordeling
       - SalaryPeriodStart     # bij de start van de loonperiode
       - SalaryPeriodEnd       # bij de eind van de loonperiode
-      - StartOtherOccurrence  # Ingangs(datum) van een andere regel
-      - Evaluation            # Plaatsvinden van beoordeling
+      - OtherEvent            # Datum van een ander soort event
   offSet:
     type: string
     description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
