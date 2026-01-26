@@ -19,3 +19,6 @@ examples:
   # Example: Occurrence on July 1, 2024
   - occurrenceType: Single
     date: "2024-07-01"
+  # Example: Occurrence in July 2024
+  - occurrenceType: Single
+    date: "2024-07"
