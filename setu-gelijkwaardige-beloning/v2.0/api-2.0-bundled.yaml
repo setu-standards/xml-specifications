@@ -71,9 +71,10 @@ components:
           type: string
           description: Which start date type of the employment to consider for determining the duration.
           enum:
+            - SeniorityDate
             - HireDate
             - ContractStartDate
-            - SeniorityDate
+            - AssignmentStartDate
       examples:
         - conditionType: EmploymentDuration
           operator: gte
@@ -107,6 +108,8 @@ components:
           date: '2026-12-15'
         - occurrenceType: Single
           date: '2024-07-01'
+        - occurrenceType: Single
+          date: 2024-07
     recurring:
       type: object
       description: Recurring occurrence, e.g. a weekly or monthly event.
@@ -117,17 +120,17 @@ components:
         occurrenceType:
           type: string
           const: Recurring
-        interval:
+        recurringInterval:
           type: string
           description: Recurring time interval according to ISO 8601-1 format.
           example: R/1945-05-05/P5Y
       examples:
         - occurrenceType: Recurring
-          interval: R/P1M
+          recurringInterval: R/P1M
         - occurrenceType: Recurring
-          interval: R/P1W
+          recurringInterval: R/P1W
         - occurrenceType: Recurring
-          interval: R/1945-05-05/P5Y
+          recurringInterval: R/1945-05-05/P5Y
     relative:
       type: object
       description: Single occurrence relative to an event.
@@ -157,6 +160,10 @@ components:
           description: The offset of the occurrence relative to an event. Time interval expressed according to ISO 8601-1 duration format. Use minus sign for negative offsets. Use 'PT0S' or 'P0D' to indicate no offset.
           format: duration
           example: P12Y6M
+        eventName:
+          type: string
+          description: Short description of the event if 'OtherEvent' is selected as event type.
+          example: Date of passing
       examples:
         - occurrenceType: Relative
           event: HireDate
@@ -284,8 +291,7 @@ components:
       properties:
         conditionType:
           type: string
-          enum:
-            - AllOf
+          const: AllOf
         conditions:
           type: array
           minItems: 1
@@ -321,8 +327,7 @@ components:
       properties:
         conditionType:
           type: string
-          enum:
-            - AnyOf
+          const: AnyOf
         conditions:
           type: array
           minItems: 1
@@ -358,8 +363,7 @@ components:
       properties:
         conditionType:
           type: string
-          enum:
-            - Not
+          const: Not
         condition:
           - $ref: ./../../condition.yaml
       examples:
