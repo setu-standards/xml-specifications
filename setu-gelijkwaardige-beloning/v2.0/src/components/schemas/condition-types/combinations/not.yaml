@@ -6,8 +6,7 @@ required:
 properties:
   conditionType:
     type: string
-    enum:
-      - Not
+    const: Not
   condition:
     - $ref: ./../../condition.yaml
 examples:

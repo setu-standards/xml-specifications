@@ -6,8 +6,7 @@ required:
 properties:
   conditionType:
     type: string
-    enum:
-      - AnyOf
+    const: AnyOf
   conditions:
     type: array
     minItems: 1
