@@ -18,9 +18,10 @@ properties:
     type: string
     description: Which start date type of the employment to consider for determining the duration.
     enum: 
+      - SeniorityDate         # Startdatum anciënniteit/dienstjaren
       - HireDate              # Indiensttreding
       - ContractStartDate     # Vanaf start huidige contract
-      - SeniorityDate         # Startdatum anciënniteit/dienstjaren
+      - AssignmentStartDate   # Startdatum huidige opdracht
 examples:
   # Example: Employment duration of 2 years or more since hire date
   - conditionType: EmploymentDuration
