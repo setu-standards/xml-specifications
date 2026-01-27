@@ -20,6 +20,7 @@ properties:
       - EvaluationDate        # Datum laatste beoordeling
       - SalaryPeriodStart     # bij de start van de loonperiode
       - SalaryPeriodEnd       # bij de eind van de loonperiode
+      - SickLeave             # Datum van ziekteverlof
       - OtherEvent            # Datum van een ander soort event, b.v. overlijden
   offset:
     type: string
