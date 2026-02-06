@@ -694,15 +694,7 @@ definitions:
         $ref: "#/definitions/MandatoryLeaveType"
     type: object
   OccurrenceType:
-    description: "If the employer allows the employee to let the sustainable employability budget be paid out to the employee, the pay date (or range of dates) in which the payment has to be made, can be provided here."
-    required:
-      - occurrenceType
-    additionalProperties: false
-    properties:
-      occurrenceType:
-        description: "An occurence type element specifies the type of occurence that influences the inclusion of various fields based on predefined criteria.\n\nExamples are: Single (A specific date), Relative (relative to a specific event), or recurring (repeated using a set pattern) "
-        type: string
-    type: object
+    $ref: "./occurrence.yaml"
   TimePeriod:
     description: "The time period during which the allowance is applicable. This period spans from the start time up and including to the end time. \n\nIn the event that multiple time periods are required, multiple period elements can be provided."
     required:
@@ -1112,8 +1104,7 @@ definitions:
   BaseUnitCodeType:
     type: string
   ConditionType:
-    type: string
-    format: uri-reference
+    $ref: "./condition.yaml"
   DateDatatype:
     type: string
     format: date
