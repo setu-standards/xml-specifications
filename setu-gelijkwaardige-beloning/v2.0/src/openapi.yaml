@@ -47,9 +47,6 @@ paths:
           application/json:
             schema:
               $ref: '#/components/schemas/InquiryPayEquity'
-          application/xml:
-            schema:
-              $ref: '#/components/schemas/InquiryPayEquity'
       responses:
         '200':
           $ref: '#/components/responses/200'
@@ -79,9 +76,6 @@ paths:
           description: OK | The inquiry-pay-equity (as submitted in the request body)
           content:
             application/json:
-              schema:
-                $ref: '#/components/schemas/InquiryPayEquity'
-            application/xml:
               schema:
                 $ref: '#/components/schemas/InquiryPayEquity'
         '400':
@@ -160,7 +154,6 @@ components:
         example: application/json
         enum:
           - application/json
-          - application/xml
     ResourceIdentifier:
           name: id
           in: path
@@ -176,9 +169,6 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/InquiryPayEquity'
-        application/xml:
-          schema:
-            $ref: '#/components/schemas/InquiryPayEquity'
     '201':
       description: 201 Created | The created inquiry-pay-equity (as submitted in the request body)
       headers:
@@ -188,9 +178,6 @@ components:
           $ref: '#/components/headers/Location'
       content:
         application/json:
-          schema:
-            $ref: '#/components/schemas/InquiryPayEquity'
-        application/xml:
           schema:
             $ref: '#/components/schemas/InquiryPayEquity'
     '202':
