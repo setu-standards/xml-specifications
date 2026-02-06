@@ -1,0 +1,12 @@
+type: object
+description: A condition based on time or an event. 
+required:
+  - conditionType
+  - occurrence
+properties:
+  conditionType:
+    type: string
+    const: Occurrence
+  occurrence:
+    description: Specification of the occurrence.
+    $ref: ./../occurrence.yaml

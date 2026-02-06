@@ -1,0 +1,40 @@
+type: object
+description: Condition based on the duration of employment of the employee.
+required:
+  - conditionType
+  - operator
+  - duration
+  - referenceDateType
+properties:
+  conditionType:
+    type: string
+    const: EmploymentDuration
+  operator:
+    $ref: ./operators.yaml
+  duration:
+    type: string
+    description: Duration of the employment expressed according to ISO 8601-1 duration format.
+  referenceDateType:
+    type: string
+    description: Which start date type of the employment to consider for determining the duration.
+    enum: 
+      - SeniorityDate         # Startdatum anciënniteit/dienstjaren
+      - HireDate              # Indiensttreding
+      - ContractStartDate     # Vanaf start huidige contract
+      - AssignmentStartDate   # Startdatum huidige opdracht
+examples:
+  # Example: Employment duration of 2 years or more since hire date
+  - conditionType: EmploymentDuration
+    operator: gte
+    duration: P2Y
+    referenceDateType: HireDate
+  # Example: Employment duration of less than 6 months since start of current contract
+  - conditionType: EmploymentDuration
+    operator: lt
+    duration: P6M
+    referenceDateType: ContractStartDate
+  # Example: Employment duration of exactly 12,5 years since seniority date
+  - conditionType: EmploymentDuration
+    operator: eq
+    duration: P12Y6M
+    referenceDateType: SeniorityDate

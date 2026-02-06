@@ -1,0 +1,32 @@
+type: object
+description: Condition based on salary scale and optionally step within that scale.
+required:
+  - conditionType
+  - operator
+  - salaryScale
+properties:
+  conditionType:
+    type: string
+    const: SalaryScale
+  operator:
+    $ref: ./operators.yaml
+  salaryScale:
+    type: string
+    description: |-
+      Reference to name of the salary scale (e.g. 'FWG-10' of 'Schaal 10').
+      Must match value in element 'Inquiry Pay Equity/remuneration/salary scale/name'
+  step:
+    type: string
+    description: |-
+      Optional reference to the name of the step within the scale (e.g. 'Trede 5').
+      Must match value in element 'Inquiry Pay Equity/remuneration/salary scale/salary step/name'
+examples:
+  # Example: Salary scale FWG-10, step Trede 5 or higher
+  - conditionType: SalaryScale
+    operator: gte
+    salaryScale: FWG-10
+    step: Trede 5
+  # Example: Salary scale FWG-11, any step
+  - conditionType: SalaryScale
+    operator: eq
+    salaryScale: FWG-11

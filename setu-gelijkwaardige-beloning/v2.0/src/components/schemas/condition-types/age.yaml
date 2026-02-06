@@ -1,0 +1,25 @@
+type: object
+description: Condition based on age of the employee. The unit is always in years. Decimals are allowed (e.g. 18.5 years).
+required:
+  - conditionType
+  - operator
+  - age
+properties:
+  conditionType:
+    type: string
+    const: Age
+  operator:
+    $ref: ./operators.yaml
+  age:
+    type: number
+    description: |-
+      The age of the employee in years. The unit is always in years. Decimals are allowed (e.g. 18.5 years).
+examples:
+  # Example: Age 18 years or older
+  - conditionType: Age
+    operator: gte
+    age: 18
+  # Example: Age less than 30 years
+  - conditionType: Age
+    operator: lt
+    age: 30

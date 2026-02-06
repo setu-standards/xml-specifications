@@ -1,0 +1,18 @@
+type: object
+description: A textual condition. Only use this one when a condition cannot be specified by means of the other condition types.
+required:
+  - conditionType
+  - description
+properties:
+  conditionType:
+    type: string
+    const: Text
+  description:
+    type: string
+    description: Full specification of the condition in natural language.
+examples:
+  # Example: Condition specified in text
+  - conditionType: Text
+    description: Employee has completed a training program on workplace safety.
+  - conditionType: Text
+    description: Employee is eligible for a bonus if the company meets its annual revenue targets.

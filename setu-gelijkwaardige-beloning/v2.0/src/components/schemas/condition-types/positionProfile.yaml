@@ -1,0 +1,37 @@
+type: object
+description: Condition based on salary scale and optionally step within that scale.
+required:
+  - conditionType
+  - operator
+  - positionProfileIds
+properties:
+  conditionType:
+    type: string
+    const: PositionProfile
+  operator:
+    allOf:
+      - $ref: ./operators.yaml
+      - enum:
+          - in # restrict to 'in' operator only. This covers the use case of 'eq' as well.
+  positionProfileIds:
+    type: array
+    description: |-
+      List of position profiles to compare against. The condition is met when the employee's position profile
+      matches any of the position profiles in this list.
+    items:
+      type: string
+      description: |-
+        Reference to the identifier of the position profile.
+        Must match value in element 'Inquiry Pay Equity/position profile/position id /value'.
+examples:
+  # Example: Position profile is either 'Manager' or 'Team Lead'
+  - conditionType: PositionProfile
+    operator: in
+    positionProfileIds:
+      - Manager
+      - TeamLead
+  # Example: Position profile by UUID
+  - conditionType: PositionProfile
+    operator: in
+    positionProfileIds:
+      - 3b336865-0155-435b-8706-f3bf4e6bd953

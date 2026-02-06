@@ -1,0 +1,12 @@
+type: object
+description: Base type for occurrences with different occurrence types.
+oneOf:
+  - $ref: ./occurrence-types/single.yaml
+  - $ref: ./occurrence-types/recurring.yaml
+  - $ref: ./occurrence-types/relative.yaml
+discriminator:
+  propertyName: occurrenceType
+  mapping:
+    Single: ./occurrence-types/single.yaml
+    Recurring: ./occurrence-types/recurring.yaml
+    Relative: ./occurrence-types/relative.yaml

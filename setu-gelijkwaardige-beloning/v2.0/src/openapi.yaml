@@ -1,0 +1,221 @@
+openapi: 3.1.0
+info:
+  title: SETU API for Inquiry Pay Equity
+  version: 2.0.0-draft.3
+  description: |-
+    Set of API specifications that allows for exchange of information related to the equal pay of flexworkers.
+    Moreover, the API allows to exchange information regarding salarishuizen, toeslagen regelen, en andere regelingen die van toepassing zijn op 1 of meerdere functies.
+
+    # Models
+    ## Inquiry Pay Equity
+    <SchemaDefinition schemaRef="#/components/schemas/InquiryPayEquity" />
+
+    ## Condition
+    <SchemaDefinition schemaRef="#/components/schemas/condition" />
+    
+    ## Occurence
+    <SchemaDefinition schemaRef="#/components/schemas/occurrence" />
+  license:
+    name: MIT
+externalDocs:
+  description: More about SETU
+  url: https://www.setu.nl
+
+tags:
+  - name: "Inquiry Pay Equity"
+    description: Set of APIs for exchanging pay equity information.
+  - name: "Scenario 1 | Supplier backoffice APIs"
+    description: Set of APIs to be implemented by the backoffice of the supplier.
+  - name: "Scenario 2 | Supplier backoffice APIs"
+    description: Set of APIs to be implemented by the backoffice of the supplier.
+  - name: "Inquiry Pay Equity request"
+    description: "TO BE DEVELOPED"
+
+paths:
+  /inquiry-pay-equity/{id}:
+    put:
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Submit or update an inquiry-pay-equity message. In case of an update, the request body replaces all previous shared information of the resource. 
+      parameters:
+        - $ref: '#/components/parameters/ResourceIdentifier'
+        - $ref: '#/components/parameters/VersionId'
+        - $ref: '#/components/parameters/ContentType'
+      requestBody:
+        description: |
+          Complete inquiry-pay-equity message as specified by SETU.
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InquiryPayEquity'
+      responses:
+        '200':
+          $ref: '#/components/responses/200'
+        '201':
+          $ref: '#/components/responses/201'
+        '204':
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        
+    get:
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Get the information about an existing inquiry-pay-equity message
+      parameters:
+        - $ref: '#/components/parameters/ResourceIdentifier'
+        - $ref: '#/components/parameters/ContentType'
+      responses:
+        '200':
+          description: OK | The inquiry-pay-equity (as submitted in the request body)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InquiryPayEquity'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+        
+    delete:
+      tags: ["Inquiry Pay Equity", "Scenario 1 | Supplier backoffice APIs", "Scenario 2 | Supplier backoffice APIs" ]
+      summary: Remove an existing inquiry-pay-equity
+      parameters:
+        - in: path
+          name: id
+          description: The resource identifier of the inquiry-pay-equity as a whole
+          required: true
+          schema:
+            type: string
+          example: 049b4540-620f-434a-bfd1-d09f9e8cdc8c
+      responses:
+        '204': 
+          $ref: '#/components/responses/204'
+        '400':
+          $ref: '#/components/responses/400'
+        '401':
+          $ref: '#/components/responses/401'
+        '403':
+          $ref: '#/components/responses/403'
+        '404':
+          $ref: '#/components/responses/404'
+        '500':
+          $ref: '#/components/responses/500'
+
+components:
+  schemas:
+    InquiryPayEquity:
+      $ref: ./components/schemas/InquiryPayEquity.yaml
+    error-object:
+      type: object
+      properties:
+        code:
+          type: string
+        description:
+          type: string
+  headers:
+    Date: 
+      description: This is the date assigned by the API server to the created resource. 
+      schema:
+        type: string
+        example: Tue, 29 Oct 2024 16:56:32 GMT. Format:<day-name>, <day> <month> <year> <hour>:<minute>:<second> GMT
+    Location:
+      description: This is the resource identifier assigned by the API client. This is the identifier specified in the path of this operation request.
+      schema:
+        type: string
+        example: /inquiry-pay-equity/{ID} | /inquiry-pay-equity/c93efb20-1acd-447b-87e7-fadb108d8a0e
+  parameters:
+    VersionId:
+      in: header
+      name: setuVersionId
+      required: true
+      schema:
+        type: string
+        example: "2.0"
+      description: Specification of the SETU standard version that is used as body message.
+    ContentType:
+      in: header
+      name: Content-Type
+      required: true
+      schema:
+        type: string
+        example: application/json
+        enum:
+          - application/json
+    ResourceIdentifier:
+          name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            example: c93efb20-1acd-447b-87e7-fadb108d8a0e
+          description: This is the resource identifier assigned by the API client to the created resource.  This is the id parameter used in path operations, for GET, PUT and DELETE operations.
+  responses:
+    '200':
+      description: OK | The updated inquiry-pay-equity (as submitted in the request body)
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InquiryPayEquity'
+    '201':
+      description: 201 Created | The created inquiry-pay-equity (as submitted in the request body)
+      headers:
+        Date:
+          $ref: '#/components/headers/Date'
+        Location:
+          $ref: '#/components/headers/Location'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/InquiryPayEquity'
+    '202':
+      description: Accepted. Successful request, resource is not (yet) created. This response code is not supported by the SETU (asynchronous)
+      content:
+        application/json:
+          schema:
+            type: object
+            description: No content
+    '204':
+      description: The inquiry-pay-equity is succesfully removed
+    '400':
+      description: 400 Bad request | The request is invalid. E.g. due to syntax error or invalid response body
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error-object'
+    '401':
+      description: 401 Unauthorized | The request lacks valid authentication credentials for the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error-object'
+    '403':
+      description: 403 Forbidden | The request was valid, but the server is refusing action. The client may not be authorized for the resource
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error-object'
+    '404':
+      description: 404 Not found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error-object'
+    '500':
+      description: 500 Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/error-object'
