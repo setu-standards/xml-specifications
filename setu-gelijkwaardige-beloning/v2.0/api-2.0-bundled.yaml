@@ -1647,6 +1647,31 @@ components:
           description: Employee has completed a training program on workplace safety.
         - conditionType: Text
           description: Employee is eligible for a bonus if the company meets its annual revenue targets.
+    condition:
+      type: object
+      description: Abstract condition object. Can be used to include different concrete condition types based on 'conditionType' discriminator property.
+      oneOf:
+        - $ref: '#/components/schemas/age'
+        - $ref: '#/components/schemas/employmentDuration'
+        - $ref: '#/components/schemas/occurrence-2'
+        - $ref: '#/components/schemas/positionProfile'
+        - $ref: '#/components/schemas/salaryScale'
+        - $ref: '#/components/schemas/text'
+        - $ref: '#/components/schemas/allOf'
+        - $ref: '#/components/schemas/anyOf'
+        - $ref: '#/components/schemas/not'
+      discriminator:
+        propertyName: conditionType
+        mapping:
+          Age: '#/components/schemas/age'
+          EmploymentDuration: '#/components/schemas/employmentDuration'
+          Occurence: '#/components/schemas/occurrence-2'
+          PositionProfile: '#/components/schemas/positionProfile'
+          SalaryScale: '#/components/schemas/salaryScale'
+          Text: '#/components/schemas/text'
+          AllOf: '#/components/schemas/allOf'
+          AnyOf: '#/components/schemas/anyOf'
+          Not: '#/components/schemas/not'
     allOf:
       type: object
       description: Combition of conditions that ALL must evaluate to true
@@ -1661,7 +1686,7 @@ components:
           type: array
           minItems: 1
           items:
-            - $ref: ./../../condition.yaml
+            $ref: '#/components/schemas/condition'
       examples:
         - conditionType: AllOf
           conditions:
@@ -1697,7 +1722,7 @@ components:
           type: array
           minItems: 1
           items:
-            - $ref: ./../../condition.yaml
+            $ref: '#/components/schemas/condition'
       examples:
         - conditionType: AnyOf
           conditions:
@@ -1730,7 +1755,7 @@ components:
           type: string
           const: Not
         condition:
-          - $ref: ./../../condition.yaml
+          $ref: '#/components/schemas/condition'
       examples:
         - conditionType: Not
           condition:
@@ -1743,31 +1768,6 @@ components:
             operator: gte
             salaryScale: FWG-10
             step: Trede 5
-    condition:
-      type: object
-      description: Abstract condition object. Can be used to include different concrete condition types based on 'conditionType' discriminator property.
-      oneOf:
-        - $ref: '#/components/schemas/age'
-        - $ref: '#/components/schemas/employmentDuration'
-        - $ref: '#/components/schemas/occurrence-2'
-        - $ref: '#/components/schemas/positionProfile'
-        - $ref: '#/components/schemas/salaryScale'
-        - $ref: '#/components/schemas/text'
-        - $ref: '#/components/schemas/allOf'
-        - $ref: '#/components/schemas/anyOf'
-        - $ref: '#/components/schemas/not'
-      discriminator:
-        propertyName: conditionType
-        mapping:
-          Age: '#/components/schemas/age'
-          EmploymentDuration: '#/components/schemas/employmentDuration'
-          Occurence: '#/components/schemas/occurrence-2'
-          PositionProfile: '#/components/schemas/positionProfile'
-          SalaryScale: '#/components/schemas/salaryScale'
-          Text: '#/components/schemas/text'
-          AllOf: '#/components/schemas/allOf'
-          AnyOf: '#/components/schemas/anyOf'
-          Not: '#/components/schemas/not'
     IkbReferenceType:
       description: 'Container element to refer how a renumeration element connects to the IKB (EN: Individual Choice Budget)'
       required:

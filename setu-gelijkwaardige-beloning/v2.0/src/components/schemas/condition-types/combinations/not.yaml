@@ -8,7 +8,7 @@ properties:
     type: string
     const: Not
   condition:
-    - $ref: ./../../condition.yaml
+    $ref: ./../../condition.yaml
 examples:
   # Example: Not age 18 years or older (i.e., under 18). Can of course also be expressed as age less than 18.
   - conditionType: Not
