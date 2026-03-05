@@ -16,6 +16,7 @@ info:
     ## Occurrence
     <SchemaDefinition schemaRef="#/components/schemas/occurrence" />
   license:
+    identifier: MIT
     name: MIT
 externalDocs:
   description: More about SETU
