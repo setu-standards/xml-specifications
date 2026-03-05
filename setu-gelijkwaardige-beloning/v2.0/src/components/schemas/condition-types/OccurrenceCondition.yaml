@@ -9,4 +9,4 @@ properties:
     const: Occurrence
   occurrence:
     description: Specification of the occurrence.
-    $ref: ./../occurrence.yaml
+    $ref: ./../Occurrence.yaml

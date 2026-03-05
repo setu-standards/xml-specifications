@@ -11,10 +11,10 @@ info:
     <SchemaDefinition schemaRef="#/components/schemas/InquiryPayEquity" />
 
     ## Condition
-    <SchemaDefinition schemaRef="#/components/schemas/condition" />
+    <SchemaDefinition schemaRef="#/components/schemas/Condition" />
     
     ## Occurrence
-    <SchemaDefinition schemaRef="#/components/schemas/occurrence" />
+    <SchemaDefinition schemaRef="#/components/schemas/Occurrence" />
   license:
     identifier: MIT
     name: MIT

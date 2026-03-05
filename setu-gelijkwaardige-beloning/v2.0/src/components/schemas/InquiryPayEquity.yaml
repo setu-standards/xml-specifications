@@ -1175,7 +1175,7 @@ definitions:
     type: string
     format: date
   Condition:
-    $ref: "./condition.yaml"
+    $ref: "./Condition.yaml"
   IntervalCode:
     type: string
     enum:
@@ -1217,7 +1217,7 @@ definitions:
   PersonName-formattedNameDatatype:
     type: string
   Occurrence:
-    $ref: "./occurrence.yaml"
+    $ref: "./Occurrence.yaml"
   TimeDatatype:
     type: string
     format: time

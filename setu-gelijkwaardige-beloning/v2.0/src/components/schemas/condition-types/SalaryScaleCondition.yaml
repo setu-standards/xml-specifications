@@ -9,7 +9,7 @@ properties:
     type: string
     const: SalaryScale
   operator:
-    $ref: ./operators.yaml
+    $ref: ./Operators.yaml
   salaryScale:
     type: string
     description: |-
