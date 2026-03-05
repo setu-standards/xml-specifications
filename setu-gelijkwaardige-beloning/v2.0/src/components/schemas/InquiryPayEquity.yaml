@@ -1150,10 +1150,27 @@ definitions:
     type: object
   BaseDefinitionCode:
     type: string
+    enum:
+      - GrossSalary
+      - UsualWage
+      - BaseWage
+      - SocialInsuranceWage
+      - HolidayAllowance
+      - Pension
+      - SickPay
+      - 13thMonth
   IdValue:
     type: string
   BaseUnitCode:
     type: string
+    enum:
+      - HourlyRate
+      - DailyRate
+      - FourWeeklyRate
+      - MonthlyRate
+      - YearlyRate
+      - Expense
+      - Fixed
   DateDatatype:
     type: string
     format: date
@@ -1161,8 +1178,25 @@ definitions:
     $ref: "./condition.yaml"
   IntervalCode:
     type: string
+    enum:
+      - Shift
+      - Day
+      - Week
+      - DayPart
+      - Night
+      - WorkedDay
+      - WeeklyTravelDay
+      - Route
+      - Kilometer
+      - OnExpenseBasis
   AmountUnitCode:
     type: string
+    enum:
+      - Hour
+      - Percentage
+      - Euro
+      - SalaryStep
+      - Day
   SchemeAgencyId:
     enum:
       - Customer
@@ -1170,6 +1204,9 @@ definitions:
     type: string
   ContributionSource:
     type: string
+    enum:
+      - Employee
+      - Employer
   IntervalHourDayUnitCode:
     enum:
       - Day
@@ -1196,9 +1233,64 @@ definitions:
     type: string
   AllowanceCode:
     type: string
+    enum:
+      - EA100
+      - EA101
+      - EA102
+      - EA103
+      - EA105
+      - EA107
+      - EA108
+      - EA109
+      - EA110
+      - EA111
+      - EA112
+      - EA113
+      - EA201
+      - EA202
+      - EA203
+      - EA204
+      - EA300
+      - EA301
+      - EA302
+      - EA600
+      - EA602
+      - EA603
+      - EA604
+      - EA605
+      - EA606
+      - EA607
+      - EA608
+      - EA609
+      - EA610
+      - EA801
+      - EA802
+      - EA803
+      - EA903
+      - EA910
   PhoneTypeArray-formattedNumberDatatype:
     type: string
   SupplementaryArrangementCode:
     type: string
+    enum:
+      - ERA
+      - Generationpact
+      - AccidentBenefit
+      - PAWW
+      - PAZW
+      - RVU
+      - WGA
   SustainabilityCode:
     type: string
+    enum:
+      - ArrangementForFinancialHealth
+      - ArrangementForHealth
+      - ArrangementForMentalHealth
+      - CareerCoaching
+      - Education
+      - InformationProvision
+      - Other
+      - OutplacementPrograms
+      - SocialSupport
+      - SustainableSociety
+      - VitalityBudget
