@@ -13,7 +13,7 @@ info:
     ## Condition
     <SchemaDefinition schemaRef="#/components/schemas/condition" />
     
-    ## Occurence
+    ## Occurrence
     <SchemaDefinition schemaRef="#/components/schemas/occurrence" />
   license:
     name: MIT

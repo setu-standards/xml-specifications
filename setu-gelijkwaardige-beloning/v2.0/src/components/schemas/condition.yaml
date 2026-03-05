@@ -21,7 +21,7 @@ discriminator:
     # Structured condition types
     Age: ./condition-types/ageCondition.yaml
     EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
-    Occurence: ./condition-types/occurrenceCondition.yaml
+    Occurrence: ./condition-types/occurrenceCondition.yaml
     PositionProfile: ./condition-types/positionProfileCondition.yaml
     SalaryScale: ./condition-types/salaryScaleCondition.yaml
     # Textual condition type (to be used when no other type fits)
