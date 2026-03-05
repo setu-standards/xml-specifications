@@ -4,29 +4,29 @@ description: >-
   based on 'conditionType' discriminator property.
 oneOf:
   # Structured condition types
-  - $ref: ./condition-types/age.yaml
-  - $ref: ./condition-types/employmentDuration.yaml
-  - $ref: ./condition-types/occurrence.yaml
-  - $ref: ./condition-types/positionProfile.yaml
-  - $ref: ./condition-types/salaryScale.yaml
+  - $ref: ./condition-types/ageCondition.yaml
+  - $ref: ./condition-types/employmentDurationCondition.yaml
+  - $ref: ./condition-types/occurrenceCondition.yaml
+  - $ref: ./condition-types/positionProfileCondition.yaml
+  - $ref: ./condition-types/salaryScaleCondition.yaml
   # Textual condition type (to be used when no other type fits)
-  - $ref: ./condition-types/text.yaml
+  - $ref: ./condition-types/textCondition.yaml
   # Combination types
-  - $ref: ./condition-types/combinations/allOf.yaml
-  - $ref: ./condition-types/combinations/anyOf.yaml
-  - $ref: ./condition-types/combinations/not.yaml
+  - $ref: ./condition-types/combinations/allOfCondition.yaml
+  - $ref: ./condition-types/combinations/anyOfCondition.yaml
+  - $ref: ./condition-types/combinations/notCondition.yaml
 discriminator:
   propertyName: conditionType
   mapping:
     # Structured condition types
-    Age: ./condition-types/age.yaml
-    EmploymentDuration: ./condition-types/employmentDuration.yaml
-    Occurence: ./condition-types/occurrence.yaml
-    PositionProfile: ./condition-types/positionProfile.yaml
-    SalaryScale: ./condition-types/salaryScale.yaml
+    Age: ./condition-types/ageCondition.yaml
+    EmploymentDuration: ./condition-types/employmentDurationCondition.yaml
+    Occurence: ./condition-types/occurrenceCondition.yaml
+    PositionProfile: ./condition-types/positionProfileCondition.yaml
+    SalaryScale: ./condition-types/salaryScaleCondition.yaml
     # Textual condition type (to be used when no other type fits)
-    Text: ./condition-types/text.yaml
+    Text: ./condition-types/textCondition.yaml
     # Combination types
-    AllOf: ./condition-types/combinations/allOf.yaml
-    AnyOf: ./condition-types/combinations/anyOf.yaml
-    Not: ./condition-types/combinations/not.yaml
+    AllOf: ./condition-types/combinations/allOfCondition.yaml
+    AnyOf: ./condition-types/combinations/anyOfCondition.yaml
+    Not: ./condition-types/combinations/notCondition.yaml
