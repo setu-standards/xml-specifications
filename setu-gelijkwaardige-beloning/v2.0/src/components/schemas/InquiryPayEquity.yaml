@@ -1158,7 +1158,7 @@ definitions:
     type: string
     format: date
   Condition:
-    type: string
+    $ref: "./condition.yaml"
   IntervalCode:
     type: string
   AmountUnitCode:
@@ -1180,7 +1180,7 @@ definitions:
   PersonName-formattedNameDatatype:
     type: string
   Occurrence:
-    type: string
+    $ref: "./occurrence.yaml"
   TimeDatatype:
     type: string
     format: time
