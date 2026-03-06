@@ -10,7 +10,7 @@ properties:
     type: string
     const: EmploymentDuration
   operator:
-    $ref: ./operators.yaml
+    $ref: ./Operators.yaml
   duration:
     type: string
     description: Duration of the employment expressed according to ISO 8601-1 duration format.

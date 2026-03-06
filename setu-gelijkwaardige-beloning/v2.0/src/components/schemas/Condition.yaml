@@ -1,0 +1,32 @@
+type: object
+description: >-
+  Abstract condition object. Can be used to include different concrete condition types
+  based on 'conditionType' discriminator property.
+oneOf:
+  # Structured condition types
+  - $ref: ./condition-types/AgeCondition.yaml
+  - $ref: ./condition-types/EmploymentDurationCondition.yaml
+  - $ref: ./condition-types/OccurrenceCondition.yaml
+  - $ref: ./condition-types/PositionProfileCondition.yaml
+  - $ref: ./condition-types/SalaryScaleCondition.yaml
+  # Textual condition type (to be used when no other type fits)
+  - $ref: ./condition-types/TextCondition.yaml
+  # Combination types
+  - $ref: ./condition-types/combinations/AllOfCondition.yaml
+  - $ref: ./condition-types/combinations/AnyOfCondition.yaml
+  - $ref: ./condition-types/combinations/NotCondition.yaml
+discriminator:
+  propertyName: conditionType
+  mapping:
+    # Structured condition types
+    Age: ./condition-types/AgeCondition.yaml
+    EmploymentDuration: ./condition-types/EmploymentDurationCondition.yaml
+    Occurrence: ./condition-types/OccurrenceCondition.yaml
+    PositionProfile: ./condition-types/PositionProfileCondition.yaml
+    SalaryScale: ./condition-types/SalaryScaleCondition.yaml
+    # Textual condition type (to be used when no other type fits)
+    Text: ./condition-types/TextCondition.yaml
+    # Combination types
+    AllOf: ./condition-types/combinations/AllOfCondition.yaml
+    AnyOf: ./condition-types/combinations/AnyOfCondition.yaml
+    Not: ./condition-types/combinations/NotCondition.yaml

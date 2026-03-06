@@ -1,37 +1,37 @@
 type: object
-description: Combition of conditions that ALL must evaluate to true
+description: Combition of conditions where at least one must evaluate to true
 required:
   - conditionType
   - conditions
 properties:
   conditionType:
     type: string
-    const: AllOf
+    const: AnyOf
   conditions:
     type: array
     minItems: 1
     items:
-      $ref: ./../../condition.yaml
+      $ref: ./../../Condition.yaml
 examples:
-  # Example: Age 18 or older AND Salary scale FWG-10 step 5 or higher
-  - conditionType: AllOf
+  # Example: Age less than 18 years OR Salary scale less than FWG-10 step 5
+  - conditionType: AnyOf
     conditions:
       - conditionType: Age
-        operator: gte
+        operator: lt
         age: 18
       - conditionType: SalaryScale
-        operator: gte
+        operator: lt
         salaryScale: FWG-10
         step: Trede 5
-  # Example: Employment duration at least 2 years AND Occurrence on or after last evaluation date
-  - conditionType: AllOf
+  # Example: Employment duration less than 2 years OR Occurrence before last evaluation date
+  - conditionType: AnyOf
     conditions:
       - conditionType: EmploymentDuration
-        operator: gte
+        operator: lt
         duration: P2Y
         referenceDateType: HireDate
       - conditionType: Occurrence
         occurrence:
           type: Relative
           event: EvaluationDate
-          offset: PT0S # No offset, i.e., on the evaluation
+          offset: PT0S # No offset, i.e., on or before the evaluation date
