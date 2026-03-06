@@ -619,6 +619,10 @@ components:
             relationType:
               description: 'Provides the relationship between the line element and the IKB. '
               type: string
+              enum:
+                - Included
+                - OnTop
+                - None
             id:
               description: The unique identifier that references a specific arrangement or a specific rule within an arrangement.
               required:
@@ -1318,16 +1322,25 @@ components:
         IntervalCode:
           type: string
           enum:
-            - Shift
             - Day
-            - Week
             - DayPart
-            - Night
-            - WorkedDay
-            - WeeklyTravelDay
-            - Route
+            - Hour
+            - Item
             - Kilometer
+            - Month
+            - Night
+            - Once
             - OnExpenseBasis
+            - Quarter
+            - Relocation
+            - Route
+            - Shift
+            - Trip
+            - Week
+            - WeeklyTravelDay
+            - WorkedDay
+            - WorkFromHomeDay
+            - Year
         AmountUnitCode:
           type: string
           enum:
@@ -1407,6 +1420,36 @@ components:
             - EA803
             - EA903
             - EA910
+            - HT100
+            - HT101
+            - HT102
+            - HT200
+            - HT201
+            - HT202
+            - HT210
+            - HT211
+            - HT300
+            - HT301
+            - HT302
+            - HT310
+            - HT311
+            - HT320
+            - HT321
+            - HT322
+            - HT330
+            - HT331
+            - HT340
+            - HT400
+            - HT500
+            - HT501
+            - HT600
+            - HT601
+            - HT602
+            - HT700
+            - HT701
+            - HT702
+            - HT703
+            - HT800
         PhoneTypeArray-formattedNumberDatatype:
           type: string
         SupplementaryArrangementCode:
@@ -1443,16 +1486,25 @@ components:
     IntervalCode:
       type: string
       enum:
-        - Shift
         - Day
-        - Week
         - DayPart
-        - Night
-        - WorkedDay
-        - WeeklyTravelDay
-        - Route
+        - Hour
+        - Item
         - Kilometer
+        - Month
+        - Night
+        - Once
         - OnExpenseBasis
+        - Quarter
+        - Relocation
+        - Route
+        - Shift
+        - Trip
+        - Week
+        - WeeklyTravelDay
+        - WorkedDay
+        - WorkFromHomeDay
+        - Year
     IdValue:
       type: string
     Id:
@@ -1976,6 +2028,10 @@ components:
         relationType:
           description: 'Provides the relationship between the line element and the IKB. '
           type: string
+          enum:
+            - Included
+            - OnTop
+            - None
         id:
           description: The unique identifier that references a specific arrangement or a specific rule within an arrangement.
           required:
@@ -2467,6 +2523,36 @@ components:
         - EA803
         - EA903
         - EA910
+        - HT100
+        - HT101
+        - HT102
+        - HT200
+        - HT201
+        - HT202
+        - HT210
+        - HT211
+        - HT300
+        - HT301
+        - HT302
+        - HT310
+        - HT311
+        - HT320
+        - HT321
+        - HT322
+        - HT330
+        - HT331
+        - HT340
+        - HT400
+        - HT500
+        - HT501
+        - HT600
+        - HT601
+        - HT602
+        - HT700
+        - HT701
+        - HT702
+        - HT703
+        - HT800
     CollectiveLabourAgreement:
       description: Information about the collective labour agreement (CLA; CAO in Dutch) that determines the renumeration. In the Netherlands this can be the CLA of the ABU, NBBU or a specific CLA of the staffing customer.
       required:
