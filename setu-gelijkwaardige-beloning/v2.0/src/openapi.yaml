@@ -1,7 +1,7 @@
 openapi: 3.1.0
 info:
   title: SETU API for Inquiry Pay Equity
-  version: 2.0.0-rc.1
+  version: 2.0.0
   description: |-
     Set of API specifications that allows for exchange of information related to the equal pay of flexworkers.
     Moreover, the API allows to exchange information regarding salarishuizen, toeslagen regelen, en andere regelingen die van toepassing zijn op 1 of meerdere functies.
