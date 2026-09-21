@@ -250,6 +250,8 @@ properties:
               type: object
             roleCode:
               type: string
+            positionTitle:
+              type: string
           type: object
         type: array
     type: object
