@@ -840,136 +840,57 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="positionProfile" minOccurs="0">
+        <xs:element name="positionLocation" minOccurs="0">
           <xs:annotation>
             <xs:documentation>
-              <sth:definition>Information concerning the position profile the timecard applies to.</sth:definition>
+              <sth:definition>The work location of a position.</sth:definition>
             </xs:documentation>
           </xs:annotation>
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="positionLocation">
+              <xs:element name="id" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
-                    <sth:definition>The work location of a position.</sth:definition>
+                    <sth:definition>Identifier of the location.</sth:definition>
                   </xs:documentation>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="id" minOccurs="0" maxOccurs="2">
+                    <xs:element name="value">
                       <xs:annotation>
                         <xs:documentation>
-                          <sth:definition>Identifier of the location.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="value">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The value of the unique identifier.</sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string"/>
-                            </xs:simpleType>
-                          </xs:element>
-                          <xs:element name="schemeAgencyId">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                            <xs:simpleType>
-                              <xs:restriction base="xs:string">
-                                <xs:enumeration value="Customer"/>
-                                <xs:enumeration value="Supplier"/>
-                              </xs:restriction>
-                            </xs:simpleType>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="name">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The name of the work location.</sth:definition>
+                          <sth:definition>The value of the unique identifier.</sth:definition>
                         </xs:documentation>
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string"/>
                       </xs:simpleType>
                     </xs:element>
-                    <xs:element name="countryCode" minOccurs="0">
+                    <xs:element name="schemeAgencyId">
                       <xs:annotation>
                         <xs:documentation>
-                          <sth:definition>The country, represented by an ISO 3166 2 letter code.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="value" type="xs:string">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The country value, represented by an ISO 3166 2 letter code.</sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="city" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The city.</sth:definition>
+                          <sth:definition>The organization that issues the identifier. This organization is also responsible for unicity of the identifier within its own context.</sth:definition>
                         </xs:documentation>
                       </xs:annotation>
                       <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="postalCode" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The postal code, e.g. 1234AB.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="streetName" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The street name of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="houseNumber" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The house number of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="houseNumberAddition" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The additional house number of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value="Customer"/>
+                          <xs:enumeration value="Supplier"/>
+                        </xs:restriction>
                       </xs:simpleType>
                     </xs:element>
                   </xs:sequence>
                 </xs:complexType>
+              </xs:element>
+              <xs:element name="name">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The name of the work location.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
               </xs:element>
             </xs:sequence>
           </xs:complexType>
@@ -1318,15 +1239,7 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="positionProfile" minOccurs="0">
-          <xs:annotation>
-            <xs:documentation>
-              <sth:definition>Information concerning the position profile the timecard applies to.</sth:definition>
-            </xs:documentation>
-          </xs:annotation>
-          <xs:complexType>
-            <xs:sequence>
-              <xs:element name="positionLocation">
+              <xs:element name="positionLocation" minOccurs="0">
                 <xs:annotation>
                   <xs:documentation>
                     <sth:definition>The work location of a position.</sth:definition>
@@ -1334,7 +1247,7 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                 </xs:annotation>
                 <xs:complexType>
                   <xs:sequence>
-                    <xs:element name="id" minOccurs="0" maxOccurs="2">
+                    <xs:element name="id" minOccurs="0">
                       <xs:annotation>
                         <xs:documentation>
                           <sth:definition>Identifier of the location.</sth:definition>
@@ -1378,80 +1291,9 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                         <xs:restriction base="xs:string"/>
                       </xs:simpleType>
                     </xs:element>
-                    <xs:element name="countryCode" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The country, represented by an ISO 3166 2 letter code.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:complexType>
-                        <xs:sequence>
-                          <xs:element name="value" type="xs:string">
-                            <xs:annotation>
-                              <xs:documentation>
-                                <sth:definition>The country value, represented by an ISO 3166 2 letter code.</sth:definition>
-                              </xs:documentation>
-                            </xs:annotation>
-                          </xs:element>
-                        </xs:sequence>
-                      </xs:complexType>
-                    </xs:element>
-                    <xs:element name="city" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The city.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="postalCode" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The postal code, e.g. 1234AB.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="streetName" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The street name of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="houseNumber" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The house number of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
-                    <xs:element name="houseNumberAddition" minOccurs="0">
-                      <xs:annotation>
-                        <xs:documentation>
-                          <sth:definition>The additional house number of the address.</sth:definition>
-                        </xs:documentation>
-                      </xs:annotation>
-                      <xs:simpleType>
-                        <xs:restriction base="xs:string"/>
-                      </xs:simpleType>
-                    </xs:element>
                   </xs:sequence>
                 </xs:complexType>
               </xs:element>
-            </xs:sequence>
-          </xs:complexType>
-        </xs:element>
               <xs:element name="customerSpecificRequirements" minOccurs="0" type="xs:string">
                 <xs:annotation>
                   <xs:documentation>
