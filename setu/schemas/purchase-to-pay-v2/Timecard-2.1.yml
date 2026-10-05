@@ -357,54 +357,27 @@ properties:
             type: string
         type: object
     type: object
-  positionProfile:
+  positionLocation:
     required:
-      - positionLocation
+      - name
     additionalProperties: false
     properties:
-      positionLocation:
+      id:
         required:
-          - name
+          - value
+          - schemeAgencyId
         additionalProperties: false
         properties:
-          id:
-            items:
-              required:
-                - value
-                - schemeAgencyId
-              additionalProperties: false
-              properties:
-                value:
-                  type: string
-                schemeAgencyId:
-                  enum:
-                    - Customer
-                    - Supplier
-                  type: string
-              type: object
-            maxItems: 2
-            type: array
-          name:
+          value:
             type: string
-          countryCode:
-            required:
-              - value
-            additionalProperties: false
-            properties:
-              value:
-                type: string
-            type: object
-          city:
-            type: string
-          postalCode:
-            type: string
-          streetName:
-            type: string
-          houseNumber:
-            type: string
-          houseNumberAddition:
+          schemeAgencyId:
+            enum:
+              - Customer
+              - Supplier
             type: string
         type: object
+      name:
+        type: string
     type: object
   timeInterval:
     items:
@@ -546,54 +519,27 @@ properties:
             - Home
             - Office
           type: string
-        positionProfile:
+        positionLocation:
           required:
-            - positionLocation
+            - name
           additionalProperties: false
           properties:
-            positionLocation:
+            id:
               required:
-                - name
+                - value
+                - schemeAgencyId
               additionalProperties: false
               properties:
-                id:
-                  items:
-                    required:
-                      - value
-                      - schemeAgencyId
-                    additionalProperties: false
-                    properties:
-                      value:
-                        type: string
-                      schemeAgencyId:
-                        enum:
-                          - Customer
-                          - Supplier
-                        type: string
-                    type: object
-                  maxItems: 2
-                  type: array
-                name:
+                value:
                   type: string
-                countryCode:
-                  required:
-                    - value
-                  additionalProperties: false
-                  properties:
-                    value:
-                      type: string
-                  type: object
-                city:
-                  type: string
-                postalCode:
-                  type: string
-                streetName:
-                  type: string
-                houseNumber:
-                  type: string
-                houseNumberAddition:
+                schemeAgencyId:
+                  enum:
+                    - Customer
+                    - Supplier
                   type: string
               type: object
+            name:
+              type: string
           type: object
         customerSpecificRequirements:
           type: string
