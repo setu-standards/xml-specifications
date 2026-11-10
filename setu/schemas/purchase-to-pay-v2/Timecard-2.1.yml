@@ -378,6 +378,28 @@ properties:
         type: object
       name:
         type: string
+      countryCode:
+        required:
+          - value
+        additionalProperties: false
+        properties:
+          value:
+            type: string
+        type: object
+      city:
+        type: string
+      postalCode:
+        type: string
+      streetName:
+        type: string
+      houseNumber:
+        type: string
+      houseNumberAddition:
+        type: string
+      buildingAddition:
+        type: string
+      primaryLocation:
+        type: boolean
     type: object
   timeInterval:
     items:
@@ -540,8 +562,30 @@ properties:
               type: object
             name:
               type: string
+            countryCode:
+              required:
+                - value
+              additionalProperties: false
+              properties:
+                value:
+                  type: string
+              type: object
+            city:
+              type: string
+            postalCode:
+              type: string
+            streetName:
+              type: string
+            houseNumber:
+              type: string
+            houseNumberAddition:
+              type: string
+            buildingAddition:
+              type: string
+            primaryLocation:
+              type: boolean
           type: object
-        customerSpecificRequirements:
+      customerSpecificRequirements:
           type: string
           format: uri-reference
       type: object

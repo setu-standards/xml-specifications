@@ -66,6 +66,20 @@ Terms of license can be found in license.txt.
 			<xsd:sequence>
 				<xsd:element name="Id" type="EntityIdType" minOccurs="0"/>
 				<xsd:element name="Name" type="xsd:string"/>
+				<xsd:element name="CountryCode" minOccurs="0">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="value" type="xsd:string"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="City" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="PostalCode" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="StreetName" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="HouseNumber" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="HouseNumberAddition" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="BuildingAddition" type="xsd:string" minOccurs="0"/>
+				<xsd:element name="PrimaryLocation" type="xsd:boolean" minOccurs="0"/>
 			</xsd:sequence>
 		</xsd:complexType>
 	</xsd:element>

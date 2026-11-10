@@ -892,6 +892,94 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                   <xs:restriction base="xs:string"/>
                 </xs:simpleType>
               </xs:element>
+              <xs:element name="countryCode" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The country, represented by an ISO 3166 2 letter code.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="value" type="xs:string">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The country value, represented by an ISO 3166 2 letter code.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="city" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The city.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="postalCode" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The postal code, e.g. 1234AB.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="streetName" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The street name of the address.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="houseNumber" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The house number of the address.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="houseNumberAddition" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>The additional house number of the address.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="buildingAddition" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Additional information about the building, e.g. building name or floor.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:string"/>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="primaryLocation" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation>
+                    <sth:definition>Indicates whether this is the primary work location.</sth:definition>
+                  </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                  <xs:restriction base="xs:boolean"/>
+                </xs:simpleType>
+              </xs:element>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
@@ -1289,6 +1377,94 @@ YYYY-MM-DD (in accordance with ISO 8601)</sth:definition>
                       </xs:annotation>
                       <xs:simpleType>
                         <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="countryCode" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The country, represented by an ISO 3166 2 letter code.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="value" type="xs:string">
+                            <xs:annotation>
+                              <xs:documentation>
+                                <sth:definition>The country value, represented by an ISO 3166 2 letter code.</sth:definition>
+                              </xs:documentation>
+                            </xs:annotation>
+                          </xs:element>
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="city" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The city.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="postalCode" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The postal code, e.g. 1234AB.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="streetName" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The street name of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="houseNumber" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The house number of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="houseNumberAddition" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>The additional house number of the address.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="buildingAddition" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Additional information about the building, e.g. building name or floor.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:string"/>
+                      </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="primaryLocation" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation>
+                          <sth:definition>Indicates whether this is the primary work location.</sth:definition>
+                        </xs:documentation>
+                      </xs:annotation>
+                      <xs:simpleType>
+                        <xs:restriction base="xs:boolean"/>
                       </xs:simpleType>
                     </xs:element>
                   </xs:sequence>
